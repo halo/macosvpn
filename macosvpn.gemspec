@@ -14,6 +14,4 @@ Gem::Specification.new do |spec|
   spec.files        = Dir['{bin}/**/*', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
   spec.executables = %w{ macosvpn }
 
-  spec.platform = Gem::Platform.local
-
 end
