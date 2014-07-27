@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-exec /Library/Ruby/Gems/2.0.0/gems/macosvpn-0.0.2/bin/macosvpn/objectivemacosvpn "$@"

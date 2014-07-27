@@ -7,35 +7,14 @@ This is a command-line tool written in Objective C that can create VPN network c
 * Mac OS Mavericks (I developed it on Mavericks but it might work on other versions)
 * Administrator privileges (i.e. you've got know the root password or run it with sudo)
 
-## Quickstart
+## Download
 
-If you don't care for the details and want to get going without any thinking, you might try running this in a Terminal:
-
-```bash
-# TODO: Is this working yet?
-# I'm trying to wrap the binary into a rubygem for easy installation
-sudo gem install macosvpn
-
-# Use this command to create a simple VPN service
-sudo macosvpn create --l2tp MyVPN --endpoint server.example.com --username Alice --password p4ssw0rd --shared-secret s3same
-``
-
-Profit!
-
-## Slowstart
-
-Ah, I see you're more realistic than that and care for security. Nice. Let me suggest that you look at the source code and build the executable yourself using X-Code. If you're too lazy for that you can download the latest build here:
-
-### Download
-
-* [Latest build](https://github.com/halo/macosvpn/blob/master/macosvpn/bin/objectivemacosvpn).
-
-Alternatively you may use curl to get the executable directly:
+Start a Terminal and run this curl command to get the executable:
 
 ```bash
 # TODO: figure out this command
 sudo curl
-FROM RAW https://github.com/halo/macosvpn/blob/master/macosvpn/bin/objectivemacosvpn
+FROM RAW https://github.com/halo/macosvpn/blob/master/macosvpn/latest_build_/macosvpn
 TO /usr/local/bin/macosvpn
 sudo chmod +x /usr/local/bin/macosvpn
 ```
