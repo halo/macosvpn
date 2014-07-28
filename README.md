@@ -12,10 +12,7 @@ This is a command-line tool written in Objective C that can create VPN network c
 Start a Terminal and run this curl command to get the executable:
 
 ```bash
-# TODO: figure out this command
-sudo curl
-FROM RAW https://github.com/halo/macosvpn/blob/master/macosvpn/latest_build_/macosvpn
-TO /usr/local/bin/macosvpn
+sudo bash -c "curl https://github.com/halo/macosvpn/raw/master/latest_build/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
@@ -90,6 +87,14 @@ open /Library/Preferences/SystemConfiguration/preferences.plist
 # Show all Keychain Items and their access policies
 security dump-keychain -a /Library/Keychains/System.keychain
 ```
+
+## Special Thanks
+
+To the beautiful 3rd party libraries I was allowed to use:
+
+* [NSError/ArgumentParser](https://github.com/NSError/ArgumentParser)
+* [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)
+* [beelsebob/CoreParse](https://github.com/beelsebob/CoreParse)
 
 ## License
 
