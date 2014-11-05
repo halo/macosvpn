@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9F41A4A3-0C83-4176-B879-B794ABE791B3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>macosvpn</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5C6891E709728DEBFE176113226068D6D2DE82ED</key>
+		<string>halo.github.com:halo/macosvpn.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>macosvpn.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5C6891E709728DEBFE176113226068D6D2DE82ED</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>halo.github.com:halo/macosvpn.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5C6891E709728DEBFE176113226068D6D2DE82ED</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5C6891E709728DEBFE176113226068D6D2DE82ED</string>
+			<key>IDESourceControlWCCName</key>
+			<string>macosvpn</string>
+		</dict>
+	</array>
+</dict>
+</plist>
