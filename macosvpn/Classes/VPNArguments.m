@@ -83,7 +83,7 @@
       exit(50);
     }
 
-    config.username = [self extractArgumentForSignature:self.endpointSig withFallbackSignature:self.defaultUsernameSig atIndex:i];
+    config.username = [self extractArgumentForSignature:self.usernameSig withFallbackSignature:self.defaultUsernameSig atIndex:i];
     if (!config.username) DDLogWarn(@"Warning: You did not provide a username for service <%@>", config.name);
 
     config.password = [self extractArgumentForSignature:self.passwordSig withFallbackSignature:self.defaultPasswordSig atIndex:i];
