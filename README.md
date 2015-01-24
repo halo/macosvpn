@@ -4,6 +4,8 @@
 
 ## Create Mac OS VPNs programmatically
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/halo/macosvpn?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is a command-line tool written in Objective-C that can create VPN network configurations on your Mac. It currently only supports L2TP over IPSec. With a little bit of work, it should also be able to create Cisco IPsec VPN.
 
 ## Requirements
