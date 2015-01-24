@@ -25,133 +25,65 @@
 		9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3D847D1982AE1B005BD5F3 /* Security.framework */; };
 		9D3D84811982B017005BD5F3 /* VPNKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D84801982B017005BD5F3 /* VPNKeychain.m */; };
 		9D3D84841983CB57005BD5F3 /* VPNHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D84831983CB57005BD5F3 /* VPNHelp.m */; };
-		9D6198491981129900FC01E8 /* VPNAuthorizations.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C719803F32005B5E3E /* VPNAuthorizations.h */; };
 		9D61984A1981129900FC01E8 /* VPNAuthorizations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C819803F32005B5E3E /* VPNAuthorizations.m */; };
 		9D61984D1981129900FC01E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C419803F2B005B5E3E /* main.m */; };
-		9D61984E198112A000FC01E8 /* FSAliasRecognizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619791198111F900FC01E8 /* FSAliasRecognizer.h */; };
 		9D61984F198112A000FC01E8 /* FSAliasRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619792198111F900FC01E8 /* FSAliasRecognizer.m */; };
-		9D619850198112A000FC01E8 /* FSAliasToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619793198111F900FC01E8 /* FSAliasToken.h */; };
 		9D619851198112A000FC01E8 /* FSAliasToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619794198111F900FC01E8 /* FSAliasToken.m */; };
-		9D619852198112A000FC01E8 /* FSArgsKonstants.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619795198111F900FC01E8 /* FSArgsKonstants.h */; };
 		9D619853198112A000FC01E8 /* FSArgsKonstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619796198111F900FC01E8 /* FSArgsKonstants.m */; };
-		9D619854198112A000FC01E8 /* FSArgumentPackage.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619797198111F900FC01E8 /* FSArgumentPackage.h */; };
 		9D619855198112A000FC01E8 /* FSArgumentPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619798198111F900FC01E8 /* FSArgumentPackage.m */; };
-		9D619856198112A000FC01E8 /* FSArgumentPackage_Private.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619799198111F900FC01E8 /* FSArgumentPackage_Private.h */; };
-		9D619857198112A000FC01E8 /* FSArgumentParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979A198111F900FC01E8 /* FSArgumentParser.h */; };
 		9D619858198112A000FC01E8 /* FSArgumentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979B198111F900FC01E8 /* FSArgumentParser.m */; };
-		9D619859198112A000FC01E8 /* FSArguments.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979C198111F900FC01E8 /* FSArguments.h */; };
-		9D61985A198112A000FC01E8 /* FSArguments_Coalescer_Internal.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979D198111F900FC01E8 /* FSArguments_Coalescer_Internal.h */; };
 		9D61985B198112A000FC01E8 /* FSArguments_Coalescer_Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979E198111F900FC01E8 /* FSArguments_Coalescer_Internal.m */; };
-		9D61985C198112A000FC01E8 /* FSArgumentSignature.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979F198111F900FC01E8 /* FSArgumentSignature.h */; };
 		9D61985D198112A000FC01E8 /* FSArgumentSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A0198111F900FC01E8 /* FSArgumentSignature.m */; };
-		9D61985E198112A000FC01E8 /* FSArgumentSignature_Private.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A1198111F900FC01E8 /* FSArgumentSignature_Private.h */; };
-		9D61985F198112A000FC01E8 /* FSCountedArgument.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A2198111F900FC01E8 /* FSCountedArgument.h */; };
 		9D619860198112A000FC01E8 /* FSCountedArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A3198111F900FC01E8 /* FSCountedArgument.m */; };
-		9D619861198112A000FC01E8 /* FSFormatCtorParserDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A4198111F900FC01E8 /* FSFormatCtorParserDelegate.h */; };
 		9D619862198112A000FC01E8 /* FSFormatCtorParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A5198111F900FC01E8 /* FSFormatCtorParserDelegate.m */; };
-		9D619863198112A000FC01E8 /* FSFormatCtorTokeniserDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A6198111F900FC01E8 /* FSFormatCtorTokeniserDelegate.h */; };
 		9D619864198112A000FC01E8 /* FSFormatCtorTokeniserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A7198111F900FC01E8 /* FSFormatCtorTokeniserDelegate.m */; };
-		9D619865198112A000FC01E8 /* FSMutableAttributedArray.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A8198111F900FC01E8 /* FSMutableAttributedArray.h */; };
 		9D619866198112A000FC01E8 /* FSMutableAttributedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A9198111F900FC01E8 /* FSMutableAttributedArray.m */; };
-		9D619867198112A000FC01E8 /* FSSwitchRecognizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AA198111F900FC01E8 /* FSSwitchRecognizer.h */; };
 		9D619868198112A000FC01E8 /* FSSwitchRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AB198111F900FC01E8 /* FSSwitchRecognizer.m */; };
-		9D619869198112A000FC01E8 /* FSSwitchToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AC198111F900FC01E8 /* FSSwitchToken.h */; };
 		9D61986A198112A000FC01E8 /* FSSwitchToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AD198111F900FC01E8 /* FSSwitchToken.m */; };
-		9D61986B198112A000FC01E8 /* FSValuedArgument.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AE198111F900FC01E8 /* FSValuedArgument.h */; };
 		9D61986C198112A000FC01E8 /* FSValuedArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AF198111F900FC01E8 /* FSValuedArgument.m */; };
-		9D61986D198112A000FC01E8 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B0198111F900FC01E8 /* LICENSE.md */; };
-		9D61986E198112A000FC01E8 /* NSArray+FSArgumentsNormalizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B1198111F900FC01E8 /* NSArray+FSArgumentsNormalizer.h */; };
 		9D61986F198112A000FC01E8 /* NSArray+FSArgumentsNormalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B2198111F900FC01E8 /* NSArray+FSArgumentsNormalizer.m */; };
-		9D619870198112A000FC01E8 /* NSDictionary+RubyDescription.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B3198111F900FC01E8 /* NSDictionary+RubyDescription.h */; };
 		9D619871198112A000FC01E8 /* NSDictionary+RubyDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B4198111F900FC01E8 /* NSDictionary+RubyDescription.m */; };
-		9D619872198112A000FC01E8 /* NSProcessInfo+FSArgumentParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B5198111F900FC01E8 /* NSProcessInfo+FSArgumentParser.h */; };
 		9D619873198112A000FC01E8 /* NSProcessInfo+FSArgumentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B6198111F900FC01E8 /* NSProcessInfo+FSArgumentParser.m */; };
-		9D619874198112A000FC01E8 /* NSScanner+EscapedScanning.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B7198111F900FC01E8 /* NSScanner+EscapedScanning.h */; };
 		9D619875198112A000FC01E8 /* NSScanner+EscapedScanning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B8198111F900FC01E8 /* NSScanner+EscapedScanning.m */; };
-		9D619876198112A000FC01E8 /* NSString+Indenter.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B9198111F900FC01E8 /* NSString+Indenter.h */; };
 		9D619877198112A000FC01E8 /* NSString+Indenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197BA198111F900FC01E8 /* NSString+Indenter.m */; };
-		9D619878198112DA00FC01E8 /* CPJSONParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6198461981121500FC01E8 /* CPJSONParser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619879198112DA00FC01E8 /* CPJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6198471981121500FC01E8 /* CPJSONParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61987A198112DA00FC01E8 /* CoreParse.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197BC198111F900FC01E8 /* CoreParse.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61987B198112DA00FC01E8 /* CPEOFToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197BD198111F900FC01E8 /* CPEOFToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61987C198112DA00FC01E8 /* CPEOFToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197BE198111F900FC01E8 /* CPEOFToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61987D198112DA00FC01E8 /* CPErrorToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197BF198111F900FC01E8 /* CPErrorToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61987E198112DA00FC01E8 /* CPErrorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C0198111F900FC01E8 /* CPErrorToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61987F198112DA00FC01E8 /* CPGrammar.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C1198111F900FC01E8 /* CPGrammar.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619880198112DA00FC01E8 /* CPGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C2198111F900FC01E8 /* CPGrammar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619881198112DA00FC01E8 /* CPGrammarInternal.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C3198111F900FC01E8 /* CPGrammarInternal.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619882198112DA00FC01E8 /* CPGrammarInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C4198111F900FC01E8 /* CPGrammarInternal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619883198112DA00FC01E8 /* CPGrammarPrivate.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C5198111F900FC01E8 /* CPGrammarPrivate.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619884198112DA00FC01E8 /* CPGrammarPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C6198111F900FC01E8 /* CPGrammarPrivate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619885198112DA00FC01E8 /* CPGrammarSymbol.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C7198111F900FC01E8 /* CPGrammarSymbol.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619886198112DA00FC01E8 /* CPGrammarSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C8198111F900FC01E8 /* CPGrammarSymbol.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619887198112DA00FC01E8 /* CPIdentifierRecogniser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C9198111F900FC01E8 /* CPIdentifierRecogniser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619888198112DA00FC01E8 /* CPIdentifierRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CA198111F900FC01E8 /* CPIdentifierRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619889198112DA00FC01E8 /* CPIdentifierToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CB198111F900FC01E8 /* CPIdentifierToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61988A198112DA00FC01E8 /* CPIdentifierToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CC198111F900FC01E8 /* CPIdentifierToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61988B198112DA00FC01E8 /* CPItem.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CD198111F900FC01E8 /* CPItem.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61988C198112DA00FC01E8 /* CPItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CE198111F900FC01E8 /* CPItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61988D198112DA00FC01E8 /* CPKeywordRecogniser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CF198111F900FC01E8 /* CPKeywordRecogniser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61988E198112DA00FC01E8 /* CPKeywordRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D0198111F900FC01E8 /* CPKeywordRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61988F198112DA00FC01E8 /* CPKeywordToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D1198111F900FC01E8 /* CPKeywordToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619890198112DA00FC01E8 /* CPKeywordToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D2198111F900FC01E8 /* CPKeywordToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619891198112DA00FC01E8 /* CPLALR1Parser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D3198111F900FC01E8 /* CPLALR1Parser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619892198112DA00FC01E8 /* CPLALR1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D4198111F900FC01E8 /* CPLALR1Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619893198112DA00FC01E8 /* CPLR1Item.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D5198111F900FC01E8 /* CPLR1Item.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619894198112DA00FC01E8 /* CPLR1Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D6198111F900FC01E8 /* CPLR1Item.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619895198112DA00FC01E8 /* CPLR1Parser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D7198111F900FC01E8 /* CPLR1Parser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619896198112DA00FC01E8 /* CPLR1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D8198111F900FC01E8 /* CPLR1Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619897198112DA00FC01E8 /* CPNumberRecogniser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D9198111F900FC01E8 /* CPNumberRecogniser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D619898198112DA00FC01E8 /* CPNumberRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DA198111F900FC01E8 /* CPNumberRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619899198112DA00FC01E8 /* CPNumberToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DB198111F900FC01E8 /* CPNumberToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61989A198112DA00FC01E8 /* CPNumberToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DC198111F900FC01E8 /* CPNumberToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61989B198112DA00FC01E8 /* CPParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DD198111F900FC01E8 /* CPParser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61989C198112DA00FC01E8 /* CPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DE198111F900FC01E8 /* CPParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61989D198112DA00FC01E8 /* CPQuotedRecogniser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DF198111F900FC01E8 /* CPQuotedRecogniser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D61989E198112DA00FC01E8 /* CPQuotedRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E0198111F900FC01E8 /* CPQuotedRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61989F198112DA00FC01E8 /* CPQuotedToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E1198111F900FC01E8 /* CPQuotedToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198A0198112DA00FC01E8 /* CPQuotedToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E2198111F900FC01E8 /* CPQuotedToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A1198112DA00FC01E8 /* CPRecoveryAction.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E3198111F900FC01E8 /* CPRecoveryAction.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198A2198112DA00FC01E8 /* CPRecoveryAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E4198111F900FC01E8 /* CPRecoveryAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A3198112DA00FC01E8 /* CPRHSItem+Private.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E5198111F900FC01E8 /* CPRHSItem+Private.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A4198112DA00FC01E8 /* CPRHSItem.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E6198111F900FC01E8 /* CPRHSItem.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198A5198112DA00FC01E8 /* CPRHSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E7198111F900FC01E8 /* CPRHSItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A6198112DA00FC01E8 /* CPRHSItemResult.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E8198111F900FC01E8 /* CPRHSItemResult.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198A7198112DA00FC01E8 /* CPRHSItemResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E9198111F900FC01E8 /* CPRHSItemResult.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A8198112DA00FC01E8 /* CPRule+Internal.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197EA198111F900FC01E8 /* CPRule+Internal.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A9198112DA00FC01E8 /* CPRule.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197EB198111F900FC01E8 /* CPRule.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198AA198112DA00FC01E8 /* CPRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197EC198111F900FC01E8 /* CPRule.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198AB198112DA00FC01E8 /* CPShiftAction.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197ED198111F900FC01E8 /* CPShiftAction.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198AC198112DA00FC01E8 /* CPShiftAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197EE198111F900FC01E8 /* CPShiftAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198AD198112DA00FC01E8 /* CPShiftReduceAction.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197EF198111F900FC01E8 /* CPShiftReduceAction.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198AE198112DA00FC01E8 /* CPShiftReduceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F0198111F900FC01E8 /* CPShiftReduceAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198AF198112DA00FC01E8 /* CPShiftReduceActionTable.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F1198111F900FC01E8 /* CPShiftReduceActionTable.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198B0198112DA00FC01E8 /* CPShiftReduceActionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F2198111F900FC01E8 /* CPShiftReduceActionTable.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B1198112DA00FC01E8 /* CPShiftReduceGotoTable.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F3198111F900FC01E8 /* CPShiftReduceGotoTable.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198B2198112DA00FC01E8 /* CPShiftReduceGotoTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F4198111F900FC01E8 /* CPShiftReduceGotoTable.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B3198112DA00FC01E8 /* CPShiftReduceParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F5198111F900FC01E8 /* CPShiftReduceParser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198B4198112DA00FC01E8 /* CPShiftReduceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F6198111F900FC01E8 /* CPShiftReduceParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B5198112DA00FC01E8 /* CPShiftReduceParserProtectedMethods.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F7198111F900FC01E8 /* CPShiftReduceParserProtectedMethods.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B6198112DA00FC01E8 /* CPShiftReduceState.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F8198111F900FC01E8 /* CPShiftReduceState.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198B7198112DA00FC01E8 /* CPShiftReduceState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F9198111F900FC01E8 /* CPShiftReduceState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B8198112DA00FC01E8 /* CPSLRParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FA198111F900FC01E8 /* CPSLRParser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198B9198112DA00FC01E8 /* CPSLRParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FB198111F900FC01E8 /* CPSLRParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198BA198112DA00FC01E8 /* CPSyntaxTree.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FC198111F900FC01E8 /* CPSyntaxTree.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198BB198112DA00FC01E8 /* CPSyntaxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FD198111F900FC01E8 /* CPSyntaxTree.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198BC198112DA00FC01E8 /* CPToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FE198111F900FC01E8 /* CPToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198BD198112DA00FC01E8 /* CPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FF198111F900FC01E8 /* CPToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198BE198112DA00FC01E8 /* CPTokeniser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619800198111F900FC01E8 /* CPTokeniser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198BF198112DA00FC01E8 /* CPTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619801198111F900FC01E8 /* CPTokeniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C0198112DA00FC01E8 /* CPTokenRecogniser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619802198111F900FC01E8 /* CPTokenRecogniser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C1198112DA00FC01E8 /* CPTokenStream.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619803198111F900FC01E8 /* CPTokenStream.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198C2198112DA00FC01E8 /* CPTokenStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619804198111F900FC01E8 /* CPTokenStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C3198112DA00FC01E8 /* CPWhiteSpaceRecogniser.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619805198111F900FC01E8 /* CPWhiteSpaceRecogniser.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198C4198112DA00FC01E8 /* CPWhiteSpaceRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619806198111F900FC01E8 /* CPWhiteSpaceRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C5198112DA00FC01E8 /* CPWhiteSpaceToken.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619807198111F900FC01E8 /* CPWhiteSpaceToken.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198C6198112DA00FC01E8 /* CPWhiteSpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619808198111F900FC01E8 /* CPWhiteSpaceToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C7198112DA00FC01E8 /* NSArray+Functional.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D619809198111F900FC01E8 /* NSArray+Functional.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198C8198112DA00FC01E8 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61980A198111F900FC01E8 /* NSArray+Functional.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C9198112DA00FC01E8 /* NSSetFunctional.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D61980B198111F900FC01E8 /* NSSetFunctional.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198CA198112DA00FC01E8 /* NSSetFunctional.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61980C198111F900FC01E8 /* NSSetFunctional.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198CD1981151D00FC01E8 /* VPNArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6198CC1981151D00FC01E8 /* VPNArguments.m */; };
 		9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */; };
@@ -675,149 +607,81 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D619878198112DA00FC01E8 /* CPJSONParser.h in Sources */,
 				9D619879198112DA00FC01E8 /* CPJSONParser.m in Sources */,
-				9D61987A198112DA00FC01E8 /* CoreParse.h in Sources */,
 				9D3D84841983CB57005BD5F3 /* VPNHelp.m in Sources */,
-				9D61987B198112DA00FC01E8 /* CPEOFToken.h in Sources */,
 				9D61987C198112DA00FC01E8 /* CPEOFToken.m in Sources */,
-				9D61987D198112DA00FC01E8 /* CPErrorToken.h in Sources */,
 				9D61987E198112DA00FC01E8 /* CPErrorToken.m in Sources */,
-				9D61987F198112DA00FC01E8 /* CPGrammar.h in Sources */,
 				9D619880198112DA00FC01E8 /* CPGrammar.m in Sources */,
-				9D619881198112DA00FC01E8 /* CPGrammarInternal.h in Sources */,
 				9D619882198112DA00FC01E8 /* CPGrammarInternal.m in Sources */,
-				9D619883198112DA00FC01E8 /* CPGrammarPrivate.h in Sources */,
 				9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */,
 				9D619884198112DA00FC01E8 /* CPGrammarPrivate.m in Sources */,
-				9D619885198112DA00FC01E8 /* CPGrammarSymbol.h in Sources */,
 				324DC04C19811E020048BC38 /* DDASLLogger.m in Sources */,
 				9D619886198112DA00FC01E8 /* CPGrammarSymbol.m in Sources */,
-				9D619887198112DA00FC01E8 /* CPIdentifierRecogniser.h in Sources */,
 				324DC04D19811E020048BC38 /* DDContextFilterLogFormatter.m in Sources */,
 				324DC05B198124840048BC38 /* VPNLogFormatter.m in Sources */,
 				9D619888198112DA00FC01E8 /* CPIdentifierRecogniser.m in Sources */,
-				9D619889198112DA00FC01E8 /* CPIdentifierToken.h in Sources */,
 				9D61988A198112DA00FC01E8 /* CPIdentifierToken.m in Sources */,
-				9D61988B198112DA00FC01E8 /* CPItem.h in Sources */,
 				324DC04919811E020048BC38 /* CLIColor.m in Sources */,
 				9D61988C198112DA00FC01E8 /* CPItem.m in Sources */,
-				9D61988D198112DA00FC01E8 /* CPKeywordRecogniser.h in Sources */,
 				324DC04F19811E020048BC38 /* DDFileLogger.m in Sources */,
 				9D61988E198112DA00FC01E8 /* CPKeywordRecogniser.m in Sources */,
-				9D61988F198112DA00FC01E8 /* CPKeywordToken.h in Sources */,
 				9D619890198112DA00FC01E8 /* CPKeywordToken.m in Sources */,
-				9D619891198112DA00FC01E8 /* CPLALR1Parser.h in Sources */,
 				9D619892198112DA00FC01E8 /* CPLALR1Parser.m in Sources */,
-				9D619893198112DA00FC01E8 /* CPLR1Item.h in Sources */,
 				9D619894198112DA00FC01E8 /* CPLR1Item.m in Sources */,
-				9D619895198112DA00FC01E8 /* CPLR1Parser.h in Sources */,
 				9D619896198112DA00FC01E8 /* CPLR1Parser.m in Sources */,
-				9D619897198112DA00FC01E8 /* CPNumberRecogniser.h in Sources */,
 				9D619898198112DA00FC01E8 /* CPNumberRecogniser.m in Sources */,
-				9D619899198112DA00FC01E8 /* CPNumberToken.h in Sources */,
 				9D3D84811982B017005BD5F3 /* VPNKeychain.m in Sources */,
 				9D61989A198112DA00FC01E8 /* CPNumberToken.m in Sources */,
-				9D61989B198112DA00FC01E8 /* CPParser.h in Sources */,
 				9D61989C198112DA00FC01E8 /* CPParser.m in Sources */,
-				9D61989D198112DA00FC01E8 /* CPQuotedRecogniser.h in Sources */,
 				9D61989E198112DA00FC01E8 /* CPQuotedRecogniser.m in Sources */,
-				9D61989F198112DA00FC01E8 /* CPQuotedToken.h in Sources */,
 				324DC058198120B10048BC38 /* VPNController.m in Sources */,
 				9D6198A0198112DA00FC01E8 /* CPQuotedToken.m in Sources */,
-				9D6198A1198112DA00FC01E8 /* CPRecoveryAction.h in Sources */,
 				9D6198A2198112DA00FC01E8 /* CPRecoveryAction.m in Sources */,
-				9D6198A3198112DA00FC01E8 /* CPRHSItem+Private.h in Sources */,
-				9D6198A4198112DA00FC01E8 /* CPRHSItem.h in Sources */,
 				324DC04A19811E020048BC38 /* DDAbstractDatabaseLogger.m in Sources */,
 				9D6198A5198112DA00FC01E8 /* CPRHSItem.m in Sources */,
-				9D6198A6198112DA00FC01E8 /* CPRHSItemResult.h in Sources */,
 				9D6198A7198112DA00FC01E8 /* CPRHSItemResult.m in Sources */,
-				9D6198A8198112DA00FC01E8 /* CPRule+Internal.h in Sources */,
-				9D6198A9198112DA00FC01E8 /* CPRule.h in Sources */,
 				9D6198AA198112DA00FC01E8 /* CPRule.m in Sources */,
-				9D6198AB198112DA00FC01E8 /* CPShiftAction.h in Sources */,
 				9D6198AC198112DA00FC01E8 /* CPShiftAction.m in Sources */,
-				9D6198AD198112DA00FC01E8 /* CPShiftReduceAction.h in Sources */,
 				9D6198AE198112DA00FC01E8 /* CPShiftReduceAction.m in Sources */,
-				9D6198AF198112DA00FC01E8 /* CPShiftReduceActionTable.h in Sources */,
 				9D6198B0198112DA00FC01E8 /* CPShiftReduceActionTable.m in Sources */,
-				9D6198B1198112DA00FC01E8 /* CPShiftReduceGotoTable.h in Sources */,
 				9D6198B2198112DA00FC01E8 /* CPShiftReduceGotoTable.m in Sources */,
-				9D6198B3198112DA00FC01E8 /* CPShiftReduceParser.h in Sources */,
 				9D6198B4198112DA00FC01E8 /* CPShiftReduceParser.m in Sources */,
-				9D6198B5198112DA00FC01E8 /* CPShiftReduceParserProtectedMethods.h in Sources */,
-				9D6198B6198112DA00FC01E8 /* CPShiftReduceState.h in Sources */,
 				324DC04E19811E020048BC38 /* DDDispatchQueueLogFormatter.m in Sources */,
 				9D6198B7198112DA00FC01E8 /* CPShiftReduceState.m in Sources */,
-				9D6198B8198112DA00FC01E8 /* CPSLRParser.h in Sources */,
 				9D6198B9198112DA00FC01E8 /* CPSLRParser.m in Sources */,
-				9D6198BA198112DA00FC01E8 /* CPSyntaxTree.h in Sources */,
 				9D6198BB198112DA00FC01E8 /* CPSyntaxTree.m in Sources */,
-				9D6198BC198112DA00FC01E8 /* CPToken.h in Sources */,
 				9D6198BD198112DA00FC01E8 /* CPToken.m in Sources */,
-				9D6198BE198112DA00FC01E8 /* CPTokeniser.h in Sources */,
 				9D6198BF198112DA00FC01E8 /* CPTokeniser.m in Sources */,
 				324DC05519811FFC0048BC38 /* VPNLogger.m in Sources */,
-				9D6198C0198112DA00FC01E8 /* CPTokenRecogniser.h in Sources */,
-				9D6198C1198112DA00FC01E8 /* CPTokenStream.h in Sources */,
 				324DC05119811E020048BC38 /* DDMultiFormatter.m in Sources */,
 				9D6198C2198112DA00FC01E8 /* CPTokenStream.m in Sources */,
-				9D6198C3198112DA00FC01E8 /* CPWhiteSpaceRecogniser.h in Sources */,
 				9D6198C4198112DA00FC01E8 /* CPWhiteSpaceRecogniser.m in Sources */,
-				9D6198C5198112DA00FC01E8 /* CPWhiteSpaceToken.h in Sources */,
 				9D6198C6198112DA00FC01E8 /* CPWhiteSpaceToken.m in Sources */,
 				324DC05019811E020048BC38 /* DDLog.m in Sources */,
-				9D6198C7198112DA00FC01E8 /* NSArray+Functional.h in Sources */,
 				9D6198C8198112DA00FC01E8 /* NSArray+Functional.m in Sources */,
-				9D6198C9198112DA00FC01E8 /* NSSetFunctional.h in Sources */,
 				9D6198CA198112DA00FC01E8 /* NSSetFunctional.m in Sources */,
-				9D61984E198112A000FC01E8 /* FSAliasRecognizer.h in Sources */,
 				9D61984F198112A000FC01E8 /* FSAliasRecognizer.m in Sources */,
-				9D619850198112A000FC01E8 /* FSAliasToken.h in Sources */,
 				9D619851198112A000FC01E8 /* FSAliasToken.m in Sources */,
-				9D619852198112A000FC01E8 /* FSArgsKonstants.h in Sources */,
 				9D619853198112A000FC01E8 /* FSArgsKonstants.m in Sources */,
-				9D619854198112A000FC01E8 /* FSArgumentPackage.h in Sources */,
 				9D619855198112A000FC01E8 /* FSArgumentPackage.m in Sources */,
-				9D619856198112A000FC01E8 /* FSArgumentPackage_Private.h in Sources */,
-				9D619857198112A000FC01E8 /* FSArgumentParser.h in Sources */,
 				9D619858198112A000FC01E8 /* FSArgumentParser.m in Sources */,
-				9D619859198112A000FC01E8 /* FSArguments.h in Sources */,
-				9D61985A198112A000FC01E8 /* FSArguments_Coalescer_Internal.h in Sources */,
 				9D61985B198112A000FC01E8 /* FSArguments_Coalescer_Internal.m in Sources */,
-				9D61985C198112A000FC01E8 /* FSArgumentSignature.h in Sources */,
 				9D61985D198112A000FC01E8 /* FSArgumentSignature.m in Sources */,
-				9D61985E198112A000FC01E8 /* FSArgumentSignature_Private.h in Sources */,
 				324DC04B19811E020048BC38 /* DDASLLogCapture.m in Sources */,
-				9D61985F198112A000FC01E8 /* FSCountedArgument.h in Sources */,
 				9D619860198112A000FC01E8 /* FSCountedArgument.m in Sources */,
-				9D619861198112A000FC01E8 /* FSFormatCtorParserDelegate.h in Sources */,
 				9D619862198112A000FC01E8 /* FSFormatCtorParserDelegate.m in Sources */,
-				9D619863198112A000FC01E8 /* FSFormatCtorTokeniserDelegate.h in Sources */,
 				9D619864198112A000FC01E8 /* FSFormatCtorTokeniserDelegate.m in Sources */,
-				9D619865198112A000FC01E8 /* FSMutableAttributedArray.h in Sources */,
 				9D619866198112A000FC01E8 /* FSMutableAttributedArray.m in Sources */,
-				9D619867198112A000FC01E8 /* FSSwitchRecognizer.h in Sources */,
 				9D619868198112A000FC01E8 /* FSSwitchRecognizer.m in Sources */,
-				9D619869198112A000FC01E8 /* FSSwitchToken.h in Sources */,
 				324DC05219811E020048BC38 /* DDTTYLogger.m in Sources */,
 				9D61986A198112A000FC01E8 /* FSSwitchToken.m in Sources */,
-				9D61986B198112A000FC01E8 /* FSValuedArgument.h in Sources */,
 				9D61986C198112A000FC01E8 /* FSValuedArgument.m in Sources */,
-				9D61986D198112A000FC01E8 /* LICENSE.md in Sources */,
 				9D6198CD1981151D00FC01E8 /* VPNArguments.m in Sources */,
-				9D61986E198112A000FC01E8 /* NSArray+FSArgumentsNormalizer.h in Sources */,
 				9D61986F198112A000FC01E8 /* NSArray+FSArgumentsNormalizer.m in Sources */,
-				9D619870198112A000FC01E8 /* NSDictionary+RubyDescription.h in Sources */,
 				9D619871198112A000FC01E8 /* NSDictionary+RubyDescription.m in Sources */,
-				9D619872198112A000FC01E8 /* NSProcessInfo+FSArgumentParser.h in Sources */,
 				9D619873198112A000FC01E8 /* NSProcessInfo+FSArgumentParser.m in Sources */,
-				9D619874198112A000FC01E8 /* NSScanner+EscapedScanning.h in Sources */,
 				9D619875198112A000FC01E8 /* NSScanner+EscapedScanning.m in Sources */,
-				9D619876198112A000FC01E8 /* NSString+Indenter.h in Sources */,
 				9D619877198112A000FC01E8 /* NSString+Indenter.m in Sources */,
-				9D6198491981129900FC01E8 /* VPNAuthorizations.h in Sources */,
 				9D61984A1981129900FC01E8 /* VPNAuthorizations.m in Sources */,
 				9D61984D1981129900FC01E8 /* main.m in Sources */,
 			);
