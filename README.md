@@ -1,11 +1,13 @@
-# macosvpn
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/halo/macosvpn/blob/master/LICENSE.md)
 
-This is a command-line tool written in Objective C that can create VPN network configurations. It currently only supports L2TP over IPSec. With a little bit of work, it should also be able to create Cisco IPsec VPN.
+## Creating Mac OS VPNs programmatically
+
+This is a command-line tool written in Objective-C that can create VPN network configurations on your Mac. It currently only supports L2TP over IPSec. With a little bit of work, it should also be able to create Cisco IPsec VPN.
 
 ## Requirements
 
-* Mac OS Mavericks (I developed it on Mavericks but it might work on other versions)
-* Administrator privileges (i.e. you've got know the root password or run it with sudo)
+* Mac OS Yosemite or Mavericks (I have not tested it on older versions, it might work)
+* Administrator privileges (i.e. you've got to run it with sudo)
 
 ## Download
 
@@ -15,6 +17,8 @@ Start a Terminal and run this curl command to get the executable:
 sudo bash -c "curl https://raw.githubusercontent.com/halo/macosvpn/master/latest_build/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
+
+You can always run `macosvpn --version` to see the version currently installed on your system and compare it to [the latest available version](https://github.com/halo/macosvpn/releases) on Github.
 
 ## Usage
 
@@ -51,7 +55,7 @@ Assign default values which will be applied to every service. Say you want to cr
     --------------------------------------------------------------
     1  Australia australia.example.com Alice p4ssw0rd s3same
     2  Island    island.example.com    Alice p4ssw0rd s3same
-    
+
 You could do that with the following command:
 
     macosvpn create --default-username Alice --default-password p4ssw0rd --default-endpoint-suffix .example.com \\
@@ -64,9 +68,14 @@ The same command a little shorter:
                     -l Australia -f australia -s s3same \\
                     -l Island -f island -s letme1n
 
-You can look at the available flags [in this file](https://github.com/halo/macosvpn/blob/master/macosvpn/Classes/VPNArguments.m).
+If you feel adventurous you can find all available flags [at the bottom of this file](https://github.com/halo/macosvpn/blob/master/macosvpn/Classes/VPNArguments.m).
 
-## Limitations/Future work
+## Troubleshooting
+
+* If you get a warning that says "Creating Keychain item failed: write permissions error", you need to run the application with sudo.
+* If you're stuck, try to add the `--debug` flag and see if it says something useful.
+
+## Limitations
 
 * If a VPN with the given name already exists, it is ignored. In the future there should be a --force option to re-create it
 
@@ -88,7 +97,7 @@ open /Library/Preferences/SystemConfiguration/preferences.plist
 security dump-keychain -a /Library/Keychains/System.keychain
 ```
 
-## Special Thanks
+## Special thanks
 
 To the beautiful 3rd party libraries I was allowed to use:
 
@@ -98,5 +107,5 @@ To the beautiful 3rd party libraries I was allowed to use:
 
 ## License
 
-MIT 2014 funkensturm. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
+MIT 2015 funkensturm. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
 

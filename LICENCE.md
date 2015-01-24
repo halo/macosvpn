@@ -1,4 +1,4 @@
-Copyright (c) 2014 funkensturm.
+Copyright (c) 2015 funkensturm.
 
 See directory "macosvpn/Vendor" for third-party libraries (all MIT-compatible).
 
