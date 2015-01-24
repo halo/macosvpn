@@ -29,7 +29,8 @@
 + (void) setLogLevel {
   if ([self.package countOfSignature:self.debugSig]) {
     [VPNLogger setup:LOG_LEVEL_DEBUG];
-    DDLogDebug(@"Debug Mode");
+    DDLogDebug(@"");
+    DDLogDebug(@"You are running in debug mode");
   } else {
     [VPNLogger setup:LOG_LEVEL_INFO];
   }
@@ -44,8 +45,8 @@
 }
 
 + (NSUInteger) command {
-  DDLogDebug(@"unknownSwitches: %@", [self.package unknownSwitches]);
-  DDLogDebug(@"uncapturedValues: %@", [self.package uncapturedValues]);
+  if ([[self.package unknownSwitches] count] > 0) DDLogDebug(@"Unknown arguments: %@", [[self.package unknownSwitches] componentsJoinedByString:@" | "]);
+  if ([[self.package uncapturedValues] count] > 0) DDLogDebug(@"Uncaptured argument values: %@", [[self.package uncapturedValues] componentsJoinedByString:@" | "]);
   if ([self.package countOfSignature:self.createCommandSig] == 1) {
     return VPNCommandCreate;
   } else {
