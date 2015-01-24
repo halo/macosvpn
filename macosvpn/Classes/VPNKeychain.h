@@ -16,7 +16,7 @@
 
 @interface VPNKeychain : NSObject
 
-+ (void) createPasswordKeyChainItem:(NSString*)label forService:(NSString*)service withAccount:(NSString*)account andPassword:(NSString*)password;;
-+ (void) createSharedSecretKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password;
++ (int) createPasswordKeyChainItem:(NSString*)label forService:(NSString*)service withAccount:(NSString*)account andPassword:(NSString*)password;;
++ (int) createSharedSecretKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password;
 
 @end
