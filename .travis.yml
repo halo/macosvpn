@@ -1,3 +1,4 @@
+sudo: false
 language: objective-c
 xcode_project: macosvpn.xcodeproj
 xcode_scheme: macosvpn
