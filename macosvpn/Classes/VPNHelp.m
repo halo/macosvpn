@@ -25,6 +25,8 @@
   DDLogInfo(@"Usage: macosvpn [ACTION] [OPTIONS] [SAME OPTIONS AGAIN...]");
 
   DDLogInfo(@"");
+  DDLogInfo(@"\033[2mYou can add the\033[0m\033[0m --debug \033[2m option for troubleshooting.\033[0m\033[0m");
+  DDLogInfo(@"");
   DDLogInfo(@"Examples:");
   DDLogInfo(@"");
   DDLogInfo(@" \033[2m Creating a single L2TP over IPSec VPN Service \033[0m\033[0m");

@@ -96,6 +96,7 @@
 
   int one = 1;
   keys[count] = kSCPropNetOverridePrimary;
+
   // X-Code warns on this (CFString VS. CFNumber), but it should not matter, CFNumber is the correct type I think, as you can verify in the resulting /Library/Preferences/SystemConfiguration/preferences.plist file.
   // See also https://developer.apple.com/library/prerelease/ios/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html
   vals[count++] = CFNumberCreate(NULL, kCFNumberIntType, &one);
