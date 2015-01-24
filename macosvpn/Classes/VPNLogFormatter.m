@@ -21,10 +21,10 @@
 - (NSString*) formatLogMessage:(DDLogMessage *)logMessage {
   if (logMessage->logFlag == LOG_FLAG_INFO) return [NSString stringWithFormat:@"  %@", logMessage->logMsg];
 
-  NSString *logLevel;
-  NSUInteger colorCode;
-  
   /*
+  // Currently we don't print the level name
+ 
+  NSString *logLevel;
   switch (logMessage->logFlag) {
     case LOG_FLAG_ERROR : logLevel = @"ERROR"; break;
     case LOG_FLAG_WARN  : logLevel = @" WARN"; break;
@@ -32,8 +32,9 @@
     case LOG_FLAG_DEBUG : logLevel = @"DEBUG"; break;
     default             : logLevel = @"INTRN"; break;
   }
-   */
-  
+  */
+
+  NSUInteger colorCode;
   switch (logMessage->logFlag) {
     case LOG_FLAG_ERROR : colorCode = 31; break;
     case LOG_FLAG_WARN  : colorCode = 33; break;
@@ -41,7 +42,7 @@
     default             : colorCode =  0; break;
   }
                                    
-  return [NSString stringWithFormat:@"  \033[%im%@\033[0m\033[0m", colorCode, logMessage->logMsg];
+  return [NSString stringWithFormat:@"  \033[%lum%@\033[0m\033[0m", (unsigned long)colorCode, logMessage->logMsg];
 }
 
 @end
