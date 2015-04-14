@@ -127,7 +127,8 @@
     case VPNServiceCiscoIPSec:
       // Cisco IPSec (without underlying interface)
       topInterface = SCNetworkInterfaceCreateWithInterface (kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeIPSec);
-
+      break;
+      
     default:
       DDLogError(@"Sorry, this service type is not yet supported");
       return 32;
@@ -143,42 +144,63 @@
   // It will be used to find the correct passwords in the system keychain
   config.serviceID = serviceID;
 
-  // Interestingly enough, the interface variables in itself are now worthless
-  // We used them to create the service and that's it, we cannot modify them any more.
+  // Interestingly enough, the interface variables in itself are now worthless.
+  // We used them to create the service and that's it, we cannot modify or use them any more.
   CFRelease(topInterface);
-  CFRelease(bottomInterface);
   topInterface = NULL;
-  bottomInterface = NULL;
+  if (bottomInterface) {
+    CFRelease(bottomInterface);
+    bottomInterface = NULL;
+  }
 
-  // If we would like to modify the interface, we first need to freshly fetch it from the service
+  // Because, if we would like to modify the interface, we first need to freshly fetch it from the service
   // See https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html
   topInterface = SCNetworkServiceGetInterface(service);
 
+  // Error Codes 50-59
+  
+  switch (config.type) {
+    case VPNServiceL2TPOverIPSec:
+      DDLogDebug(@"Configuring %@ Service", config.humanType);
+      
+      // Let's apply all configuration to the PPP interface
+      // Specifically, the servername, account username and password
+      if (SCNetworkInterfaceSetConfiguration(topInterface, config.L2TPPPPConfig)) {
+        DDLogDebug(@"Successfully configured PPP interface of service %@", config.name);
+      } else {
+        DDLogError(@"Error: Could not configure PPP interface for service %@", config.name);
+        return 50;
+      }
+      
+      // Now let's apply the shared secret to the IPSec part of the L2TP/IPSec Interface
+      if (SCNetworkInterfaceSetExtendedConfiguration(topInterface, CFSTR("IPSec"), config.L2TPIPSecConfig)) {
+        DDLogDebug(@"Successfully configured IPSec on PPP interface for service %@", config.name);
+      } else {
+        DDLogError(@"Error: Could not configure IPSec on PPP interface for service %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
+        return 35;
+      }
+    break;
+      
+    case VPNServiceCiscoIPSec:
+      DDLogDebug(@"Configuring %@ Service", config.humanType);
 
-  if (config.type == VPNServiceL2TPOverIPSec) {
-
-    // Let's apply all configuration to the PPP interface
-    // Specifically, the servername, account username and password
-    if (SCNetworkInterfaceSetConfiguration(topInterface, config.L2TPPPPConfig)) {
-      DDLogDebug(@"Successfully configured PPP interface of service %@", config.name);
-    } else {
-      DDLogError(@"Error: Could not configure PPP interface for service %@", config.name);
-      return 33;
-    }
-
-  } else {
-    // To be honest, I don't know how Cisco IPsec works, so we skip it for now
-    DDLogError(@"Error: I cannot handle this interface type yet.");
-    return 34;
+      // Let's apply all configuration data to the Cisco IPSec interface
+      // As opposed to L2TP, here all configuration goes to the top Interface, i.e. the only Interface there is.
+      if (SCNetworkInterfaceSetConfiguration(topInterface, config.ciscoConfig)) {
+        DDLogDebug(@"Successfully configured Cisco IPSec interface of service %@", config.name);
+      } else {
+        DDLogError(@"Error: Could not configure Cisco IPSec interface for service %@", config.name);
+        return 51;
+      }
+    break;
+      
+    default:
+      DDLogError(@"Error: I cannot handle this interface type yet.");
+      return 59;
+    break;
   }
-
-  // Now let's apply the shared secret to the IPSec part
-  if (SCNetworkInterfaceSetExtendedConfiguration(topInterface, CFSTR("IPSec"), config.L2TPIPSecConfig)) {
-    DDLogDebug(@"Successfully configured IPSec on PPP interface for service %@", config.name);
-  } else {
-    DDLogError(@"Error: Could not configure IPSec on PPP interface for service %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
-    return 35;
-  }
+  
+  // Error Codes ...
 
   DDLogDebug(@"Adding default protocols (DNS, etc.) to service %@...", config.name);
   if (!SCNetworkServiceEstablishDefaultConfiguration(service)) {

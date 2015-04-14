@@ -18,5 +18,6 @@
 
 + (int) createPasswordKeyChainItem:(NSString*)label forService:(NSString*)service withAccount:(NSString*)account andPassword:(NSString*)password;;
 + (int) createSharedSecretKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password;
++ (int) createXAuthKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password;
 
 @end

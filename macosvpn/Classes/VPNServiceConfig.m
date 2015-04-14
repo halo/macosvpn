@@ -105,35 +105,33 @@
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
 
-/*
 - (CFDictionaryRef) ciscoConfig {
-  keysIPSec[numkeys]    = kSCPropNetIPSecAuthenticationMethod;
-  valsIPSec[numkeys++]  = kSCValNetIPSecAuthenticationMethodSharedSecret;
+  CFStringRef keys[7] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+  CFStringRef vals[7] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+  CFIndex count = 0;
 
-  keysIPSec[numkeys]    = kSCPropNetIPSecLocalIdentifier;
-  valsIPSec[numkeys++]  = (__bridge CFStringRef)vpnGrpName;
+  keys[count]   = kSCPropNetIPSecAuthenticationMethod;
+  vals[count++] = kSCValNetIPSecAuthenticationMethodSharedSecret;
 
-  keysIPSec[numkeys]    = kSCPropNetIPSecLocalIdentifierType;
-  valsIPSec[numkeys++]  = kSCValNetIPSecLocalIdentifierTypeKeyID;
+  keys[count]   = kSCPropNetIPSecSharedSecret;
+  vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.SS", self.serviceID];
+  
+  keys[count]   = kSCPropNetIPSecSharedSecretEncryption;
+  vals[count++] = kSCValNetIPSecSharedSecretEncryptionKeychain;
+  
+  keys[count]   = kSCPropNetIPSecRemoteAddress;
+  vals[count++] = (__bridge CFStringRef)self.endpoint;
 
-  keysIPSec[numkeys]    = kSCPropNetIPSecRemoteAddress;
-  valsIPSec[numkeys++]  = (__bridge CFStringRef)vpnGWAddress;
+  keys[count]   = kSCPropNetIPSecXAuthName;
+  vals[count++] = (__bridge CFStringRef)self.username;
+  
+  keys[count]   = kSCPropNetIPSecXAuthPassword;
+  vals[count++] = (__bridge CFStringRef)self.serviceID;
 
-  keysIPSec[numkeys]    = kSCPropNetIPSecSharedSecret;
-  valsIPSec[numkeys++]  = (__bridge CFStringRef)vpnGrpPwd;
+  keys[count]   = kSCPropNetIPSecXAuthPasswordEncryption;
+  vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
 
-  keysIPSec[numkeys]    = kSCPropNetIPSecSharedSecretEncryption;
-  valsIPSec[numkeys++]  = kSCValNetIPSecSharedSecretEncryptionKeychain;
-
-  keysIPSec[numkeys]    = kSCPropNetIPSecXAuthName;
-  valsIPSec[numkeys++]  = (__bridge CFStringRef)vpnUsrName;
-
-  keysIPSec[numkeys]    = kSCPropNetIPSecXAuthPassword;
-  valsIPSec[numkeys++]  = (__bridge CFStringRef)vpnUsrPwd;
-
-  keysIPSec[numkeys]    = kSCPropNetIPSecXAuthPasswordEncryption;
-  valsIPSec[numkeys]  = kSCValNetIPSecXAuthPasswordEncryptionPrompt;
+  return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
-*/
 
 @end

@@ -31,6 +31,6 @@
 @property (readonly) CFDictionaryRef L2TPPPPConfig;
 @property (readonly) CFDictionaryRef L2TPIPSecConfig;
 @property (readonly) CFDictionaryRef L2TPIPv4Config;
-
+@property (readonly) CFDictionaryRef ciscoConfig;
 
 @end

@@ -5,7 +5,9 @@
 
 ## Create Mac OS VPNs programmatically
 
-This is a command-line tool written in Objective-C that can create VPN network configurations on your Mac. It currently only supports L2TP over IPSec. With a little bit of work, it should also be able to create Cisco IPsec VPN.
+This is a command-line tool written in Objective-C that can create VPN network configurations on your Mac.
+
+It supports both L2TP over IPSec and Cisco IPSec.
 
 ## Requirements
 
@@ -21,7 +23,8 @@ sudo bash -c "curl https://raw.githubusercontent.com/halo/macosvpn/master/latest
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
-You can always run `macosvpn --version` to see the version currently installed on your system and compare it to [the latest available version](https://github.com/halo/macosvpn/releases) on Github.
+You can always run `macosvpn --version` to see the version currently installed on your system
+and compare it to [the latest available version](https://github.com/halo/macosvpn/releases) on Github.
 
 ## Usage
 
@@ -29,13 +32,15 @@ Creating a single L2TP over IPSec VPN Service:
 
     macosvpn create --l2tp Atlantic --endpoint atlantic.example.com --username Alice --password p4ssw0rd --shared-secret s3same
 
+Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.
+
 #### Shortcuts
 
 The same command but shorter:
 
     macosvpn create l2tp Atlantic endpoint atlantic.example.com username Alice password p4ssw0rd shared-secret s3same
 
-The same command even shorter:
+The same command even shorter (replace `-l` with `-c` for Cisco IPSec):
 
     macosvpn create -l Atlantic -e atlantic.example.com -u Alice -p p4ssw0rd -s s3same
 
@@ -75,18 +80,24 @@ If you feel adventurous you can find all available flags [at the bottom of this 
 
 ## Troubleshooting
 
-* If you get a warning that says "Creating Keychain item failed: write permissions error", you need to run the application with sudo.
+* If you get a warning that says "Creating Keychain item failed: write permissions error", you need to run the application with `sudo`.
 * If you're stuck, try to add the `--debug` flag and see if it says something useful.
 
 ## Limitations
 
-* If a VPN with the given name already exists, it is ignored. In the future there should be a --force option to re-create it
+* If a VPN with the given name already exists, it is ignored.
+  In the future there should be a `--force` option to re-create it
 
 ## Development and credits
 
-Feel free to browse through the code of this application. It's pretty small and straight-forward.
+Feel free to browse through the code of this application.
+It's pretty small and straight-forward.
 
-It all began with finding [this page](https://lists.apple.com/archives/macnetworkprog/2011/May/msg00032.html) you probably already found. But it was not before [this practical example](https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html) that I actually dared to try to implement this. Then, google led me to [this page](https://lists.apple.com/archives/macnetworkprog/2007/Dec/msg00045.html) where I learned how to set the Shared Secret. The last hurdle was to get the "Send all traffic over VPN" flag, which I finally [found the answer to here](http://pastebin.com/112KEHSV). Finally, I [learned from over here](http://stackoverflow.com/questions/24363935) how to add things to the System Keychain.
+It all began with finding [this page](https://lists.apple.com/archives/macnetworkprog/2011/May/msg00032.html) you probably already found.
+But it was not before [this practical example](https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html) that I actually dared to try to implement this.
+Then, google led me to [this page](https://lists.apple.com/archives/macnetworkprog/2007/Dec/msg00045.html) where I learned how to set the Shared Secret.
+The last hurdle was to get the "Send all traffic over VPN" flag, which I finally [found the answer to here](http://pastebin.com/112KEHSV).
+Finally, I [learned from over here](http://stackoverflow.com/questions/24363935) how to add things to the System Keychain.
 
 Useful commands for debugging:
 
@@ -110,5 +121,4 @@ To the beautiful 3rd party libraries I was allowed to use:
 
 ## License
 
-MIT 2015 funkensturm. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
-
+MIT 2015 halo. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
