@@ -32,6 +32,8 @@
   DDLogInfo(@" \033[2m Creating a single L2TP over IPSec VPN Service \033[0m\033[0m");
   DDLogInfo(@"  macosvpn create --l2tp Atlantic --endpoint atlantic.example.com --username Alice --password p4ssw0rd --shared-secret s3same");
   DDLogInfo(@"");
+  DDLogInfo(@"  \033[2mNote: for Cisco IPSec you would use\033[0m\033[0m --cisco \033[2minstead of\033[0m --l2tp\033[2m and\033[0m -c\033[2m instead of\033[0m -l\033[2m");
+  DDLogInfo(@"");
   DDLogInfo(@" \033[2m The same command but shorter \033[0m\033[0m");
   DDLogInfo(@"  macosvpn create l2tp Atlantic endpoint atlantic.example.com username Alice password p4ssw0rd shared-secret s3same");
   DDLogInfo(@"");
@@ -52,7 +54,7 @@
   DDLogInfo(@"");
 
   DDLogInfo(@" \033[2m This application is released under the MIT license. \033[0m\033[0m");
-  DDLogInfo(@" \033[2m Copyright (c) 2014 funkensturm. See https://github.com/halo/macosvpn \033[0m\033[0m");
+  DDLogInfo(@" \033[2m Copyright (c) 2014-2015 halo. See https://github.com/halo/macosvpn \033[0m\033[0m");
 
   // Displaying the help should not be interpreted as a success.
   // That's why we exit with a non-zero status code.
