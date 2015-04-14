@@ -1,4 +1,12 @@
-This file follows the syntax of https://github.com/bundler/bundler/blob/master/CHANGELOG.md
+## 0.1.0
+
+Features:
+
+* Added support for Cisco IPSec
+
+Changes:
+
+* Changed a few error return codes in the 30s and introduced new error codes in the 50s
 
 ## 0.0.4
 
