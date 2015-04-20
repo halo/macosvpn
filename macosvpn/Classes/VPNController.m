@@ -118,6 +118,7 @@
 
   switch (config.type) {
     case VPNServiceL2TPOverIPSec:
+      DDLogDebug(@"L2TP Service detected...");
       // L2TP on top of IPv4
       bottomInterface = SCNetworkInterfaceCreateWithInterface(kSCNetworkInterfaceIPv4,kSCNetworkInterfaceTypeL2TP);
       // PPP on top of L2TP
@@ -125,6 +126,7 @@
       break;
 
     case VPNServiceCiscoIPSec:
+      DDLogDebug(@"L2TP Service detected...");
       // Cisco IPSec (without underlying interface)
       topInterface = SCNetworkInterfaceCreateWithInterface (kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeIPSec);
       break;
@@ -135,6 +137,7 @@
       break;
   }
 
+  DDLogDebug(@"Instantiating interface references...");
   // Creating a new, fresh VPN service in memory using the interface we already created
   SCNetworkServiceRef service = SCNetworkServiceCreate(prefs, topInterface);
   // That service is to have a name
@@ -146,6 +149,7 @@
 
   // Interestingly enough, the interface variables in itself are now worthless.
   // We used them to create the service and that's it, we cannot modify or use them any more.
+  DDLogDebug(@"Deallocating obsolete interface references...");
   CFRelease(topInterface);
   topInterface = NULL;
   if (bottomInterface) {
@@ -153,6 +157,7 @@
     bottomInterface = NULL;
   }
 
+  DDLogDebug(@"Reloading top Interface...");
   // Because, if we would like to modify the interface, we first need to freshly fetch it from the service
   // See https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html
   topInterface = SCNetworkServiceGetInterface(service);
