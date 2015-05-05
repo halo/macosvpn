@@ -250,7 +250,12 @@
   // The password and the shared secret are not stored directly in the System Preferences .plist file
   // Instead we put them into the KeyChain. I know we're creating new items each time you run this application
   // But this actually is the same behaviour you get using the official System Preferences Network Pane
-  [VPNKeychain createPasswordKeyChainItem:config.name forService:serviceID withAccount:config.username andPassword:config.password];
+  if (config.type == VPNServiceCiscoIPSec) {
+    [VPNKeychain createXAuthKeyChainItem:config.name forService:serviceID withAccount:config.username andPassword:config.password];
+  }
+  else {
+    [VPNKeychain createPasswordKeyChainItem:config.name forService:serviceID withAccount:config.username andPassword:config.password];
+  }
   [VPNKeychain createSharedSecretKeyChainItem:config.name forService:serviceID withPassword:config.sharedSecret];
 
   if (!SCPreferencesApplyChanges(prefs)) {

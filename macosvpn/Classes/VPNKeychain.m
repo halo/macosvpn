@@ -53,9 +53,9 @@ static const char * trustedAppPaths[] = {
 }
 
 // This will create an Cisco IPSec XAuth Keychain Item
-+ (int) createXAuthKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password {
++ (int) createXAuthKeyChainItem:(NSString*)label forService:(NSString*)service withAccount:(NSString*)account andPassword:(NSString*)password {
   service = [NSString stringWithFormat:@"%@.XAUTH", service];
-  return [self createItem:label withService:service account:@"" description:@"IPSec XAuth Password" andPassword:password];
+  return [self createItem:label withService:service account:account description:@"IPSec XAuth Password" andPassword:password];
 }
 
 /********************

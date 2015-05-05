@@ -114,7 +114,7 @@
   vals[count++] = kSCValNetIPSecAuthenticationMethodSharedSecret;
 
   keys[count]   = kSCPropNetIPSecSharedSecret;
-  vals[count++] = (__bridge CFStringRef)self.sharedSecret;
+  vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.SS", self.serviceID];
   
   keys[count]   = kSCPropNetIPSecSharedSecretEncryption;
   vals[count++] = kSCValNetIPSecSharedSecretEncryptionKeychain;
@@ -126,7 +126,7 @@
   vals[count++] = (__bridge CFStringRef)self.username;
   
   keys[count]   = kSCPropNetIPSecXAuthPassword;
-  vals[count++] = (__bridge CFStringRef)self.password;
+  vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.XAUTH", self.serviceID];
 
   keys[count]   = kSCPropNetIPSecXAuthPasswordEncryption;
   vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
