@@ -20,7 +20,7 @@
 
 @implementation VPNServiceConfig
 
-@synthesize type, name, endpointPrefix, endpointSuffix, username, password, sharedSecret;
+@synthesize type, name, endpointPrefix, endpointSuffix, username, password, sharedSecret, localIdentifier;
 @synthesize endpoint = _endpoint;
 
 - (void) setEndpoint:(NSString *)newEndpoint {
@@ -46,7 +46,7 @@
 }
 
 - (NSString*) description {
-  return [NSString stringWithFormat:@"<[%@] name=%@ endpointPrefix=%@ endpoint=%@ endpointSuffix=%@ username=%@ password=%@ sharedSecret=%@>", self.humanType, self.name, self.endpointPrefix, self.endpoint, self.endpointSuffix, self.username, self.password, self.sharedSecret];
+  return [NSString stringWithFormat:@"<[%@] name=%@ endpointPrefix=%@ endpoint=%@ endpointSuffix=%@ username=%@ password=%@ sharedSecret=%@ localIdentifier=%@>", self.humanType, self.name, self.endpointPrefix, self.endpoint, self.endpointSuffix, self.username, self.password, self.sharedSecret, self.localIdentifier];
 }
 
 - (CFDictionaryRef) L2TPPPPConfig {
@@ -114,7 +114,7 @@
   vals[count++] = kSCValNetIPSecAuthenticationMethodSharedSecret;
 
   keys[count]   = kSCPropNetIPSecSharedSecret;
-  vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.SS", self.serviceID];
+  vals[count++] = (__bridge CFStringRef)self.sharedSecret;
   
   keys[count]   = kSCPropNetIPSecSharedSecretEncryption;
   vals[count++] = kSCValNetIPSecSharedSecretEncryptionKeychain;
@@ -126,11 +126,14 @@
   vals[count++] = (__bridge CFStringRef)self.username;
   
   keys[count]   = kSCPropNetIPSecXAuthPassword;
-  vals[count++] = (__bridge CFStringRef)self.serviceID;
+  vals[count++] = (__bridge CFStringRef)self.password;
 
   keys[count]   = kSCPropNetIPSecXAuthPasswordEncryption;
   vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
 
+  keys[count]   = kSCPropNetIPSecLocalIdentifier;
+  vals[count++] = (__bridge CFStringRef)self.localIdentifier;
+    
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
 

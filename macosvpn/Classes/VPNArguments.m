@@ -92,6 +92,9 @@
     
     config.sharedSecret = [self extractArgumentForSignature:self.sharedSecretSig withFallbackSignature:self.defaultSharedSecretSig atIndex:i];
     if (!config.sharedSecret) DDLogWarn(@"Warning: You did not provide a shared secret for service <%@>", config.name);
+      
+    config.localIdentifier = [self extractArgumentForSignature:self.localIdentifierSig withFallbackSignature:self.defaultLocalIdentifierSig atIndex:i];
+    if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a shared secret for service <%@>", config.name);
 
     [configs addObject:config];
   }
@@ -121,6 +124,7 @@
     self.defaultUsernameSig, self.usernameSig,
     self.defaultPasswordSig, self.passwordSig,
     self.defaultSharedSecretSig, self.sharedSecretSig,
+    self.defaultLocalIdentifierSig, self.localIdentifierSig,
   nil];
 
   [command setInjectedSignatures:createSignatures];
@@ -177,6 +181,10 @@
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --defaultsharedsecret defaultsharedsecret]="];
 }
 
++ (FSArgumentSignature*) defaultLocalIdentifierSig {
+    return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --defaultlocalidentifier defaultlocalidentifier]="];
+}
+
 // Internal: Individual Interface Configuration Arguments
 
 + (FSArgumentSignature*) endpointPrefixSig {
@@ -201,6 +209,10 @@
 
 + (FSArgumentSignature*) sharedSecretSig {
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-s --sharedsecret sharedsecret]={1,}"];
+}
+
++ (FSArgumentSignature*) localIdentifierSig {
+    return [FSArgumentSignature argumentSignatureWithFormat:@"[-s --localidentifier localidentifier]={1,}"];
 }
 
 + (NSArray*) signatures {
