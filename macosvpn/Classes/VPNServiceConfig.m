@@ -20,7 +20,7 @@
 
 @implementation VPNServiceConfig
 
-@synthesize type, name, endpointPrefix, endpointSuffix, username, password, sharedSecret;
+@synthesize type, name, endpointPrefix, endpointSuffix, username, password, sharedSecret, localIdentifier;
 @synthesize endpoint = _endpoint;
 
 - (void) setEndpoint:(NSString *)newEndpoint {
@@ -46,7 +46,7 @@
 }
 
 - (NSString*) description {
-  return [NSString stringWithFormat:@"<[%@] name=%@ endpointPrefix=%@ endpoint=%@ endpointSuffix=%@ username=%@ password=%@ sharedSecret=%@>", self.humanType, self.name, self.endpointPrefix, self.endpoint, self.endpointSuffix, self.username, self.password, self.sharedSecret];
+  return [NSString stringWithFormat:@"<[%@] name=%@ endpointPrefix=%@ endpoint=%@ endpointSuffix=%@ username=%@ password=%@ sharedSecret=%@ localIdentifier=%@>", self.humanType, self.name, self.endpointPrefix, self.endpoint, self.endpointSuffix, self.username, self.password, self.sharedSecret, self.localIdentifier];
 }
 
 - (CFDictionaryRef) L2TPPPPConfig {
@@ -106,8 +106,8 @@
 }
 
 - (CFDictionaryRef) ciscoConfig {
-  CFStringRef keys[7] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
-  CFStringRef vals[7] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+  CFStringRef keys[9] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+  CFStringRef vals[9] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
   CFIndex count = 0;
 
   keys[count]   = kSCPropNetIPSecAuthenticationMethod;
@@ -130,6 +130,12 @@
 
   keys[count]   = kSCPropNetIPSecXAuthPasswordEncryption;
   vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
+
+  keys[count]   = kSCPropNetIPSecLocalIdentifier;
+  vals[count++] = (__bridge CFStringRef)self.localIdentifier;
+    
+  keys[count]    = kSCPropNetIPSecLocalIdentifierType;
+  vals[count++]  = kSCValNetIPSecLocalIdentifierTypeKeyID;
 
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }

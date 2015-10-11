@@ -25,6 +25,7 @@
 @property (strong) NSString *username;
 @property (strong) NSString *password;
 @property (strong) NSString *sharedSecret;
+@property (strong) NSString *localIdentifier;
 
 @property (readonly) NSString *humanType;
 
