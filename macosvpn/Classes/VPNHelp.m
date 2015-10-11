@@ -52,7 +52,11 @@
   DDLogInfo(@"                  --l2tp Australia --endpoint-prefix australia --shared-secret s3same \\");
   DDLogInfo(@"                  --l2tp Island --endpoint-prefix island --shared-secret letme1n");
   DDLogInfo(@"");
-
+  DDLogInfo(@" \033[2m When Adding Cisco profile you need to specify GroupName as well,   ");
+  DDLogInfo(@"                  --groupname EasyVPN  --shared-secret s3same \\");
+  DDLogInfo(@"");
+  DDLogInfo(@" \033[2m If Shared Secret includes nonalphanumeric symbols use double quote for entire shared secret  ");
+  DDLogInfo(@"");
   DDLogInfo(@" \033[2m This application is released under the MIT license. \033[0m\033[0m");
   DDLogInfo(@" \033[2m Copyright (c) 2014-2015 halo. See https://github.com/halo/macosvpn \033[0m\033[0m");
 
