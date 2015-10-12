@@ -1,3 +1,10 @@
+## 0.1.1
+
+Features:
+
+* Added support for Cisco IPSec group names (thanks to https://github.com/arnieggertsson)
+* Some help text and README improvements
+
 ## 0.1.0
 
 Features:
