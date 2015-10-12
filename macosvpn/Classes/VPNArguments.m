@@ -94,8 +94,7 @@
     if (!config.sharedSecret) DDLogWarn(@"Warning: You did not provide a shared secret for service <%@>", config.name);
 
     config.localIdentifier = [self extractArgumentForSignature:self.localIdentifierSig withFallbackSignature:self.defaultLocalIdentifierSig atIndex:i];
-      if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a groupname  for service <%@>", config.name);
-
+    if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a groupname  for service <%@>", config.name);
       
     [configs addObject:config];
   }
@@ -209,8 +208,9 @@
 }
 
 + (FSArgumentSignature*) sharedSecretSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-s --sharedsecret]="];
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-s --sharedsecret sharedsecret]={1,}"];
 }
+
 + (FSArgumentSignature*) localIdentifierSig {
     return [FSArgumentSignature argumentSignatureWithFormat:@"[-g --groupname groupname]={1,}"];
 }
