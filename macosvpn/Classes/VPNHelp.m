@@ -33,6 +33,7 @@
   DDLogInfo(@"  macosvpn create --l2tp Atlantic --endpoint atlantic.example.com --username Alice --password p4ssw0rd --shared-secret s3same");
   DDLogInfo(@"");
   DDLogInfo(@"  \033[2mNote: for Cisco IPSec you would use\033[0m\033[0m --cisco \033[2minstead of\033[0m --l2tp\033[2m and\033[0m -c\033[2m instead of\033[0m -l\033[2m");
+  DDLogInfo(@"       \033[2m The Cisco groupname can be specified with \033[0m --groupname EasyVPN\033[2m    ");
   DDLogInfo(@"");
   DDLogInfo(@" \033[2m The same command but shorter \033[0m\033[0m");
   DDLogInfo(@"  macosvpn create l2tp Atlantic endpoint atlantic.example.com username Alice password p4ssw0rd shared-secret s3same");
@@ -51,9 +52,6 @@
   DDLogInfo(@"  macosvpn create --default-username Alice --default-password p4ssw0rd --default-endpoint-suffix .example.com \\");
   DDLogInfo(@"                  --l2tp Australia --endpoint-prefix australia --shared-secret s3same \\");
   DDLogInfo(@"                  --l2tp Island --endpoint-prefix island --shared-secret letme1n");
-  DDLogInfo(@"");
-  DDLogInfo(@" \033[2m When Adding Cisco profile you need to specify GroupName as well,   ");
-  DDLogInfo(@"                  --groupname EasyVPN  --shared-secret s3same \\");
   DDLogInfo(@"");
   DDLogInfo(@" \033[2m If Shared Secret includes nonalphanumeric symbols use double quote for entire shared secret  ");
   DDLogInfo(@"");
