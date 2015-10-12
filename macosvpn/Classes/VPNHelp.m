@@ -56,11 +56,21 @@
   DDLogInfo(@" \033[2m If Shared Secret includes nonalphanumeric symbols use double quote for entire shared secret  ");
   DDLogInfo(@"");
   DDLogInfo(@" \033[2m This application is released under the MIT license. \033[0m\033[0m");
-  DDLogInfo(@" \033[2m Copyright (c) 2014-2015 halo. See https://github.com/halo/macosvpn \033[0m\033[0m");
+  DDLogInfo(@"%@", [self copyrightNotice]);
 
   // Displaying the help should not be interpreted as a success.
   // That's why we exit with a non-zero status code.
   return 99;
+}
+
++ (NSString*) copyrightNotice {
+  return [NSString stringWithFormat:@" \033[2m Copyright (c) 2014-%@ halo. See https://github.com/halo/macosvpn \033[0m\033[0m", [self currentYear]];
+}
+
++ (NSString*) currentYear {
+  NSDateFormatter *formatter = [NSDateFormatter new];
+  [formatter setDateFormat:@"yyyy"];
+  return [formatter stringFromDate:[NSDate date]];
 }
 
 + (int) showVersion {
