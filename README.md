@@ -32,7 +32,7 @@ Creating a single L2TP over IPSec VPN Service:
 
     sudo macosvpn create --l2tp Atlantic --endpoint atlantic.example.com --username Alice --password p4ssw0rd --shared-secret s3same
 
-Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.  A Cisco IPSec groupname can be specified with ``--groupname`.
+Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.  A Cisco IPSec groupname can be specified with `--groupname`.
 
 #### Shortcuts
 
