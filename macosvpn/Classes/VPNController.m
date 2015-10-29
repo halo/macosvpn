@@ -138,13 +138,13 @@
   }
 
   DDLogDebug(@"Instantiating interface references...");
-  // Creating a new, fresh VPN service in memory using the interface we already created
+  DDLogDebug(@"Creating a new, fresh VPN service in memory using the interface we already created");
   SCNetworkServiceRef service = SCNetworkServiceCreate(prefs, topInterface);
-  // That service is to have a name
+  DDLogDebug(@"That service is to have a name");
   SCNetworkServiceSetName(service, (__bridge CFStringRef)config.name);
-  // And we also woould like to know the internal ID of this service
+  DDLogDebug(@"And we also woould like to know the internal ID of this service");
   NSString *serviceID = (__bridge NSString *)(SCNetworkServiceGetServiceID(service));
-  // It will be used to find the correct passwords in the system keychain
+  DDLogDebug(@"It will be used to find the correct passwords in the system keychain");
   config.serviceID = serviceID;
 
   // Interestingly enough, the interface variables in itself are now worthless.
