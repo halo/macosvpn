@@ -126,7 +126,7 @@
       break;
 
     case VPNServiceCiscoIPSec:
-      DDLogDebug(@"L2TP Service detected...");
+      DDLogDebug(@"Cisco IPSec Service detected...");
       // Cisco IPSec (without underlying interface)
       topInterface = SCNetworkInterfaceCreateWithInterface (kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeIPSec);
       break;
