@@ -34,6 +34,11 @@ Creating a single L2TP over IPSec VPN Service:
 
 Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.  A Cisco IPSec groupname can be specified with `--groupname`.
 
+By default, enables the option "Send all traffic over VPN connection",
+also known as wildcard routing.   To disable this option, include the `--split`
+flag to use the VPN Service for specific routes only.  Split tunnelling may
+require use of [`/etc/ppp/ip-up` and `/etc/ppp/ip-down` scripts](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man8/pppd.8.html).
+
 #### Shortcuts
 
 The same command but shorter:

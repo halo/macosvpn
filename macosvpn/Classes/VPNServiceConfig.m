@@ -94,14 +94,16 @@
   keys[count] = kSCPropNetIPv4ConfigMethod;
   vals[count++] = kSCValNetIPv4ConfigMethodPPP;
 
-  int one = 1;
-  keys[count] = kSCPropNetOverridePrimary;
+  if (!self.enableSplitTunnel) {
+    int one = 1;
+    keys[count] = kSCPropNetOverridePrimary;
 
-  // X-Code warns on this (CFString VS. CFNumber), but it should not matter, CFNumber is the correct type I think, as you can verify in the resulting /Library/Preferences/SystemConfiguration/preferences.plist file.
-  // See also https://developer.apple.com/library/prerelease/ios/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html
-  #pragma clang diagnostic ignored "-Wincompatible-pointer-types"
-  vals[count++] = CFNumberCreate(NULL, kCFNumberIntType, &one);
-  #pragma clang diagnostic pop
+    // X-Code warns on this (CFString VS. CFNumber), but it should not matter, CFNumber is the correct type I think, as you can verify in the resulting /Library/Preferences/SystemConfiguration/preferences.plist file.
+    // See also https://developer.apple.com/library/prerelease/ios/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html
+    #pragma clang diagnostic ignored "-Wincompatible-pointer-types"
+    vals[count++] = CFNumberCreate(NULL, kCFNumberIntType, &one);
+    #pragma clang diagnostic pop
+  }
 
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
