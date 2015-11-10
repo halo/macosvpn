@@ -19,7 +19,7 @@ It supports both L2TP over IPSec and Cisco IPSec.
 Start a Terminal and run this curl command to get the executable:
 
 ```bash
-sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.1.0/macosvpn > /usr/local/bin/macosvpn"
+sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.1.3/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
