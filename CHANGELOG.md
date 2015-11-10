@@ -1,3 +1,18 @@
+## 0.1.3
+
+Features:
+
+* Added support for `--split` flag to not force traffic over VPN. (thanks to https://github.com/steve-jansen)
+* Username and password are now optional
+* Fixed a random crash issue that was introduced in `0.1.1`
+
+## 0.1.2
+
+Features
+
+* Improved help and debugging logs
+* Fixed some typos
+
 ## 0.1.1
 
 Features:
