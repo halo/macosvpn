@@ -189,7 +189,7 @@
 }
 
 + (FSArgumentSignature*) defaultLocalIdentifierSig {
-    return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --defaultgroupname defaultgroupname]="];
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-j --defaultgroupname defaultgroupname]="];
 }
 
 // Internal: Individual Interface Configuration Arguments
