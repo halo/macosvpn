@@ -26,6 +26,7 @@
 @property (strong) NSString *password;
 @property (strong) NSString *sharedSecret;
 @property (strong) NSString *localIdentifier;
+@property (atomic) BOOL enableSplitTunnel;
 
 @property (readonly) NSString *humanType;
 

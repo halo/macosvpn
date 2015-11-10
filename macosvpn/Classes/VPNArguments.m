@@ -95,6 +95,8 @@
 
     config.localIdentifier = [self extractArgumentForSignature:self.localIdentifierSig withFallbackSignature:self.defaultLocalIdentifierSig atIndex:i];
     if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a group name for service <%@>", config.name);
+
+    config.enableSplitTunnel = [self.package countOfSignature:self.splitTunnelSig] > 0;
       
     [configs addObject:config];
   }
@@ -125,6 +127,7 @@
     self.defaultPasswordSig, self.passwordSig,
     self.defaultSharedSecretSig, self.sharedSecretSig,
     self.defaultLocalIdentifierSig, self.localIdentifierSig,
+    self.splitTunnelSig,
   nil];
 
   [command setInjectedSignatures:createSignatures];
@@ -143,6 +146,10 @@
 
 + (FSArgumentSignature*) versionSig {
   return [FSArgumentSignature  argumentSignatureWithFormat:@"[-v --version version]"];
+}
+
++ (FSArgumentSignature*) splitTunnelSig {
+    return [FSArgumentSignature argumentSignatureWithFormat:@"[-x --split split]"];
 }
 
 // Internal: Interface Arguments
@@ -180,6 +187,7 @@
 + (FSArgumentSignature*) defaultSharedSecretSig {
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --defaultsharedsecret defaultsharedsecret]="];
 }
+
 + (FSArgumentSignature*) defaultLocalIdentifierSig {
     return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --defaultgroupname defaultgroupname]="];
 }
@@ -220,7 +228,7 @@
     self.helpSig,
     self.debugSig,
     self.versionSig,
-    self.createCommandSig,
+    self.createCommandSig
   ];
 }
 
