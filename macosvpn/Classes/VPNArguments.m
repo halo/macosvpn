@@ -148,10 +148,6 @@
   return [FSArgumentSignature  argumentSignatureWithFormat:@"[-v --version version]"];
 }
 
-+ (FSArgumentSignature*) splitTunnelSig {
-    return [FSArgumentSignature argumentSignatureWithFormat:@"[-x --split split]"];
-}
-
 // Internal: Interface Arguments
 
 + (FSArgumentSignature*) l2tpSig {
@@ -163,6 +159,10 @@
 }
 
 // Internal: Default Interface Configuration Arguments
+
++ (FSArgumentSignature*) splitTunnelSig {
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-x --split split]"];
+}
 
 + (FSArgumentSignature*) defaultEndpointPrefixSig {
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-i --defaultendpointprefix defaultendpointprefix]="];
@@ -191,7 +191,6 @@
 + (FSArgumentSignature*) defaultLocalIdentifierSig {
     return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --defaultgroupname defaultgroupname]="];
 }
-
 
 // Internal: Individual Interface Configuration Arguments
 
