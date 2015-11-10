@@ -134,11 +134,15 @@
   keys[count]   = kSCPropNetIPSecXAuthPasswordEncryption;
   vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
 
-  keys[count]   = kSCPropNetIPSecLocalIdentifier;
-  vals[count++] = (__bridge CFStringRef)self.localIdentifier;
+  if (self.localIdentifier) {
+    DDLogDebug(@"Assigning group name <%@> to cisco service config", self.localIdentifier);
+
+    keys[count]   = kSCPropNetIPSecLocalIdentifier;
+    vals[count++] = (__bridge CFStringRef)self.localIdentifier;
     
-  keys[count]    = kSCPropNetIPSecLocalIdentifierType;
-  vals[count++]  = kSCValNetIPSecLocalIdentifierTypeKeyID;
+    keys[count]    = kSCPropNetIPSecLocalIdentifierType;
+    vals[count++]  = kSCValNetIPSecLocalIdentifierTypeKeyID;
+  }
 
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
