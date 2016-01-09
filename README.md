@@ -11,7 +11,7 @@ It supports both L2TP over IPSec and Cisco IPSec.
 
 ## Requirements
 
-* Mac OS Yosemite or Mavericks (I have not tested it on older versions, it might work)
+* Mac OS El Capitan, Yosemite, or Mavericks
 * Administrator privileges (i.e. you've got to run it with sudo)
 
 ## Download
@@ -33,6 +33,8 @@ Creating a single L2TP over IPSec VPN Service:
     sudo macosvpn create --l2tp Atlantic --endpoint atlantic.example.com --username Alice --password p4ssw0rd --shared-secret s3same
 
 Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.  A Cisco IPSec groupname can be specified with `--groupname`.
+
+When creating an L2TP service, you can add the `--split` flag to **not** force all traffic over VPN.
 
 By default, enables the option "Send all traffic over VPN connection",
 also known as wildcard routing.   To disable this option, include the `--split`
