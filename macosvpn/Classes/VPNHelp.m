@@ -35,6 +35,8 @@
   DDLogInfo(@"  \033[2mNote: for Cisco IPSec you would use\033[0m\033[0m --cisco \033[2minstead of\033[0m --l2tp\033[2m and\033[0m -c\033[2m instead of\033[0m -l\033[2m");
   DDLogInfo(@"       \033[2m The Cisco group name can be specified with\033[0m --groupname EasyVPN\033[2m or just\033[0m -g EasyVPN\033[2m");
   DDLogInfo(@"");
+  DDLogInfo(@"  \033[2mNote: for L2TP, you can add the\033[0m\033[0m --split \033[2mflat to *not* force all traffic over VPN.");
+  DDLogInfo(@"");
   DDLogInfo(@" \033[2m The same command but shorter \033[0m\033[0m");
   DDLogInfo(@"  sudo macosvpn create l2tp Atlantic endpoint atlantic.example.com username Alice password p4ssw0rd shared-secret s3same");
   DDLogInfo(@"");
