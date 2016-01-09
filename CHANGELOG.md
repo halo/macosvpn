@@ -1,3 +1,9 @@
+## 0.1.4
+
+Bugfix:
+
+* Don't crash randomly, see #13
+
 ## 0.1.3
 
 Features:
