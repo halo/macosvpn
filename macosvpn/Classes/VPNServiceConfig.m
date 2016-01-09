@@ -109,8 +109,11 @@
 }
 
 - (CFDictionaryRef) ciscoConfig {
-  CFStringRef keys[9] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
-  CFStringRef vals[9] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+  uint size;
+  if (self.localIdentifier) size = 9; else size = 7;
+  
+  CFStringRef keys[size];
+  CFStringRef vals[size];
   CFIndex count = 0;
 
   keys[count]   = kSCPropNetIPSecAuthenticationMethod;
