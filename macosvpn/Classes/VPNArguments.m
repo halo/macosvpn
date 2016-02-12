@@ -173,7 +173,7 @@
 }
 
 + (FSArgumentSignature*) defaultEndpointSuffixSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-x --defaultendpointsuffix defaultendpointsuffix]="];
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-k --defaultendpointsuffix defaultendpointsuffix]="];
 }
 
 + (FSArgumentSignature*) defaultUsernameSig {
