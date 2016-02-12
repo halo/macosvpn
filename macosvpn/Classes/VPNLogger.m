@@ -22,8 +22,8 @@
 
 + (void) setup:(int)level {
   VPNLogFormatter *formatter = [VPNLogFormatter new];
-  [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
-  [DDLog addLogger:[DDTTYLogger sharedInstance] withLogLevel:level];
+  [DDTTYLogger sharedInstance].logFormatter = formatter;
+  [DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:level];
 }
 
 @end

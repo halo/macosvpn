@@ -28,11 +28,11 @@
 
 + (void) setLogLevel {
   if ([self.package countOfSignature:self.debugSig]) {
-    [VPNLogger setup:LOG_LEVEL_DEBUG];
+    [VPNLogger setup:DDLogLevelDebug];
     DDLogDebug(@"");
     DDLogDebug(@"You are running in debug mode");
   } else {
-    [VPNLogger setup:LOG_LEVEL_INFO];
+    [VPNLogger setup:DDLogLevelInfo];
   }
 }
 

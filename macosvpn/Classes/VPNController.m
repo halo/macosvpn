@@ -21,7 +21,6 @@
 #import "VPNArguments.h"
 #import "VPNAuthorizations.h"
 #import "VPNController.h"
-#import "VPNHelp.h"
 #import "VPNKeychain.h"
 #import "VPNServiceConfig.h"
 
