@@ -88,6 +88,13 @@
 		C2CE09D01C6E89DF00B97D6D /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09C21C6E89DF00B97D6D /* DDLog.m */; };
 		C2CE09D11C6E89DF00B97D6D /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09C51C6E89DF00B97D6D /* DDMultiFormatter.m */; };
 		C2CE09D21C6E89DF00B97D6D /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09C71C6E89DF00B97D6D /* DDTTYLogger.m */; };
+		C2CE09DB1C6E935600B97D6D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D41C6E935600B97D6D /* Color.swift */; };
+		C2CE09DC1C6E935600B97D6D /* ECMA 48.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D51C6E935600B97D6D /* ECMA 48.swift */; };
+		C2CE09DD1C6E935600B97D6D /* EightBitColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D61C6E935600B97D6D /* EightBitColor.swift */; };
+		C2CE09DE1C6E935600B97D6D /* Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D71C6E935600B97D6D /* Named.swift */; };
+		C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D91C6E935600B97D6D /* StyleParameter.swift */; };
+		C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09DA1C6E935600B97D6D /* Wrap.swift */; };
+		C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -277,6 +284,14 @@
 		C2CE09C51C6E89DF00B97D6D /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
 		C2CE09C61C6E89DF00B97D6D /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
 		C2CE09C71C6E89DF00B97D6D /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		C2CE09D41C6E935600B97D6D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		C2CE09D51C6E935600B97D6D /* ECMA 48.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ECMA 48.swift"; sourceTree = "<group>"; };
+		C2CE09D61C6E935600B97D6D /* EightBitColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EightBitColor.swift; sourceTree = "<group>"; };
+		C2CE09D71C6E935600B97D6D /* Named.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Named.swift; sourceTree = "<group>"; };
+		C2CE09D81C6E935600B97D6D /* PrettyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyColors.h; sourceTree = "<group>"; };
+		C2CE09D91C6E935600B97D6D /* StyleParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleParameter.swift; sourceTree = "<group>"; };
+		C2CE09DA1C6E935600B97D6D /* Wrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrap.swift; sourceTree = "<group>"; };
+		C2CE09E31C6E972400B97D6D /* VPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +376,7 @@
 				324DC05A198124840048BC38 /* VPNLogFormatter.m */,
 				9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */,
 				9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */,
+				C2CE09E31C6E972400B97D6D /* VPNColor.swift */,
 			);
 			name = Classes;
 			path = macosvpn/Classes;
@@ -369,6 +385,7 @@
 		9D61978F198111EF00FC01E8 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C2CE09D31C6E935600B97D6D /* PrettyColors */,
 				C2CE09AD1C6E89DF00B97D6D /* CocoaLumberjack */,
 				9D619790198111F900FC01E8 /* ArgumentParser */,
 				9D6197BB198111F900FC01E8 /* CoreParse */,
@@ -551,6 +568,21 @@
 			path = macosvpn/Vendor/CocoaLumberjack;
 			sourceTree = "<group>";
 		};
+		C2CE09D31C6E935600B97D6D /* PrettyColors */ = {
+			isa = PBXGroup;
+			children = (
+				C2CE09D41C6E935600B97D6D /* Color.swift */,
+				C2CE09D51C6E935600B97D6D /* ECMA 48.swift */,
+				C2CE09D61C6E935600B97D6D /* EightBitColor.swift */,
+				C2CE09D71C6E935600B97D6D /* Named.swift */,
+				C2CE09D81C6E935600B97D6D /* PrettyColors.h */,
+				C2CE09D91C6E935600B97D6D /* StyleParameter.swift */,
+				C2CE09DA1C6E935600B97D6D /* Wrap.swift */,
+			);
+			name = PrettyColors;
+			path = macosvpn/Vendor/PrettyColors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -608,12 +640,15 @@
 				9D61987E198112DA00FC01E8 /* CPErrorToken.m in Sources */,
 				9D619880198112DA00FC01E8 /* CPGrammar.m in Sources */,
 				9D619882198112DA00FC01E8 /* CPGrammarInternal.m in Sources */,
+				C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */,
 				9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */,
 				9D619884198112DA00FC01E8 /* CPGrammarPrivate.m in Sources */,
 				9D619886198112DA00FC01E8 /* CPGrammarSymbol.m in Sources */,
 				324DC05B198124840048BC38 /* VPNLogFormatter.m in Sources */,
 				9D619888198112DA00FC01E8 /* CPIdentifierRecogniser.m in Sources */,
+				C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */,
 				C2CE09D21C6E89DF00B97D6D /* DDTTYLogger.m in Sources */,
+				C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */,
 				9D61988A198112DA00FC01E8 /* CPIdentifierToken.m in Sources */,
 				C2CE09CC1C6E89DF00B97D6D /* DDASLLogger.m in Sources */,
 				9D61988C198112DA00FC01E8 /* CPItem.m in Sources */,
@@ -628,10 +663,13 @@
 				9D61989A198112DA00FC01E8 /* CPNumberToken.m in Sources */,
 				9D61989C198112DA00FC01E8 /* CPParser.m in Sources */,
 				9D61989E198112DA00FC01E8 /* CPQuotedRecogniser.m in Sources */,
+				C2CE09DB1C6E935600B97D6D /* Color.swift in Sources */,
+				C2CE09DC1C6E935600B97D6D /* ECMA 48.swift in Sources */,
 				324DC058198120B10048BC38 /* VPNController.m in Sources */,
 				9D6198A0198112DA00FC01E8 /* CPQuotedToken.m in Sources */,
 				9D6198A2198112DA00FC01E8 /* CPRecoveryAction.m in Sources */,
 				9D6198A5198112DA00FC01E8 /* CPRHSItem.m in Sources */,
+				C2CE09DE1C6E935600B97D6D /* Named.swift in Sources */,
 				C2CE09CA1C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m in Sources */,
 				9D6198A7198112DA00FC01E8 /* CPRHSItemResult.m in Sources */,
 				9D6198AA198112DA00FC01E8 /* CPRule.m in Sources */,
@@ -679,6 +717,7 @@
 				9D619873198112A000FC01E8 /* NSProcessInfo+FSArgumentParser.m in Sources */,
 				9D619875198112A000FC01E8 /* NSScanner+EscapedScanning.m in Sources */,
 				9D619877198112A000FC01E8 /* NSString+Indenter.m in Sources */,
+				C2CE09DD1C6E935600B97D6D /* EightBitColor.swift in Sources */,
 				9D61984A1981129900FC01E8 /* VPNAuthorizations.m in Sources */,
 				9D61984D1981129900FC01E8 /* main.m in Sources */,
 			);

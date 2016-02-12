@@ -23,6 +23,10 @@
 + (void) setup:(int)level {
   VPNLogFormatter *formatter = [VPNLogFormatter new];
   [DDTTYLogger sharedInstance].logFormatter = formatter;
+  [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+  [[DDTTYLogger sharedInstance] setForegroundColor:[NSColor blueColor] backgroundColor:nil forFlag:DDLogFlagDebug];
+  [[DDTTYLogger sharedInstance] setForegroundColor:[NSColor redColor] backgroundColor:nil forFlag:DDLogFlagError];
+
   [DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:level];
 }
 

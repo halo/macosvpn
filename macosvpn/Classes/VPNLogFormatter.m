@@ -19,6 +19,7 @@
 @implementation VPNLogFormatter
 
 - (NSString*) formatLogMessage:(DDLogMessage *)logMessage {
+  return [NSString stringWithFormat:@"  %@", logMessage->_message];
   if (logMessage->_flag == DDLogFlagInfo) return [NSString stringWithFormat:@"  %@", logMessage->_message];
 
   /*
@@ -33,16 +34,17 @@
     default             : logLevel = @"INTRN"; break;
   }
   */
-
-  NSUInteger colorCode;
+  
+  NSColor *color;
   switch (logMessage->_flag) {
-    case DDLogFlagError   : colorCode = 31; break;
-    case DDLogFlagWarning : colorCode = 33; break;
-    case DDLogFlagDebug   : colorCode =  2; break;
-    default               : colorCode =  0; break;
+    case DDLogFlagError   : color = [NSColor redColor]; break;
+    case DDLogFlagWarning : color = [NSColor yellowColor]; break;
+    case DDLogFlagDebug   : color = [NSColor redColor]; break;
+    default               : color = [NSColor whiteColor]; break;
   }
-                                   
-  return [NSString stringWithFormat:@"  \033[%lum%@\033[0m\033[0m", (unsigned long)colorCode, logMessage->_message];
+  
+  
+  return [NSString stringWithFormat:@"  \033[%lum%@\033[0m\033[0m", (unsigned long)color, logMessage->_message];
 }
 
 @end
