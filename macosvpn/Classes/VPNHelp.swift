@@ -14,7 +14,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-public class VPNHelp : NSObject {
+public class VPNHelp: NSObject {
   
   public class func showHelp() -> Int32 {
     DDLogDebug("Showing help...")

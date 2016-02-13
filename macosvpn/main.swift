@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2015 halo. https://github.com/halo/macosvpn
+ Copyright (c) 2014-2016 halo. https://github.com/halo/macosvpn
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the
  "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish,
@@ -14,6 +14,17 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-@interface VPNLogFormatter : NSObject <DDLogFormatter>
+// This is where the action starts.
 
-@end
+// In the old days, autorelease pools were a good idea on CLI apps.
+// So I guess I keep the convention even though I'm not 100% it's needed.
+autoreleasepool {
+  
+  // The first thing we do is check whether the --debug flas has been provided.
+  // If that is the case, we want to have verbose logging right from the start.
+  VPNArguments.setLogLevel();
+
+  // To keep things tidy, we delegate everything to another file.
+  exit(VPNController.main());
+}
+

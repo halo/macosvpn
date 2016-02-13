@@ -16,8 +16,6 @@
 
 #import "VPNLogger.h"
 
-#import "VPNLogFormatter.h"
-
 @implementation VPNLogger
 
 + (void) setup:(int)level {
