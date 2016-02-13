@@ -42,8 +42,10 @@
   DDLogInfo(@"");
   int exitCode = [self run];
   DDLogInfo(@"");
+  
+  // Mention that there were no errors so we can trace bugs more easily.
   if (exitCode == 0) {
-    DDLogInfo(@"Finished.");
+    DDLogInfo(@"Finished without errors.");
     DDLogInfo(@"");
   }
   return exitCode;
