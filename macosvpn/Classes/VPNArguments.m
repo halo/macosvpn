@@ -19,7 +19,6 @@
 
 // Local Dependencies
 #import "VPNArguments.h"
-#import "VPNLogger.h"
 #import "VPNServiceConfig.h"
 
 @implementation VPNArguments

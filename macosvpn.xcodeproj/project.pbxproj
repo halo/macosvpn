@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		324DC05519811FFC0048BC38 /* VPNLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 324DC05419811FFC0048BC38 /* VPNLogger.m */; };
 		324DC058198120B10048BC38 /* VPNController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324DC057198120B10048BC38 /* VPNController.m */; };
 		32861394197FED310010BB98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32861393197FED310010BB98 /* Foundation.framework */; };
 		328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328613A1197FEE7A0010BB98 /* SystemConfiguration.framework */; };
@@ -95,6 +94,7 @@
 		C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09DA1C6E935600B97D6D /* Wrap.swift */; };
 		C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
 		C2CE09E61C6F643400B97D6D /* VPNLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E51C6F643400B97D6D /* VPNLogFormatter.swift */; };
+		C2CE09E81C6F751300B97D6D /* VPNLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E71C6F751300B97D6D /* VPNLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,8 +110,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		324DC05319811FFC0048BC38 /* VPNLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNLogger.h; sourceTree = "<group>"; };
-		324DC05419811FFC0048BC38 /* VPNLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNLogger.m; sourceTree = "<group>"; };
 		324DC056198120B10048BC38 /* VPNController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNController.h; sourceTree = "<group>"; };
 		324DC057198120B10048BC38 /* VPNController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNController.m; sourceTree = "<group>"; };
 		32861390197FED310010BB98 /* macosvpn */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = macosvpn; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,6 +289,7 @@
 		C2CE09DA1C6E935600B97D6D /* Wrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrap.swift; sourceTree = "<group>"; };
 		C2CE09E31C6E972400B97D6D /* VPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNColor.swift; sourceTree = "<group>"; };
 		C2CE09E51C6F643400B97D6D /* VPNLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNLogFormatter.swift; sourceTree = "<group>"; };
+		C2CE09E71C6F751300B97D6D /* VPNLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,8 +368,7 @@
 				C233AF801C6E7DCD00F39700 /* VPNHelp.swift */,
 				9D3D847F1982B017005BD5F3 /* VPNKeychain.h */,
 				9D3D84801982B017005BD5F3 /* VPNKeychain.m */,
-				324DC05319811FFC0048BC38 /* VPNLogger.h */,
-				324DC05419811FFC0048BC38 /* VPNLogger.m */,
+				C2CE09E71C6F751300B97D6D /* VPNLogger.swift */,
 				C2CE09E51C6F643400B97D6D /* VPNLogFormatter.swift */,
 				9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */,
 				9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */,
@@ -677,10 +675,10 @@
 				9D6198B4198112DA00FC01E8 /* CPShiftReduceParser.m in Sources */,
 				9D6198B7198112DA00FC01E8 /* CPShiftReduceState.m in Sources */,
 				9D6198B9198112DA00FC01E8 /* CPSLRParser.m in Sources */,
+				C2CE09E81C6F751300B97D6D /* VPNLogger.swift in Sources */,
 				9D6198BB198112DA00FC01E8 /* CPSyntaxTree.m in Sources */,
 				9D6198BD198112DA00FC01E8 /* CPToken.m in Sources */,
 				9D6198BF198112DA00FC01E8 /* CPTokeniser.m in Sources */,
-				324DC05519811FFC0048BC38 /* VPNLogger.m in Sources */,
 				9D6198C2198112DA00FC01E8 /* CPTokenStream.m in Sources */,
 				9D6198C4198112DA00FC01E8 /* CPWhiteSpaceRecogniser.m in Sources */,
 				C2CE09CD1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m in Sources */,
