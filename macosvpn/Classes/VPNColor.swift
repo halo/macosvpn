@@ -4,5 +4,6 @@ struct VPNColor {
   static let Blue: UInt8 = 33
   static let Green: UInt8 = 35
   static let Pink: UInt8 = 199
+  static let Brown: UInt8 = 130
 
 }
