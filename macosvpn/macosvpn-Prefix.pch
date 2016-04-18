@@ -16,10 +16,13 @@
 
 #ifdef __OBJC__
   #import <Foundation/Foundation.h>
-  #import "DDLog.h"
+  #import "CocoaLumberjack.h"
+  #import "macosvpn-Swift.h"
 #endif
 
-static int ddLogLevel = LOG_LEVEL_DEBUG;
+static const DDLogLevel ddLogLevel = DDLogLevelDebug;
+
+// static int ddLogLevel = LOG_LEVEL_DEBUG;
 
 // Commands
 static int const VPNCommandCreate = 1;
