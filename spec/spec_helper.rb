@@ -1,8 +1,12 @@
 require 'pathname'
+require 'plist'
+require 'open3'
+require 'hashie'
 
 module Helpers
-  def run(arguments = '')
-    _, _, stderr, thread = Open3.popen3("#{macosvpn} #{arguments}")
+  def run(sudo:, arguments:)
+    command = "#{:sudo if sudo} #{macosvpn} #{arguments}"
+    _, _, stderr, thread = Open3.popen3(command)
     [stderr.read, thread.value.exitstatus]
   end
 
