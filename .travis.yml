@@ -6,6 +6,6 @@ rvm: 2.2.4
 before_script: bundle install
 
 script:
-  - xctool -scheme macosvpn
+  - bundle exec rake
   - bundle exec rspec
   - bundle exec rubocop

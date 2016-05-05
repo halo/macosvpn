@@ -38,9 +38,11 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rainbow (2.1.0)
+    rake (11.1.2)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rouge (1.10.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -64,16 +66,24 @@ GEM
     ruby_dep (1.2.0)
     shellany (0.0.1)
     slop (3.6.0)
+    state_machine (1.1.2)
     thor (0.19.1)
     unicode-display_width (1.0.5)
+    xcodebuild-rb (0.3.0)
+      state_machine (~> 1.1.2)
+    xcpretty (0.2.2)
+      rouge (~> 1.8)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   guard-rspec
+  rake
   rspec
   rubocop
+  xcodebuild-rb
+  xcpretty
 
 BUNDLED WITH
    1.11.2
