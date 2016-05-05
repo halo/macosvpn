@@ -245,6 +245,19 @@
     return 40;
   }
 
+  // The password and the shared secret are not stored directly in the System Preferences .plist file
+  // Instead we put them into the KeyChain. I know we're creating new items each time you run this application
+  // But this actually is the same behaviour you get using the official System Preferences Network Pane
+  if (config.password) {
+    int code = [VPNKeychain createPasswordKeyChainItem:config.name forService:serviceID withAccount:config.username andPassword:config.password];
+    if (code > 0) return code;
+  }
+  
+  if (config.sharedSecret) {
+    int code = [VPNKeychain createSharedSecretKeyChainItem:config.name forService:serviceID withPassword:config.sharedSecret];
+    if (code > 0) return code;
+  }
+
   DDLogDebug(@"Commiting all changes including service %@...", config.name);
   if (!SCPreferencesCommitChanges(prefs)) {
     DDLogError(@"Error: Could not commit preferences with service %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
@@ -252,17 +265,6 @@
   }
 
   DDLogDebug(@"Preparing to add Keychain items for service %@...", config.name);
-
-  // The password and the shared secret are not stored directly in the System Preferences .plist file
-  // Instead we put them into the KeyChain. I know we're creating new items each time you run this application
-  // But this actually is the same behaviour you get using the official System Preferences Network Pane
-  if (config.password) {
-    [VPNKeychain createPasswordKeyChainItem:config.name forService:serviceID withAccount:config.username andPassword:config.password];
-  }
-
-  if (config.sharedSecret) {
-    [VPNKeychain createSharedSecretKeyChainItem:config.name forService:serviceID withPassword:config.sharedSecret];
-  }
 
   if (!SCPreferencesApplyChanges(prefs)) {
     DDLogError(@"Error: Could not apply changes with service %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
