@@ -42,7 +42,7 @@
   DDLogInfo(@"");
   int exitCode = [self run];
   DDLogInfo(@"");
-  
+
   // Mention that there were no errors so we can trace bugs more easily.
   if (exitCode == 0) {
     DDLogInfo(@"Finished without errors.");
@@ -74,6 +74,11 @@
 // This method is responsible for obtaining authorization in order to perform
 // privileged system modifications. It is mandatory for creating network interfaces.
 + (int) create {
+
+  if (getuid() != 0) {
+    DDLogError(@"Sorry, without superuser privileges I won't be able to add any VPN interfaces and write to the System Keychain.");
+    return 31;
+  }
 
   // Obtaining permission to modify network settings
   SCPreferencesRef prefs = SCPreferencesCreateWithAuthorization(NULL, CFSTR("macosvpn"), NULL, [VPNAuthorizations create]);
@@ -131,7 +136,7 @@
       // Cisco IPSec (without underlying interface)
       topInterface = SCNetworkInterfaceCreateWithInterface (kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeIPSec);
       break;
-      
+
     default:
       DDLogError(@"Sorry, this service type is not yet supported");
       return 32;
@@ -143,7 +148,7 @@
   SCNetworkServiceRef service = SCNetworkServiceCreate(prefs, topInterface);
   DDLogDebug(@"That service is to have a name");
   SCNetworkServiceSetName(service, (__bridge CFStringRef)config.name);
-  DDLogDebug(@"And we also woould like to know the internal ID of this service");
+  DDLogDebug(@"And we also would like to know the internal ID of this service");
   NSString *serviceID = (__bridge NSString *)(SCNetworkServiceGetServiceID(service));
   DDLogDebug(@"It will be used to find the correct passwords in the system keychain");
   config.serviceID = serviceID;
@@ -164,11 +169,11 @@
   topInterface = SCNetworkServiceGetInterface(service);
 
   // Error Codes 50-59
-  
+
   switch (config.type) {
     case VPNServiceL2TPOverIPSec:
       DDLogDebug(@"Configuring %@ Service", config.humanType);
-      
+
       // Let's apply all configuration to the PPP interface
       // Specifically, the servername, account username and password
       if (SCNetworkInterfaceSetConfiguration(topInterface, config.L2TPPPPConfig)) {
@@ -177,7 +182,7 @@
         DDLogError(@"Error: Could not configure PPP interface for service %@", config.name);
         return 50;
       }
-      
+
       // Now let's apply the shared secret to the IPSec part of the L2TP/IPSec Interface
       if (SCNetworkInterfaceSetExtendedConfiguration(topInterface, CFSTR("IPSec"), config.L2TPIPSecConfig)) {
         DDLogDebug(@"Successfully configured IPSec on PPP interface for service %@", config.name);
@@ -186,7 +191,7 @@
         return 35;
       }
     break;
-      
+
     case VPNServiceCiscoIPSec:
       DDLogDebug(@"Configuring %@ Service", config.humanType);
 
@@ -199,13 +204,13 @@
         return 51;
       }
     break;
-      
+
     default:
       DDLogError(@"Error: I cannot handle this interface type yet.");
       return 59;
     break;
   }
-  
+
   // Error Codes ...
 
   DDLogDebug(@"Adding default protocols (DNS, etc.) to service %@...", config.name);
@@ -252,7 +257,7 @@
     int code = [VPNKeychain createPasswordKeyChainItem:config.name forService:serviceID withAccount:config.username andPassword:config.password];
     if (code > 0) return code;
   }
-  
+
   if (config.sharedSecret) {
     int code = [VPNKeychain createSharedSecretKeyChainItem:config.name forService:serviceID withPassword:config.sharedSecret];
     if (code > 0) return code;
