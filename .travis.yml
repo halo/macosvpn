@@ -9,3 +9,5 @@ script:
   - bundle exec rake
   - bundle exec rspec
   - bundle exec rubocop
+  - cat /Library/Preferences/SystemConfiguration/preferences.plist
+  - security dump-keychain -a /Library/Keychains/System.keychain
