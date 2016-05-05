@@ -2,8 +2,7 @@ sudo: false
 osx_image: xcode7.3
 
 language: objective-c
-xcode_project: macosvpn.xcodeproj
-xcode_scheme: macosvpn
 
 script:
+  - xctool -scheme macosvpn
   - echo "only this?"
