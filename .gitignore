@@ -14,3 +14,4 @@ doc
 *.xcuserstate
 *xcuserdata*
 *.gem
+/.bundle

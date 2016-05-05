@@ -3,6 +3,9 @@ osx_image: xcode7.3
 
 language: objective-c
 
+before_script: bundle install
+
 script:
   - xctool -scheme macosvpn
-  - echo "only this?"
+  - bundle exec rspec
+  - bundle exec rubocop

@@ -1,0 +1,28 @@
+#inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.2
+
+# On an 11-inch screen this works perfectly fine.
+Metrics/LineLength:
+  Max: 130
+
+# The trailing comma prevents brain cells from dying on copy-paste errors
+Style/TrailingCommaInLiteral:
+  Enabled: false
+
+# I'm not that picky. An empty line can even increase readability
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+# Top-level class documentation is nice, but it's too early in the project to activate this
+Style/Documentation:
+  Enabled: false
+
+# UTF-8 in comments can improve readability
+Style/AsciiComments:
+  Enabled: false
