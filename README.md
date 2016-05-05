@@ -123,6 +123,9 @@ open /Library/Preferences/SystemConfiguration/preferences.plist
 security dump-keychain -a /Library/Keychains/System.keychain
 ```
 
+Note to self: Compiling with "Release" configuration causes random crashes. It needs to be "Debug".
+See https://github.com/halo/macosvpn/issues/13#issuecomment-217252496
+
 ## Special thanks
 
 To the beautiful 3rd party libraries I was allowed to use:

@@ -20,6 +20,7 @@
 
 + (BOOL) helpRequested;
 + (BOOL) versionRequested;
++ (BOOL) forceRequested;
 
 + (NSArray*) serviceConfigs;
 + (NSUInteger) command;

@@ -75,11 +75,26 @@
 // privileged system modifications. It is mandatory for creating network interfaces.
 + (int) create {
 
+  // If this process has root privileges, it will be able to write to the System Keychain.
+  // If not, we cannot (unless we use a helper tool, which is not the way this application is supposed to be designed)
+  // It would be nice to just try to perform the authorization and see if we succeeded or not.
+  // But the Security System will popup an auth dialog, which is *not* enough to write to the System Keychain.
+  // So, for now, we will simply bailed out unless you called this command line application with the good old sudo.
   if (getuid() != 0) {
-    DDLogError(@"Sorry, without superuser privileges I won't be able to add any VPN interfaces and write to the System Keychain.");
+    DDLogError(@"Sorry, without superuser privileges I won't be able to write to the System Keychain and thus cannot create a VPN service.");
     return 31;
   }
 
+  SCPreferencesRef test = SCPreferencesCreateWithAuthorization(NULL, CFSTR("macosvpn"), NULL, NULL);
+  if (SCPreferencesLock(test, TRUE)) {
+      //DDLogError(@"Bounced out");
+      //return 42;
+  } else {
+   // DDLogError(@"Bounced out");
+   // return 99;
+  }
+
+  
   // Obtaining permission to modify network settings
   SCPreferencesRef prefs = SCPreferencesCreateWithAuthorization(NULL, CFSTR("macosvpn"), NULL, [VPNAuthorizations create]);
 
@@ -225,8 +240,64 @@
     DDLogError(@"Error: Could not fetch current network set when creating %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
     return 37;
   }
+  
+  CFArrayRef services = SCNetworkSetCopyServices(networkSet);
 
-  if (!SCNetworkSetAddService (networkSet, service)) {
+  CFIndex arraySize = CFArrayGetCount(services);
+  for (int i = 0; i < arraySize; i++) {
+    SCNetworkServiceRef existingService = (SCNetworkServiceRef) CFArrayGetValueAtIndex(services, i);
+    
+    NSString *serviceName = (__bridge NSString *)SCNetworkServiceGetName(existingService);
+    NSString *serviceID = (__bridge NSString *)SCNetworkServiceGetServiceID(existingService);
+    
+    if ([config.name isEqualToString:serviceName]) {
+      DDLogWarn(@"You already have a service %@ defined.", config.name);
+      DDLogDebug(@"That Service has the ID %@", serviceID);
+      
+      if ([VPNArguments forceRequested]) {
+        //SCNetworkServiceRef serviceToDelete = SCNetworkServiceCopy(prefs, (__bridge CFStringRef)(serviceID));
+        DDLogInfo(@"Removing duplicate VPN Service %@ because you specified the --force flag.", config.name);
+        
+        if (SCNetworkServiceRemove(existingService)) {
+          DDLogDebug(@"Successfully removed duplicate VPN Service %@.", config.name);
+          
+        } else {
+          DDLogError(@"Error: Could not remove duplicate VPN service %@ from current network set. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
+          return 42;
+        }
+
+      } else {
+        DDLogWarn(@"If you want me to overwrite it, you need to specify the --force flag");
+        return 44;
+      }
+
+    } else {
+      DDLogDebug(@"Ignoring existing Service %@", serviceName);
+    }
+    
+  }
+  
+  // Re-fetching the services, in case we just deleted a duplicate
+  networkSet = SCNetworkSetCopyCurrent(prefs);
+  //services = SCNetworkSetCopyServices(networkSet);
+
+  DDLogDebug(@"Fetching IPv4 protocol of service %@...", config.name);
+  SCNetworkProtocolRef protocol = SCNetworkServiceCopyProtocol(service, kSCNetworkProtocolTypeIPv4);
+  
+  if (!protocol) {
+    DDLogError(@"Error: Could not fetch IPv4 protocol of %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
+    return 39;
+  }
+  
+  DDLogDebug(@"Configuring IPv4 protocol of service %@...", config.name);
+  if (!SCNetworkProtocolSetConfiguration(protocol, config.L2TPIPv4Config)) {
+    DDLogError(@"Error: Could not configure IPv4 protocol of %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
+    return 40;
+  }
+
+  
+  DDLogDebug(@"Adding Service %@ to networkSet...", config.name);
+  if (!SCNetworkSetAddService(networkSet, service)) {
     if (SCError() == 1005) {
       DDLogWarn(@"Skipping VPN Service %@ because it already exists.", config.humanType);
       return 0;
@@ -236,23 +307,12 @@
     }
   }
 
-  DDLogDebug(@"Fetching IPv4 protocol of service %@...", config.name);
-  SCNetworkProtocolRef protocol = SCNetworkServiceCopyProtocol(service, kSCNetworkProtocolTypeIPv4);
-
-  if (!protocol) {
-    DDLogError(@"Error: Could not fetch IPv4 protocol of %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
-    return 39;
-  }
-
-  DDLogDebug(@"Configuring IPv4 protocol of service %@...", config.name);
-  if (!SCNetworkProtocolSetConfiguration(protocol, config.L2TPIPv4Config)) {
-    DDLogError(@"Error: Could not configure IPv4 protocol of %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
-    return 40;
-  }
 
   // The password and the shared secret are not stored directly in the System Preferences .plist file
   // Instead we put them into the KeyChain. I know we're creating new items each time you run this application
   // But this actually is the same behaviour you get using the official System Preferences Network Pane
+  DDLogDebug(@"Preparing to add Keychain items for service %@...", config.name);
+
   if (config.password) {
     int code = [VPNKeychain createPasswordKeyChainItem:config.name forService:serviceID withAccount:config.username andPassword:config.password];
     if (code > 0) return code;
@@ -268,8 +328,6 @@
     DDLogError(@"Error: Could not commit preferences with service %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());
     return 41;
   }
-
-  DDLogDebug(@"Preparing to add Keychain items for service %@...", config.name);
 
   if (!SCPreferencesApplyChanges(prefs)) {
     DDLogError(@"Error: Could not apply changes with service %@. %s (Code %i)", config.name, SCErrorString(SCError()), SCError());

@@ -43,6 +43,10 @@
   return [self.package booleanValueForSignature: self.versionSig];
 }
 
++ (BOOL) forceRequested {
+  return [self.package booleanValueForSignature: self.forceSig];
+}
+
 + (NSUInteger) command {
   if ([[self.package unknownSwitches] count] > 0) DDLogDebug(@"Unknown arguments: %@", [[self.package unknownSwitches] componentsJoinedByString:@" | "]);
   if ([[self.package uncapturedValues] count] > 0) DDLogDebug(@"Uncaptured argument values: %@", [[self.package uncapturedValues] componentsJoinedByString:@" | "]);
@@ -140,11 +144,11 @@
 }
 
 + (FSArgumentSignature*) debugSig {
-  return [FSArgumentSignature  argumentSignatureWithFormat:@"[-d --debug debug]"];
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-d --debug debug]"];
 }
 
 + (FSArgumentSignature*) versionSig {
-  return [FSArgumentSignature  argumentSignatureWithFormat:@"[-v --version version]"];
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-v --version version]"];
 }
 
 // Internal: Interface Arguments
@@ -221,11 +225,16 @@
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-g --groupname groupname]={1,}"];
 }
 
++ (FSArgumentSignature*) forceSig {
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-o --force force]"];
+}
+
 + (NSArray*) signatures {
   return @[
     self.helpSig,
     self.debugSig,
     self.versionSig,
+    self.forceSig,
     self.createCommandSig
   ];
 }

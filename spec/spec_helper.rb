@@ -6,12 +6,15 @@ require 'hashie'
 module Helpers
   def run(sudo:, arguments:)
     command = "#{:sudo if sudo} #{macosvpn} #{arguments}"
-    _, _, stderr, thread = Open3.popen3(command)
-    [stderr.read, thread.value.exitstatus]
+    _, stdout, stderr, thread = Open3.popen3(command)
+    output = stdout.read.to_s + stderr.read.to_s
+    status = thread.value.exitstatus
+
+    [output, status]
   end
 
   def macosvpn
-    Pathname.new 'build/Release/macosvpn'
+    Pathname.new 'build/Debug/macosvpn'
   end
 end
 
