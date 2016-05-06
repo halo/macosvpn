@@ -16,7 +16,7 @@ RSpec.describe 'Creating a VPN Service' do
     it 'creates the VPN' do
       plist = Hashie::Mash.new Plist.parse_xml('/Library/Preferences/SystemConfiguration/preferences.plist')
       service_names = plist.NetworkServices.values.map(&:UserDefinedName)
-      fail 'For this test to be realistic, please remove the `Atlantis` VPN manually first.' if service_names.include?('Atlantis')
+      raise 'Please remove the `Atlantis` VPN manually first.' if service_names.include?('Atlantis')
 
       arguments = 'create -c Atlantis -e atlantic2.example.com -u Alice -p p4ssw0rd -g AtlantisGroup -s s3same --force --debug'
       output, status = run sudo: true, arguments: arguments
