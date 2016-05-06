@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 osx_image: xcode7.3
 language: objective-c
 rvm: 2.2.4
