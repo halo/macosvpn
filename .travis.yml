@@ -1,14 +1,15 @@
-sudo: true
+sudo: required
 osx_image: xcode7.3
 language: objective-c
 rvm: 2.2.4
 
-before_script: bundle install
+before_script:
+  - bundle install
+  - sudo gem install bundler --no-document
+  - sudo bundle install
 
 script:
   - bundle exec rake
-  - sudo gem install bundler
-  - sudo bundle install
   - sudo bundle exec rspec --tag sudo
   - bundle exec rspec --tag ~sudo
   - bundle exec rubocop
