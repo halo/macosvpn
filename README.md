@@ -100,16 +100,9 @@ If you feel adventurous you can find all available flags [at the bottom of this 
 * If a VPN with the given name already exists, a new one with an incremental number is created.
   In the future there should be a `--force` option to re-create it
 
-## Development and credits
+## Development
 
-Feel free to browse through the code of this application.
-It's pretty small and straight-forward.
-
-It all began with finding [this page](https://lists.apple.com/archives/macnetworkprog/2011/May/msg00032.html) you probably already found.
-But it was not before [this practical example](https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html) that I actually dared to try to implement this.
-Then, google led me to [this page](https://lists.apple.com/archives/macnetworkprog/2007/Dec/msg00045.html) where I learned how to set the Shared Secret.
-The last hurdle was to get the "Send all traffic over VPN" flag, which I finally [found the answer to here](http://pastebin.com/112KEHSV).
-Finally, I [learned from over here](http://stackoverflow.com/questions/24363935) how to add things to the System Keychain.
+The master branch is always edge and not ready for production.
 
 Useful commands for debugging:
 
@@ -125,6 +118,17 @@ security dump-keychain -a /Library/Keychains/System.keychain
 
 Note to self: Compiling with "Release" configuration causes random crashes. It needs to be "Debug".
 See https://github.com/halo/macosvpn/issues/13#issuecomment-217252496
+
+## History and credits
+
+Feel free to browse through the code of this application.
+It's pretty small and straight-forward.
+
+It all began with finding [this page](https://lists.apple.com/archives/macnetworkprog/2011/May/msg00032.html) you probably already found.
+But it was not before [this practical example](https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html) that I actually dared to try to implement this.
+Then, google led me to [this page](https://lists.apple.com/archives/macnetworkprog/2007/Dec/msg00045.html) where I learned how to set the Shared Secret.
+The last hurdle was to get the "Send all traffic over VPN" flag, which I finally [found the answer to here](http://pastebin.com/112KEHSV).
+Finally, I [learned from over here](http://stackoverflow.com/questions/24363935) how to add things to the System Keychain.
 
 ## Special thanks
 
