@@ -30,7 +30,7 @@ If you have [Homebrew](http://brew.sh) installed, you can simply start a Termina
 
 ```bash
 brew install macosvpn
-``
+```
 
 If not, you can run this curl command to get the compiled executable from Github:
 
