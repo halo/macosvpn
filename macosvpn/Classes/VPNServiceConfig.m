@@ -70,8 +70,11 @@
 }
 
 - (CFDictionaryRef) L2TPIPSecConfig {
-  CFStringRef keys[3] = { NULL, NULL, NULL };
-  CFStringRef vals[3] = { NULL, NULL, NULL };
+  uint size;
+  if (self.localIdentifier) size = 5; else size = 3;
+  
+  CFStringRef keys[size];
+  CFStringRef vals[size];
   CFIndex count = 0;
 
   keys[count] = kSCPropNetIPSecAuthenticationMethod;
@@ -83,6 +86,17 @@
   keys[count] = kSCPropNetIPSecSharedSecret;
   vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.SS", self.serviceID];
 
+  if (self.localIdentifier) {
+    DDLogDebug(@"Assigning group name <%@> to L2TP service config", self.localIdentifier);
+    
+    keys[count]   = kSCPropNetIPSecLocalIdentifier;
+    vals[count++] = (__bridge CFStringRef)self.localIdentifier;
+    
+    keys[count]    = kSCPropNetIPSecLocalIdentifierType;
+    vals[count++]  = kSCValNetIPSecLocalIdentifierTypeKeyID;
+  }
+
+  
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
 
