@@ -105,7 +105,7 @@ public class VPNHelp: NSObject {
   
   public class func showVersion() -> Int32 {
     DDLogDebug("Showing version...")
-    DDLogInfo(self.currentVersion())
+    print(self.currentVersion());
     return 98
   }
   
@@ -116,7 +116,7 @@ public class VPNHelp: NSObject {
   }
   
   private class func currentVersion() -> String {
-    return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+    return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
   }
   
 }
