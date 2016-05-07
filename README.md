@@ -1,26 +1,51 @@
 [![Version](https://img.shields.io/github/tag/halo/macosvpn.svg?style=flat&label=version)](https://github.com/halo/macosvpn/releases)
+[![Homebrew](https://img.shields.io/homebrew/v/macosvpn.svg?style=flat)](https://github.com/Homebrew/homebrew-core/blob/master/Formula/macosvpn.rb)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/halo/macosvpn/blob/master/LICENSE.md)
 [![Build Status](https://travis-ci.org/halo/macosvpn.svg?branch=master)](https://travis-ci.org/halo/macosvpn)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/halo/macosvpn)
 
 ## Create Mac OS VPNs programmatically
 
-This is a command-line tool written in Objective-C that can create VPN network configurations on your Mac.
+This is a command-line tool written in Objective-C (transitioning to Swift) that can create VPN network configurations on your Mac.
 
 It supports both L2TP over IPSec and Cisco IPSec.
+Integration tests are run on Travis using Ruby rspec to ensure it's working.
+
+![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_0.2.0-beta.png)
 
 ## Requirements
 
 * Mac OS El Capitan, Yosemite, or Mavericks
 * Administrator privileges (i.e. you've got to run it with sudo)
 
-## Download
+**Why sudo?**
 
-Start a Terminal and run this curl command to get the executable:
+The passwords of VPN services are stored in the System Keychain.
+Only `sudo` or a [HelperTool](https://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html#//apple_ref/doc/uid/TP40002589-SW2) can write to the System Keychain.
+I don't want you to have to deal with the complexity a HelperTool can entail (GUI authorization and upgrading), so we simply use `sudo`.
+
+## Installation
+
+If you have [Homebrew](http://brew.sh) installed, you can simply start a Terminal and run:
+
+```bash
+brew install macosvpn
+``
+
+If not, you can run this curl command to get the compiled executable from Github:
 
 ```bash
 sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.1.4/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
+```
+
+If that freaks you out (it should), you can compile it yourself if you have Xcode installed:
+
+```bash
+git clone https://github.com/halo/macosvpn.git
+cd macosvpn
+xcodebuild -configuration Debug
+build/Debug/macosvpn --help
 ```
 
 You can always run `macosvpn --version` to see the version currently installed on your system
