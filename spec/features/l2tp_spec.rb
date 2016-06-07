@@ -99,7 +99,7 @@ RSpec.describe 'Creating a VPN Service' do
 
       # Overwriting existing VPN
 
-      arguments = 'create -l VPNTestL2TP -e hawaii.example.com -u Carol -p letm3in -g AnotherL2TPGroup -s s3cret --force'
+      arguments = 'create -l VPNTestL2TP -e hawaii.example.com -u Carol -p letm3in -g AnotherL2TPGroup -s s3cret --split --force'
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestL2TP'
       expect(output).to include 'Successfully created L2TP over IPSec VPN VPNTestL2TP'
@@ -117,7 +117,7 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ipsec_xauth_name).to be nil
       expect(service.ipsec_xauth_password_encryption).to be nil
       expect(service.ipv4_config_method).to eq 'PPP'
-      expect(service.ipv4_override_primary).to eq 1
+      expect(service.ipv4_override_primary).to be_nil
       expect(service.interface_type).to eq 'PPP'
       expect(service.interface_subtype).to eq 'L2TP'
       expect(service.ppp_auth_name).to eq 'Carol'
