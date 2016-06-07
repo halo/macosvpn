@@ -4,12 +4,13 @@ RSpec.describe 'Creating a VPN Service' do
 
   context 'IPSec', :sudo do
     it 'creates the VPN' do
-      raise 'Please remove the `VPNTestIPSec` VPN manually first.' if SCUtil::Services.find_by_name('VPNTestIPSec')
-      raise 'Please remove the Keychain Item `VPNTestIPSec` manually first.' if Keychain.find(name: 'VPNTestIPSec', kind: :any)
+      raise 'Please remove the `VPNTestIPSec` VPN manually first.' if slow? && SCUtil::Services.find_by_name('VPNTestIPSec')
+      raise 'Please remove the Keychain Item `VPNTestIPSec` manually first.' if slow? && Keychain.find(name: 'VPNTestIPSec', kind: :any)
 
       # Creating VPN for first time
 
       arguments = 'create -c VPNTestIPSec -e vpntestipsec.example.com -u Alice -p p4ssw0rd -g VPNTestGroup -s s3same'
+      arguments += ' --force' if quick?
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'Successfully created Cisco IPSec VPN VPNTestIPSec'
       expect(status).to eq 0

@@ -4,12 +4,13 @@ RSpec.describe 'Creating a VPN Service' do
 
   context 'L2TP', :sudo do
     it 'creates the VPN' do
-      raise 'Please remove the `VPNTestL2TP` VPN manually first.' if SCUtil::Services.find_by_name('VPNTestL2TP')
-      raise 'Please remove the Keychain Item `VPNTestL2TP` manually first.' if Keychain.find(name: 'VPNTestL2TP', kind: :any)
+      raise 'Please remove the `VPNTestL2TP` VPN manually first.' if slow? && SCUtil::Services.find_by_name('VPNTestL2TP')
+      raise 'Please remove the Keychain Item `VPNTestL2TP` manually first.' if slow? && Keychain.find(name: 'VPNTestL2TP', kind: :any)
 
       # Creating VPN for first time
 
       arguments = 'create -l VPNTestL2TP -e vpntestl2tp.example.com -u Alice -p p4ssw0rd -g VPNL2TPGroup -s s3same'
+      arguments += ' --force' if quick?
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'Successfully created L2TP over IPSec VPN VPNTestL2TP'
       expect(status).to eq 0
