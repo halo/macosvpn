@@ -12,7 +12,6 @@
 		328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328613A1197FEE7A0010BB98 /* SystemConfiguration.framework */; };
 		9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3D847D1982AE1B005BD5F3 /* Security.framework */; };
 		9D3D84811982B017005BD5F3 /* VPNKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D84801982B017005BD5F3 /* VPNKeychain.m */; };
-		9D61984A1981129900FC01E8 /* VPNAuthorizations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C819803F32005B5E3E /* VPNAuthorizations.m */; };
 		9D61984D1981129900FC01E8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C419803F2B005B5E3E /* main.swift */; };
 		9D61984F198112A000FC01E8 /* FSAliasRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619792198111F900FC01E8 /* FSAliasRecognizer.m */; };
 		9D619851198112A000FC01E8 /* FSAliasToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619794198111F900FC01E8 /* FSAliasToken.m */; };
@@ -75,6 +74,7 @@
 		9D6198CD1981151D00FC01E8 /* VPNArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6198CC1981151D00FC01E8 /* VPNArguments.m */; };
 		9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */; };
 		C233AF811C6E7DCD00F39700 /* VPNHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* VPNHelp.swift */; };
+		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
 		C2CE09C81C6E89DF00B97D6D /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */; };
 		C2CE09C91C6E89DF00B97D6D /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B11C6E89DF00B97D6D /* CocoaLumberjack.swift */; };
 		C2CE09CA1C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B31C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m */; };
@@ -121,8 +121,6 @@
 		9D3D848919842C36005BD5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = macosvpn/Info.plist; sourceTree = SOURCE_ROOT; };
 		9D5CE1C319803F25005B5E3E /* macosvpn-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "macosvpn-Prefix.pch"; path = "macosvpn/macosvpn-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		9D5CE1C419803F2B005B5E3E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = macosvpn/main.swift; sourceTree = SOURCE_ROOT; };
-		9D5CE1C719803F32005B5E3E /* VPNAuthorizations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNAuthorizations.h; sourceTree = "<group>"; };
-		9D5CE1C819803F32005B5E3E /* VPNAuthorizations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPNAuthorizations.m; sourceTree = "<group>"; };
 		9D619791198111F900FC01E8 /* FSAliasRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAliasRecognizer.h; sourceTree = "<group>"; };
 		9D619792198111F900FC01E8 /* FSAliasRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAliasRecognizer.m; sourceTree = "<group>"; };
 		9D619793198111F900FC01E8 /* FSAliasToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAliasToken.h; sourceTree = "<group>"; };
@@ -254,6 +252,7 @@
 		9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNServiceConfig.m; sourceTree = "<group>"; };
 		C233AF801C6E7DCD00F39700 /* VPNHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelp.swift; sourceTree = "<group>"; };
 		C233AF821C6E815F00F39700 /* macosvpn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "macosvpn-Bridging-Header.h"; path = "macosvpn/macosvpn-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
 		C2CE09AE1C6E89DF00B97D6D /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
 		C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
 		C2CE09B01C6E89DF00B97D6D /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
@@ -359,8 +358,7 @@
 		9D5CE1C619803F32005B5E3E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9D5CE1C719803F32005B5E3E /* VPNAuthorizations.h */,
-				9D5CE1C819803F32005B5E3E /* VPNAuthorizations.m */,
+				C27566F91D08744A009CD68C /* VPNAuthorizations.swift */,
 				9D6198CB1981151D00FC01E8 /* VPNArguments.h */,
 				9D6198CC1981151D00FC01E8 /* VPNArguments.m */,
 				324DC056198120B10048BC38 /* VPNController.h */,
@@ -671,6 +669,7 @@
 				9D6198AC198112DA00FC01E8 /* CPShiftAction.m in Sources */,
 				9D6198AE198112DA00FC01E8 /* CPShiftReduceAction.m in Sources */,
 				9D6198B0198112DA00FC01E8 /* CPShiftReduceActionTable.m in Sources */,
+				C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */,
 				9D6198B2198112DA00FC01E8 /* CPShiftReduceGotoTable.m in Sources */,
 				9D6198B4198112DA00FC01E8 /* CPShiftReduceParser.m in Sources */,
 				9D6198B7198112DA00FC01E8 /* CPShiftReduceState.m in Sources */,
@@ -714,7 +713,6 @@
 				9D619875198112A000FC01E8 /* NSScanner+EscapedScanning.m in Sources */,
 				9D619877198112A000FC01E8 /* NSString+Indenter.m in Sources */,
 				C2CE09DD1C6E935600B97D6D /* EightBitColor.swift in Sources */,
-				9D61984A1981129900FC01E8 /* VPNAuthorizations.m in Sources */,
 				9D61984D1981129900FC01E8 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,6 +737,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -779,6 +778,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

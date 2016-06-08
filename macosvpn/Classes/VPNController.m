@@ -19,7 +19,6 @@
 
 // Local dependencies
 #import "VPNArguments.h"
-#import "VPNAuthorizations.h"
 #import "VPNController.h"
 #import "VPNKeychain.h"
 #import "VPNServiceConfig.h"
