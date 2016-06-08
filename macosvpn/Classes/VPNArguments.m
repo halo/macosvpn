@@ -36,7 +36,7 @@
 }
 
 + (BOOL) helpRequested {
-  return [self.package booleanValueForSignature: self.helpSig];
+  return [self.package booleanValueForSignature: self.helpSig] || [self command] == VPNCommandNone;
 }
 
 + (BOOL) versionRequested {
@@ -50,10 +50,11 @@
 + (NSUInteger) command {
   if ([[self.package unknownSwitches] count] > 0) DDLogDebug(@"Unknown arguments: %@", [[self.package unknownSwitches] componentsJoinedByString:@" | "]);
   if ([[self.package uncapturedValues] count] > 0) DDLogDebug(@"Uncaptured argument values: %@", [[self.package uncapturedValues] componentsJoinedByString:@" | "]);
-  if ([self.package countOfSignature:self.createCommandSig] == 1) {
+  
+  if ([self.package countOfSignature:self.createCommandSig] == VPNCommandCreate) {
     return VPNCommandCreate;
   } else {
-    return -1;
+    return VPNCommandNone;
   }
 }
 
@@ -97,7 +98,7 @@
     if (!config.sharedSecret) DDLogWarn(@"Warning: You did not provide a shared secret for service <%@>", config.name);
 
     config.localIdentifier = [self extractArgumentForSignature:self.localIdentifierSig withFallbackSignature:self.defaultLocalIdentifierSig atIndex:i];
-    if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a group name for service <%@>", config.name);
+    //if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a group name for service <%@>", config.name);
 
     config.enableSplitTunnel = [self.package countOfSignature:self.splitTunnelSig] > 0;
       
