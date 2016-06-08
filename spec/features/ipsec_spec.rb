@@ -4,8 +4,8 @@ RSpec.describe 'Creating a VPN Service' do
 
   context 'IPSec', :sudo do
     it 'creates the VPN' do
-      raise 'Please remove the `VPNTestIPSec` VPN manually first.' if slow? && SCUtil::Services.find_by_name('VPNTestIPSec')
-      raise 'Please remove the Keychain Item `VPNTestIPSec` manually first.' if slow? && Keychain.find(name: 'VPNTestIPSec', kind: :any)
+      raise 'Please remove the `VPNTestIPSec` VPN manually.' if slow? && SCUtil::Services.find_by_name('VPNTestIPSec')
+      raise 'Please remove the Keychain Item `VPNTestIPSec` manually.' if slow? && Keychain.find(name: 'VPNTestIPSec', kind: :any)
 
       # Creating VPN for first time
 
