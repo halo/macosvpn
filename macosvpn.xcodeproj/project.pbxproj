@@ -75,6 +75,7 @@
 		9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */; };
 		C233AF811C6E7DCD00F39700 /* VPNHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* VPNHelp.swift */; };
 		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
+		C27566FC1D0885C9009CD68C /* VPNServiceCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = C27566FB1D0885C9009CD68C /* VPNServiceCreator.m */; };
 		C2CE09C81C6E89DF00B97D6D /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */; };
 		C2CE09C91C6E89DF00B97D6D /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B11C6E89DF00B97D6D /* CocoaLumberjack.swift */; };
 		C2CE09CA1C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B31C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m */; };
@@ -253,6 +254,8 @@
 		C233AF801C6E7DCD00F39700 /* VPNHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelp.swift; sourceTree = "<group>"; };
 		C233AF821C6E815F00F39700 /* macosvpn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "macosvpn-Bridging-Header.h"; path = "macosvpn/macosvpn-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
+		C27566FB1D0885C9009CD68C /* VPNServiceCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNServiceCreator.m; sourceTree = "<group>"; };
+		C27566FD1D08864B009CD68C /* VPNServiceCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNServiceCreator.h; sourceTree = "<group>"; };
 		C2CE09AE1C6E89DF00B97D6D /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
 		C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
 		C2CE09B01C6E89DF00B97D6D /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 				9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */,
 				9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */,
 				C2CE09E31C6E972400B97D6D /* VPNColor.swift */,
+				C27566FD1D08864B009CD68C /* VPNServiceCreator.h */,
+				C27566FB1D0885C9009CD68C /* VPNServiceCreator.m */,
 			);
 			name = Classes;
 			path = macosvpn/Classes;
@@ -672,6 +677,7 @@
 				C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */,
 				9D6198B2198112DA00FC01E8 /* CPShiftReduceGotoTable.m in Sources */,
 				9D6198B4198112DA00FC01E8 /* CPShiftReduceParser.m in Sources */,
+				C27566FC1D0885C9009CD68C /* VPNServiceCreator.m in Sources */,
 				9D6198B7198112DA00FC01E8 /* CPShiftReduceState.m in Sources */,
 				9D6198B9198112DA00FC01E8 /* CPSLRParser.m in Sources */,
 				C2CE09E81C6F751300B97D6D /* VPNLogger.swift in Sources */,
