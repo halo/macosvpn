@@ -20,17 +20,11 @@
 
 @implementation VPNServiceConfig
 
-@synthesize type, name, endpointPrefix, endpointSuffix, username, password, sharedSecret, localIdentifier;
+@synthesize type, name, username, password, sharedSecret, localIdentifier;
 @synthesize endpoint = _endpoint;
 
 - (void) setEndpoint:(NSString *)newEndpoint {
   _endpoint = newEndpoint;
-}
-
-- (NSString*) endpoint {
-  if (_endpoint) return _endpoint;
-  if ((!endpointPrefix && !endpointSuffix) || ([endpointPrefix isEqualToString:@""] && [endpointSuffix isEqualToString:@""])) return NULL;
-  return [NSString stringWithFormat:@"%@%@", endpointPrefix, endpointSuffix];
 }
 
 - (BOOL) is:(NSUInteger)aType {
@@ -46,7 +40,7 @@
 }
 
 - (NSString*) description {
-  return [NSString stringWithFormat:@"<[%@] name=%@ endpointPrefix=%@ endpoint=%@ endpointSuffix=%@ username=%@ password=%@ sharedSecret=%@ localIdentifier=%@>", self.humanType, self.name, self.endpointPrefix, self.endpoint, self.endpointSuffix, self.username, self.password, self.sharedSecret, self.localIdentifier];
+  return [NSString stringWithFormat:@"<[%@] name=%@ endpoint=%@ username=%@ password=%@ sharedSecret=%@ localIdentifier=%@>", self.humanType, self.name, self.endpoint, self.username, self.password, self.sharedSecret, self.localIdentifier];
 }
 
 - (CFDictionaryRef) L2TPPPPConfig {

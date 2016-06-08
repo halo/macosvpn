@@ -44,10 +44,6 @@ public class VPNHelp: NSObject {
     let splitFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--split")
     let splitFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-x")
     let allShortCiscoFlags: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-ceupsg")
-    let defaultUsernameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--default-username")
-    let defaultPasswordFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--default-password")
-    let defaultEndpointSuffixFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--default-endpoint-suffix")
-    let endpointPrefixFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--endpoint-prefix")
     
     DDLogInfo("You can always add the \(debugFlag) option for troubleshooting.")
     DDLogInfo("The \(versionFlag) displays the current version.")
@@ -81,17 +77,6 @@ public class VPNHelp: NSObject {
     DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("Repeat arguments to create multiple VPNs"))
     DDLogInfo("\(command) \(allShortCiscoFlags) Atlantic atlantic.example.com Alice p4ssw0rd s3same Dreamteam \\")
     DDLogInfo("                     \(allShortCiscoFlags) Northpole northpole.example.com Bob s3cret pr1v4te Spaceteam")
-    DDLogInfo("")
-
-    DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("Avoid repetition by assigning default values"))
-    DDLogInfo("\(command) \(defaultUsernameFlag) Alice \(defaultPasswordFlag) p4ssw0rd \(defaultEndpointSuffixFlag) .example.com \\")
-    DDLogInfo("                     \(ciscoFlag) Australia \(endpointPrefixFlag) australia \(sharedSecretFlag) s3same \\")
-    DDLogInfo("                     \(ciscoFlag) Iceland \(endpointPrefixFlag) iceland \(sharedSecretFlag) letme1n")
-    DDLogInfo("")
-    
-    let australia: String = Color.Wrap(foreground: VPNColor.Blue).wrap("australia.example.com")
-    let iceland: String = Color.Wrap(foreground: VPNColor.Blue).wrap("iceland.example.com")
-    DDLogInfo("...creates \(australia) and \(iceland) with the same username/password but different shared secrets.")
     DDLogInfo("")
     
     DDLogInfo("This application is released under the MIT license.")

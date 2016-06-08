@@ -77,10 +77,7 @@
     config.type = type;
     config.name = [self.package objectAtIndex:i forSignature:signature];
 
-    config.endpointPrefix = [self extractArgumentForSignature:self.endpointPrefixSig withFallbackSignature:self.defaultEndpointPrefixSig atIndex:i];
-    config.endpointSuffix = [self extractArgumentForSignature:self.endpointSuffixSig withFallbackSignature:self.defaultEndpointSuffixSig atIndex:i];
-
-    NSString *endpoint = [self extractArgumentForSignature:self.endpointSig withFallbackSignature:self.defaultEndpointSig atIndex:i];
+    NSString *endpoint = [self extractArgumentForSignature:self.endpointSig withFallbackSignature:nil atIndex:i];
     if (endpoint) config.endpoint = endpoint;
     if (!config.endpoint) {
       DDLogError(@"Error: You did not provide an endpoint for service <%@>", config.name);
@@ -88,16 +85,16 @@
       exit(50);
     }
 
-    config.username = [self extractArgumentForSignature:self.usernameSig withFallbackSignature:self.defaultUsernameSig atIndex:i];
+    config.username = [self extractArgumentForSignature:self.usernameSig withFallbackSignature:nil atIndex:i];
     if (!config.username) DDLogWarn(@"Warning: You did not provide a username for service <%@>", config.name);
 
-    config.password = [self extractArgumentForSignature:self.passwordSig withFallbackSignature:self.defaultPasswordSig atIndex:i];
+    config.password = [self extractArgumentForSignature:self.passwordSig withFallbackSignature:nil atIndex:i];
     if (!config.password) DDLogWarn(@"Warning: You did not provide a password for service <%@>", config.name);
     
-    config.sharedSecret = [self extractArgumentForSignature:self.sharedSecretSig withFallbackSignature:self.defaultSharedSecretSig atIndex:i];
+    config.sharedSecret = [self extractArgumentForSignature:self.sharedSecretSig withFallbackSignature:nil atIndex:i];
     if (!config.sharedSecret) DDLogWarn(@"Warning: You did not provide a shared secret for service <%@>", config.name);
 
-    config.localIdentifier = [self extractArgumentForSignature:self.localIdentifierSig withFallbackSignature:self.defaultLocalIdentifierSig atIndex:i];
+    config.localIdentifier = [self extractArgumentForSignature:self.localIdentifierSig withFallbackSignature:nil atIndex:i];
     //if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a group name for service <%@>", config.name);
 
     config.enableSplitTunnel = [self.package countOfSignature:self.splitTunnelSig] > 0;
@@ -124,13 +121,11 @@
 
   NSSet *createSignatures = [NSSet setWithObjects:
     self.l2tpSig, self.ciscoSig,
-    self.defaultEndpointPrefixSig, self.endpointPrefixSig,
-    self.defaultEndpointSig, self.endpointSig,
-    self.defaultEndpointSuffixSig, self.endpointSuffixSig,
-    self.defaultUsernameSig, self.usernameSig,
-    self.defaultPasswordSig, self.passwordSig,
-    self.defaultSharedSecretSig, self.sharedSecretSig,
-    self.defaultLocalIdentifierSig, self.localIdentifierSig,
+    self.endpointSig,
+    self.usernameSig,
+    self.passwordSig,
+    self.sharedSecretSig,
+    self.localIdentifierSig,
     self.splitTunnelSig,
   nil];
 
@@ -138,7 +133,7 @@
   return command;
 }
 
-// Internal: default Argument Flags
+// Internal: global Argument Flags
 
 + (FSArgumentSignature*) helpSig {
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-h --help help]"];
@@ -162,52 +157,14 @@
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-c --cisco cisco]={1,}"];
 }
 
-// Internal: Default Interface Configuration Arguments
+// Internal: Individual Interface Configuration Arguments
 
 + (FSArgumentSignature*) splitTunnelSig {
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-x --split split]"];
 }
 
-+ (FSArgumentSignature*) defaultEndpointPrefixSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-i --defaultendpointprefix defaultendpointprefix]="];
-}
-
-+ (FSArgumentSignature*) defaultEndpointSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-n --defaultendpoint defaultendpoint]="];
-}
-
-+ (FSArgumentSignature*) defaultEndpointSuffixSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-k --defaultendpointsuffix defaultendpointsuffix]="];
-}
-
-+ (FSArgumentSignature*) defaultUsernameSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-m --defaultusername defaultusername]="];
-}
-
-+ (FSArgumentSignature*) defaultPasswordSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-a --defaultpassword defaultpassword]="];
-}
-
-+ (FSArgumentSignature*) defaultSharedSecretSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --defaultsharedsecret defaultsharedsecret]="];
-}
-
-+ (FSArgumentSignature*) defaultLocalIdentifierSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-j --defaultgroupname defaultgroupname]="];
-}
-
-// Internal: Individual Interface Configuration Arguments
-
-+ (FSArgumentSignature*) endpointPrefixSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-f --endpointprefix endpointprefix]={1,}"];
-}
-
 + (FSArgumentSignature*) endpointSig {
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-e --endpoint endpoint]={1,}"];
-}
-
-+ (FSArgumentSignature*) endpointSuffixSig {
-  return [FSArgumentSignature argumentSignatureWithFormat:@"[-o --endpointsuffix endpointsuffix]={1,}"];
 }
 
 + (FSArgumentSignature*) usernameSig {

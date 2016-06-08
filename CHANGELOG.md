@@ -1,3 +1,19 @@
+## 0.2.0
+
+Removed:
+
+* The `--default...` and `...prefix` flags are no longer supported (too buggy)
+
+Features:
+
+* Use `--force` to overwrite an existing VPN
+* Added colors to help text
+* Improved help text to be more understandable
+
+Internal:
+
+* Converted more classes to Swift
+
 ## 0.1.4
 
 Bugfix:

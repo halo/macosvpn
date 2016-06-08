@@ -10,9 +10,18 @@ RSpec.describe 'Creating a VPN Service' do
     end
   end
 
+  context 'missing endpoint', :sudo do
+    it 'fails and is informational' do
+      output, status = Macosvpn.sudo arguments: 'create --cisco SomeName'
+      expect(output).to include 'You did not provide an endpoint'
+      expect(status).to eq 50
+    end
+  end
+
   context 'IPSec', :sudo do
     it 'creates the VPN' do
       raise 'Please remove the `VPNTestIPSec` VPN manually.' if slow? && SCUtil::Services.find_by_name('VPNTestIPSec')
+      raise 'Please remove the `VPNTestIPSec2` VPN manually.' if slow? && SCUtil::Services.find_by_name('VPNTestIPSec2')
       raise 'Please remove the Keychain Item `VPNTestIPSec` manually.' if slow? && Keychain.find(name: 'VPNTestIPSec', kind: :any)
 
       # Creating VPN for first time
@@ -101,8 +110,10 @@ RSpec.describe 'Creating a VPN Service' do
       expect(key).to be_nil
 
       # Overwriting existing VPN
+      # Creating two VPNs at the same time
 
       arguments = 'create -c VPNTestIPSec -e southpole.example.com -u Carol -p letm3in -g VPNTestNewGroup -s s3cret --force'
+      arguments += ' -c VPNTestIPSec2 -e northpole.example.com -u Eve -p s3cret -s b0bby --force'
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestIPSec'
       expect(output).to include 'Successfully created Cisco IPSec VPN VPNTestIPSec'
@@ -138,6 +149,33 @@ RSpec.describe 'Creating a VPN Service' do
 
       key = Keychain.find(name: 'VPNTestIPSec', kind: :l2tp_password)
       expect(key).to be_nil
+
+      service = SCUtil::Services.find_by_name('VPNTestIPSec2')
+      expect(service).to be_present
+      expect(service.name).to eq 'VPNTestIPSec2'
+      expect(service.ipsec_authentication_method).to eq 'SharedSecret'
+      expect(service.ipsec_local_identifier).to be nil
+      expect(service.ipsec_local_identifier_type).to be nil
+      expect(service.ipsec_remote_address).to eq 'northpole.example.com'
+      expect(service.ipsec_shared_secret_encryption).to eq 'Keychain'
+      expect(service.ipsec_xauth_name).to eq 'Eve'
+      expect(service.ipsec_xauth_password_encryption).to eq 'Keychain'
+      expect(service.ipv4_config_method).to eq 'PPP'
+      expect(service.ipv4_override_primary).to eq 1
+      expect(service.interface_type).to eq 'IPSec'
+      expect(service.interface_subtype).to be nil
+
+      key = Keychain.find(name: 'VPNTestIPSec2', kind: :ipsec_password)
+      expect(key).to be_present
+      expect(key.id).to eq service.ipsec_xauth_password_id
+      expect(key.name).to eq 'VPNTestIPSec2'
+      expect(key).to be_ipsec_password
+
+      key = Keychain.find(name: 'VPNTestIPSec2', kind: :shared_secret)
+      expect(key).to be_present
+      expect(key.id).to eq service.ipsec_shared_secret_id
+      expect(key.name).to eq 'VPNTestIPSec2'
+      expect(key).to be_shared_secret
 
       # Removing the Group
 

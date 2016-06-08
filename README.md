@@ -92,29 +92,6 @@ Repeat the arguments for creating multiple Services at once (no matter which sho
     sudo macosvpn create -leups Atlantic atlantic.example.com Alice p4ssw0rd s3same \\
                          -leups Northpole northpole.example.com Bob s3cret pr1v4te
 
-#### Global default values
-
-Assign default values which will be applied to every service. Say you want to create the following VPN services:
-
-    no name      endpoint              user  password sharedsecret
-    --------------------------------------------------------------
-    1  Australia australia.example.com Alice p4ssw0rd s3same
-    2  Island    island.example.com    Alice p4ssw0rd s3same
-
-You could do that with the following command:
-
-    sudo macosvpn create --default-username Alice --default-password p4ssw0rd --default-endpoint-suffix .example.com \\
-                         --l2tp Australia --endpoint-prefix australia --shared-secret s3same \\
-                         --l2tp Island --endpoint-prefix island --shared-secret letme1n
-
-The same command a little shorter:
-
-    sudo macosvpn create -m Alice -a p4ssw0rd -x .example.com \\
-                         -l Australia -f australia -s s3same \\
-                         -l Island -f island -s letme1n
-
-If you feel adventurous you can find all available flags [at the bottom of this file](https://github.com/halo/macosvpn/blob/master/macosvpn/Classes/VPNArguments.m).
-
 ## Troubleshooting
 
 * If you get a warning that says "Creating Keychain item failed: write permissions error", you need to run the application with `sudo`.
