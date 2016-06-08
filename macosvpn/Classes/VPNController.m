@@ -76,24 +76,14 @@
 + (int) create {
 
   // If this process has root privileges, it will be able to write to the System Keychain.
-  // If not, we cannot (unless we use a helper tool, which is not the way this application is supposed to be designed)
+  // If not, we cannot (unless we use a helper tool, which is not the way this application is designed)
   // It would be nice to just try to perform the authorization and see if we succeeded or not.
   // But the Security System will popup an auth dialog, which is *not* enough to write to the System Keychain.
-  // So, for now, we will simply bailed out unless you called this command line application with the good old sudo.
+  // So, for now, we will simply bail out unless you called this command line application with the good old `sudo`.
   if (getuid() != 0) {
     DDLogError(@"Sorry, without superuser privileges I won't be able to write to the System Keychain and thus cannot create a VPN service.");
     return 31;
   }
-
-  SCPreferencesRef test = SCPreferencesCreateWithAuthorization(NULL, CFSTR("macosvpn"), NULL, NULL);
-  if (SCPreferencesLock(test, TRUE)) {
-      //DDLogError(@"Bounced out");
-      //return 42;
-  } else {
-   // DDLogError(@"Bounced out");
-   // return 99;
-  }
-
   
   // Obtaining permission to modify network settings
   SCPreferencesRef prefs = SCPreferencesCreateWithAuthorization(NULL, CFSTR("macosvpn"), NULL, [VPNAuthorizations create]);
@@ -107,7 +97,7 @@
     return 31;
   }
 
-  // If everything will work out fine, we will return exit code 0
+  // If everything works out, we will return exit code 0
   int exitCode = 0;
 
   NSArray *serviceConfigs = [VPNArguments serviceConfigs];
