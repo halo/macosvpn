@@ -11,7 +11,7 @@ This is a command-line tool written in Objective-C (transitioning to Swift) that
 It supports both *L2TP over IPSec* and *Cisco IPSec*.
 Integration tests are run on Travis to ensure it's working properly.
 
-![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_0.2.0-rc1.png)
+![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_0.2.0-rc1.jpg)
 
 ## Requirements
 
