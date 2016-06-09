@@ -2,6 +2,7 @@
 [![Homebrew](https://img.shields.io/homebrew/v/macosvpn.svg?style=flat)](https://github.com/Homebrew/homebrew-core/blob/master/Formula/macosvpn.rb)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/halo/macosvpn/blob/master/LICENSE.md)
 [![Build Status](https://travis-ci.org/halo/macosvpn.svg?branch=master)](https://travis-ci.org/halo/macosvpn)
+[![Codebeat](https://codebeat.co/badges/b60656d2-1cc8-4644-a1a9-4a35177476fb)](https://codebeat.co/projects/github-com-halo-macosvpn)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/halo/macosvpn)
 
 ## Create Mac OS VPNs programmatically
