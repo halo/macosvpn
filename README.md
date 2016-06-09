@@ -36,7 +36,7 @@ If not, you can run this curl command to get the compiled executable from Github
 
 ```bash
 # Make sure first that the directory /usr/local/bin exists
-sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.2.0/macosvpn > /usr/local/bin/macosvpn"
+sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.2.1/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 

@@ -1,3 +1,9 @@
+# 0.2.1
+
+Bugfix:
+
+* Homebrew has the buggy "Release" configuration in `0.2.0` which has now been fixed. So we need a new version.
+
 ## 0.2.0
 
 Removed:
