@@ -17,7 +17,7 @@ module Macosvpn
   end
 
   def self.executable
-    Pathname.new 'build/Debug/macosvpn'
+    Pathname.new 'build/Release/macosvpn'
   end
 
 end
