@@ -8,14 +8,14 @@
 
 This is a command-line tool written in Objective-C (transitioning to Swift) that can create VPN network configurations on your Mac.
 
-It supports both L2TP over IPSec and Cisco IPSec.
-Integration tests are run on Travis using Ruby rspec to ensure it's working.
+It supports both *L2TP over IPSec* and *Cisco IPSec*.
+Integration tests are run on Travis to ensure it's working properly.
 
-![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_0.2.0-beta.png)
+![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_0.2.0-rc1.png)
 
 ## Requirements
 
-* Mac OS El Capitan, Yosemite, or Mavericks
+* macOS El Capitan, Yosemite, or Mavericks
 * Administrator privileges (i.e. you've got to run it with sudo)
 
 **Why sudo?**
@@ -35,7 +35,8 @@ brew install macosvpn
 If not, you can run this curl command to get the compiled executable from Github:
 
 ```bash
-sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.1.4/macosvpn > /usr/local/bin/macosvpn"
+# Make sure first that the directory /usr/local/bin exists
+sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.2.0/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
@@ -45,7 +46,7 @@ If that freaks you out (it should), you can compile it yourself if you have Xcod
 git clone https://github.com/halo/macosvpn.git
 cd macosvpn
 xcodebuild -configuration Debug
-build/Debug/macosvpn --help
+build/Debug/macosvpn
 ```
 
 You can always run `macosvpn --version` to see the version currently installed on your system
@@ -57,14 +58,12 @@ Creating a single L2TP over IPSec VPN Service:
 
     sudo macosvpn create --l2tp Atlantic --endpoint atlantic.example.com --username Alice --password p4ssw0rd --shared-secret s3same
 
-Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.  A Cisco IPSec groupname can be specified with `--groupname`.
+* Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.
+* Groupnames can be specified with `--groupname`.
+* Add `--force` to overwrite an existing VPN with the same name.
 
-When creating an L2TP service, you can add the `--split` flag to **not** force all traffic over VPN.
-
-By default, enables the option "Send all traffic over VPN connection",
-also known as wildcard routing.   To disable this option, include the `--split`
-flag to use the VPN Service for specific routes only.  Split tunnelling may
-require use of [`/etc/ppp/ip-up` and `/etc/ppp/ip-down` scripts](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man8/pppd.8.html).
+By default, L2TP is created with the "Send all traffic over VPN connection" option, also known as wildcard routing.
+You can add the `--split` flag to **not** force all traffic over VPN.
 
 #### Shortcuts
 
@@ -80,10 +79,6 @@ The same command as short as possible:
 
     sudo macosvpn create -leups Atlantic atlantic.example.com Alice p4ssw0rd s3same
 
-Simular command for Cisco VPN
-
-    sudo macosvpn create -c Atlantic -e atlantic.example.com -u Alice -p p4ssw0rd -g EasyVPNGRoup -s s3same
-
 
 #### Creating multiple VPNs at once
 
@@ -94,17 +89,19 @@ Repeat the arguments for creating multiple Services at once (no matter which sho
 
 ## Troubleshooting
 
-* If you get a warning that says "Creating Keychain item failed: write permissions error", you need to run the application with `sudo`.
 * If you're stuck, try to add the `--debug` flag and see if it says something useful.
 
 ## Limitations
 
-* If a VPN with the given name already exists, a new one with an incremental number is created.
-  In the future there should be a `--force` option to re-create it
+* It is not possible to add so called "configurations" for L2TP. See [this issue](https://github.com/halo/macosvpn/issues/17).
 
 ## Development
 
-The master branch is always edge and not ready for production.
+The `master` branch is always edge and may not be ready for production.
+
+Integration tests are run using ruby. Simply look at the `before_script` and `script` sections in the [.travis.yml](https://github.com/halo/macosvpn/blob/master/.travis.yml#L6) file to see how to run the tests on your Mac.
+
+When using Xcode it's important to remember that you need to compile this app in the `Debug` configuration and not the `Release` configuration. Otherwise you will end up with unexplainable [random crashes](https://github.com/halo/macosvpn/issues/13#issuecomment-217252496).
 
 Useful commands for debugging:
 
@@ -117,9 +114,6 @@ open /Library/Preferences/SystemConfiguration/preferences.plist
 # Show all Keychain Items and their access policies
 security dump-keychain -a /Library/Keychains/System.keychain
 ```
-
-Note to self: Compiling with "Release" configuration causes random crashes. It needs to be "Debug".
-See https://github.com/halo/macosvpn/issues/13#issuecomment-217252496
 
 ## History and credits
 
@@ -134,7 +128,9 @@ Finally, I [learned from over here](http://stackoverflow.com/questions/24363935)
 
 ## Special thanks
 
-To the beautiful 3rd party libraries I was allowed to use:
+Thank you for reporting bugs. And thanks to all keen [contributors](https://github.com/halo/macosvpn/graphs/contributors).
+
+These are the 3rd party libraries I was allowed to use:
 
 * [NSError/ArgumentParser](https://github.com/NSError/ArgumentParser)
 * [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)
@@ -142,4 +138,4 @@ To the beautiful 3rd party libraries I was allowed to use:
 
 ## License
 
-MIT 2015 halo. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
+MIT 2016 halo. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
