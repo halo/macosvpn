@@ -16,10 +16,10 @@
 
 @interface VPNServiceConfig : NSObject
 
-@property (atomic) NSUInteger type;
+@property (atomic) uint8_t type;
 @property (strong) NSString *serviceID;
 @property (strong) NSString *name;
-@property (nonatomic) NSString *endpoint;
+@property (nonatomic, assign) NSString *endpoint;
 @property (strong) NSString *username;
 @property (strong) NSString *password;
 @property (strong) NSString *sharedSecret;

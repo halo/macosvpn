@@ -22,7 +22,6 @@
 #import "VPNController.h"
 #import "VPNKeychain.h"
 #import "VPNServiceConfig.h"
-#import "VPNServiceCreator.h"
 
 // This is were the magic happens.
 // Exit status codes: 30-59

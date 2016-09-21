@@ -43,6 +43,7 @@ static const char * trustedAppPaths[] = {
 
 // This will create a PPP Password Keychain Item
 + (int) createPasswordKeyChainItem:(NSString*)label forService:(NSString*)service withAccount:(NSString*)account andPassword:(NSString*)password {
+  service = [NSString stringWithFormat:@"%@.XAUTH", service];
   return [self createItem:label withService:service account:account description:@"PPP Password" andPassword:password];
 }
 

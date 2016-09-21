@@ -140,7 +140,8 @@
   vals[count++] = (__bridge CFStringRef)self.username;
   
   keys[count]   = kSCPropNetIPSecXAuthPassword;
-  vals[count++] = (__bridge CFStringRef)self.serviceID;
+  vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.XAUTH", self.serviceID];
+  //vals[count++] = (__bridge CFStringRef)self.serviceID;
 
   keys[count]   = kSCPropNetIPSecXAuthPasswordEncryption;
   vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
