@@ -1,3 +1,9 @@
+# 0.3.0 (beta)
+
+Bugfix/Features:
+
+* macOS Sierra compatibility (might break El Capitan, needs more testing)
+
 # 0.2.1
 
 Bugfix:
