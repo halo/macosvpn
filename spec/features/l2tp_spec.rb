@@ -57,7 +57,7 @@ RSpec.describe 'Creating a VPN Service' do
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestL2TP'
       expect(output).to include 'If you want me to overwrite it'
-      expect(status).to eq 44
+      expect(status).to eq 53
 
       # Expect nothing to have changed
 
@@ -66,6 +66,7 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.name).to eq 'VPNTestL2TP'
       expect(service.ipsec_authentication_method).to eq 'SharedSecret'
       expect(service.ipsec_shared_secret_id).to be_present
+      expect(service.ipsec_shared_secret_id).to end_with '.SS'
       expect(service.ipsec_shared_secret_encryption).to eq 'Keychain'
       expect(service.ipsec_local_identifier).to eq 'VPNL2TPGroup'
       expect(service.ipsec_local_identifier_type).to eq 'KeyID'
@@ -78,6 +79,7 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.interface_subtype).to eq 'L2TP'
       expect(service.ppp_auth_name).to eq 'Alice'
       expect(service.ppp_auth_password_id).to be_present
+      expect(service.ppp_auth_password_id).to_not include 'XAUTH'
       expect(service.ppp_auth_password_encryption).to eq 'Keychain'
       expect(service.ppp_common_remote_address).to eq 'vpntestl2tp.example.com'
 

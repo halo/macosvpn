@@ -88,13 +88,13 @@ public class VPNHelp: NSObject {
     
     // Displaying the help should not be interpreted as a success.
     // That's why we exit with a non-zero status code.
-    return 99
+    return VPNExitCode.ShowingHelp
   }
   
   public class func showVersion() -> Int32 {
     DDLogDebug("Showing version...")
     print(self.currentVersion());
-    return 98
+    return VPNExitCode.ShowingVersion
   }
   
   private class func currentYear() -> String {

@@ -43,7 +43,7 @@
   DDLogInfo(@"");
 
   // Mention that there were no errors so we can trace bugs more easily.
-  if (exitCode == 0) {
+  if (exitCode == 0) { // VPNExitCode.Success
     DDLogInfo(@"Finished without errors.");
     DDLogInfo(@"");
   }
@@ -62,7 +62,7 @@
 
   } else {
     DDLogError(@"Unknown command. Try --help for instructions.");
-    return 30;
+    return 20; // VPNExitCode.UnknownCommand
   }
 }
 
@@ -81,9 +81,9 @@
   // So, for now, we will simply bail out unless you called this command line application with the good old `sudo`.
   if (getuid() != 0) {
     DDLogError(@"Sorry, without superuser privileges I won't be able to write to the System Keychain and thus cannot create a VPN service.");
-    return 31;
+    return 31; // VPNExitCode.PrivilegesRequired
   }
-  
+
   // Obtaining permission to modify network settings
   SCPreferencesRef prefs = SCPreferencesCreateWithAuthorization(NULL, CFSTR("macosvpn"), NULL, [VPNAuthorizations create]);
 
@@ -93,7 +93,7 @@
     DDLogDebug(@"Gained superhuman rights.");
   } else {
     DDLogError(@"Sorry, without superuser privileges I won't be able to add any VPN interfaces.");
-    return 31;
+    return 32; // VPNExitCode.LockingPreferencesFailed
   }
 
   // If everything works out, we will return exit code 0
@@ -102,7 +102,7 @@
   NSArray *serviceConfigs = [VPNArguments serviceConfigs];
   if (serviceConfigs.count == 0) {
     DDLogError(@"You did not specify any interfaces for me to create. Try --help for more information.");
-    return 43;
+    return 22; // VPNExitCode.MissingServices
   }
 
   // Each desired interface configuration will be processed in turn.
@@ -110,7 +110,7 @@
   for (VPNServiceConfig *config in serviceConfigs) {
     exitCode = (int)[VPNServiceCreator createService:config usingPreferencesRef:prefs];
     // This particular interface could not be created. Let's stop processing the others.
-    if (exitCode != 0) break;
+    if (exitCode != 0) break; // VPNExitCode.Success
   }
 
   // We're done, other processes may modify the system configuration again

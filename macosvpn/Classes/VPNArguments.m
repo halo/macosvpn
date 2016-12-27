@@ -82,7 +82,7 @@
     if (!config.endpoint) {
       DDLogError(@"Error: You did not provide an endpoint for service <%@>", config.name);
       DDLogDebug(@"%@", config);
-      exit(50);
+      exit(21); // VPNExitCode.MissingEndpoint
     }
 
     config.username = [self extractArgumentForSignature:self.usernameSig withFallbackSignature:nil atIndex:i];

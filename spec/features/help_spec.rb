@@ -5,7 +5,7 @@ RSpec.describe 'Showing Help' do
   context 'no arguments' do
     it 'shows the Help' do
       output, status = Macosvpn.call arguments: nil
-      expect(status).to eq 99
+      expect(status).to eq 11
       expect(output).to include 'Usage:'
       expect(output).to include 'sudo macosvpn'
       expect(output).to include 'https://github.com/halo/macosvpn'
@@ -15,7 +15,7 @@ RSpec.describe 'Showing Help' do
   context 'only the --help flag' do
     it 'shows the Help' do
       output, status = Macosvpn.call arguments: '--help'
-      expect(status).to eq 99
+      expect(status).to eq 11
       expect(output).to include 'Usage:'
       expect(output).to include 'sudo macosvpn'
       expect(output).to include 'https://github.com/halo/macosvpn'
@@ -25,7 +25,7 @@ RSpec.describe 'Showing Help' do
   context 'some command including the --help flag' do
     it 'shows the Help' do
       output, status = Macosvpn.call arguments: 'create --cisco Iceland --help'
-      expect(status).to eq 99
+      expect(status).to eq 11
       expect(output).to include 'Usage:'
       expect(output).to include 'sudo macosvpn'
       expect(output).to include 'https://github.com/halo/macosvpn'

@@ -66,7 +66,7 @@
 - (CFDictionaryRef) L2TPIPSecConfig {
   uint size;
   if (self.localIdentifier) size = 5; else size = 3;
-  
+
   CFStringRef keys[size];
   CFStringRef vals[size];
   CFIndex count = 0;
@@ -82,15 +82,15 @@
 
   if (self.localIdentifier) {
     DDLogDebug(@"Assigning group name <%@> to L2TP service config", self.localIdentifier);
-    
+
     keys[count]   = kSCPropNetIPSecLocalIdentifier;
     vals[count++] = (__bridge CFStringRef)self.localIdentifier;
-    
+
     keys[count]    = kSCPropNetIPSecLocalIdentifierType;
     vals[count++]  = kSCValNetIPSecLocalIdentifierTypeKeyID;
   }
 
-  
+
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
 
@@ -119,7 +119,7 @@
 - (CFDictionaryRef) ciscoConfig {
   uint size;
   if (self.localIdentifier) size = 9; else size = 7;
-  
+
   CFStringRef keys[size];
   CFStringRef vals[size];
   CFIndex count = 0;
@@ -129,19 +129,18 @@
 
   keys[count]   = kSCPropNetIPSecSharedSecret;
   vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.SS", self.serviceID];
-  
+
   keys[count]   = kSCPropNetIPSecSharedSecretEncryption;
   vals[count++] = kSCValNetIPSecSharedSecretEncryptionKeychain;
-  
+
   keys[count]   = kSCPropNetIPSecRemoteAddress;
   vals[count++] = (__bridge CFStringRef)self.endpoint;
 
   keys[count]   = kSCPropNetIPSecXAuthName;
   vals[count++] = (__bridge CFStringRef)self.username;
-  
+
   keys[count]   = kSCPropNetIPSecXAuthPassword;
   vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.XAUTH", self.serviceID];
-  //vals[count++] = (__bridge CFStringRef)self.serviceID;
 
   keys[count]   = kSCPropNetIPSecXAuthPasswordEncryption;
   vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
@@ -151,7 +150,7 @@
 
     keys[count]   = kSCPropNetIPSecLocalIdentifier;
     vals[count++] = (__bridge CFStringRef)self.localIdentifier;
-    
+
     keys[count]    = kSCPropNetIPSecLocalIdentifierType;
     vals[count++]  = kSCValNetIPSecLocalIdentifierTypeKeyID;
   }

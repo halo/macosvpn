@@ -65,6 +65,8 @@ static const char * trustedAppPaths[] = {
 // A generic method to create Keychain Items holding Network service passwords
 + (int) createItem:(NSString*)label withService:(NSString*)service account:(NSString*)account description:(NSString*)description andPassword:(NSString*)password {
 
+  DDLogDebug(@"Creating System Keychain for %@", label);
+
   // This variable will hold all sorts of operation status responses
   OSStatus status;
 

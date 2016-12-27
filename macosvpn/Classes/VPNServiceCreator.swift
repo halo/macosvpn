@@ -18,7 +18,6 @@
 import SystemConfiguration
 
 // This is were the magic happens.
-// Exit status codes: 30-59
 public class VPNServiceCreator: NSObject {
 
   /******************
@@ -26,7 +25,7 @@ public class VPNServiceCreator: NSObject {
    ******************/
 
   // This method creates one VPN interface according to the desired configuration
-  public class func createService(config: VPNServiceConfig, usingPreferencesRef: SCPreferencesRef) -> Int {
+  public class func createService(config: VPNServiceConfig, usingPreferencesRef: SCPreferencesRef) -> Int32 {
 
     DDLogDebug("Creating new \(config.humanType) Service using \(config)")
 
@@ -50,14 +49,13 @@ public class VPNServiceCreator: NSObject {
 
     default:
       DDLogError("Sorry, this service type is not yet supported")
-      return 32
+      return VPNExitCode.UnsupportedInterfaceType
     }
 
     if initialTopInterface == nil {
       DDLogError("kSCNetworkInterfaceIPv4 = \(kSCNetworkInterfaceIPv4)")
       DDLogError("kSCNetworkInterfaceTypePPP = \(kSCNetworkInterfaceTypePPP)")
-      DDLogError("Boom")
-      return 998
+      return VPNExitCode.InterfaceInitializationFailed
     }
 
     DDLogDebug("Instantiating interface references...")
@@ -65,8 +63,7 @@ public class VPNServiceCreator: NSObject {
     guard let service = SCNetworkServiceCreate(usingPreferencesRef, initialTopInterface!) else {
       DDLogError("usingPreferencesRef = \(usingPreferencesRef)")
       DDLogError("topInterface = \(initialTopInterface)")
-      DDLogError("Boom")
-      return 998
+      return VPNExitCode.NetworkServiceCreationFailed
     }
 
     DDLogDebug("That service is to have a name")
@@ -75,7 +72,7 @@ public class VPNServiceCreator: NSObject {
       DDLogDebug("That went well it got the name \(config.name)")
     } else {
       DDLogDebug("That was problematic")
-      return 999
+      return VPNExitCode.NetworkServiceNamingFailed
     }
     DDLogDebug("And we also would like to know the internal ID of this service")
 
@@ -84,23 +81,13 @@ public class VPNServiceCreator: NSObject {
     config.serviceID = serviceIDCF as String!
 
 
-    //config.serviceID = SCNetworkServiceGetServiceID(service)
-    // Interestingly enough, the interface variables in itself are now worthless.
-    // We used them to create the service and that's it, we cannot modify or use them any more.
-    DDLogDebug("Deallocating obsolete interface references...")
-    //CFRelease(topInterface)
-
-    //topInterface = nil
-    //bottomInterface = nil
-
     DDLogDebug("Reloading top Interface...")
     // Because, if we would like to modify the interface, we first need to freshly fetch it from the service
     // See https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html
     let topInterface = SCNetworkServiceGetInterface(service)
-    // Error Codes 50-59
-
 
     switch config.type {
+
     case VPNServiceType.L2TPOverIPSec:
       DDLogDebug("Configuring \(config.humanType) Service")
       // Let's apply all configuration to the PPP interface
@@ -110,7 +97,7 @@ public class VPNServiceCreator: NSObject {
       }
       else {
         DDLogError("Error: Could not configure PPP interface for service \(config.name)")
-        return 50
+        return VPNExitCode.PPPInterfaceConfigurationFailed
       }
       // Now let's apply the shared secret to the IPSec part of the L2TP/IPSec Interface
       let thingy:CFString = "IPSec"
@@ -119,88 +106,61 @@ public class VPNServiceCreator: NSObject {
       }
       else {
         DDLogError("Error: Could not configure IPSec on PPP interface for service \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-        return 35
+        return VPNExitCode.IPSecInterfaceConfigurationFailed
       }
       break
 
-      case VPNServiceType.CiscoIPSec:
-        DDLogDebug("Configuring \(config.humanType) Service")
-        // Let's apply all configuration data to the Cisco IPSec interface
-        // As opposed to L2TP, here all configuration goes to the top Interface, i.e. the only Interface there is.
-        if SCNetworkInterfaceSetConfiguration(topInterface!, config.ciscoConfig) {
-          DDLogDebug("Successfully configured Cisco IPSec interface of service \(config.name)")
-        }
-        else {
-          DDLogError("Error: Could not configure Cisco IPSec interface for service \(config.name)")
-          return 51
-        }
-      default:
-        DDLogError("Error: I cannot handle this interface type yet.")
-        return 59
+    case VPNServiceType.CiscoIPSec:
+      DDLogDebug("Configuring \(config.humanType) Service")
+      // Let's apply all configuration data to the Cisco IPSec interface
+      // As opposed to L2TP, here all configuration goes to the top Interface, i.e. the only Interface there is.
+      if SCNetworkInterfaceSetConfiguration(topInterface!, config.ciscoConfig) {
+        DDLogDebug("Successfully configured Cisco IPSec interface of service \(config.name)")
       }
-      
-    // Error Codes ...
+      else {
+        DDLogError("Error: Could not configure Cisco IPSec interface for service \(config.name)")
+        return VPNExitCode.CiscoInterfaceConfigurationFailed
+      }
+      break
+
+    default:
+      DDLogError("Error: I cannot handle this interface type yet.")
+      return VPNExitCode.CreatorDoesNotSupportInterfaceType
+    }
+
     DDLogDebug("Adding default protocols (DNS, etc.) to service \(config.name)...")
     if !SCNetworkServiceEstablishDefaultConfiguration(service) {
       DDLogError("Error: Could not establish a default service configuration for \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-      return 36
+      return VPNExitCode.DefaultConfigurationFailed
     }
-
 
     DDLogDebug("Fetching set of all available network services...")
     guard let networkSet = SCNetworkSetCopyCurrent(usingPreferencesRef) else {
       DDLogError("Error: Could not fetch current network set when creating \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-      return 37
+      return VPNExitCode.CopyingCurrentNetworkSetFailed
     }
 
-    /*
-    if networkSet != nil {
-      DDLogDebug("Yep, here it is: \(networkSet)")
-    } else {
-    }
-*/
     guard let services = SCNetworkSetCopyServices(networkSet) else {
-      DDLogError("Could not retrieve network set")
-      return 000
+      DDLogError("Could not retrieve network services set")
+      return VPNExitCode.CopyingNetworkServicesFailed
     }
-
-    DDLogDebug("Let's see how many services we have in total")
-
-    //let arraySize = CFArrayGetCount(services)
-    //DDLogDebug("Ok we have \(arraySize)")
 
     for serviceInstanceWrapper in services {
       let existingService = serviceInstanceWrapper as! SCNetworkService
       DDLogDebug("existingService = \(existingService)")
 
-   // }
-
-    //for i in 0..<arraySize {
-      //DDLogDebug("Looking at no \(i)")
-
-     // let unmanagedObject: UnsafePointer<Void> = CFArrayGetValueAtIndex(services, i)
-     // let existingService = unsafeBitCast(unmanagedObject, SCNetworkServiceRef.self)
-
-      //DDLogDebug("existingService = \(existingService)")
-
       guard let serviceNameCF = SCNetworkServiceGetName(existingService) else {
         DDLogError("SCNetworkServiceGetName failed")
-        return 999
+        return VPNExitCode.GettingServiceNameFailed
       }
 
       guard let serviceIDCF = SCNetworkServiceGetServiceID(existingService) else {
         DDLogError("SCNetworkServiceGetServiceID failed")
-        return 999
+        return VPNExitCode.GettingServiceIDFailed
       }
-
-      //let serviceNameNS: NSString = serviceNameCF as NSString
-      //let serviceName: String = serviceNameNS as String
-
-
 
       let serviceName = serviceNameCF as String
       DDLogDebug("serviceName = \(serviceName)")
-
 
       let serviceID = serviceIDCF as String
       DDLogDebug("serviceID = \(serviceID)")
@@ -210,13 +170,12 @@ public class VPNServiceCreator: NSObject {
         continue
       }
 
-
       DDLogWarn("You already have a service \(config.name) defined.")
       DDLogDebug("That Service has the ID \(serviceID)")
 
       if !VPNArguments.forceRequested() {
         DDLogWarn("If you want me to overwrite it, you need to specify the --force flag");
-        return 44;
+        return VPNExitCode.RefusingToOverwriteExistingService;
       }
 
       //SCNetworkServiceRef serviceToDelete = SCNetworkServiceCopy(prefs, (__bridge CFStringRef)(serviceID));
@@ -226,24 +185,21 @@ public class VPNServiceCreator: NSObject {
         DDLogDebug("Successfully removed duplicate VPN Service \(config.name).")
       } else {
         DDLogError("Error: Could not remove duplicate VPN service \(config.name) from current network set. \(SCErrorString(SCError())) (Code \(SCError()))")
-        return 42
+        return VPNExitCode.RemovingDuplicateServiceFailed
       }
-
     }
-
 
     DDLogDebug("Fetching IPv4 protocol of service \(config.name)...")
     let serviceProtocol = SCNetworkServiceCopyProtocol(service, kSCNetworkProtocolTypeIPv4)
     if serviceProtocol == nil {
       DDLogError("Error: Could not fetch IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-      return 39
+      return VPNExitCode.CopyingServiceProtocolFailed
     }
     DDLogDebug("Configuring IPv4 protocol of service \(config.name)...")
     if !SCNetworkProtocolSetConfiguration(serviceProtocol!, config.L2TPIPv4Config) {
       DDLogError("Error: Could not configure IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-      return 40
+      return VPNExitCode.SettingNetworkProtocolConfigFailed
     }
-
 
     DDLogDebug("Adding Service \(service) to networkSet \(networkSet)...")
 
@@ -252,45 +208,42 @@ public class VPNServiceCreator: NSObject {
     } else {
       if SCError() == 1005 {
         DDLogWarn("Skipping VPN Service \(config.humanType) because it already exists.")
-        return 0
+        return VPNExitCode.Success
       }
       else {
         DDLogError("Error: Could not add new VPN service %@ to current network set. \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-        return 38
+        return VPNExitCode.AddingNetworkServiceFailed
       }
     }
-
-
 
     DDLogDebug("Preparing to add Keychain items for service \(config.name)...")
     if config.password != nil {
       let code = VPNKeychain.createPasswordKeyChainItem(config.name, forService: config.serviceID, withAccount: config.username, andPassword: config.password!)
       if code > 0 {
         DDLogError("Error: Could not createPasswordKeyChainItem. \(config.name). \(code)")
-        return 999
+        return VPNExitCode.CreatingPasswordKeychainItemFailed
       }
     }
     if config.sharedSecret != nil {
       let code = VPNKeychain.createSharedSecretKeyChainItem(config.name, forService: config.serviceID, withPassword: config.sharedSecret)
       if code > 0 {
         DDLogError("Error: Could not createSharedSecretKeyChainItem. \(config.name). \(code)")
-        return 999
+        return VPNExitCode.CreatingSharedSecretKeychainItemFailed
       }
     }
-
 
     DDLogDebug("Commiting all changes including service \(config.name)...")
     if !SCPreferencesCommitChanges(usingPreferencesRef) {
       DDLogError("Error: Could not commit preferences with service. \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-      return 41
+      return VPNExitCode.CommingingPreferencesFailed
     }
     if !SCPreferencesApplyChanges(usingPreferencesRef) {
       DDLogError("Error: Could not apply changes with service. \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-      return 42
+      return VPNExitCode.ApplyingPreferencesFailed
     }
 
     DDLogInfo("Successfully created \(config.humanType) VPN \(config.name) with ID \(config.serviceID)")
 
-    return 0
+    return VPNExitCode.Success
   }
 }

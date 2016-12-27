@@ -21,11 +21,9 @@ public class VPNAuthorizations: NSObject {
     let status = AuthorizationCreate(nil, nil, self.flags(), &auth)
     
     if status == errAuthorizationSuccess {
-      //NSLog(@"Successfully obtained Authorization reference");
-    }
-    else {
-      //NSLog("Could not obtain Authorization reference")
-      exit(101)
+      // NSLog(@"Successfully obtained Authorization reference");
+    } else {
+      exit(VPNExitCode.NoAuthorization)
     }
     return auth
   }
