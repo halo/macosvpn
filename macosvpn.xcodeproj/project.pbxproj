@@ -73,6 +73,7 @@
 		9D6198CA198112DA00FC01E8 /* NSSetFunctional.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61980C198111F900FC01E8 /* NSSetFunctional.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9D6198CD1981151D00FC01E8 /* VPNArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6198CC1981151D00FC01E8 /* VPNArguments.m */; };
 		9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */; };
+		C20958631E12E76A009D2EC3 /* CFArray+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20958621E12E76A009D2EC3 /* CFArray+Sequence.swift */; };
 		C233AF811C6E7DCD00F39700 /* VPNHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* VPNHelp.swift */; };
 		C26157471D928F29001AD818 /* VPNServiceCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157461D928F29001AD818 /* VPNServiceCreator.swift */; };
 		C26157491D9295E6001AD818 /* VPNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157481D9295E6001AD818 /* VPNCommand.swift */; };
@@ -253,6 +254,7 @@
 		9D6198CC1981151D00FC01E8 /* VPNArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNArguments.m; sourceTree = "<group>"; };
 		9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNServiceConfig.h; sourceTree = "<group>"; };
 		9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNServiceConfig.m; sourceTree = "<group>"; };
+		C20958621E12E76A009D2EC3 /* CFArray+Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFArray+Sequence.swift"; sourceTree = "<group>"; };
 		C233AF801C6E7DCD00F39700 /* VPNHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelp.swift; sourceTree = "<group>"; };
 		C233AF821C6E815F00F39700 /* macosvpn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "macosvpn-Bridging-Header.h"; path = "macosvpn/macosvpn-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		C26157461D928F29001AD818 /* VPNServiceCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceCreator.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				C26157481D9295E6001AD818 /* VPNCommand.swift */,
 				C261574A1D92961C001AD818 /* VPNServiceType.swift */,
 				C26157461D928F29001AD818 /* VPNServiceCreator.swift */,
+				C20958621E12E76A009D2EC3 /* CFArray+Sequence.swift */,
 			);
 			name = Classes;
 			path = macosvpn/Classes;
@@ -648,6 +651,7 @@
 				9D61987E198112DA00FC01E8 /* CPErrorToken.m in Sources */,
 				9D619880198112DA00FC01E8 /* CPGrammar.m in Sources */,
 				9D619882198112DA00FC01E8 /* CPGrammarInternal.m in Sources */,
+				C20958631E12E76A009D2EC3 /* CFArray+Sequence.swift in Sources */,
 				C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */,
 				9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */,
 				9D619884198112DA00FC01E8 /* CPGrammarPrivate.m in Sources */,
