@@ -4,6 +4,10 @@ Bugfix:
 
 * Resolving an issue where L2TP Keychain Items were not associated with their network service.
 
+Breaking Changes:
+
+* Most exit codes changed so as to introduce a consistent numbering sequence.
+
 # 0.3.0
 
 Bugfix/Features:
@@ -48,7 +52,7 @@ Features:
 
 ## 0.1.2
 
-Features
+Features:
 
 * Improved help and debugging logs
 * Fixed some typos
