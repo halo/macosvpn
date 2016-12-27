@@ -30,6 +30,7 @@ I don't want you to have to deal with the complexity a HelperTool can entail (GU
 If you have [Homebrew](http://brew.sh) installed, you can simply start a Terminal and run:
 
 ```bash
+# See https://github.com/Homebrew/homebrew-core/search?q=macosvpn&type=Issues
 brew install macosvpn
 ```
 
@@ -37,7 +38,7 @@ If not, you can run this curl command to get the compiled executable from Github
 
 ```bash
 # Make sure first that the directory /usr/local/bin exists
-sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.2.1/macosvpn > /usr/local/bin/macosvpn"
+sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.3.1/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
