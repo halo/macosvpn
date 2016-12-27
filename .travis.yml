@@ -1,7 +1,7 @@
 sudo: required
 osx_image: xcode8
 language: objective-c
-rvm: 2.2.4
+rvm: 2.2.5
 
 before_script:
   - bundle install
