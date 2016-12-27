@@ -1,4 +1,10 @@
-# 0.3.0 (beta)
+# 0.3.1
+
+Bugfix:
+
+* Resolving an issue where L2TP Keychain Items were not associated with their network service.
+
+# 0.3.0
 
 Bugfix/Features:
 
