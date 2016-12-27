@@ -108,7 +108,7 @@
   // Each desired interface configuration will be processed in turn.
   // The configuration comes from the command line arguments and is passed on to the create method.
   for (VPNServiceConfig *config in serviceConfigs) {
-    exitCode = [VPNServiceCreator createService:config usingPreferencesRef:prefs];
+    exitCode = (int)[VPNServiceCreator createService:config usingPreferencesRef:prefs];
     // This particular interface could not be created. Let's stop processing the others.
     if (exitCode != 0) break;
   }
