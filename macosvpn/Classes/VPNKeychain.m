@@ -43,18 +43,21 @@ static const char * trustedAppPaths[] = {
 
 // This will create a PPP Password Keychain Item
 + (int) createPasswordKeyChainItem:(NSString*)label forService:(NSString*)service withAccount:(NSString*)account andPassword:(NSString*)password {
+  DDLogDebug(@"Creating Password Keychain Item with ID %@", service);
   return [self createItem:label withService:service account:account description:@"PPP Password" andPassword:password];
 }
 
 // This will create an IPSec Shared Secret Keychain Item
 + (int) createSharedSecretKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password {
   service = [NSString stringWithFormat:@"%@.SS", service];
+  DDLogDebug(@"Creating IPSec Shared Secret Keychain Item with ID %@", service);
   return [self createItem:label withService:service account:@"" description:@"IPSec Shared Secret" andPassword:password];
 }
 
 // This will create an Cisco IPSec XAuth Keychain Item
 + (int) createXAuthKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password {
   service = [NSString stringWithFormat:@"%@.XAUTH", service];
+  DDLogDebug(@"Creating Cisco IPSec XAuth Keychain Item with ID %@", service);
   return [self createItem:label withService:service account:@"" description:@"IPSec XAuth Password" andPassword:password];
 }
 

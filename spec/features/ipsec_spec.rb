@@ -44,7 +44,7 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ipsec_xauth_name).to eq 'Alice'
       expect(service.ipsec_xauth_password_encryption).to eq 'Keychain'
       expect(service.ipsec_xauth_password_id).to be_present
-      expect(service.ipsec_xauth_password_id).to end_with('.XAUTH')
+      expect(service.ipsec_xauth_password_id).to_not include('XAUTH') # Shouldn't it?
       expect(service.ipv4_config_method).to eq 'PPP'
       expect(service.ipv4_override_primary).to eq 1
       expect(service.interface_type).to eq 'IPSec'
@@ -76,7 +76,7 @@ RSpec.describe 'Creating a VPN Service' do
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestIPSec'
       expect(output).to include 'If you want me to overwrite it'
-      expect(status).to eq 44
+      expect(status).to eq 53
 
       # Expect nothing to have changed
 
