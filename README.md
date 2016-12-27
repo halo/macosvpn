@@ -16,7 +16,7 @@ Integration tests are run on Travis to ensure it's working properly.
 
 ## Requirements
 
-* macOS El Capitan, Yosemite, or Mavericks
+* macOS Sierra, El Capitan, Yosemite, or Mavericks
 * Administrator privileges (i.e. you've got to run it with sudo)
 
 **Why sudo?**
