@@ -17,22 +17,6 @@
 // Vendor dependencies
 import SystemConfiguration
 
-extension CFArray: SequenceType {
-  public func generate() -> AnyGenerator<AnyObject> {
-    var index = -1
-    let maxIndex = CFArrayGetCount(self)
-    return AnyGenerator{
-      index += 1
-      guard index < maxIndex else {
-        return nil
-      }
-      let unmanagedObject: UnsafePointer<Void> = CFArrayGetValueAtIndex(self, index)
-      let rec = unsafeBitCast(unmanagedObject, AnyObject.self)
-      return rec
-    }
-  }
-}
-
 // This is were the magic happens.
 // Exit status codes: 30-59
 public class VPNServiceCreator: NSObject {
@@ -74,7 +58,6 @@ public class VPNServiceCreator: NSObject {
       DDLogError("kSCNetworkInterfaceTypePPP = \(kSCNetworkInterfaceTypePPP)")
       DDLogError("Boom")
       return 998
-
     }
 
     DDLogDebug("Instantiating interface references...")
@@ -86,9 +69,6 @@ public class VPNServiceCreator: NSObject {
       return 998
     }
 
-
-
-
     DDLogDebug("That service is to have a name")
     let success = SCNetworkServiceSetName(service, (config.name as CFString))
     if success {
@@ -98,8 +78,6 @@ public class VPNServiceCreator: NSObject {
       return 999
     }
     DDLogDebug("And we also would like to know the internal ID of this service")
-
-
 
     let serviceIDCF = SCNetworkServiceGetServiceID(service)
     DDLogDebug("Look at my service ID: \(serviceIDCF!)")
