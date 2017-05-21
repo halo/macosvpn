@@ -18,20 +18,20 @@
 import SystemConfiguration
 
 // This is were the magic happens.
-public class VPNServiceCreator: NSObject {
+open class VPNServiceCreator: NSObject {
 
   /******************
    * PUBLIC METHODS *
    ******************/
 
   // This method creates one VPN interface according to the desired configuration
-  public class func createService(config: VPNServiceConfig, usingPreferencesRef: SCPreferencesRef) -> Int32 {
+  open class func createService(_ config: VPNServiceConfig, usingPreferencesRef: SCPreferences) -> Int32 {
 
     DDLogDebug("Creating new \(config.humanType) Service using \(config)")
 
     // These variables will hold references to our new interfaces
-    let initialTopInterface: SCNetworkInterfaceRef!
-    let initialBottomInterface: SCNetworkInterfaceRef!
+    let initialTopInterface: SCNetworkInterface!
+    let initialBottomInterface: SCNetworkInterface!
 
     switch config.type {
 
@@ -92,7 +92,7 @@ public class VPNServiceCreator: NSObject {
       DDLogDebug("Configuring \(config.humanType) Service")
       // Let's apply all configuration to the PPP interface
       // Specifically, the servername, account username and password
-      if SCNetworkInterfaceSetConfiguration(topInterface!, config.L2TPPPPConfig) {
+      if SCNetworkInterfaceSetConfiguration(topInterface!, config.l2TPPPPConfig) {
         DDLogDebug("Successfully configured PPP interface of service \(config.name)")
       }
       else {
@@ -100,8 +100,8 @@ public class VPNServiceCreator: NSObject {
         return VPNExitCode.PPPInterfaceConfigurationFailed
       }
       // Now let's apply the shared secret to the IPSec part of the L2TP/IPSec Interface
-      let thingy:CFString = "IPSec"
-      if SCNetworkInterfaceSetExtendedConfiguration(topInterface!, thingy, config.L2TPIPSecConfig) {
+      let thingy:CFString = "IPSec" as CFString
+      if SCNetworkInterfaceSetExtendedConfiguration(topInterface!, thingy, config.l2TPIPSecConfig) {
         DDLogDebug("Successfully configured IPSec on PPP interface for service %\(config.name)")
       }
       else {
@@ -196,7 +196,7 @@ public class VPNServiceCreator: NSObject {
       return VPNExitCode.CopyingServiceProtocolFailed
     }
     DDLogDebug("Configuring IPv4 protocol of service \(config.name)...")
-    if !SCNetworkProtocolSetConfiguration(serviceProtocol!, config.L2TPIPv4Config) {
+    if !SCNetworkProtocolSetConfiguration(serviceProtocol!, config.l2TPIPv4Config) {
       DDLogError("Error: Could not configure IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
       return VPNExitCode.SettingNetworkProtocolConfigFailed
     }

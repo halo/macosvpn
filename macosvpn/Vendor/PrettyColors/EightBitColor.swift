@@ -6,7 +6,7 @@ extension Color {
 		public var code: (enable: [UInt8], disable: UInt8?) {
 			return (
 				enable: [
-					(self.level == .Foreground ? 38 : 48),
+					(self.level == .foreground ? 38 : 48),
 					5,
 					self.color
 				],
@@ -18,14 +18,14 @@ extension Color {
 			foreground color: UInt8
 		) {
 			self.color = color
-			self.level = Level.Foreground
+			self.level = Level.foreground
 		}
 
 		public init(
 			background color: UInt8
 		) {
 			self.color = color
-			self.level = Level.Background
+			self.level = Level.background
 		}
 
 	}

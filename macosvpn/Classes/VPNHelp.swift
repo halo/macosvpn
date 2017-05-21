@@ -14,12 +14,12 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-public class VPNHelp: NSObject {
+open class VPNHelp: NSObject {
   
-  public class func showHelp() -> Int32 {
+  open class func showHelp() -> Int32 {
     DDLogDebug("Showing help...")
     
-    let usage: String = Color.Wrap(styles: .Bold).wrap("Usage:")
+    let usage: String = Color.Wrap(styles: .bold).wrap("Usage:")
     let command: String = Color.Wrap(foreground: VPNColor.Green).wrap("sudo macosvpn create")
     let options: String = Color.Wrap(foreground: VPNColor.Pink).wrap("OPTIONS")
     
@@ -52,7 +52,7 @@ public class VPNHelp: NSObject {
     DDLogInfo("Encapsulate arguments in \"double-quotes\" when using special characters.")
     DDLogInfo("")
     
-    DDLogInfo(Color.Wrap(styles: .Bold).wrap("Examples:"))
+    DDLogInfo(Color.Wrap(styles: .bold).wrap("Examples:"))
     DDLogInfo("")
 
     DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("Creating a Cisco IPSec VPN Service"))
@@ -91,20 +91,20 @@ public class VPNHelp: NSObject {
     return VPNExitCode.ShowingHelp
   }
   
-  public class func showVersion() -> Int32 {
+  open class func showVersion() -> Int32 {
     DDLogDebug("Showing version...")
     print(self.currentVersion());
     return VPNExitCode.ShowingVersion
   }
   
-  private class func currentYear() -> String {
-    let formatter: NSDateFormatter = NSDateFormatter()
+  fileprivate class func currentYear() -> String {
+    let formatter: DateFormatter = DateFormatter()
     formatter.dateFormat = "yyyy"
-    return formatter.stringFromDate(NSDate())
+    return formatter.string(from: Date())
   }
   
-  private class func currentVersion() -> String {
-    return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
+  fileprivate class func currentVersion() -> String {
+    return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
   }
   
 }

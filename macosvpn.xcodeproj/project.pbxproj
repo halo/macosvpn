@@ -623,7 +623,7 @@
 				ORGANIZATIONNAME = funkensturm;
 				TargetAttributes = {
 					3286138F197FED310010BB98 = {
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -852,7 +852,7 @@
 				PRODUCT_NAME = macosvpn;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/macosvpn/macosvpn-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -876,7 +876,7 @@
 				);
 				PRODUCT_NAME = macosvpn;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/macosvpn/macosvpn-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -15,7 +15,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 	// MARK: - Initializers
 	//------------------------------------------------------------------------------
 
-	public init<S: SequenceType where S.Generator.Element == Element>(parameters: S) {
+	public init<S: Sequence>(parameters: S) where S.Iterator.Element == Element {
 		self.parameters = UnderlyingCollection(parameters)
 	}
 	
@@ -92,7 +92,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 			ECMA48.controlSequenceIntroducer
 			+ ($0 as [UInt8])
 				.map(String.init)
-				.joinWithSeparator(";")
+				.joined(separator: ";")
 			+ "m"
 		}
 		
@@ -100,7 +100,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 	}
 	
 	/// Wraps the enable and disable SelectGraphicRendition codes around a string.
-	public func wrap(string: String) -> String {
+	public func wrap(_ string: String) -> String {
 		let (enable, disable) = self.code
 		return enable + string + disable
 	}
@@ -109,7 +109,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 	// MARK: - Foreground/Background Helpers
 	//------------------------------------------------------------------------------
 	
-	private func filter(level level: Level, inverse: Bool = false) -> UnderlyingCollection {
+	fileprivate func filter(level: Level, inverse: Bool = false) -> UnderlyingCollection {
 		return self.filter {
 			let condition = (($0 as? ColorType)?.level == level) ?? false
 			return inverse ? !condition : condition
@@ -118,27 +118,27 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 	
 	public var foreground: Parameter? {
 		get {
-			return self.filter(level: .Foreground).first
+			return self.filter(level: .foreground).first
 		}
 		mutating set(newForeground) {
 			self.parameters =
 				[newForeground].flatMap { $0 } + // Empty array or array containing new foreground
-				self.filter(level: .Foreground, inverse: true) // All non-foreground parameters
+				self.filter(level: .foreground, inverse: true) // All non-foreground parameters
 		}
 	}
 	
 	public var background: Parameter? {
 		get {
-			return self.filter(level: .Background).first
+			return self.filter(level: .background).first
 		}
 		mutating set(newBackground) {
 			self.parameters =
 				[newBackground].flatMap { $0 } + // Empty array or array containing new background
-				self.filter(level: .Background, inverse: true) // All non-background parameters
+				self.filter(level: .background, inverse: true) // All non-background parameters
 		}
 	}
 
-	private func levelTransform(level: Level, @noescape transform: ColorType -> ColorType) -> (
+	fileprivate func levelTransform(_ level: Level, transform: (ColorType) -> ColorType) -> (
 		transformed: Bool,
 		parameters: UnderlyingCollection
 	) {
@@ -146,7 +146,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 			(transformed: false, parameters: [] as UnderlyingCollection)
 		) { previous, value in
 			if
-				let color = value as? ColorType where color.level == level,
+				let color = value as? ColorType, color.level == level,
 				case let transformation = [ transform(color) ] as UnderlyingCollection
 			{
 				return (transformed: true, parameters: previous.parameters + transformation)
@@ -157,15 +157,15 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 	}
 	
 	/// Synchronously transform all ColorTypes with a `Level` of `Foreground`.
-	public mutating func foreground(@noescape transform: ColorType -> ColorType) -> Bool {
-		let transformation = levelTransform(.Foreground, transform: transform)
+	public mutating func foreground(_ transform: (ColorType) -> ColorType) -> Bool {
+		let transformation = levelTransform(.foreground, transform: transform)
 		self.parameters = transformation.parameters
 		return transformation.transformed
 	}
 
 	/// Synchronously transform all ColorTypes with a `Level` of `Background`.
-	public mutating func background(@noescape transform: ColorType -> ColorType) -> Bool {
-		let transformation = levelTransform(.Background, transform: transform)
+	public mutating func background(_ transform: (ColorType) -> ColorType) -> Bool {
+		let transformation = levelTransform(.background, transform: transform)
 		self.parameters = transformation.parameters
 		return transformation.transformed
 	}
@@ -178,10 +178,10 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 // MARK: - Wrap: SequenceType
 //------------------------------------------------------------------------------
 
-extension Color.Wrap: SequenceType {
-	public typealias Generator = IndexingGenerator<Array<Element>>
-	public func generate() -> Generator {
-		return parameters.generate()
+extension Color.Wrap: Sequence {
+	public typealias Iterator = IndexingIterator<Array<Element>>
+	public func makeIterator() -> Iterator {
+		return parameters.makeIterator()
 	}
 }
 
@@ -189,12 +189,12 @@ extension Color.Wrap: SequenceType {
 // MARK: - Wrap: CollectionType
 //------------------------------------------------------------------------------
 
-extension Color.Wrap: CollectionType, MutableCollectionType {
+extension Color.Wrap: Collection, MutableCollection {
 	public typealias Index = UnderlyingCollection.Index
 	public var startIndex: Index { return parameters.startIndex }
 	public var endIndex: Index { return parameters.endIndex }
 	
-	public subscript(position:Index) -> Generator.Element {
+	public subscript(position:Index) -> Iterator.Element {
 		get { return parameters[position] }
 		set { parameters[position] = newValue }
 	}
@@ -204,30 +204,30 @@ extension Color.Wrap: CollectionType, MutableCollectionType {
 // MARK: - Wrap: RangeReplaceableCollectionType
 //------------------------------------------------------------------------------
 
-extension Color.Wrap: RangeReplaceableCollectionType {
-	public mutating func replaceRange<C: CollectionType where C.Generator.Element == Generator.Element>(
-		subRange: Range<Index>, with newElements: C
-	) {
-		parameters.replaceRange(subRange, with: newElements)
+extension Color.Wrap: RangeReplaceableCollection {
+	public mutating func replaceSubrange<C: Collection>(
+		_ subRange: Range<Index>, with newElements: C
+	) where C.Iterator.Element == Iterator.Element {
+		parameters.replaceSubrange(subRange, with: newElements)
 	}
 
 	
-	public mutating func reserveCapacity(n: Index.Distance) {
+	public mutating func reserveCapacity(_ n: Index.Distance) {
 		parameters.reserveCapacity(n)
 	}
 
-	public mutating func append(newElement: Element) {
+	public mutating func append(_ newElement: Element) {
 		parameters.append(newElement)
 	}
 	
-	public mutating func append(style style: StyleParameter...) {
+	public mutating func append(style: StyleParameter...) {
 		for parameter in style {
 			parameters.append(parameter)
 		}
 	}
 	
-	public mutating func appendContentsOf<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
-		parameters.appendContentsOf(sequence)
+	public mutating func append<S: Sequence>(contentsOf sequence: S) where S.Iterator.Element == Element {
+		parameters.append(contentsOf: sequence)
 	}
 }
 
@@ -235,7 +235,7 @@ extension Color.Wrap: RangeReplaceableCollectionType {
 // MARK: - Wrap: ArrayLiteralConvertible
 //------------------------------------------------------------------------------
 
-extension Color.Wrap: ArrayLiteralConvertible {}
+extension Color.Wrap: ExpressibleByArrayLiteral {}
 
 //------------------------------------------------------------------------------
 // MARK: - Wrap: Equatable
@@ -244,26 +244,26 @@ extension Color.Wrap: ArrayLiteralConvertible {}
 extension Color.Wrap: Equatable {
 	
 	public enum EqualityType {
-		case Array
-		case Set
+		case array
+		case set
 	}
 	
-	private func setEqualilty(a: Color.Wrap, _ b: Color.Wrap) -> Bool {
+	fileprivate func setEqualilty(_ a: Color.Wrap, _ b: Color.Wrap) -> Bool {
 		
-		let x = Set( a.parameters.map { String($0.code.enable) } )
-		let y = Set( b.parameters.map { String($0.code.enable) } )
+		let x = Set( a.parameters.map { String(describing: $0.code.enable) } )
+		let y = Set( b.parameters.map { String(describing: $0.code.enable) } )
 		
 		return x == y
 		
 	}
 	
-	public func isEqual(to other: Color.Wrap, equality: Color.Wrap.EqualityType = .Array) -> Bool {
+	public func isEqual(to other: Color.Wrap, equality: Color.Wrap.EqualityType = .array) -> Bool {
 		switch equality {
-		case .Array:
+		case .array:
 			return
 				self.parameters.count == other.parameters.count &&
 				self.code.enable == other.code.enable
-		case .Set:
+		case .set:
 			return setEqualilty(self, other)
 		}
 	}
@@ -271,5 +271,5 @@ extension Color.Wrap: Equatable {
 }
 
 public func == (a: Color.Wrap, b: Color.Wrap) -> Bool {
-	return a.isEqual(to: b, equality: .Array)
+	return a.isEqual(to: b, equality: .array)
 }

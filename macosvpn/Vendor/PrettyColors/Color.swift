@@ -7,14 +7,14 @@ public protocol ColorType: Parameter {
 
 /// Foreground/Background
 public enum Level {
-	case Foreground
-	case Background
+	case foreground
+	case background
 	
 	public mutating func toggle() {
-		if self == .Foreground {
-			self = .Background
+		if self == .foreground {
+			self = .background
 		} else {
-			self = .Foreground
+			self = .foreground
 		}
 	}
 	

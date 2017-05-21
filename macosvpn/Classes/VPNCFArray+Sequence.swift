@@ -14,20 +14,20 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-extension CFArray: SequenceType {
+extension CFArray: Sequence {
 
   // Just a little helper to loop through a CFArray.
   // Kindly provided by http://stackoverflow.com/a/32127187
-  public func generate() -> AnyGenerator<AnyObject> {
+  public func makeIterator() -> AnyIterator<AnyObject> {
     var index = -1
     let maxIndex = CFArrayGetCount(self)
-    return AnyGenerator{
+    return AnyIterator{
       index += 1
       guard index < maxIndex else {
         return nil
       }
-      let unmanagedObject: UnsafePointer<Void> = CFArrayGetValueAtIndex(self, index)
-      let rec = unsafeBitCast(unmanagedObject, AnyObject.self)
+      let unmanagedObject: UnsafeRawPointer = CFArrayGetValueAtIndex(self, index)
+      let rec = unsafeBitCast(unmanagedObject, to: AnyObject.self)
       return rec
     }
   }
