@@ -17,11 +17,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 open class VPNLogger: NSObject {
 
   open class func setup(_ level: DDLogLevel) {
-    DDTTYLogger.sharedInstance().logFormatter = self.formatter();
-    DDTTYLogger.sharedInstance().colorsEnabled = true;
-    DDTTYLogger.sharedInstance().setForegroundColor(NSColor.blue, backgroundColor: nil, for: DDLogFlag.debug);
-    DDTTYLogger.sharedInstance().setForegroundColor(NSColor.red, backgroundColor: nil, for: DDLogFlag.error);
-    DDLog.add(DDTTYLogger.sharedInstance(), with: level);
+    DDTTYLogger.sharedInstance.logFormatter = self.formatter();
+    DDTTYLogger.sharedInstance.colorsEnabled = true;
+    DDTTYLogger.sharedInstance.setForegroundColor(NSColor.blue, backgroundColor: nil, for: DDLogFlag.debug);
+    DDTTYLogger.sharedInstance.setForegroundColor(NSColor.red, backgroundColor: nil, for: DDLogFlag.error);
+    DDLog.add(DDTTYLogger.sharedInstance, with: level);
   }
   
   fileprivate class func formatter() -> VPNLogFormatter {

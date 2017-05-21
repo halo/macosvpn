@@ -14,10 +14,10 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-open class VPNLogFormatter: NSObject, DDLogFormatter {
+public class VPNLogFormatter: NSObject, DDLogFormatter {
   
-  open func formatLogMessage(_ logMessage: DDLogMessage) -> String {
-    return "  \(logMessage.message)";
+  public func format(message: DDLogMessage) -> String {
+    return "  \(message.message)";
   }
   
 }

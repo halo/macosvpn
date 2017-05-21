@@ -80,6 +80,7 @@
 		C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261574A1D92961C001AD818 /* VPNServiceType.swift */; };
 		C267ADF11ED1D7030058CDE6 /* Color · EightBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */; };
 		C267ADF21ED1D7030058CDE6 /* Color · Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF01ED1D7030058CDE6 /* Color · Named.swift */; };
+		C267ADF51ED1DBB30058CDE6 /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF41ED1DBB30058CDE6 /* DDOSLogger.m */; };
 		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
 		C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* VPNExitCode.swift */; };
 		C2CE09C81C6E89DF00B97D6D /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */; };
@@ -263,6 +264,8 @@
 		C261574A1D92961C001AD818 /* VPNServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceType.swift; sourceTree = "<group>"; };
 		C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · EightBit.swift"; sourceTree = "<group>"; };
 		C267ADF01ED1D7030058CDE6 /* Color · Named.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · Named.swift"; sourceTree = "<group>"; };
+		C267ADF31ED1DBB30058CDE6 /* DDOSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOSLogger.h; sourceTree = "<group>"; };
+		C267ADF41ED1DBB30058CDE6 /* DDOSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOSLogger.m; sourceTree = "<group>"; };
 		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
 		C299053C1E12F9B500570022 /* VPNExitCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNExitCode.swift; sourceTree = "<group>"; };
 		C2CE09AE1C6E89DF00B97D6D /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
@@ -561,6 +564,8 @@
 				C2CE09BA1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m */,
 				C2CE09BB1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.h */,
 				C2CE09BC1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.m */,
+				C267ADF31ED1DBB30058CDE6 /* DDOSLogger.h */,
+				C267ADF41ED1DBB30058CDE6 /* DDOSLogger.m */,
 				C2CE09BD1C6E89DF00B97D6D /* DDFileLogger.h */,
 				C2CE09BE1C6E89DF00B97D6D /* DDFileLogger.m */,
 				C2CE09BF1C6E89DF00B97D6D /* DDLegacyMacros.h */,
@@ -730,6 +735,7 @@
 				9D61986A198112A000FC01E8 /* FSSwitchToken.m in Sources */,
 				9D61986C198112A000FC01E8 /* FSValuedArgument.m in Sources */,
 				9D6198CD1981151D00FC01E8 /* VPNArguments.m in Sources */,
+				C267ADF51ED1DBB30058CDE6 /* DDOSLogger.m in Sources */,
 				9D61986F198112A000FC01E8 /* NSArray+FSArgumentsNormalizer.m in Sources */,
 				9D619871198112A000FC01E8 /* NSDictionary+RubyDescription.m in Sources */,
 				C2CE09CB1C6E89DF00B97D6D /* DDASLLogCapture.m in Sources */,
