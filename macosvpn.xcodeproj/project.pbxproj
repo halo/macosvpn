@@ -78,6 +78,8 @@
 		C26157471D928F29001AD818 /* VPNServiceCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157461D928F29001AD818 /* VPNServiceCreator.swift */; };
 		C26157491D9295E6001AD818 /* VPNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157481D9295E6001AD818 /* VPNCommand.swift */; };
 		C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261574A1D92961C001AD818 /* VPNServiceType.swift */; };
+		C267ADF11ED1D7030058CDE6 /* Color · EightBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */; };
+		C267ADF21ED1D7030058CDE6 /* Color · Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF01ED1D7030058CDE6 /* Color · Named.swift */; };
 		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
 		C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* VPNExitCode.swift */; };
 		C2CE09C81C6E89DF00B97D6D /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */; };
@@ -93,8 +95,6 @@
 		C2CE09D21C6E89DF00B97D6D /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09C71C6E89DF00B97D6D /* DDTTYLogger.m */; };
 		C2CE09DB1C6E935600B97D6D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D41C6E935600B97D6D /* Color.swift */; };
 		C2CE09DC1C6E935600B97D6D /* ECMA 48.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D51C6E935600B97D6D /* ECMA 48.swift */; };
-		C2CE09DD1C6E935600B97D6D /* EightBitColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D61C6E935600B97D6D /* EightBitColor.swift */; };
-		C2CE09DE1C6E935600B97D6D /* Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D71C6E935600B97D6D /* Named.swift */; };
 		C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D91C6E935600B97D6D /* StyleParameter.swift */; };
 		C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09DA1C6E935600B97D6D /* Wrap.swift */; };
 		C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
@@ -261,6 +261,8 @@
 		C26157461D928F29001AD818 /* VPNServiceCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceCreator.swift; sourceTree = "<group>"; };
 		C26157481D9295E6001AD818 /* VPNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNCommand.swift; sourceTree = "<group>"; };
 		C261574A1D92961C001AD818 /* VPNServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceType.swift; sourceTree = "<group>"; };
+		C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · EightBit.swift"; sourceTree = "<group>"; };
+		C267ADF01ED1D7030058CDE6 /* Color · Named.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · Named.swift"; sourceTree = "<group>"; };
 		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
 		C299053C1E12F9B500570022 /* VPNExitCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNExitCode.swift; sourceTree = "<group>"; };
 		C2CE09AE1C6E89DF00B97D6D /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
@@ -291,8 +293,6 @@
 		C2CE09C71C6E89DF00B97D6D /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
 		C2CE09D41C6E935600B97D6D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C2CE09D51C6E935600B97D6D /* ECMA 48.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ECMA 48.swift"; sourceTree = "<group>"; };
-		C2CE09D61C6E935600B97D6D /* EightBitColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EightBitColor.swift; sourceTree = "<group>"; };
-		C2CE09D71C6E935600B97D6D /* Named.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Named.swift; sourceTree = "<group>"; };
 		C2CE09D81C6E935600B97D6D /* PrettyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyColors.h; sourceTree = "<group>"; };
 		C2CE09D91C6E935600B97D6D /* StyleParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleParameter.swift; sourceTree = "<group>"; };
 		C2CE09DA1C6E935600B97D6D /* Wrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrap.swift; sourceTree = "<group>"; };
@@ -581,9 +581,9 @@
 			isa = PBXGroup;
 			children = (
 				C2CE09D41C6E935600B97D6D /* Color.swift */,
+				C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */,
+				C267ADF01ED1D7030058CDE6 /* Color · Named.swift */,
 				C2CE09D51C6E935600B97D6D /* ECMA 48.swift */,
-				C2CE09D61C6E935600B97D6D /* EightBitColor.swift */,
-				C2CE09D71C6E935600B97D6D /* Named.swift */,
 				C2CE09D81C6E935600B97D6D /* PrettyColors.h */,
 				C2CE09D91C6E935600B97D6D /* StyleParameter.swift */,
 				C2CE09DA1C6E935600B97D6D /* Wrap.swift */,
@@ -670,6 +670,7 @@
 				9D61988E198112DA00FC01E8 /* CPKeywordRecogniser.m in Sources */,
 				9D619890198112DA00FC01E8 /* CPKeywordToken.m in Sources */,
 				9D619892198112DA00FC01E8 /* CPLALR1Parser.m in Sources */,
+				C267ADF21ED1D7030058CDE6 /* Color · Named.swift in Sources */,
 				9D619894198112DA00FC01E8 /* CPLR1Item.m in Sources */,
 				9D619896198112DA00FC01E8 /* CPLR1Parser.m in Sources */,
 				9D619898198112DA00FC01E8 /* CPNumberRecogniser.m in Sources */,
@@ -683,7 +684,6 @@
 				9D6198A0198112DA00FC01E8 /* CPQuotedToken.m in Sources */,
 				9D6198A2198112DA00FC01E8 /* CPRecoveryAction.m in Sources */,
 				9D6198A5198112DA00FC01E8 /* CPRHSItem.m in Sources */,
-				C2CE09DE1C6E935600B97D6D /* Named.swift in Sources */,
 				C2CE09CA1C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m in Sources */,
 				9D6198A7198112DA00FC01E8 /* CPRHSItemResult.m in Sources */,
 				9D6198AA198112DA00FC01E8 /* CPRule.m in Sources */,
@@ -702,6 +702,7 @@
 				9D6198C2198112DA00FC01E8 /* CPTokenStream.m in Sources */,
 				9D6198C4198112DA00FC01E8 /* CPWhiteSpaceRecogniser.m in Sources */,
 				C2CE09CD1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m in Sources */,
+				C267ADF11ED1D7030058CDE6 /* Color · EightBit.swift in Sources */,
 				9D6198C6198112DA00FC01E8 /* CPWhiteSpaceToken.m in Sources */,
 				9D6198C8198112DA00FC01E8 /* NSArray+Functional.m in Sources */,
 				C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */,
@@ -737,7 +738,6 @@
 				9D619875198112A000FC01E8 /* NSScanner+EscapedScanning.m in Sources */,
 				C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */,
 				9D619877198112A000FC01E8 /* NSString+Indenter.m in Sources */,
-				C2CE09DD1C6E935600B97D6D /* EightBitColor.swift in Sources */,
 				9D61984D1981129900FC01E8 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
