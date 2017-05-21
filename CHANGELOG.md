@@ -1,3 +1,9 @@
+# master
+
+Internal:
+
+* Compatibility with Xcode 8.3.2 with Swift 3.1
+
 # 0.3.1
 
 Bugfix:
