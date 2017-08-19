@@ -77,6 +77,15 @@ module SCUtil
       attributes.fetch('PPP', {})['CommRemoteAddress']
     end
 
+    def ppp_disconnect_on_fast_user_switch
+      #p attributes
+      attributes.fetch('PPP', {})['DisconnectOnFastUserSwitch']
+    end
+
+    def ppp_disconnect_on_logout
+      attributes.fetch('PPP', {})['DisconnectOnLogout']
+    end
+
     private
 
     attr_reader :attributes
