@@ -78,7 +78,6 @@ module SCUtil
     end
 
     def ppp_disconnect_on_fast_user_switch
-      #p attributes
       attributes.fetch('PPP', {})['DisconnectOnFastUserSwitch']
     end
 

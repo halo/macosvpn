@@ -55,7 +55,7 @@ RSpec.describe 'Creating a VPN Service' do
 
       # VPN already exists, not overwriting
 
-      arguments = 'create -c VPNTestL2TP -e northpole.example.com -u Bob -p letm3in -g AnotherL2TPGroup -s s3cret -t'
+      arguments = 'create -c VPNTestL2TP -e northpole.example.com -u Bob -p letm3in -g AnothL2TPGroup -s s3cret -t'
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestL2TP'
       expect(output).to include 'If you want me to overwrite it'
@@ -105,7 +105,7 @@ RSpec.describe 'Creating a VPN Service' do
 
       # Overwriting existing VPN
 
-      arguments = 'create -l VPNTestL2TP -e hawaii.example.com -u Carol -p letm3in -g AnotherL2TPGroup -s s3cret --split --force -t'
+      arguments = 'create -l VPNTestL2TP -e hawaii.example.com -u Carol -p letm3in -g AnothL2TPGroup -s s3cret --split --force -t'
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestL2TP'
       expect(output).to include 'Successfully created L2TP over IPSec VPN VPNTestL2TP'
@@ -117,7 +117,7 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ipsec_authentication_method).to eq 'SharedSecret'
       expect(service.ipsec_shared_secret_id).to be_present
       expect(service.ipsec_shared_secret_encryption).to eq 'Keychain'
-      expect(service.ipsec_local_identifier).to eq 'AnotherL2TPGroup'
+      expect(service.ipsec_local_identifier).to eq 'AnothL2TPGroup'
       expect(service.ipsec_local_identifier_type).to eq 'KeyID'
       expect(service.ipsec_remote_address).to be nil
       expect(service.ipsec_xauth_name).to be nil
