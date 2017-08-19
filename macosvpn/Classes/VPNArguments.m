@@ -98,7 +98,9 @@
     //if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a group name for service <%@>", config.name);
 
     config.enableSplitTunnel = [self.package countOfSignature:self.splitTunnelSig] > 0;
-      
+    config.disconnectOnSwitch = [self.package countOfSignature:self.disconnectOnSwitchSig] > 0;
+    config.disconnectOnLogout = [self.package countOfSignature:self.disconnectOnLogoutSig] > 0;
+
     [configs addObject:config];
   }
   return configs;
@@ -125,8 +127,9 @@
     self.usernameSig,
     self.passwordSig,
     self.sharedSecretSig,
-    self.localIdentifierSig,
     self.splitTunnelSig,
+    self.disconnectOnSwitchSig,
+    self.disconnectOnLogoutSig,
   nil];
 
   [command setInjectedSignatures:createSignatures];
@@ -161,6 +164,14 @@
 
 + (FSArgumentSignature*) splitTunnelSig {
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-x --split split]"];
+}
+
++ (FSArgumentSignature*) disconnectOnSwitchSig {
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-i --disconnectswitch disconnectswitch]"];
+}
+
++ (FSArgumentSignature*) disconnectOnLogoutSig {
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-t --disconnectlogout disconnectlogout]"];
 }
 
 + (FSArgumentSignature*) endpointSig {

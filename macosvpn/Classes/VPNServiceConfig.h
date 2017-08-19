@@ -25,6 +25,8 @@
 @property (strong) NSString *sharedSecret;
 @property (strong) NSString *localIdentifier;
 @property (atomic) BOOL enableSplitTunnel;
+@property (atomic) BOOL disconnectOnSwitch;
+@property (atomic) BOOL disconnectOnLogout;
 
 @property (readonly) NSString *humanType;
 

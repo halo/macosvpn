@@ -44,8 +44,8 @@
 }
 
 - (CFDictionaryRef) L2TPPPPConfig {
-  CFStringRef keys[4] = { NULL, NULL, NULL, NULL };
-  CFStringRef vals[4] = { NULL, NULL, NULL, NULL };
+  CFStringRef keys[6] = { NULL, NULL, NULL, NULL, NULL, NULL };
+  CFStringRef vals[6] = { NULL, NULL, NULL, NULL, NULL, NULL };
   CFIndex count = 0;
 
   keys[count] = kSCPropNetPPPCommRemoteAddress;
@@ -59,6 +59,20 @@
 
   keys[count] = kSCPropNetPPPAuthPasswordEncryption;
   vals[count++] = kSCValNetPPPAuthPasswordEncryptionKeychain;
+
+  int switchOne = self.disconnectOnSwitch ? 1 : 0;
+  keys[count] = kSCPropNetPPPDisconnectOnFastUserSwitch;
+  // X-Code warns on this (CFString VS. CFNumber), but it should not matter, CFNumber is the correct type I think, as you can verify in the resulting /Library/Preferences/SystemConfiguration/preferences.plist file.
+  // See also https://developer.apple.com/library/prerelease/ios/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html
+  #pragma clang diagnostic ignored "-Wincompatible-pointer-types"
+  vals[count++] = CFNumberCreate(NULL, kCFNumberIntType, &switchOne);
+  #pragma clang diagnostic pop
+
+  int logoutOne = self.disconnectOnLogout ? 1 : 0;
+  keys[count] = kSCPropNetPPPDisconnectOnLogout;
+  #pragma clang diagnostic ignored "-Wincompatible-pointer-types"
+  vals[count++] = CFNumberCreate(NULL, kCFNumberIntType, &logoutOne);
+  #pragma clang diagnostic pop
 
   return CFDictionaryCreate(NULL, (const void **)&keys, (const void **)&vals, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 }
@@ -106,8 +120,6 @@
     int one = 1;
     keys[count] = kSCPropNetOverridePrimary;
 
-    // X-Code warns on this (CFString VS. CFNumber), but it should not matter, CFNumber is the correct type I think, as you can verify in the resulting /Library/Preferences/SystemConfiguration/preferences.plist file.
-    // See also https://developer.apple.com/library/prerelease/ios/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html
     #pragma clang diagnostic ignored "-Wincompatible-pointer-types"
     vals[count++] = CFNumberCreate(NULL, kCFNumberIntType, &one);
     #pragma clang diagnostic pop
