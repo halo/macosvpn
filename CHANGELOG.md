@@ -1,5 +1,12 @@
 # master
 
+
+# 0.3.2
+
+Features:
+
+* Added -i and -t flags to control auto disconnect of L2TP thanks @blackthroat for requesting the feature
+
 Internal:
 
 * Compatibility with Xcode 8.3.2 with Swift 3.1
