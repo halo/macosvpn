@@ -127,6 +127,7 @@
     self.usernameSig,
     self.passwordSig,
     self.sharedSecretSig,
+    self.localIdentifierSig,
     self.splitTunnelSig,
     self.disconnectOnSwitchSig,
     self.disconnectOnLogoutSig,
