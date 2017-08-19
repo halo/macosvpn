@@ -43,12 +43,17 @@ open class VPNHelp: NSObject {
     let groupnameFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-g")
     let splitFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--split")
     let splitFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-x")
+    let switchFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--disconnectswitch")
+    let switchFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-i")
+    let logoutFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--disconnectlogout")
+    let logoutFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-t")
     let forceFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--force")
     let forceFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-o")
     let allShortCiscoFlags: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-ceupsg")
     
     DDLogInfo("You can always add the \(debugFlag) option for troubleshooting.")
     DDLogInfo("The \(versionFlag) option displays the current version.")
+    DDLogInfo("Add \(forceFlag) or \(forceFlagShort) to overwrite a VPN that has the same name.")
     DDLogInfo("Encapsulate arguments in \"double-quotes\" when using special characters.")
     DDLogInfo("")
     
@@ -63,8 +68,10 @@ open class VPNHelp: NSObject {
     DDLogInfo("\(command) \(l2tpFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same")
     DDLogInfo("")
 
-    DDLogInfo("Add \(forceFlag) or \(forceFlagShort) to overwrite a VPN that has the same name.")
-    DDLogInfo("With L2TP you can add \(splitFlag) or \(splitFlagShort) to *not* force all traffic over VPN.")
+    DDLogInfo("With L2TP you can")
+    DDLogInfo("  add \(splitFlag) or \(splitFlagShort) to *not* force all traffic over VPN.")
+    DDLogInfo("  add \(switchFlag) or \(switchFlagShort) to disconnect when switching user accounts.")
+    DDLogInfo("  add \(logoutFlag) or \(logoutFlagShort) to disconnect when user logs out.")
     DDLogInfo("")
     DDLogInfo("Note: The examples below assume Cisco, but they are analogous to the L2TP command.")
 
