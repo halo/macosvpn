@@ -21,57 +21,57 @@ static DDOSLogger *sharedInstance;
 @implementation DDOSLogger
 
 + (instancetype)sharedInstance {
-    static dispatch_once_t DDOSLoggerOnceToken;
+  static dispatch_once_t DDOSLoggerOnceToken;
 
-    dispatch_once(&DDOSLoggerOnceToken, ^{
-        sharedInstance = [[[self class] alloc] init];
-    });
+  dispatch_once(&DDOSLoggerOnceToken, ^{
+    sharedInstance = [[[self class] alloc] init];
+  });
 
-    return sharedInstance;
+  return sharedInstance;
 }
 
 - (instancetype)init {
-    if (sharedInstance != nil) {
-        return nil;
-    }
-
-    if (self = [super init]) {
-        return self;
-    }
-
+  if (sharedInstance != nil) {
     return nil;
+  }
+
+  if (self = [super init]) {
+    return self;
+  }
+
+  return nil;
 }
 
 - (void)logMessage:(DDLogMessage *)logMessage {
-    // Skip captured log messages
-    if ([logMessage->_fileName isEqualToString:@"DDASLLogCapture"]) {
-        return;
+  // Skip captured log messages
+  if ([logMessage->_fileName isEqualToString:@"DDASLLogCapture"]) {
+    return;
+  }
+
+  NSString * message = _logFormatter ? [_logFormatter formatLogMessage:logMessage] : logMessage->_message;
+
+  if (message) {
+    const char *msg = [message UTF8String];
+
+    switch (logMessage->_flag) {
+      case DDLogFlagError     :
+        os_log_error(OS_LOG_DEFAULT, "%{public}s", msg);
+        break;
+      case DDLogFlagWarning   :
+      case DDLogFlagInfo      :
+        os_log_info(OS_LOG_DEFAULT, "%{public}s", msg);
+        break;
+      case DDLogFlagDebug     :
+      case DDLogFlagVerbose   :
+      default                 :
+        os_log_debug(OS_LOG_DEFAULT, "%{public}s", msg);
+        break;
     }
-    
-    NSString * message = _logFormatter ? [_logFormatter formatLogMessage:logMessage] : logMessage->_message;
-    
-    if (message) {
-        const char *msg = [message UTF8String];
-        
-        switch (logMessage->_flag) {
-            case DDLogFlagError     :
-                os_log_error(OS_LOG_DEFAULT, msg);
-                break;
-            case DDLogFlagWarning   :
-            case DDLogFlagInfo      :
-                os_log_info(OS_LOG_DEFAULT, msg);
-                break;
-            case DDLogFlagDebug     :
-            case DDLogFlagVerbose   :
-            default                 :
-                os_log_debug(OS_LOG_DEFAULT, msg);
-                break;
-        }
-    }
+  }
 }
 
 - (NSString *)loggerName {
-    return @"cocoa.lumberjack.osLogger";
+  return @"cocoa.lumberjack.osLogger";
 }
 
 @end
