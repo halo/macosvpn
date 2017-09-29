@@ -15,7 +15,7 @@
 
 // Disable legacy macros
 #ifndef DD_LEGACY_MACROS
-    #define DD_LEGACY_MACROS 0
+#define DD_LEGACY_MACROS 0
 #endif
 
 #import "DDLog.h"
@@ -250,18 +250,18 @@ extern unsigned long long const kDDDefaultLogFilesDiskQuota;
 
 /* Inherited from DDLogFileManager protocol:
 
-   @property (readwrite, assign, atomic) NSUInteger maximumNumberOfLogFiles;
-   @property (readwrite, assign, atomic) NSUInteger logFilesDiskQuota;
+ @property (readwrite, assign, atomic) NSUInteger maximumNumberOfLogFiles;
+ @property (readwrite, assign, atomic) NSUInteger logFilesDiskQuota;
 
-   - (NSString *)logsDirectory;
+ - (NSString *)logsDirectory;
 
-   - (NSArray *)unsortedLogFilePaths;
-   - (NSArray *)unsortedLogFileNames;
-   - (NSArray *)unsortedLogFileInfos;
+ - (NSArray *)unsortedLogFilePaths;
+ - (NSArray *)unsortedLogFileNames;
+ - (NSArray *)unsortedLogFileInfos;
 
-   - (NSArray *)sortedLogFilePaths;
-   - (NSArray *)sortedLogFileNames;
-   - (NSArray *)sortedLogFileInfos;
+ - (NSArray *)sortedLogFilePaths;
+ - (NSArray *)sortedLogFileNames;
+ - (NSArray *)sortedLogFileInfos;
 
  */
 
@@ -303,7 +303,7 @@ extern unsigned long long const kDDDefaultLogFilesDiskQuota;
  *  The standard implementation for a file logger
  */
 @interface DDFileLogger : DDAbstractLogger <DDLogger> {
-	DDLogFileInfo *_currentLogFileInfo;
+  DDLogFileInfo *_currentLogFileInfo;
 }
 
 /**
@@ -327,7 +327,7 @@ extern unsigned long long const kDDDefaultLogFilesDiskQuota;
 - (void)didLogMessage NS_REQUIRES_SUPER;
 
 /**
- *  Called when the logger checks archive or not current log file. 
+ *  Called when the logger checks archive or not current log file.
  *  Override this method to exdend standart behavior. By default returns NO.
  */
 - (BOOL)shouldArchiveRecentLogFileInfo:(DDLogFileInfo *)recentLogFileInfo;
@@ -397,7 +397,7 @@ extern unsigned long long const kDDDefaultLogFilesDiskQuota;
  *  You can optionally force the current log file to be rolled with this method.
  *  CompletionBlock will be called on main queue.
  */
-- (void)rollLogFileWithCompletionBlock:(void (^)())completionBlock NS_SWIFT_NAME(rollLogFile(withCompletion:));
+- (void)rollLogFileWithCompletionBlock:(void (^)(void))completionBlock NS_SWIFT_NAME(rollLogFile(withCompletion:));
 
 /**
  *  Method is deprecated.
@@ -510,3 +510,4 @@ extern unsigned long long const kDDDefaultLogFilesDiskQuota;
 - (NSComparisonResult)reverseCompareByModificationDate:(DDLogFileInfo *)another;
 
 @end
+
