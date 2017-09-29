@@ -1,7 +1,10 @@
 sudo: required
-osx_image: xcode8
 language: objective-c
 rvm: 2.2.5
+
+osx_image:
+  - xcode8
+  - xcode9
 
 before_script:
   - bundle install
@@ -10,6 +13,6 @@ before_script:
 
 script:
   - bundle exec rake
-  - sudo bundle exec rspec --tag sudo
   - bundle exec rspec --tag ~sudo
+  - sudo bundle exec rspec --tag sudo
   - bundle exec rubocop
