@@ -1,5 +1,10 @@
 # master
 
+# 0.3.3
+
+Internal:
+
+* Compatibility with Xcode 9 thanks @fxcoudert for reporting
 
 # 0.3.2
 
