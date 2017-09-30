@@ -2,9 +2,7 @@ sudo: required
 language: objective-c
 rvm: 2.2.5
 
-osx_image:
-  - xcode8
-  - xcode9
+osx_image: xcode9
 
 before_script:
   - bundle install
