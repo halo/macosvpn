@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe 'Creating and deleting a VPN Service' do
-
   context 'no arguments', :sudo do
     it 'fails and is informational' do
       output, status = Macosvpn.sudo arguments: 'create'
@@ -203,5 +204,4 @@ RSpec.describe 'Creating and deleting a VPN Service' do
       expect(status).to eq 0
     end
   end
-
 end

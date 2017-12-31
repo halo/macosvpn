@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module SCUtil
   class Preferences
-
     def services
       result = []
       services_data.each do |id, attributes|
@@ -20,6 +21,5 @@ module SCUtil
     def services_data
       plist['NetworkServices']
     end
-
   end
 end

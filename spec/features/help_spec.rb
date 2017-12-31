@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe 'Showing Help' do
-
   context 'no arguments' do
     it 'shows the Help' do
       output, status = Macosvpn.call arguments: nil
@@ -31,5 +32,4 @@ RSpec.describe 'Showing Help' do
       expect(output).to include 'https://github.com/halo/macosvpn'
     end
   end
-
 end

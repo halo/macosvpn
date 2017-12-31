@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe 'Creating a VPN Service' do
-
   context 'L2TP', :sudo do
     it 'creates the VPN' do
       raise 'Please remove the `VPNTestL2TP` VPN manually.' if slow? && SCUtil::Services.find_by_name('VPNTestL2TP')
@@ -172,5 +173,4 @@ RSpec.describe 'Creating a VPN Service' do
       expect(status).to eq 0
     end
   end
-
 end

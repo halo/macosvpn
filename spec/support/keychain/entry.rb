@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Keychain
   class Entry
-
     def initialize(name:, kind:)
       @search_name = name
       @kind = kind
@@ -64,6 +65,5 @@ module Keychain
     def dump_command
       "security find-generic-password -l '#{search_name}' #{kind_argument} /Library/Keychains/System.keychain"
     end
-
   end
 end

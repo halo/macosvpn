@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module SCUtil
   class Service
-
     def initialize(attributes)
       @attributes = attributes
     end
@@ -100,6 +101,5 @@ module SCUtil
     def interface
       attributes.fetch('Interface', {})
     end
-
   end
 end

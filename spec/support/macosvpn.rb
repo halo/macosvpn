@@ -1,5 +1,6 @@
-module Macosvpn
+# frozen_string_literal: true
 
+module Macosvpn
   def self.call(arguments:)
     run "#{executable} #{arguments}"
   end

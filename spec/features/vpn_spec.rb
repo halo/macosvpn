@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe 'Creating a VPN Service' do
-
   context 'no sudo' do
     it 'warns about the missing permissions' do
       arguments = 'create -c Atlantis -e atlantic.example.com -u Alice -p p4ssw0rd -g EasyVPNGroup -s s3same'
@@ -11,5 +12,4 @@ RSpec.describe 'Creating a VPN Service' do
       expect(status).to eq 31
     end
   end
-
 end
