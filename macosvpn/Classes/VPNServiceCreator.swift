@@ -234,11 +234,11 @@ open class VPNServiceCreator: NSObject {
 
     DDLogDebug("Commiting all changes including service \(config.name ?? "nil")...")
     if !SCPreferencesCommitChanges(usingPreferencesRef) {
-      DDLogError("Error: Could not commit preferences with service. \(config.name ?? "nil"). \(SCErrorString(SCError())) (Code \(SCError()))")
+      DDLogError("Error: Could not commit preferences with service \(config.name ?? "nil"). \(SCErrorString(SCError())) (Code \(SCError()))")
       return VPNExitCode.CommingingPreferencesFailed
     }
     if !SCPreferencesApplyChanges(usingPreferencesRef) {
-      DDLogError("Error: Could not apply changes with service. \(config.name ?? "nil"). \(SCErrorString(SCError())) (Code \(SCError()))")
+      DDLogError("Error: Could not apply changes with service \(config.name ?? "nil"). \(SCErrorString(SCError())) (Code \(SCError()))")
       return VPNExitCode.ApplyingPreferencesFailed
     }
 

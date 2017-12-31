@@ -164,6 +164,12 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ipsec_local_identifier_type).to be nil
       expect(service.ppp_common_remote_address).to eq 'newyork.example.com'
       expect(service.ppp_auth_name).to eq 'Eric'
+
+      # Deleting services with sudo
+      arguments = 'delete -n VPNTestL2TP'
+      output, status = Macosvpn.sudo arguments: arguments
+      expect(output).to include 'Successfully deleted VPN Service VPNTestL2TP'
+      expect(status).to eq 0
     end
   end
 

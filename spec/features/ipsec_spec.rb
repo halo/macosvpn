@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Creating a VPN Service' do
+RSpec.describe 'Creating and deleting a VPN Service' do
 
   context 'no arguments', :sudo do
     it 'fails and is informational' do
@@ -193,6 +193,14 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ipsec_local_identifier_type).to be nil
       expect(service.ipsec_remote_address).to eq 'paris.example.com'
       expect(service.ipsec_xauth_name).to eq 'Eric'
+
+      # Deleting services with sudo
+      # It's not possible I think to test the non-sudo mode, which still should work.
+      arguments = 'delete -n VPNTestIPSec --name VPNTestIPSec2'
+      output, status = Macosvpn.sudo arguments: arguments
+      expect(output).to include 'Successfully deleted VPN Service VPNTestIPSec'
+      expect(output).to include 'Successfully deleted VPN Service VPNTestIPSec2'
+      expect(status).to eq 0
     end
   end
 

@@ -1,5 +1,11 @@
 # master
 
+# 0.3.4
+
+Features:
+
+* Can delete VPN services, thanks @kooroshh for the request
+
 # 0.3.3
 
 Internal:

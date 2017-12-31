@@ -36,7 +36,7 @@
 }
 
 + (BOOL) helpRequested {
-  return [self.package booleanValueForSignature: self.helpSig] || [self command] == VPNCommandNone;
+  return [self.package booleanValueForSignature: self.helpSig] || [self command] == 0;
 }
 
 + (BOOL) versionRequested {
@@ -51,14 +51,27 @@
   if ([[self.package unknownSwitches] count] > 0) DDLogDebug(@"Unknown arguments: %@", [[self.package unknownSwitches] componentsJoinedByString:@" | "]);
   if ([[self.package uncapturedValues] count] > 0) DDLogDebug(@"Uncaptured argument values: %@", [[self.package uncapturedValues] componentsJoinedByString:@" | "]);
   
-  if ([self.package countOfSignature:self.createCommandSig] == VPNCommandCreate) {
-    return VPNCommandCreate;
+  if ([self.package countOfSignature:self.createCommandSig] == 1) {
+    return 1;
+  } else if ([self.package countOfSignature:self.deleteCommandSig] == 1) {
+    return 2;
   } else {
-    return VPNCommandNone;
+    return 0;
   }
 }
 
-+ (NSArray*) serviceConfigs {
++ (NSArray<NSString *>*) serviceNames {
+  NSUInteger count = [self.package countOfSignature:self.nameSig];
+  NSMutableArray *names = [NSMutableArray arrayWithCapacity:count];
+
+  for (NSUInteger i = 0; i < count; i++) {
+    NSString *name = [self extractArgumentForSignature:self.nameSig withFallbackSignature:nil atIndex:i];
+    [names addObject:name];
+  }
+  return names;
+}
+
++ (NSArray<VPNServiceConfig *>*) serviceConfigs {
   NSArray *l2tpConfigs = [self serviceConfigsForType:VPNServiceL2TPOverIPSec andSignature:self.l2tpSig];
   NSArray *ciscoConfigs = [self serviceConfigsForType:VPNServiceCiscoIPSec andSignature:self.ciscoSig];
 
@@ -137,6 +150,15 @@
   return command;
 }
 
++ (FSArgumentSignature*) deleteCommandSig {
+  FSArgumentSignature *command = [FSArgumentSignature argumentSignatureWithFormat:@"[delete]"];
+
+  NSSet *deleteSignatures = [NSSet setWithObjects: self.nameSig, nil];
+
+  [command setInjectedSignatures:deleteSignatures];
+  return command;
+}
+
 // Internal: global Argument Flags
 
 + (FSArgumentSignature*) helpSig {
@@ -199,17 +221,25 @@
   return [FSArgumentSignature argumentSignatureWithFormat:@"[-o --force force]"];
 }
 
-+ (NSArray*) signatures {
-  return @[
-    self.helpSig,
-    self.debugSig,
-    self.versionSig,
-    self.forceSig,
-    self.createCommandSig
-  ];
+// Internal: Delete Configuration Arguments
+
++ (FSArgumentSignature*) nameSig {
+  return [FSArgumentSignature argumentSignatureWithFormat:@"[-n --name name]={1,}"];
 }
 
 // Wrapping up all valid argument signatures
+
++ (NSArray*) signatures {
+    return @[
+      self.helpSig,
+      self.debugSig,
+      self.versionSig,
+      self.forceSig,
+      self.createCommandSig,
+      self.deleteCommandSig
+    ];
+  }
+
 + (FSArgumentPackage*) package {
   return [[NSProcessInfo processInfo] fsargs_parseArgumentsWithSignatures:self.signatures];
 }

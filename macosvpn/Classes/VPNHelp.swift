@@ -20,10 +20,14 @@ open class VPNHelp: NSObject {
     DDLogDebug("Showing help...")
     
     let usage: String = Color.Wrap(styles: .bold).wrap("Usage:")
-    let command: String = Color.Wrap(foreground: VPNColor.Green).wrap("sudo macosvpn create")
-    let options: String = Color.Wrap(foreground: VPNColor.Pink).wrap("OPTIONS")
-    
-    DDLogInfo("\(usage) \(command) \(options) [OPTIONS AGAIN...]")
+    let createCommand: String = Color.Wrap(foreground: VPNColor.Green).wrap("sudo macosvpn create")
+    let createOptions: String = Color.Wrap(foreground: VPNColor.Pink).wrap("OPTIONS")
+
+    let deleteCommand: String = Color.Wrap(foreground: VPNColor.Red).wrap("macosvpn delete")
+    let deleteOptions: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--name MyVPN")
+
+    DDLogInfo("\(usage) \(createCommand) \(createOptions) [OPTIONS AGAIN...]")
+    DDLogInfo("            \(deleteCommand) \(deleteOptions) [--name AnotherVPN]")
     DDLogInfo("")
 
     let debugFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--debug")
@@ -50,7 +54,8 @@ open class VPNHelp: NSObject {
     let forceFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--force")
     let forceFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-o")
     let allShortCiscoFlags: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-ceupsg")
-    
+    let nameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-name")
+
     DDLogInfo("You can always add the \(debugFlag) option for troubleshooting.")
     DDLogInfo("The \(versionFlag) option displays the current version.")
     DDLogInfo("Add \(forceFlag) or \(forceFlagShort) to overwrite a VPN that has the same name.")
@@ -61,11 +66,11 @@ open class VPNHelp: NSObject {
     DDLogInfo("")
 
     DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("Creating a Cisco IPSec VPN Service"))
-    DDLogInfo("\(command) \(ciscoFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same \(groupnameFlag) Dreamteam")
+    DDLogInfo("\(createCommand) \(ciscoFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same \(groupnameFlag) Dreamteam")
     DDLogInfo("")
     
     DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("Creating an L2TP over IPSec VPN Service"))
-    DDLogInfo("\(command) \(l2tpFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same")
+    DDLogInfo("\(createCommand) \(l2tpFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same")
     DDLogInfo("")
 
     DDLogInfo("With L2TP you can")
@@ -77,18 +82,22 @@ open class VPNHelp: NSObject {
 
     DDLogInfo("")
     DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("The same command as above but shorter"))
-    DDLogInfo("\(command) \(ciscoFlagShort) Atlantic \(endpointFlagShort) atlantic.example.com \(usernameFlagShort) Alice \(passwordFlagShort) p4ssw0rd \(sharedSecretFlagShort) s3same \(groupnameFlagShort) Dreamteam")
+    DDLogInfo("\(createCommand) \(ciscoFlagShort) Atlantic \(endpointFlagShort) atlantic.example.com \(usernameFlagShort) Alice \(passwordFlagShort) p4ssw0rd \(sharedSecretFlagShort) s3same \(groupnameFlagShort) Dreamteam")
     DDLogInfo("")
 
     DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("The same command as short as possible"))
-    DDLogInfo("\(command) \(allShortCiscoFlags) Atlantic atlantic.example.com Alice p4ssw0rd s3same Dreamteam")
+    DDLogInfo("\(createCommand) \(allShortCiscoFlags) Atlantic atlantic.example.com Alice p4ssw0rd s3same Dreamteam")
     DDLogInfo("")
 
     DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("Repeat arguments to create multiple VPNs"))
-    DDLogInfo("\(command) \(allShortCiscoFlags) Atlantic atlantic.example.com Alice p4ssw0rd s3same Dreamteam \\")
+    DDLogInfo("\(createCommand) \(allShortCiscoFlags) Atlantic atlantic.example.com Alice p4ssw0rd s3same Dreamteam \\")
     DDLogInfo("                     \(allShortCiscoFlags) Northpole northpole.example.com Bob s3cret pr1v4te Spaceteam")
     DDLogInfo("")
-    
+
+    DDLogInfo(Color.Wrap(foreground: VPNColor.Blue).wrap("Delete any VPN Service by name"))
+    DDLogInfo("\(deleteCommand) \(nameFlag) Atlantic")
+    DDLogInfo("")
+
     DDLogInfo("This application is released under the MIT license.")
     DDLogInfo("Copyright (c) 2014-\(self.currentYear()) halo.")
     DDLogInfo(Color.Wrap(foreground: VPNColor.Brown).wrap("https://github.com/halo/macosvpn"))

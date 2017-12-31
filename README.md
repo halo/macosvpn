@@ -89,6 +89,17 @@ Repeat the arguments for creating multiple Services at once (no matter which sho
     sudo macosvpn create -leups Atlantic atlantic.example.com Alice p4ssw0rd s3same \\
                          -leups Northpole northpole.example.com Bob s3cret pr1v4te
 
+#### Deleting VPN services by name
+
+These commands will prompt you for your password to allow changes to your Network configuration:
+
+    macosvpn delete --name MyVPN --name AnotherOne
+    macosvpn delete -n ThisOneToo
+
+Run it with sudo to avoid the prompt:
+
+    sudo macosvpn delete --name MyVPN
+
 ## Troubleshooting
 
 * If you're stuck, try to add the `--debug` flag and see if it says something useful.

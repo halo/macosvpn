@@ -7,10 +7,13 @@ struct VPNExitCode {
   static let UnknownCommand: Int32 = 20
   static let MissingEndpoint: Int32 = 21
   static let MissingServices: Int32 = 22
+  static let MissingNames: Int32 = 23
+  static let ServiceNameExtractionFailed: Int32 = 24
 
   static let PrivilegesRequired: Int32 = 31
   static let LockingPreferencesFailed: Int32 = 32
   static let NoAuthorization: Int32 = 33
+  static let AuthorizationCreationFailed: Int32 = 34
 
   static let UnsupportedInterfaceType: Int32 = 40
   static let InterfaceInitializationFailed: Int32 = 41
@@ -34,5 +37,7 @@ struct VPNExitCode {
   static let CreatingSharedSecretKeychainItemFailed: Int32 = 59
   static let CommingingPreferencesFailed: Int32 = 60
   static let ApplyingPreferencesFailed: Int32 = 61
+  static let RemovingServiceFailed: Int32 = 62
+  static let NoServicesRemoved: Int32 = 63
 
 }

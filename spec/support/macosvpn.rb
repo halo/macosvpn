@@ -15,9 +15,10 @@ module Macosvpn
 
     [output, status]
   end
+  private_class_method :run
 
   def self.executable
     Pathname.new 'build/Release/macosvpn'
   end
-
+  private_class_method :executable
 end
