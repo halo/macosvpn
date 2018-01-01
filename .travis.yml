@@ -1,6 +1,6 @@
 sudo: required
 language: objective-c
-rvm: 2.2.5
+rvm: 2.4.2
 
 osx_image: xcode9
 
