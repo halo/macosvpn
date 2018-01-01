@@ -14,3 +14,9 @@ Style/TrailingCommaInLiteral:
 # Top-level class documentation is nice, but it's too early in the project to activate this
 Style/Documentation:
   Enabled: false
+
+# This comes from the rubocop-rspec gem
+Metrics/BlockLength:
+  Exclude:
+    - Rakefile
+    - spec/**/*.rb
