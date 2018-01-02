@@ -47,7 +47,7 @@
   return [self.package booleanValueForSignature: self.forceSig];
 }
 
-+ (NSUInteger) command {
++ (UInt8) command {
   if ([[self.package unknownSwitches] count] > 0) DDLogDebug(@"Unknown arguments: %@", [[self.package unknownSwitches] componentsJoinedByString:@" | "]);
   if ([[self.package uncapturedValues] count] > 0) DDLogDebug(@"Uncaptured argument values: %@", [[self.package uncapturedValues] componentsJoinedByString:@" | "]);
   

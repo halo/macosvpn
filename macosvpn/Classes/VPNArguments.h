@@ -26,6 +26,6 @@
 
 + (NSArray<NSString *>*) serviceNames;
 + (NSArray<VPNServiceConfig*>*) serviceConfigs;
-+ (NSUInteger) command;
++ (UInt8) command;
 
 @end
