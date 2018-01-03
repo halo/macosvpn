@@ -1,5 +1,11 @@
 # master
 
+# 0.3.5
+
+Bugfix:
+
+* Compiling with Xcode 8 works again (Xcode 9 was not affected)
+
 # 0.3.4
 
 Features:
