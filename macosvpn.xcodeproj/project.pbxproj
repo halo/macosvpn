@@ -641,10 +641,9 @@
 			};
 			buildConfigurationList = 3286138B197FED310010BB98 /* Build configuration list for PBXProject "macosvpn" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = 32861387197FED310010BB98;
