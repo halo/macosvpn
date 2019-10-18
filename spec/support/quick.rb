@@ -1,5 +1,6 @@
-module Quick
+# frozen_string_literal: true
 
+module Quick
   def quick?
     ENV['QUICK']
   end
@@ -7,5 +8,4 @@ module Quick
   def slow?
     !quick?
   end
-
 end

@@ -1,7 +1,7 @@
 #inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.4
 
 # On an 11-inch screen this works perfectly fine.
 Metrics/LineLength:
@@ -11,18 +11,12 @@ Metrics/LineLength:
 Style/TrailingCommaInLiteral:
   Enabled: false
 
-# I'm not that picky. An empty line can even increase readability
-Style/EmptyLinesAroundBlockBody:
-  Enabled: false
-Style/EmptyLinesAroundClassBody:
-  Enabled: false
-Style/EmptyLinesAroundModuleBody:
-  Enabled: false
-
 # Top-level class documentation is nice, but it's too early in the project to activate this
 Style/Documentation:
   Enabled: false
 
-# UTF-8 in comments can improve readability
-Style/AsciiComments:
-  Enabled: false
+# This comes from the rubocop-rspec gem
+Metrics/BlockLength:
+  Exclude:
+    - Rakefile
+    - spec/**/*.rb

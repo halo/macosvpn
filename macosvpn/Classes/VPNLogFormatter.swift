@@ -16,8 +16,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 public class VPNLogFormatter: NSObject, DDLogFormatter {
   
-  public func formatLogMessage(logMessage: DDLogMessage) -> String {
-    return "  \(logMessage.message)";
+  public func format(message: DDLogMessage) -> String? {
+    return "  \(message.message)";
   }
   
 }

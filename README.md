@@ -16,7 +16,7 @@ Integration tests are run on Travis to ensure it's working properly.
 
 ## Requirements
 
-* macOS El Capitan, Yosemite, or Mavericks
+* macOS High Sierra 10.13, Sierra 10.12, El Capitan 10.11, Yosemite 10.10, or Mavericks 10.9
 * Administrator privileges (i.e. you've got to run it with sudo)
 
 **Why sudo?**
@@ -30,6 +30,7 @@ I don't want you to have to deal with the complexity a HelperTool can entail (GU
 If you have [Homebrew](http://brew.sh) installed, you can simply start a Terminal and run:
 
 ```bash
+# See https://github.com/Homebrew/homebrew-core/search?q=macosvpn&type=Issues
 brew install macosvpn
 ```
 
@@ -37,7 +38,7 @@ If not, you can run this curl command to get the compiled executable from Github
 
 ```bash
 # Make sure first that the directory /usr/local/bin exists
-sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.2.1/macosvpn > /usr/local/bin/macosvpn"
+sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.3.1/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
@@ -87,6 +88,17 @@ Repeat the arguments for creating multiple Services at once (no matter which sho
 
     sudo macosvpn create -leups Atlantic atlantic.example.com Alice p4ssw0rd s3same \\
                          -leups Northpole northpole.example.com Bob s3cret pr1v4te
+
+#### Deleting VPN services by name
+
+These commands will prompt you for your password to allow changes to your Network configuration:
+
+    macosvpn delete --name MyVPN --name AnotherOne
+    macosvpn delete -n ThisOneToo
+
+Run it with sudo to avoid the prompt:
+
+    sudo macosvpn delete --name MyVPN
 
 ## Troubleshooting
 

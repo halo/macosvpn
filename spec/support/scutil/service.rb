@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module SCUtil
   class Service
-
     def initialize(attributes)
       @attributes = attributes
     end
@@ -77,6 +78,14 @@ module SCUtil
       attributes.fetch('PPP', {})['CommRemoteAddress']
     end
 
+    def ppp_disconnect_on_fast_user_switch
+      attributes.fetch('PPP', {})['DisconnectOnFastUserSwitch']
+    end
+
+    def ppp_disconnect_on_logout
+      attributes.fetch('PPP', {})['DisconnectOnLogout']
+    end
+
     private
 
     attr_reader :attributes
@@ -92,6 +101,5 @@ module SCUtil
     def interface
       attributes.fetch('Interface', {})
     end
-
   end
 end

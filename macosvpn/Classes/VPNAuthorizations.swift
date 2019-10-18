@@ -14,24 +14,22 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-public class VPNAuthorizations: NSObject {
+open class VPNAuthorizations: NSObject {
   
   class func create() -> AuthorizationRef {
-    var auth: AuthorizationRef = nil
+    var auth: AuthorizationRef? = nil
     let status = AuthorizationCreate(nil, nil, self.flags(), &auth)
     
     if status == errAuthorizationSuccess {
-      //NSLog(@"Successfully obtained Authorization reference");
+      // NSLog(@"Successfully obtained Authorization reference");
+    } else {
+      exit(VPNExitCode.NoAuthorization)
     }
-    else {
-      //NSLog("Could not obtain Authorization reference")
-      exit(101)
-    }
-    return auth
+    return auth!
   }
   
   class func flags() -> AuthorizationFlags {
-    return AuthorizationFlags([AuthorizationFlags.Defaults, AuthorizationFlags.ExtendRights, AuthorizationFlags.InteractionAllowed, AuthorizationFlags.PreAuthorize])
+    return AuthorizationFlags([AuthorizationFlags.extendRights, AuthorizationFlags.interactionAllowed, AuthorizationFlags.preAuthorize])
   }
   
 }

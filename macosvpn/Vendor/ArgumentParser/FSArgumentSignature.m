@@ -293,7 +293,7 @@
 
 @end
 
-NSRegularExpression * __fsargs_generalRegex(NSError ** error)
+NSRegularExpression * __fsargs_generalRegex(NSError * __autoreleasing * error)
 {
     static NSRegularExpression * r;
     static dispatch_once_t onceToken;

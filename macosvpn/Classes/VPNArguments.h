@@ -14,6 +14,8 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+@class VPNServiceConfig;
+
 @interface VPNArguments : NSObject
 
 + (void) setLogLevel;
@@ -22,7 +24,8 @@
 + (BOOL) versionRequested;
 + (BOOL) forceRequested;
 
-+ (NSArray*) serviceConfigs;
-+ (NSUInteger) command;
++ (NSArray<NSString *>*) serviceNames;
++ (NSArray<VPNServiceConfig*>*) serviceConfigs;
++ (UInt8) command;
 
 @end

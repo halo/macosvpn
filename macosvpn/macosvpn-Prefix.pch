@@ -24,10 +24,6 @@ static const DDLogLevel ddLogLevel = DDLogLevelDebug;
 
 // static int ddLogLevel = LOG_LEVEL_DEBUG;
 
-// Commands
-static int const VPNCommandNone = 0;
-static int const VPNCommandCreate = 1;
-
 // Service Types
 static int const VPNServiceL2TPOverIPSec = 1;
 static int const VPNServiceCiscoIPSec = 2;

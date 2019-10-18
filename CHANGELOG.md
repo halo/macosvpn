@@ -1,3 +1,43 @@
+# master
+
+# 0.3.4
+
+Features:
+
+* Can delete VPN services, thanks @kooroshh for the request
+
+# 0.3.3
+
+Internal:
+
+* Compatibility with Xcode 9 thanks @fxcoudert for reporting
+
+# 0.3.2
+
+Features:
+
+* Added -i and -t flags to control auto disconnect of L2TP thanks @blackthroat for requesting the feature
+
+Internal:
+
+* Compatibility with Xcode 8.3.2 with Swift 3.1
+
+# 0.3.1
+
+Bugfix:
+
+* Resolving an issue where L2TP Keychain Items were not associated with their network service.
+
+Breaking Changes:
+
+* Most exit codes changed so as to introduce a consistent numbering sequence.
+
+# 0.3.0
+
+Bugfix/Features:
+
+* macOS Sierra compatibility (might break El Capitan, needs more testing)
+
 # 0.2.1
 
 Bugfix:
@@ -36,7 +76,7 @@ Features:
 
 ## 0.1.2
 
-Features
+Features:
 
 * Improved help and debugging logs
 * Fixed some typos

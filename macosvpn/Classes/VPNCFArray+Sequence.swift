@@ -12,10 +12,24 @@
  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
+ */
 
-@interface VPNController : NSObject
+extension CFArray: Sequence {
 
-+ (int) main;
+  // Just a little helper to loop through a CFArray.
+  // Kindly provided by http://stackoverflow.com/a/32127187
+  public func makeIterator() -> AnyIterator<AnyObject> {
+    var index = -1
+    let maxIndex = CFArrayGetCount(self)
+    return AnyIterator{
+      index += 1
+      guard index < maxIndex else {
+        return nil
+      }
+      let unmanagedObject: UnsafeRawPointer = CFArrayGetValueAtIndex(self, index)
+      let rec = unsafeBitCast(unmanagedObject, to: AnyObject.self)
+      return rec
+    }
+  }
 
-@end
+}

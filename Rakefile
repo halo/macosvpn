@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'xcodebuild'
 
 task default: ['xcode:build']

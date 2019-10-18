@@ -1,32 +1,32 @@
 /// Based on: ECMA-048 — 8.3.117
 public enum StyleParameter: UInt8, Parameter {
 	// Reference: Terminal Support Table: https://github.com/jdhealy/PrettyColors/wiki/Terminal-Support
-	case Bold              = 01 // bold or increased intensity
-	case Faint             = 02 // faint, decreased intensity or second colour
-	case Italic            = 03 // italicized
-	case Underlined        = 04 // singly underlined
-	case BlinkSlow         = 05 // slowly blinking (less then 150 per minute)
-	case Blink             = 06 // rapidly blinking (150 per minute or more)
-	case Negative          = 07 // negative image — a.k.a. Inverse
-	case Concealed         = 08 // concealed characters
-	case CrossedOut        = 09 // (characters still legible but marked as to be deleted)
-	case Font1             = 11
-	case Font2             = 12
-	case Font3             = 13
-	case Font4             = 14
-	case Font5             = 15
-	case Font6             = 16
-	case Font7             = 17
-	case Font8             = 18
-	case Font9             = 19
-	case Fraktur           = 20 // Gothic
-	case UnderlinedDouble  = 21 // doubly underlined
-	case Normal            = 22 // normal colour or normal intensity (neither bold nor faint)
-	case Positive          = 27 // positive image
-	case Revealed          = 28 // revealed characters
-	case Framed            = 51
-	case Encircled         = 52
-	case Overlined         = 53
+	case bold              = 01 // bold or increased intensity
+	case faint             = 02 // faint, decreased intensity or second colour
+	case italic            = 03 // italicized
+	case underlined        = 04 // singly underlined
+	case blinkSlow         = 05 // slowly blinking (less then 150 per minute)
+	case blink             = 06 // rapidly blinking (150 per minute or more)
+	case negative          = 07 // negative image — a.k.a. Inverse
+	case concealed         = 08 // concealed characters
+	case crossedOut        = 09 // (characters still legible but marked as to be deleted)
+	case font1             = 11
+	case font2             = 12
+	case font3             = 13
+	case font4             = 14
+	case font5             = 15
+	case font6             = 16
+	case font7             = 17
+	case font8             = 18
+	case font9             = 19
+	case fraktur           = 20 // Gothic
+	case underlinedDouble  = 21 // doubly underlined
+	case normal            = 22 // normal colour or normal intensity (neither bold nor faint)
+	case positive          = 27 // positive image
+	case revealed          = 28 // revealed characters
+	case framed            = 51
+	case encircled         = 52
+	case overlined         = 53
 
 	public struct Reset {
 		/// Some parameters have corresponding resets, 

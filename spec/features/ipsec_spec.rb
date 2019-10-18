@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-RSpec.describe 'Creating a VPN Service' do
-
+RSpec.describe 'Creating and deleting a VPN Service' do
   context 'no arguments', :sudo do
     it 'fails and is informational' do
       output, status = Macosvpn.sudo arguments: 'create'
       expect(output).to include 'You did not specify any interfaces for me to create'
-      expect(status).to eq 43
+      expect(status).to eq 22
     end
   end
 
@@ -14,7 +15,7 @@ RSpec.describe 'Creating a VPN Service' do
     it 'fails and is informational' do
       output, status = Macosvpn.sudo arguments: 'create --cisco SomeName'
       expect(output).to include 'You did not provide an endpoint'
-      expect(status).to eq 50
+      expect(status).to eq 21
     end
   end
 
@@ -44,6 +45,7 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ipsec_xauth_name).to eq 'Alice'
       expect(service.ipsec_xauth_password_encryption).to eq 'Keychain'
       expect(service.ipsec_xauth_password_id).to be_present
+      expect(service.ipsec_xauth_password_id).to_not include('XAUTH') # Shouldn't it?
       expect(service.ipv4_config_method).to eq 'PPP'
       expect(service.ipv4_override_primary).to eq 1
       expect(service.interface_type).to eq 'IPSec'
@@ -75,7 +77,7 @@ RSpec.describe 'Creating a VPN Service' do
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestIPSec'
       expect(output).to include 'If you want me to overwrite it'
-      expect(status).to eq 44
+      expect(status).to eq 53
 
       # Expect nothing to have changed
 
@@ -192,7 +194,14 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ipsec_local_identifier_type).to be nil
       expect(service.ipsec_remote_address).to eq 'paris.example.com'
       expect(service.ipsec_xauth_name).to eq 'Eric'
+
+      # Deleting services with sudo
+      # It's not possible I think to test the non-sudo mode, which still should work.
+      arguments = 'delete -n VPNTestIPSec --name VPNTestIPSec2'
+      output, status = Macosvpn.sudo arguments: arguments
+      expect(output).to include 'Successfully deleted VPN Service VPNTestIPSec'
+      expect(output).to include 'Successfully deleted VPN Service VPNTestIPSec2'
+      expect(status).to eq 0
     end
   end
-
 end

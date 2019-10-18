@@ -23,7 +23,7 @@ public protocol SelectGraphicRenditionWrapType {
 	var code: (enable: SelectGraphicRendition, disable: SelectGraphicRendition) { get }
 	
 	/// Wraps a string in the SelectGraphicRendition code.
-	func wrap(string: String) -> String
+	func wrap(_ string: String) -> String
 	
 	var parameters: [Parameter] { get set }
 	

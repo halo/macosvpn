@@ -14,17 +14,17 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-public class VPNLogger: NSObject {
+open class VPNLogger: NSObject {
 
-  public class func setup(level: DDLogLevel) {
-    DDTTYLogger.sharedInstance().logFormatter = self.formatter();
-    DDTTYLogger.sharedInstance().colorsEnabled = true;
-    DDTTYLogger.sharedInstance().setForegroundColor(NSColor.blueColor(), backgroundColor: nil, forFlag: DDLogFlag.Debug);
-    DDTTYLogger.sharedInstance().setForegroundColor(NSColor.redColor(), backgroundColor: nil, forFlag: DDLogFlag.Error);
-    DDLog.addLogger(DDTTYLogger.sharedInstance(), withLevel: level);
+  open class func setup(_ level: DDLogLevel) {
+    DDTTYLogger.sharedInstance.logFormatter = self.formatter();
+    DDTTYLogger.sharedInstance.colorsEnabled = true;
+    DDTTYLogger.sharedInstance.setForegroundColor(NSColor.blue, backgroundColor: nil, for: DDLogFlag.debug);
+    DDTTYLogger.sharedInstance.setForegroundColor(NSColor.red, backgroundColor: nil, for: DDLogFlag.error);
+    DDLog.add(DDTTYLogger.sharedInstance, with: level);
   }
   
-  private class func formatter() -> VPNLogFormatter {
+  fileprivate class func formatter() -> VPNLogFormatter {
     return VPNLogFormatter.init();
   }
   
