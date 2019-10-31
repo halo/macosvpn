@@ -43,21 +43,21 @@ static const char * trustedAppPaths[] = {
 
 // This will create a PPP Password Keychain Item
 + (int) createPasswordKeyChainItem:(NSString*)label forService:(NSString*)service withAccount:(NSString*)account andPassword:(NSString*)password {
-  DDLogDebug(@"Creating Password Keychain Item with ID %@", service);
+  Log.debug(@"Creating Password Keychain Item with ID %@", service);
   return [self createItem:label withService:service account:account description:@"PPP Password" andPassword:password];
 }
 
 // This will create an IPSec Shared Secret Keychain Item
 + (int) createSharedSecretKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password {
   service = [NSString stringWithFormat:@"%@.SS", service];
-  DDLogDebug(@"Creating IPSec Shared Secret Keychain Item with ID %@", service);
+  Log.debug(@"Creating IPSec Shared Secret Keychain Item with ID %@", service);
   return [self createItem:label withService:service account:@"" description:@"IPSec Shared Secret" andPassword:password];
 }
 
 // This will create an Cisco IPSec XAuth Keychain Item
 + (int) createXAuthKeyChainItem:(NSString*)label forService:(NSString*)service withPassword:(NSString*)password {
   service = [NSString stringWithFormat:@"%@.XAUTH", service];
-  DDLogDebug(@"Creating Cisco IPSec XAuth Keychain Item with ID %@", service);
+  Log.debug(@"Creating Cisco IPSec XAuth Keychain Item with ID %@", service);
   return [self createItem:label withService:service account:@"" description:@"IPSec XAuth Password" andPassword:password];
 }
 
@@ -68,7 +68,7 @@ static const char * trustedAppPaths[] = {
 // A generic method to create Keychain Items holding Network service passwords
 + (int) createItem:(NSString*)label withService:(NSString*)service account:(NSString*)account description:(NSString*)description andPassword:(NSString*)password {
 
-  DDLogDebug(@"Creating System Keychain for %@", label);
+  Log.debug(@"Creating System Keychain for %@", label);
 
   // This variable will hold all sorts of operation status responses
   OSStatus status;
@@ -85,18 +85,18 @@ static const char * trustedAppPaths[] = {
 
   status = SecKeychainCopyDomainDefault(kSecPreferencesDomainSystem, &keychain);
   if (status == errSecSuccess) {
-    DDLogDebug(@"Succeeded opening System Keychain");
+    Log.debug(@"Succeeded opening System Keychain");
   } else {
-    DDLogError(@"Could not obtain System Keychain: %@", SecCopyErrorMessageString(status, NULL));
+    Log.error(@"Could not obtain System Keychain: %@", SecCopyErrorMessageString(status, NULL));
     return 60;
   }
 
-  DDLogDebug(@"Unlocking System Keychain");
+  Log.debug(@"Unlocking System Keychain");
   status = SecKeychainUnlock(keychain, 0, NULL, FALSE);
   if (status == errSecSuccess) {
-    DDLogDebug(@"Succeeded unlocking System Keychain");
+    Log.debug(@"Succeeded unlocking System Keychain");
   } else {
-    DDLogError(@"Could not unlock System Keychain: %@", SecCopyErrorMessageString(status, NULL));
+    Log.error(@"Could not unlock System Keychain: %@", SecCopyErrorMessageString(status, NULL));
     return 61;
   }
 
@@ -107,9 +107,9 @@ static const char * trustedAppPaths[] = {
   status = SecAccessCreate(CFSTR("Some VPN Test"), (__bridge CFArrayRef)(self.trustedApps), &access);
 
   if(status == noErr) {
-    DDLogDebug(@"Created empty Keychain access object");
+    Log.debug(@"Created empty Keychain access object");
   } else {
-    DDLogError(@"Could not unlock System Keychain: %@", SecCopyErrorMessageString(status, NULL));
+    Log.error(@"Could not unlock System Keychain: %@", SecCopyErrorMessageString(status, NULL));
     return 62;
   }
 
@@ -126,9 +126,9 @@ static const char * trustedAppPaths[] = {
   status = SecKeychainItemCreateFromContent(kSecGenericPasswordItemClass, &attributes, (int)strlen(passwordUTF8), passwordUTF8, keychain, access, &item);
 
   if(status == noErr) {
-    DDLogDebug(@"Successfully created Keychain Item");
+    Log.debug(@"Successfully created Keychain Item");
   } else {
-    DDLogError(@"Creating Keychain item failed: %@", SecCopyErrorMessageString(status, NULL));
+    Log.error(@"Creating Keychain item failed: %@", SecCopyErrorMessageString(status, NULL));
     return 63;
   }
 
@@ -143,9 +143,9 @@ static const char * trustedAppPaths[] = {
   for (int i = 0; i < (sizeof(trustedAppPaths) / sizeof(*trustedAppPaths)); i++) {
     err = SecTrustedApplicationCreateFromPath(trustedAppPaths[i], &app);
     if (err == errSecSuccess) {
-      //DDLogDebug(@"SecTrustedApplicationCreateFromPath succeeded: %@", SecCopyErrorMessageString(err, NULL));
+      //Log.debug(@"SecTrustedApplicationCreateFromPath succeeded: %@", SecCopyErrorMessageString(err, NULL));
     } else {
-      DDLogError(@"SecTrustedApplicationCreateFromPath failed: %@", SecCopyErrorMessageString(err, NULL));
+      Log.error(@"SecTrustedApplicationCreateFromPath failed: %@", SecCopyErrorMessageString(err, NULL));
     }
 
     [apps addObject:(__bridge id)app];

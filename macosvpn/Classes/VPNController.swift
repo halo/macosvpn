@@ -24,14 +24,14 @@ class VPNController {
       return VPNHelp.showVersion()
     }
     // For readability we print out an empty row before and after.
-    DDLogInfo("")
+    Log.info("")
     let exitCode: Int32 = self.run()
-    DDLogInfo("")
+    Log.info("")
     // Mention that there were no errors so we can trace bugs more easily.
     if exitCode == 0 {
       // VPNExitCode.Success
-      DDLogInfo("Finished without errors.")
-      DDLogInfo("")
+      Log.info("Finished without errors.")
+      Log.info("")
     }
     return exitCode
   }
@@ -44,15 +44,15 @@ class VPNController {
     // To keep this application extensible we introduce different
     // commands right from the beginning. We start off with "create"
     if VPNArguments.command() == VPNCommandType.Create {
-      DDLogDebug("So, you wish to create one or more VPN service(s).")
+      Log.debug("So, you wish to create one or more VPN service(s).")
       return self.create()
     }
     else if VPNArguments.command() == VPNCommandType.Delete {
-      DDLogDebug("So, you wish to delete one or more VPN service(s).")
+      Log.debug("So, you wish to delete one or more VPN service(s).")
       return self.delete()
     }
     else {
-      DDLogError("Unknown command. Try --help for instructions.")
+      Log.error("Unknown command. Try --help for instructions.")
       return 20
       // VPNExitCode.UnknownCommand
     }
@@ -72,13 +72,13 @@ class VPNController {
   // But the Security System will popup an auth dialog, which is *not* enough to write to the System Keychain.
   // So, for now, we will simply bail out unless you called this command line application with the good old `sudo`.
   if (getuid() != 0) {
-    DDLogError("Sorry, without superuser privileges I won't be able to write to the System Keychain and thus cannot create a VPN service.");
+    Log.error("Sorry, without superuser privileges I won't be able to write to the System Keychain and thus cannot create a VPN service.");
     return 31; // VPNExitCode.PrivilegesRequired
   }
 
   let app = "macosvpn" as CFString
   guard let prefs: SCPreferences = SCPreferencesCreateWithAuthorization(nil, app, nil, VPNAuthorizations.create()) else {
-    DDLogError("Could not create Authorization.");
+    Log.error("Could not create Authorization.");
     return 34; // VPNExitCode.AuthorizationCreationFailed
   }
 
@@ -86,9 +86,9 @@ class VPNController {
   // by obtaining a system-wide lock over the system preferences.
     
   if (SCPreferencesLock(prefs, true)) {
-    DDLogDebug("Gained superhuman rights.");
+    Log.debug("Gained superhuman rights.");
   } else {
-    DDLogError("Sorry, without superuser privileges I won't be able to add any VPN interfaces.");
+    Log.error("Sorry, without superuser privileges I won't be able to add any VPN interfaces.");
     return 32; // VPNExitCode.LockingPreferencesFailed
   }
 
@@ -97,7 +97,7 @@ class VPNController {
 
   let serviceConfigs = VPNArguments.serviceConfigs()
   if (serviceConfigs?.count == 0) {
-    DDLogError("You did not specify any interfaces for me to create. Try --help for more information.");
+    Log.error("You did not specify any interfaces for me to create. Try --help for more information.");
     return 22; // VPNExitCode.MissingServices
   }
 
@@ -115,32 +115,32 @@ class VPNController {
   }
 
   class func delete() -> Int32 {
-    DDLogDebug("Shall we delete today?");
+    Log.debug("Shall we delete today?");
     // If everything works out, we will return exit code 0
     var exitCode: Int32 = 0;
 
     guard let names = VPNArguments.serviceNames() else {
-      DDLogError("Could not extract service names.")
+      Log.error("Could not extract service names.")
       return VPNExitCode.ServiceNameExtractionFailed;
     }
 
     if (names.count == 0) {
-      DDLogError("You need to specify at least one --name MyVPNName.")
+      Log.error("You need to specify at least one --name MyVPNName.")
       return 23; // VPNExitCode.MissingNames
     }
 
     let app = "macosvpn" as CFString
     guard let prefs: SCPreferences = SCPreferencesCreateWithAuthorization(nil, app, nil, VPNAuthorizations.create()) else {
-      DDLogError("Could not create Authorization.");
+      Log.error("Could not create Authorization.");
       return 34; // VPNExitCode.AuthorizationCreationFailed
     }
     // Making sure other process cannot make configuration modifications
     // by obtaining a system-wide lock over the system preferences.
 /*
     if (SCPreferencesLock(prefs, true)) {
-      DDLogDebug("Gained superhuman rights.");
+      Log.debug("Gained superhuman rights.");
     } else {
-      DDLogError("Sorry, without superuser privileges I won't be able to remove any VPN interfaces.");
+      Log.error("Sorry, without superuser privileges I won't be able to remove any VPN interfaces.");
       return 32; // VPNExitCode.LockingPreferencesFailed
     }
 */
@@ -150,7 +150,7 @@ class VPNController {
       if (exitCode != 0) { break; } // VPNExitCode.Success
     }
 
-    DDLogDebug((names.joined()))
+    Log.debug((names.joined()))
 
     // We're done, other processes may modify the system configuration again
    // SCPreferencesUnlock(prefs);

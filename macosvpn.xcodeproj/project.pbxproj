@@ -3,104 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		32861394197FED310010BB98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32861393197FED310010BB98 /* Foundation.framework */; };
 		328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328613A1197FEE7A0010BB98 /* SystemConfiguration.framework */; };
 		9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3D847D1982AE1B005BD5F3 /* Security.framework */; };
-		9D3D84811982B017005BD5F3 /* VPNKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D84801982B017005BD5F3 /* VPNKeychain.m */; };
 		9D61984D1981129900FC01E8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C419803F2B005B5E3E /* main.swift */; };
-		9D61984F198112A000FC01E8 /* FSAliasRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619792198111F900FC01E8 /* FSAliasRecognizer.m */; };
-		9D619851198112A000FC01E8 /* FSAliasToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619794198111F900FC01E8 /* FSAliasToken.m */; };
-		9D619853198112A000FC01E8 /* FSArgsKonstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619796198111F900FC01E8 /* FSArgsKonstants.m */; };
-		9D619855198112A000FC01E8 /* FSArgumentPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619798198111F900FC01E8 /* FSArgumentPackage.m */; };
-		9D619858198112A000FC01E8 /* FSArgumentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979B198111F900FC01E8 /* FSArgumentParser.m */; };
-		9D61985B198112A000FC01E8 /* FSArguments_Coalescer_Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61979E198111F900FC01E8 /* FSArguments_Coalescer_Internal.m */; };
-		9D61985D198112A000FC01E8 /* FSArgumentSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A0198111F900FC01E8 /* FSArgumentSignature.m */; };
-		9D619860198112A000FC01E8 /* FSCountedArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A3198111F900FC01E8 /* FSCountedArgument.m */; };
-		9D619862198112A000FC01E8 /* FSFormatCtorParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A5198111F900FC01E8 /* FSFormatCtorParserDelegate.m */; };
-		9D619864198112A000FC01E8 /* FSFormatCtorTokeniserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A7198111F900FC01E8 /* FSFormatCtorTokeniserDelegate.m */; };
-		9D619866198112A000FC01E8 /* FSMutableAttributedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197A9198111F900FC01E8 /* FSMutableAttributedArray.m */; };
-		9D619868198112A000FC01E8 /* FSSwitchRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AB198111F900FC01E8 /* FSSwitchRecognizer.m */; };
-		9D61986A198112A000FC01E8 /* FSSwitchToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AD198111F900FC01E8 /* FSSwitchToken.m */; };
-		9D61986C198112A000FC01E8 /* FSValuedArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197AF198111F900FC01E8 /* FSValuedArgument.m */; };
-		9D61986F198112A000FC01E8 /* NSArray+FSArgumentsNormalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B2198111F900FC01E8 /* NSArray+FSArgumentsNormalizer.m */; };
-		9D619871198112A000FC01E8 /* NSDictionary+RubyDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B4198111F900FC01E8 /* NSDictionary+RubyDescription.m */; };
-		9D619873198112A000FC01E8 /* NSProcessInfo+FSArgumentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B6198111F900FC01E8 /* NSProcessInfo+FSArgumentParser.m */; };
-		9D619875198112A000FC01E8 /* NSScanner+EscapedScanning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197B8198111F900FC01E8 /* NSScanner+EscapedScanning.m */; };
-		9D619877198112A000FC01E8 /* NSString+Indenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197BA198111F900FC01E8 /* NSString+Indenter.m */; };
-		9D619879198112DA00FC01E8 /* CPJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6198471981121500FC01E8 /* CPJSONParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61987C198112DA00FC01E8 /* CPEOFToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197BE198111F900FC01E8 /* CPEOFToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61987E198112DA00FC01E8 /* CPErrorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C0198111F900FC01E8 /* CPErrorToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619880198112DA00FC01E8 /* CPGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C2198111F900FC01E8 /* CPGrammar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619882198112DA00FC01E8 /* CPGrammarInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C4198111F900FC01E8 /* CPGrammarInternal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619884198112DA00FC01E8 /* CPGrammarPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C6198111F900FC01E8 /* CPGrammarPrivate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619886198112DA00FC01E8 /* CPGrammarSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197C8198111F900FC01E8 /* CPGrammarSymbol.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619888198112DA00FC01E8 /* CPIdentifierRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CA198111F900FC01E8 /* CPIdentifierRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61988A198112DA00FC01E8 /* CPIdentifierToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CC198111F900FC01E8 /* CPIdentifierToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61988C198112DA00FC01E8 /* CPItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197CE198111F900FC01E8 /* CPItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61988E198112DA00FC01E8 /* CPKeywordRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D0198111F900FC01E8 /* CPKeywordRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619890198112DA00FC01E8 /* CPKeywordToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D2198111F900FC01E8 /* CPKeywordToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619892198112DA00FC01E8 /* CPLALR1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D4198111F900FC01E8 /* CPLALR1Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619894198112DA00FC01E8 /* CPLR1Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D6198111F900FC01E8 /* CPLR1Item.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619896198112DA00FC01E8 /* CPLR1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197D8198111F900FC01E8 /* CPLR1Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D619898198112DA00FC01E8 /* CPNumberRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DA198111F900FC01E8 /* CPNumberRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61989A198112DA00FC01E8 /* CPNumberToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DC198111F900FC01E8 /* CPNumberToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61989C198112DA00FC01E8 /* CPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197DE198111F900FC01E8 /* CPParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D61989E198112DA00FC01E8 /* CPQuotedRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E0198111F900FC01E8 /* CPQuotedRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A0198112DA00FC01E8 /* CPQuotedToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E2198111F900FC01E8 /* CPQuotedToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A2198112DA00FC01E8 /* CPRecoveryAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E4198111F900FC01E8 /* CPRecoveryAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A5198112DA00FC01E8 /* CPRHSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E7198111F900FC01E8 /* CPRHSItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198A7198112DA00FC01E8 /* CPRHSItemResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197E9198111F900FC01E8 /* CPRHSItemResult.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198AA198112DA00FC01E8 /* CPRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197EC198111F900FC01E8 /* CPRule.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198AC198112DA00FC01E8 /* CPShiftAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197EE198111F900FC01E8 /* CPShiftAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198AE198112DA00FC01E8 /* CPShiftReduceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F0198111F900FC01E8 /* CPShiftReduceAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B0198112DA00FC01E8 /* CPShiftReduceActionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F2198111F900FC01E8 /* CPShiftReduceActionTable.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B2198112DA00FC01E8 /* CPShiftReduceGotoTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F4198111F900FC01E8 /* CPShiftReduceGotoTable.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B4198112DA00FC01E8 /* CPShiftReduceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F6198111F900FC01E8 /* CPShiftReduceParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B7198112DA00FC01E8 /* CPShiftReduceState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197F9198111F900FC01E8 /* CPShiftReduceState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198B9198112DA00FC01E8 /* CPSLRParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FB198111F900FC01E8 /* CPSLRParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198BB198112DA00FC01E8 /* CPSyntaxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FD198111F900FC01E8 /* CPSyntaxTree.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198BD198112DA00FC01E8 /* CPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197FF198111F900FC01E8 /* CPToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198BF198112DA00FC01E8 /* CPTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619801198111F900FC01E8 /* CPTokeniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C2198112DA00FC01E8 /* CPTokenStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619804198111F900FC01E8 /* CPTokenStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C4198112DA00FC01E8 /* CPWhiteSpaceRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619806198111F900FC01E8 /* CPWhiteSpaceRecogniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C6198112DA00FC01E8 /* CPWhiteSpaceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D619808198111F900FC01E8 /* CPWhiteSpaceToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198C8198112DA00FC01E8 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61980A198111F900FC01E8 /* NSArray+Functional.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198CA198112DA00FC01E8 /* NSSetFunctional.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D61980C198111F900FC01E8 /* NSSetFunctional.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9D6198CD1981151D00FC01E8 /* VPNArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6198CC1981151D00FC01E8 /* VPNArguments.m */; };
-		9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */; };
 		C20958801E12F970009D2EC3 /* VPNCFArray+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209587F1E12F970009D2EC3 /* VPNCFArray+Sequence.swift */; };
 		C233AF811C6E7DCD00F39700 /* VPNHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* VPNHelp.swift */; };
+		C24BE703236A0E2B00FFC671 /* SPMUtility in Frameworks */ = {isa = PBXBuildFile; productRef = C24BE702236A0E2B00FFC671 /* SPMUtility */; };
+		C24BE706236A237300FFC671 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE705236A237300FFC671 /* Log.swift */; };
+		C24BE709236A250E00FFC671 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = C24BE708236A250E00FFC671 /* Logging */; };
+		C24BE70B236A2C7700FFC671 /* VPNServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */; };
 		C26157471D928F29001AD818 /* VPNServiceCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157461D928F29001AD818 /* VPNServiceCreator.swift */; };
 		C26157491D9295E6001AD818 /* VPNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157481D9295E6001AD818 /* VPNCommand.swift */; };
 		C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261574A1D92961C001AD818 /* VPNServiceType.swift */; };
 		C267ADF11ED1D7030058CDE6 /* Color · EightBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */; };
 		C267ADF21ED1D7030058CDE6 /* Color · Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF01ED1D7030058CDE6 /* Color · Named.swift */; };
-		C267ADF51ED1DBB30058CDE6 /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF41ED1DBB30058CDE6 /* DDOSLogger.m */; };
 		C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF61ED1F6760058CDE6 /* Optional+String.swift */; };
 		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
 		C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* VPNExitCode.swift */; };
-		C2CE09C81C6E89DF00B97D6D /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */; };
-		C2CE09C91C6E89DF00B97D6D /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B11C6E89DF00B97D6D /* CocoaLumberjack.swift */; };
-		C2CE09CA1C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B31C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m */; };
-		C2CE09CB1C6E89DF00B97D6D /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B51C6E89DF00B97D6D /* DDASLLogCapture.m */; };
-		C2CE09CC1C6E89DF00B97D6D /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09B71C6E89DF00B97D6D /* DDASLLogger.m */; };
-		C2CE09CD1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09BA1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m */; };
-		C2CE09CE1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09BC1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.m */; };
-		C2CE09CF1C6E89DF00B97D6D /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09BE1C6E89DF00B97D6D /* DDFileLogger.m */; };
-		C2CE09D01C6E89DF00B97D6D /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09C21C6E89DF00B97D6D /* DDLog.m */; };
-		C2CE09D11C6E89DF00B97D6D /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09C51C6E89DF00B97D6D /* DDMultiFormatter.m */; };
-		C2CE09D21C6E89DF00B97D6D /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09C71C6E89DF00B97D6D /* DDTTYLogger.m */; };
+		C2B6EA442368997F00129CDB /* VPNArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6EA432368997F00129CDB /* VPNArguments.swift */; };
 		C2CE09DB1C6E935600B97D6D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D41C6E935600B97D6D /* Color.swift */; };
 		C2CE09DC1C6E935600B97D6D /* ECMA 48.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D51C6E935600B97D6D /* ECMA 48.swift */; };
 		C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D91C6E935600B97D6D /* StyleParameter.swift */; };
 		C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09DA1C6E935600B97D6D /* Wrap.swift */; };
 		C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
-		C2CE09E61C6F643400B97D6D /* VPNLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E51C6F643400B97D6D /* VPNLogFormatter.swift */; };
-		C2CE09E81C6F751300B97D6D /* VPNLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E71C6F751300B97D6D /* VPNLogger.swift */; };
 		C2D37FC31FF964EE00B44CA1 /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D37FC21FF964EE00B44CA1 /* VPNController.swift */; };
 		C2D37FC51FF9669D00B44CA1 /* VPNCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D37FC41FF9669D00B44CA1 /* VPNCommandType.swift */; };
 		C2D37FC71FF970B700B44CA1 /* VPNServiceRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D37FC61FF970B700B44CA1 /* VPNServiceRemover.swift */; };
@@ -126,184 +56,30 @@
 		9D3D847F1982B017005BD5F3 /* VPNKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNKeychain.h; sourceTree = "<group>"; };
 		9D3D84801982B017005BD5F3 /* VPNKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNKeychain.m; sourceTree = "<group>"; };
 		9D3D848919842C36005BD5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = macosvpn/Info.plist; sourceTree = SOURCE_ROOT; };
-		9D5CE1C319803F25005B5E3E /* macosvpn-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "macosvpn-Prefix.pch"; path = "macosvpn/macosvpn-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		9D5CE1C419803F2B005B5E3E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = macosvpn/main.swift; sourceTree = SOURCE_ROOT; };
-		9D619791198111F900FC01E8 /* FSAliasRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAliasRecognizer.h; sourceTree = "<group>"; };
-		9D619792198111F900FC01E8 /* FSAliasRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAliasRecognizer.m; sourceTree = "<group>"; };
-		9D619793198111F900FC01E8 /* FSAliasToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAliasToken.h; sourceTree = "<group>"; };
-		9D619794198111F900FC01E8 /* FSAliasToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAliasToken.m; sourceTree = "<group>"; };
-		9D619795198111F900FC01E8 /* FSArgsKonstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArgsKonstants.h; sourceTree = "<group>"; };
-		9D619796198111F900FC01E8 /* FSArgsKonstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSArgsKonstants.m; sourceTree = "<group>"; };
-		9D619797198111F900FC01E8 /* FSArgumentPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArgumentPackage.h; sourceTree = "<group>"; };
-		9D619798198111F900FC01E8 /* FSArgumentPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSArgumentPackage.m; sourceTree = "<group>"; };
-		9D619799198111F900FC01E8 /* FSArgumentPackage_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArgumentPackage_Private.h; sourceTree = "<group>"; };
-		9D61979A198111F900FC01E8 /* FSArgumentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArgumentParser.h; sourceTree = "<group>"; };
-		9D61979B198111F900FC01E8 /* FSArgumentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSArgumentParser.m; sourceTree = "<group>"; };
-		9D61979C198111F900FC01E8 /* FSArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArguments.h; sourceTree = "<group>"; };
-		9D61979D198111F900FC01E8 /* FSArguments_Coalescer_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArguments_Coalescer_Internal.h; sourceTree = "<group>"; };
-		9D61979E198111F900FC01E8 /* FSArguments_Coalescer_Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSArguments_Coalescer_Internal.m; sourceTree = "<group>"; };
-		9D61979F198111F900FC01E8 /* FSArgumentSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArgumentSignature.h; sourceTree = "<group>"; };
-		9D6197A0198111F900FC01E8 /* FSArgumentSignature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSArgumentSignature.m; sourceTree = "<group>"; };
-		9D6197A1198111F900FC01E8 /* FSArgumentSignature_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSArgumentSignature_Private.h; sourceTree = "<group>"; };
-		9D6197A2198111F900FC01E8 /* FSCountedArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCountedArgument.h; sourceTree = "<group>"; };
-		9D6197A3198111F900FC01E8 /* FSCountedArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCountedArgument.m; sourceTree = "<group>"; };
-		9D6197A4198111F900FC01E8 /* FSFormatCtorParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFormatCtorParserDelegate.h; sourceTree = "<group>"; };
-		9D6197A5198111F900FC01E8 /* FSFormatCtorParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFormatCtorParserDelegate.m; sourceTree = "<group>"; };
-		9D6197A6198111F900FC01E8 /* FSFormatCtorTokeniserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFormatCtorTokeniserDelegate.h; sourceTree = "<group>"; };
-		9D6197A7198111F900FC01E8 /* FSFormatCtorTokeniserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFormatCtorTokeniserDelegate.m; sourceTree = "<group>"; };
-		9D6197A8198111F900FC01E8 /* FSMutableAttributedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMutableAttributedArray.h; sourceTree = "<group>"; };
-		9D6197A9198111F900FC01E8 /* FSMutableAttributedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMutableAttributedArray.m; sourceTree = "<group>"; };
-		9D6197AA198111F900FC01E8 /* FSSwitchRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSwitchRecognizer.h; sourceTree = "<group>"; };
-		9D6197AB198111F900FC01E8 /* FSSwitchRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSwitchRecognizer.m; sourceTree = "<group>"; };
-		9D6197AC198111F900FC01E8 /* FSSwitchToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSwitchToken.h; sourceTree = "<group>"; };
-		9D6197AD198111F900FC01E8 /* FSSwitchToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSwitchToken.m; sourceTree = "<group>"; };
-		9D6197AE198111F900FC01E8 /* FSValuedArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSValuedArgument.h; sourceTree = "<group>"; };
-		9D6197AF198111F900FC01E8 /* FSValuedArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSValuedArgument.m; sourceTree = "<group>"; };
-		9D6197B0198111F900FC01E8 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
-		9D6197B1198111F900FC01E8 /* NSArray+FSArgumentsNormalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FSArgumentsNormalizer.h"; sourceTree = "<group>"; };
-		9D6197B2198111F900FC01E8 /* NSArray+FSArgumentsNormalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FSArgumentsNormalizer.m"; sourceTree = "<group>"; };
-		9D6197B3198111F900FC01E8 /* NSDictionary+RubyDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RubyDescription.h"; sourceTree = "<group>"; };
-		9D6197B4198111F900FC01E8 /* NSDictionary+RubyDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RubyDescription.m"; sourceTree = "<group>"; };
-		9D6197B5198111F900FC01E8 /* NSProcessInfo+FSArgumentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSProcessInfo+FSArgumentParser.h"; sourceTree = "<group>"; };
-		9D6197B6198111F900FC01E8 /* NSProcessInfo+FSArgumentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSProcessInfo+FSArgumentParser.m"; sourceTree = "<group>"; };
-		9D6197B7198111F900FC01E8 /* NSScanner+EscapedScanning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+EscapedScanning.h"; sourceTree = "<group>"; };
-		9D6197B8198111F900FC01E8 /* NSScanner+EscapedScanning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+EscapedScanning.m"; sourceTree = "<group>"; };
-		9D6197B9198111F900FC01E8 /* NSString+Indenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Indenter.h"; sourceTree = "<group>"; };
-		9D6197BA198111F900FC01E8 /* NSString+Indenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Indenter.m"; sourceTree = "<group>"; };
-		9D6197BC198111F900FC01E8 /* CoreParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreParse.h; sourceTree = "<group>"; };
-		9D6197BD198111F900FC01E8 /* CPEOFToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPEOFToken.h; sourceTree = "<group>"; };
-		9D6197BE198111F900FC01E8 /* CPEOFToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEOFToken.m; sourceTree = "<group>"; };
-		9D6197BF198111F900FC01E8 /* CPErrorToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPErrorToken.h; sourceTree = "<group>"; };
-		9D6197C0198111F900FC01E8 /* CPErrorToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPErrorToken.m; sourceTree = "<group>"; };
-		9D6197C1198111F900FC01E8 /* CPGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGrammar.h; sourceTree = "<group>"; };
-		9D6197C2198111F900FC01E8 /* CPGrammar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGrammar.m; sourceTree = "<group>"; };
-		9D6197C3198111F900FC01E8 /* CPGrammarInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGrammarInternal.h; sourceTree = "<group>"; };
-		9D6197C4198111F900FC01E8 /* CPGrammarInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGrammarInternal.m; sourceTree = "<group>"; };
-		9D6197C5198111F900FC01E8 /* CPGrammarPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGrammarPrivate.h; sourceTree = "<group>"; };
-		9D6197C6198111F900FC01E8 /* CPGrammarPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGrammarPrivate.m; sourceTree = "<group>"; };
-		9D6197C7198111F900FC01E8 /* CPGrammarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGrammarSymbol.h; sourceTree = "<group>"; };
-		9D6197C8198111F900FC01E8 /* CPGrammarSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGrammarSymbol.m; sourceTree = "<group>"; };
-		9D6197C9198111F900FC01E8 /* CPIdentifierRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPIdentifierRecogniser.h; sourceTree = "<group>"; };
-		9D6197CA198111F900FC01E8 /* CPIdentifierRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPIdentifierRecogniser.m; sourceTree = "<group>"; };
-		9D6197CB198111F900FC01E8 /* CPIdentifierToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPIdentifierToken.h; sourceTree = "<group>"; };
-		9D6197CC198111F900FC01E8 /* CPIdentifierToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPIdentifierToken.m; sourceTree = "<group>"; };
-		9D6197CD198111F900FC01E8 /* CPItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPItem.h; sourceTree = "<group>"; };
-		9D6197CE198111F900FC01E8 /* CPItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPItem.m; sourceTree = "<group>"; };
-		9D6197CF198111F900FC01E8 /* CPKeywordRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPKeywordRecogniser.h; sourceTree = "<group>"; };
-		9D6197D0198111F900FC01E8 /* CPKeywordRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPKeywordRecogniser.m; sourceTree = "<group>"; };
-		9D6197D1198111F900FC01E8 /* CPKeywordToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPKeywordToken.h; sourceTree = "<group>"; };
-		9D6197D2198111F900FC01E8 /* CPKeywordToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPKeywordToken.m; sourceTree = "<group>"; };
-		9D6197D3198111F900FC01E8 /* CPLALR1Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPLALR1Parser.h; sourceTree = "<group>"; };
-		9D6197D4198111F900FC01E8 /* CPLALR1Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPLALR1Parser.m; sourceTree = "<group>"; };
-		9D6197D5198111F900FC01E8 /* CPLR1Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPLR1Item.h; sourceTree = "<group>"; };
-		9D6197D6198111F900FC01E8 /* CPLR1Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPLR1Item.m; sourceTree = "<group>"; };
-		9D6197D7198111F900FC01E8 /* CPLR1Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPLR1Parser.h; sourceTree = "<group>"; };
-		9D6197D8198111F900FC01E8 /* CPLR1Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPLR1Parser.m; sourceTree = "<group>"; };
-		9D6197D9198111F900FC01E8 /* CPNumberRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNumberRecogniser.h; sourceTree = "<group>"; };
-		9D6197DA198111F900FC01E8 /* CPNumberRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNumberRecogniser.m; sourceTree = "<group>"; };
-		9D6197DB198111F900FC01E8 /* CPNumberToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNumberToken.h; sourceTree = "<group>"; };
-		9D6197DC198111F900FC01E8 /* CPNumberToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNumberToken.m; sourceTree = "<group>"; };
-		9D6197DD198111F900FC01E8 /* CPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPParser.h; sourceTree = "<group>"; };
-		9D6197DE198111F900FC01E8 /* CPParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPParser.m; sourceTree = "<group>"; };
-		9D6197DF198111F900FC01E8 /* CPQuotedRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPQuotedRecogniser.h; sourceTree = "<group>"; };
-		9D6197E0198111F900FC01E8 /* CPQuotedRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPQuotedRecogniser.m; sourceTree = "<group>"; };
-		9D6197E1198111F900FC01E8 /* CPQuotedToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPQuotedToken.h; sourceTree = "<group>"; };
-		9D6197E2198111F900FC01E8 /* CPQuotedToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPQuotedToken.m; sourceTree = "<group>"; };
-		9D6197E3198111F900FC01E8 /* CPRecoveryAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRecoveryAction.h; sourceTree = "<group>"; };
-		9D6197E4198111F900FC01E8 /* CPRecoveryAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRecoveryAction.m; sourceTree = "<group>"; };
-		9D6197E5198111F900FC01E8 /* CPRHSItem+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPRHSItem+Private.h"; sourceTree = "<group>"; };
-		9D6197E6198111F900FC01E8 /* CPRHSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRHSItem.h; sourceTree = "<group>"; };
-		9D6197E7198111F900FC01E8 /* CPRHSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRHSItem.m; sourceTree = "<group>"; };
-		9D6197E8198111F900FC01E8 /* CPRHSItemResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRHSItemResult.h; sourceTree = "<group>"; };
-		9D6197E9198111F900FC01E8 /* CPRHSItemResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRHSItemResult.m; sourceTree = "<group>"; };
-		9D6197EA198111F900FC01E8 /* CPRule+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPRule+Internal.h"; sourceTree = "<group>"; };
-		9D6197EB198111F900FC01E8 /* CPRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPRule.h; sourceTree = "<group>"; };
-		9D6197EC198111F900FC01E8 /* CPRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPRule.m; sourceTree = "<group>"; };
-		9D6197ED198111F900FC01E8 /* CPShiftAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPShiftAction.h; sourceTree = "<group>"; };
-		9D6197EE198111F900FC01E8 /* CPShiftAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPShiftAction.m; sourceTree = "<group>"; };
-		9D6197EF198111F900FC01E8 /* CPShiftReduceAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPShiftReduceAction.h; sourceTree = "<group>"; };
-		9D6197F0198111F900FC01E8 /* CPShiftReduceAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPShiftReduceAction.m; sourceTree = "<group>"; };
-		9D6197F1198111F900FC01E8 /* CPShiftReduceActionTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPShiftReduceActionTable.h; sourceTree = "<group>"; };
-		9D6197F2198111F900FC01E8 /* CPShiftReduceActionTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPShiftReduceActionTable.m; sourceTree = "<group>"; };
-		9D6197F3198111F900FC01E8 /* CPShiftReduceGotoTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPShiftReduceGotoTable.h; sourceTree = "<group>"; };
-		9D6197F4198111F900FC01E8 /* CPShiftReduceGotoTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPShiftReduceGotoTable.m; sourceTree = "<group>"; };
-		9D6197F5198111F900FC01E8 /* CPShiftReduceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPShiftReduceParser.h; sourceTree = "<group>"; };
-		9D6197F6198111F900FC01E8 /* CPShiftReduceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPShiftReduceParser.m; sourceTree = "<group>"; };
-		9D6197F7198111F900FC01E8 /* CPShiftReduceParserProtectedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPShiftReduceParserProtectedMethods.h; sourceTree = "<group>"; };
-		9D6197F8198111F900FC01E8 /* CPShiftReduceState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPShiftReduceState.h; sourceTree = "<group>"; };
-		9D6197F9198111F900FC01E8 /* CPShiftReduceState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPShiftReduceState.m; sourceTree = "<group>"; };
-		9D6197FA198111F900FC01E8 /* CPSLRParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSLRParser.h; sourceTree = "<group>"; };
-		9D6197FB198111F900FC01E8 /* CPSLRParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSLRParser.m; sourceTree = "<group>"; };
-		9D6197FC198111F900FC01E8 /* CPSyntaxTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSyntaxTree.h; sourceTree = "<group>"; };
-		9D6197FD198111F900FC01E8 /* CPSyntaxTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSyntaxTree.m; sourceTree = "<group>"; };
-		9D6197FE198111F900FC01E8 /* CPToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPToken.h; sourceTree = "<group>"; };
-		9D6197FF198111F900FC01E8 /* CPToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPToken.m; sourceTree = "<group>"; };
-		9D619800198111F900FC01E8 /* CPTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTokeniser.h; sourceTree = "<group>"; };
-		9D619801198111F900FC01E8 /* CPTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTokeniser.m; sourceTree = "<group>"; };
-		9D619802198111F900FC01E8 /* CPTokenRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTokenRecogniser.h; sourceTree = "<group>"; };
-		9D619803198111F900FC01E8 /* CPTokenStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTokenStream.h; sourceTree = "<group>"; };
-		9D619804198111F900FC01E8 /* CPTokenStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTokenStream.m; sourceTree = "<group>"; };
-		9D619805198111F900FC01E8 /* CPWhiteSpaceRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPWhiteSpaceRecogniser.h; sourceTree = "<group>"; };
-		9D619806198111F900FC01E8 /* CPWhiteSpaceRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPWhiteSpaceRecogniser.m; sourceTree = "<group>"; };
-		9D619807198111F900FC01E8 /* CPWhiteSpaceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPWhiteSpaceToken.h; sourceTree = "<group>"; };
-		9D619808198111F900FC01E8 /* CPWhiteSpaceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPWhiteSpaceToken.m; sourceTree = "<group>"; };
-		9D619809198111F900FC01E8 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
-		9D61980A198111F900FC01E8 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
-		9D61980B198111F900FC01E8 /* NSSetFunctional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSetFunctional.h; sourceTree = "<group>"; };
-		9D61980C198111F900FC01E8 /* NSSetFunctional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSetFunctional.m; sourceTree = "<group>"; };
-		9D6198461981121500FC01E8 /* CPJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPJSONParser.h; sourceTree = "<group>"; };
-		9D6198471981121500FC01E8 /* CPJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPJSONParser.m; sourceTree = "<group>"; };
 		9D6198CB1981151D00FC01E8 /* VPNArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNArguments.h; sourceTree = "<group>"; };
 		9D6198CC1981151D00FC01E8 /* VPNArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNArguments.m; sourceTree = "<group>"; };
 		9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNServiceConfig.h; sourceTree = "<group>"; };
 		9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNServiceConfig.m; sourceTree = "<group>"; };
 		C209587F1E12F970009D2EC3 /* VPNCFArray+Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNCFArray+Sequence.swift"; sourceTree = "<group>"; };
 		C233AF801C6E7DCD00F39700 /* VPNHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelp.swift; sourceTree = "<group>"; };
-		C233AF821C6E815F00F39700 /* macosvpn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "macosvpn-Bridging-Header.h"; path = "macosvpn/macosvpn-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		C24BE705236A237300FFC671 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceConfig.swift; sourceTree = "<group>"; };
 		C26157461D928F29001AD818 /* VPNServiceCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceCreator.swift; sourceTree = "<group>"; };
 		C26157481D9295E6001AD818 /* VPNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNCommand.swift; sourceTree = "<group>"; };
 		C261574A1D92961C001AD818 /* VPNServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceType.swift; sourceTree = "<group>"; };
 		C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · EightBit.swift"; sourceTree = "<group>"; };
 		C267ADF01ED1D7030058CDE6 /* Color · Named.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · Named.swift"; sourceTree = "<group>"; };
-		C267ADF31ED1DBB30058CDE6 /* DDOSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOSLogger.h; sourceTree = "<group>"; };
-		C267ADF41ED1DBB30058CDE6 /* DDOSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOSLogger.m; sourceTree = "<group>"; };
 		C267ADF61ED1F6760058CDE6 /* Optional+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+String.swift"; sourceTree = "<group>"; };
 		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
 		C299053C1E12F9B500570022 /* VPNExitCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNExitCode.swift; sourceTree = "<group>"; };
-		C2CE09AE1C6E89DF00B97D6D /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
-		C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
-		C2CE09B01C6E89DF00B97D6D /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
-		C2CE09B11C6E89DF00B97D6D /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
-		C2CE09B21C6E89DF00B97D6D /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		C2CE09B31C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		C2CE09B41C6E89DF00B97D6D /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
-		C2CE09B51C6E89DF00B97D6D /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
-		C2CE09B61C6E89DF00B97D6D /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
-		C2CE09B71C6E89DF00B97D6D /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
-		C2CE09B81C6E89DF00B97D6D /* DDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssertMacros.h; sourceTree = "<group>"; };
-		C2CE09B91C6E89DF00B97D6D /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		C2CE09BA1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		C2CE09BB1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		C2CE09BC1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		C2CE09BD1C6E89DF00B97D6D /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
-		C2CE09BE1C6E89DF00B97D6D /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
-		C2CE09BF1C6E89DF00B97D6D /* DDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLegacyMacros.h; sourceTree = "<group>"; };
-		C2CE09C01C6E89DF00B97D6D /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
-		C2CE09C11C6E89DF00B97D6D /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
-		C2CE09C21C6E89DF00B97D6D /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		C2CE09C31C6E89DF00B97D6D /* DDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogMacros.h; sourceTree = "<group>"; };
-		C2CE09C41C6E89DF00B97D6D /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
-		C2CE09C51C6E89DF00B97D6D /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
-		C2CE09C61C6E89DF00B97D6D /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
-		C2CE09C71C6E89DF00B97D6D /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		C2B6EA432368997F00129CDB /* VPNArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNArguments.swift; sourceTree = "<group>"; };
 		C2CE09D41C6E935600B97D6D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C2CE09D51C6E935600B97D6D /* ECMA 48.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ECMA 48.swift"; sourceTree = "<group>"; };
 		C2CE09D81C6E935600B97D6D /* PrettyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyColors.h; sourceTree = "<group>"; };
 		C2CE09D91C6E935600B97D6D /* StyleParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleParameter.swift; sourceTree = "<group>"; };
 		C2CE09DA1C6E935600B97D6D /* Wrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrap.swift; sourceTree = "<group>"; };
 		C2CE09E31C6E972400B97D6D /* VPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNColor.swift; sourceTree = "<group>"; };
-		C2CE09E51C6F643400B97D6D /* VPNLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNLogFormatter.swift; sourceTree = "<group>"; };
-		C2CE09E71C6F751300B97D6D /* VPNLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNLogger.swift; sourceTree = "<group>"; };
 		C2D37FC21FF964EE00B44CA1 /* VPNController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNController.swift; sourceTree = "<group>"; };
 		C2D37FC41FF9669D00B44CA1 /* VPNCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNCommandType.swift; sourceTree = "<group>"; };
 		C2D37FC61FF970B700B44CA1 /* VPNServiceRemover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceRemover.swift; sourceTree = "<group>"; };
@@ -316,7 +92,9 @@
 			files = (
 				32861394197FED310010BB98 /* Foundation.framework in Frameworks */,
 				9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */,
+				C24BE703236A0E2B00FFC671 /* SPMUtility in Frameworks */,
 				328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */,
+				C24BE709236A250E00FFC671 /* Logging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,8 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				9D3D848919842C36005BD5F3 /* Info.plist */,
-				9D5CE1C319803F25005B5E3E /* macosvpn-Prefix.pch */,
-				C233AF821C6E815F00F39700 /* macosvpn-Bridging-Header.h */,
 			);
 			name = Config;
 			path = linkliar;
@@ -376,25 +152,26 @@
 		9D5CE1C619803F32005B5E3E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C27566F91D08744A009CD68C /* VPNAuthorizations.swift */,
+				9D3D847F1982B017005BD5F3 /* VPNKeychain.h */,
+				9D3D84801982B017005BD5F3 /* VPNKeychain.m */,
 				9D6198CB1981151D00FC01E8 /* VPNArguments.h */,
 				9D6198CC1981151D00FC01E8 /* VPNArguments.m */,
+				9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */,
+				9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */,
+				C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */,
+				C27566F91D08744A009CD68C /* VPNAuthorizations.swift */,
+				C2B6EA432368997F00129CDB /* VPNArguments.swift */,
 				C209587F1E12F970009D2EC3 /* VPNCFArray+Sequence.swift */,
 				C2D37FC21FF964EE00B44CA1 /* VPNController.swift */,
 				C2D37FC41FF9669D00B44CA1 /* VPNCommandType.swift */,
 				C299053C1E12F9B500570022 /* VPNExitCode.swift */,
 				C233AF801C6E7DCD00F39700 /* VPNHelp.swift */,
-				9D3D847F1982B017005BD5F3 /* VPNKeychain.h */,
-				9D3D84801982B017005BD5F3 /* VPNKeychain.m */,
-				C2CE09E71C6F751300B97D6D /* VPNLogger.swift */,
-				C2CE09E51C6F643400B97D6D /* VPNLogFormatter.swift */,
-				9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */,
-				9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */,
 				C2CE09E31C6E972400B97D6D /* VPNColor.swift */,
 				C26157481D9295E6001AD818 /* VPNCommand.swift */,
 				C261574A1D92961C001AD818 /* VPNServiceType.swift */,
 				C26157461D928F29001AD818 /* VPNServiceCreator.swift */,
 				C2D37FC61FF970B700B44CA1 /* VPNServiceRemover.swift */,
+				C24BE705236A237300FFC671 /* Log.swift */,
 				C267ADF61ED1F6760058CDE6 /* Optional+String.swift */,
 			);
 			name = Classes;
@@ -405,188 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				C2CE09D31C6E935600B97D6D /* PrettyColors */,
-				C2CE09AD1C6E89DF00B97D6D /* CocoaLumberjack */,
-				9D619790198111F900FC01E8 /* ArgumentParser */,
-				9D6197BB198111F900FC01E8 /* CoreParse */,
 			);
 			name = Vendor;
-			sourceTree = "<group>";
-		};
-		9D619790198111F900FC01E8 /* ArgumentParser */ = {
-			isa = PBXGroup;
-			children = (
-				9D619791198111F900FC01E8 /* FSAliasRecognizer.h */,
-				9D619792198111F900FC01E8 /* FSAliasRecognizer.m */,
-				9D619793198111F900FC01E8 /* FSAliasToken.h */,
-				9D619794198111F900FC01E8 /* FSAliasToken.m */,
-				9D619795198111F900FC01E8 /* FSArgsKonstants.h */,
-				9D619796198111F900FC01E8 /* FSArgsKonstants.m */,
-				9D619797198111F900FC01E8 /* FSArgumentPackage.h */,
-				9D619798198111F900FC01E8 /* FSArgumentPackage.m */,
-				9D619799198111F900FC01E8 /* FSArgumentPackage_Private.h */,
-				9D61979A198111F900FC01E8 /* FSArgumentParser.h */,
-				9D61979B198111F900FC01E8 /* FSArgumentParser.m */,
-				9D61979C198111F900FC01E8 /* FSArguments.h */,
-				9D61979D198111F900FC01E8 /* FSArguments_Coalescer_Internal.h */,
-				9D61979E198111F900FC01E8 /* FSArguments_Coalescer_Internal.m */,
-				9D61979F198111F900FC01E8 /* FSArgumentSignature.h */,
-				9D6197A0198111F900FC01E8 /* FSArgumentSignature.m */,
-				9D6197A1198111F900FC01E8 /* FSArgumentSignature_Private.h */,
-				9D6197A2198111F900FC01E8 /* FSCountedArgument.h */,
-				9D6197A3198111F900FC01E8 /* FSCountedArgument.m */,
-				9D6197A4198111F900FC01E8 /* FSFormatCtorParserDelegate.h */,
-				9D6197A5198111F900FC01E8 /* FSFormatCtorParserDelegate.m */,
-				9D6197A6198111F900FC01E8 /* FSFormatCtorTokeniserDelegate.h */,
-				9D6197A7198111F900FC01E8 /* FSFormatCtorTokeniserDelegate.m */,
-				9D6197A8198111F900FC01E8 /* FSMutableAttributedArray.h */,
-				9D6197A9198111F900FC01E8 /* FSMutableAttributedArray.m */,
-				9D6197AA198111F900FC01E8 /* FSSwitchRecognizer.h */,
-				9D6197AB198111F900FC01E8 /* FSSwitchRecognizer.m */,
-				9D6197AC198111F900FC01E8 /* FSSwitchToken.h */,
-				9D6197AD198111F900FC01E8 /* FSSwitchToken.m */,
-				9D6197AE198111F900FC01E8 /* FSValuedArgument.h */,
-				9D6197AF198111F900FC01E8 /* FSValuedArgument.m */,
-				9D6197B0198111F900FC01E8 /* LICENSE.md */,
-				9D6197B1198111F900FC01E8 /* NSArray+FSArgumentsNormalizer.h */,
-				9D6197B2198111F900FC01E8 /* NSArray+FSArgumentsNormalizer.m */,
-				9D6197B3198111F900FC01E8 /* NSDictionary+RubyDescription.h */,
-				9D6197B4198111F900FC01E8 /* NSDictionary+RubyDescription.m */,
-				9D6197B5198111F900FC01E8 /* NSProcessInfo+FSArgumentParser.h */,
-				9D6197B6198111F900FC01E8 /* NSProcessInfo+FSArgumentParser.m */,
-				9D6197B7198111F900FC01E8 /* NSScanner+EscapedScanning.h */,
-				9D6197B8198111F900FC01E8 /* NSScanner+EscapedScanning.m */,
-				9D6197B9198111F900FC01E8 /* NSString+Indenter.h */,
-				9D6197BA198111F900FC01E8 /* NSString+Indenter.m */,
-			);
-			name = ArgumentParser;
-			path = macosvpn/Vendor/ArgumentParser;
-			sourceTree = "<group>";
-		};
-		9D6197BB198111F900FC01E8 /* CoreParse */ = {
-			isa = PBXGroup;
-			children = (
-				9D6198461981121500FC01E8 /* CPJSONParser.h */,
-				9D6198471981121500FC01E8 /* CPJSONParser.m */,
-				9D6197BC198111F900FC01E8 /* CoreParse.h */,
-				9D6197BD198111F900FC01E8 /* CPEOFToken.h */,
-				9D6197BE198111F900FC01E8 /* CPEOFToken.m */,
-				9D6197BF198111F900FC01E8 /* CPErrorToken.h */,
-				9D6197C0198111F900FC01E8 /* CPErrorToken.m */,
-				9D6197C1198111F900FC01E8 /* CPGrammar.h */,
-				9D6197C2198111F900FC01E8 /* CPGrammar.m */,
-				9D6197C3198111F900FC01E8 /* CPGrammarInternal.h */,
-				9D6197C4198111F900FC01E8 /* CPGrammarInternal.m */,
-				9D6197C5198111F900FC01E8 /* CPGrammarPrivate.h */,
-				9D6197C6198111F900FC01E8 /* CPGrammarPrivate.m */,
-				9D6197C7198111F900FC01E8 /* CPGrammarSymbol.h */,
-				9D6197C8198111F900FC01E8 /* CPGrammarSymbol.m */,
-				9D6197C9198111F900FC01E8 /* CPIdentifierRecogniser.h */,
-				9D6197CA198111F900FC01E8 /* CPIdentifierRecogniser.m */,
-				9D6197CB198111F900FC01E8 /* CPIdentifierToken.h */,
-				9D6197CC198111F900FC01E8 /* CPIdentifierToken.m */,
-				9D6197CD198111F900FC01E8 /* CPItem.h */,
-				9D6197CE198111F900FC01E8 /* CPItem.m */,
-				9D6197CF198111F900FC01E8 /* CPKeywordRecogniser.h */,
-				9D6197D0198111F900FC01E8 /* CPKeywordRecogniser.m */,
-				9D6197D1198111F900FC01E8 /* CPKeywordToken.h */,
-				9D6197D2198111F900FC01E8 /* CPKeywordToken.m */,
-				9D6197D3198111F900FC01E8 /* CPLALR1Parser.h */,
-				9D6197D4198111F900FC01E8 /* CPLALR1Parser.m */,
-				9D6197D5198111F900FC01E8 /* CPLR1Item.h */,
-				9D6197D6198111F900FC01E8 /* CPLR1Item.m */,
-				9D6197D7198111F900FC01E8 /* CPLR1Parser.h */,
-				9D6197D8198111F900FC01E8 /* CPLR1Parser.m */,
-				9D6197D9198111F900FC01E8 /* CPNumberRecogniser.h */,
-				9D6197DA198111F900FC01E8 /* CPNumberRecogniser.m */,
-				9D6197DB198111F900FC01E8 /* CPNumberToken.h */,
-				9D6197DC198111F900FC01E8 /* CPNumberToken.m */,
-				9D6197DD198111F900FC01E8 /* CPParser.h */,
-				9D6197DE198111F900FC01E8 /* CPParser.m */,
-				9D6197DF198111F900FC01E8 /* CPQuotedRecogniser.h */,
-				9D6197E0198111F900FC01E8 /* CPQuotedRecogniser.m */,
-				9D6197E1198111F900FC01E8 /* CPQuotedToken.h */,
-				9D6197E2198111F900FC01E8 /* CPQuotedToken.m */,
-				9D6197E3198111F900FC01E8 /* CPRecoveryAction.h */,
-				9D6197E4198111F900FC01E8 /* CPRecoveryAction.m */,
-				9D6197E5198111F900FC01E8 /* CPRHSItem+Private.h */,
-				9D6197E6198111F900FC01E8 /* CPRHSItem.h */,
-				9D6197E7198111F900FC01E8 /* CPRHSItem.m */,
-				9D6197E8198111F900FC01E8 /* CPRHSItemResult.h */,
-				9D6197E9198111F900FC01E8 /* CPRHSItemResult.m */,
-				9D6197EA198111F900FC01E8 /* CPRule+Internal.h */,
-				9D6197EB198111F900FC01E8 /* CPRule.h */,
-				9D6197EC198111F900FC01E8 /* CPRule.m */,
-				9D6197ED198111F900FC01E8 /* CPShiftAction.h */,
-				9D6197EE198111F900FC01E8 /* CPShiftAction.m */,
-				9D6197EF198111F900FC01E8 /* CPShiftReduceAction.h */,
-				9D6197F0198111F900FC01E8 /* CPShiftReduceAction.m */,
-				9D6197F1198111F900FC01E8 /* CPShiftReduceActionTable.h */,
-				9D6197F2198111F900FC01E8 /* CPShiftReduceActionTable.m */,
-				9D6197F3198111F900FC01E8 /* CPShiftReduceGotoTable.h */,
-				9D6197F4198111F900FC01E8 /* CPShiftReduceGotoTable.m */,
-				9D6197F5198111F900FC01E8 /* CPShiftReduceParser.h */,
-				9D6197F6198111F900FC01E8 /* CPShiftReduceParser.m */,
-				9D6197F7198111F900FC01E8 /* CPShiftReduceParserProtectedMethods.h */,
-				9D6197F8198111F900FC01E8 /* CPShiftReduceState.h */,
-				9D6197F9198111F900FC01E8 /* CPShiftReduceState.m */,
-				9D6197FA198111F900FC01E8 /* CPSLRParser.h */,
-				9D6197FB198111F900FC01E8 /* CPSLRParser.m */,
-				9D6197FC198111F900FC01E8 /* CPSyntaxTree.h */,
-				9D6197FD198111F900FC01E8 /* CPSyntaxTree.m */,
-				9D6197FE198111F900FC01E8 /* CPToken.h */,
-				9D6197FF198111F900FC01E8 /* CPToken.m */,
-				9D619800198111F900FC01E8 /* CPTokeniser.h */,
-				9D619801198111F900FC01E8 /* CPTokeniser.m */,
-				9D619802198111F900FC01E8 /* CPTokenRecogniser.h */,
-				9D619803198111F900FC01E8 /* CPTokenStream.h */,
-				9D619804198111F900FC01E8 /* CPTokenStream.m */,
-				9D619805198111F900FC01E8 /* CPWhiteSpaceRecogniser.h */,
-				9D619806198111F900FC01E8 /* CPWhiteSpaceRecogniser.m */,
-				9D619807198111F900FC01E8 /* CPWhiteSpaceToken.h */,
-				9D619808198111F900FC01E8 /* CPWhiteSpaceToken.m */,
-				9D619809198111F900FC01E8 /* NSArray+Functional.h */,
-				9D61980A198111F900FC01E8 /* NSArray+Functional.m */,
-				9D61980B198111F900FC01E8 /* NSSetFunctional.h */,
-				9D61980C198111F900FC01E8 /* NSSetFunctional.m */,
-			);
-			name = CoreParse;
-			path = macosvpn/Vendor/CoreParse;
-			sourceTree = "<group>";
-		};
-		C2CE09AD1C6E89DF00B97D6D /* CocoaLumberjack */ = {
-			isa = PBXGroup;
-			children = (
-				C2CE09AE1C6E89DF00B97D6D /* CLIColor.h */,
-				C2CE09AF1C6E89DF00B97D6D /* CLIColor.m */,
-				C2CE09B01C6E89DF00B97D6D /* CocoaLumberjack.h */,
-				C2CE09B11C6E89DF00B97D6D /* CocoaLumberjack.swift */,
-				C2CE09B21C6E89DF00B97D6D /* DDAbstractDatabaseLogger.h */,
-				C2CE09B31C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m */,
-				C2CE09B41C6E89DF00B97D6D /* DDASLLogCapture.h */,
-				C2CE09B51C6E89DF00B97D6D /* DDASLLogCapture.m */,
-				C2CE09B61C6E89DF00B97D6D /* DDASLLogger.h */,
-				C2CE09B71C6E89DF00B97D6D /* DDASLLogger.m */,
-				C2CE09B81C6E89DF00B97D6D /* DDAssertMacros.h */,
-				C2CE09B91C6E89DF00B97D6D /* DDContextFilterLogFormatter.h */,
-				C2CE09BA1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m */,
-				C2CE09BB1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.h */,
-				C2CE09BC1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.m */,
-				C267ADF31ED1DBB30058CDE6 /* DDOSLogger.h */,
-				C267ADF41ED1DBB30058CDE6 /* DDOSLogger.m */,
-				C2CE09BD1C6E89DF00B97D6D /* DDFileLogger.h */,
-				C2CE09BE1C6E89DF00B97D6D /* DDFileLogger.m */,
-				C2CE09BF1C6E89DF00B97D6D /* DDLegacyMacros.h */,
-				C2CE09C01C6E89DF00B97D6D /* DDLog+LOGV.h */,
-				C2CE09C11C6E89DF00B97D6D /* DDLog.h */,
-				C2CE09C21C6E89DF00B97D6D /* DDLog.m */,
-				C2CE09C31C6E89DF00B97D6D /* DDLogMacros.h */,
-				C2CE09C41C6E89DF00B97D6D /* DDMultiFormatter.h */,
-				C2CE09C51C6E89DF00B97D6D /* DDMultiFormatter.m */,
-				C2CE09C61C6E89DF00B97D6D /* DDTTYLogger.h */,
-				C2CE09C71C6E89DF00B97D6D /* DDTTYLogger.m */,
-			);
-			name = CocoaLumberjack;
-			path = macosvpn/Vendor/CocoaLumberjack;
 			sourceTree = "<group>";
 		};
 		C2CE09D31C6E935600B97D6D /* PrettyColors */ = {
@@ -614,12 +211,17 @@
 				3286138C197FED310010BB98 /* Sources */,
 				3286138D197FED310010BB98 /* Frameworks */,
 				3286138E197FED310010BB98 /* CopyFiles */,
+				C24BE704236A190E00FFC671 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = macosvpn;
+			packageProductDependencies = (
+				C24BE702236A0E2B00FFC671 /* SPMUtility */,
+				C24BE708236A250E00FFC671 /* Logging */,
+			);
 			productName = linkliar;
 			productReference = 32861390197FED310010BB98 /* macosvpn */;
 			productType = "com.apple.product-type.tool";
@@ -631,10 +233,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = funkensturm;
 				TargetAttributes = {
 					3286138F197FED310010BB98 = {
+						DevelopmentTeam = B9J4QR64LK;
 						LastSwiftMigration = 0830;
 					};
 				};
@@ -648,6 +251,10 @@
 				Base,
 			);
 			mainGroup = 32861387197FED310010BB98;
+			packageReferences = (
+				C24BE701236A0E2B00FFC671 /* XCRemoteSwiftPackageReference "swift-package-manager" */,
+				C24BE707236A250E00FFC671 /* XCRemoteSwiftPackageReference "swift-log" */,
+			);
 			productRefGroup = 32861391197FED310010BB98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -657,104 +264,52 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C24BE704236A190E00FFC671 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3286138C197FED310010BB98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D619879198112DA00FC01E8 /* CPJSONParser.m in Sources */,
-				9D61987C198112DA00FC01E8 /* CPEOFToken.m in Sources */,
-				9D61987E198112DA00FC01E8 /* CPErrorToken.m in Sources */,
-				9D619880198112DA00FC01E8 /* CPGrammar.m in Sources */,
-				9D619882198112DA00FC01E8 /* CPGrammarInternal.m in Sources */,
 				C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */,
-				9D7B4675198159BB001AB2D5 /* VPNServiceConfig.m in Sources */,
-				9D619884198112DA00FC01E8 /* CPGrammarPrivate.m in Sources */,
-				9D619886198112DA00FC01E8 /* CPGrammarSymbol.m in Sources */,
-				9D619888198112DA00FC01E8 /* CPIdentifierRecogniser.m in Sources */,
+				C24BE706236A237300FFC671 /* Log.swift in Sources */,
+				C2B6EA442368997F00129CDB /* VPNArguments.swift in Sources */,
 				C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */,
-				C2CE09D21C6E89DF00B97D6D /* DDTTYLogger.m in Sources */,
 				C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */,
-				9D61988A198112DA00FC01E8 /* CPIdentifierToken.m in Sources */,
 				C26157491D9295E6001AD818 /* VPNCommand.swift in Sources */,
-				C2CE09CC1C6E89DF00B97D6D /* DDASLLogger.m in Sources */,
-				9D61988C198112DA00FC01E8 /* CPItem.m in Sources */,
 				C233AF811C6E7DCD00F39700 /* VPNHelp.swift in Sources */,
-				9D61988E198112DA00FC01E8 /* CPKeywordRecogniser.m in Sources */,
-				9D619890198112DA00FC01E8 /* CPKeywordToken.m in Sources */,
-				9D619892198112DA00FC01E8 /* CPLALR1Parser.m in Sources */,
 				C267ADF21ED1D7030058CDE6 /* Color · Named.swift in Sources */,
-				9D619894198112DA00FC01E8 /* CPLR1Item.m in Sources */,
 				C2D37FC31FF964EE00B44CA1 /* VPNController.swift in Sources */,
-				9D619896198112DA00FC01E8 /* CPLR1Parser.m in Sources */,
-				9D619898198112DA00FC01E8 /* CPNumberRecogniser.m in Sources */,
-				9D3D84811982B017005BD5F3 /* VPNKeychain.m in Sources */,
-				9D61989A198112DA00FC01E8 /* CPNumberToken.m in Sources */,
-				9D61989C198112DA00FC01E8 /* CPParser.m in Sources */,
-				9D61989E198112DA00FC01E8 /* CPQuotedRecogniser.m in Sources */,
 				C2CE09DB1C6E935600B97D6D /* Color.swift in Sources */,
 				C2CE09DC1C6E935600B97D6D /* ECMA 48.swift in Sources */,
-				9D6198A0198112DA00FC01E8 /* CPQuotedToken.m in Sources */,
-				9D6198A2198112DA00FC01E8 /* CPRecoveryAction.m in Sources */,
-				9D6198A5198112DA00FC01E8 /* CPRHSItem.m in Sources */,
-				C2CE09CA1C6E89DF00B97D6D /* DDAbstractDatabaseLogger.m in Sources */,
-				9D6198A7198112DA00FC01E8 /* CPRHSItemResult.m in Sources */,
-				9D6198AA198112DA00FC01E8 /* CPRule.m in Sources */,
-				9D6198AC198112DA00FC01E8 /* CPShiftAction.m in Sources */,
-				9D6198AE198112DA00FC01E8 /* CPShiftReduceAction.m in Sources */,
-				9D6198B0198112DA00FC01E8 /* CPShiftReduceActionTable.m in Sources */,
 				C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */,
-				9D6198B2198112DA00FC01E8 /* CPShiftReduceGotoTable.m in Sources */,
-				9D6198B4198112DA00FC01E8 /* CPShiftReduceParser.m in Sources */,
-				9D6198B7198112DA00FC01E8 /* CPShiftReduceState.m in Sources */,
-				9D6198B9198112DA00FC01E8 /* CPSLRParser.m in Sources */,
-				C2CE09E81C6F751300B97D6D /* VPNLogger.swift in Sources */,
-				9D6198BB198112DA00FC01E8 /* CPSyntaxTree.m in Sources */,
-				9D6198BD198112DA00FC01E8 /* CPToken.m in Sources */,
-				9D6198BF198112DA00FC01E8 /* CPTokeniser.m in Sources */,
-				9D6198C2198112DA00FC01E8 /* CPTokenStream.m in Sources */,
-				9D6198C4198112DA00FC01E8 /* CPWhiteSpaceRecogniser.m in Sources */,
-				C2CE09CD1C6E89DF00B97D6D /* DDContextFilterLogFormatter.m in Sources */,
 				C267ADF11ED1D7030058CDE6 /* Color · EightBit.swift in Sources */,
-				9D6198C6198112DA00FC01E8 /* CPWhiteSpaceToken.m in Sources */,
-				9D6198C8198112DA00FC01E8 /* NSArray+Functional.m in Sources */,
 				C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */,
-				9D6198CA198112DA00FC01E8 /* NSSetFunctional.m in Sources */,
-				C2CE09D01C6E89DF00B97D6D /* DDLog.m in Sources */,
-				9D61984F198112A000FC01E8 /* FSAliasRecognizer.m in Sources */,
-				C2CE09C81C6E89DF00B97D6D /* CLIColor.m in Sources */,
-				9D619851198112A000FC01E8 /* FSAliasToken.m in Sources */,
-				9D619853198112A000FC01E8 /* FSArgsKonstants.m in Sources */,
-				9D619855198112A000FC01E8 /* FSArgumentPackage.m in Sources */,
-				9D619858198112A000FC01E8 /* FSArgumentParser.m in Sources */,
 				C2D37FC51FF9669D00B44CA1 /* VPNCommandType.swift in Sources */,
 				C20958801E12F970009D2EC3 /* VPNCFArray+Sequence.swift in Sources */,
-				C2CE09E61C6F643400B97D6D /* VPNLogFormatter.swift in Sources */,
 				C26157471D928F29001AD818 /* VPNServiceCreator.swift in Sources */,
+				C24BE70B236A2C7700FFC671 /* VPNServiceConfig.swift in Sources */,
 				C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */,
-				9D61985B198112A000FC01E8 /* FSArguments_Coalescer_Internal.m in Sources */,
-				9D61985D198112A000FC01E8 /* FSArgumentSignature.m in Sources */,
-				9D619860198112A000FC01E8 /* FSCountedArgument.m in Sources */,
-				9D619862198112A000FC01E8 /* FSFormatCtorParserDelegate.m in Sources */,
-				9D619864198112A000FC01E8 /* FSFormatCtorTokeniserDelegate.m in Sources */,
-				C2CE09C91C6E89DF00B97D6D /* CocoaLumberjack.swift in Sources */,
-				C2CE09CF1C6E89DF00B97D6D /* DDFileLogger.m in Sources */,
-				9D619866198112A000FC01E8 /* FSMutableAttributedArray.m in Sources */,
-				C2CE09CE1C6E89DF00B97D6D /* DDDispatchQueueLogFormatter.m in Sources */,
-				9D619868198112A000FC01E8 /* FSSwitchRecognizer.m in Sources */,
-				9D61986A198112A000FC01E8 /* FSSwitchToken.m in Sources */,
-				9D61986C198112A000FC01E8 /* FSValuedArgument.m in Sources */,
-				9D6198CD1981151D00FC01E8 /* VPNArguments.m in Sources */,
-				C267ADF51ED1DBB30058CDE6 /* DDOSLogger.m in Sources */,
-				9D61986F198112A000FC01E8 /* NSArray+FSArgumentsNormalizer.m in Sources */,
-				9D619871198112A000FC01E8 /* NSDictionary+RubyDescription.m in Sources */,
-				C2CE09CB1C6E89DF00B97D6D /* DDASLLogCapture.m in Sources */,
-				C2CE09D11C6E89DF00B97D6D /* DDMultiFormatter.m in Sources */,
-				9D619873198112A000FC01E8 /* NSProcessInfo+FSArgumentParser.m in Sources */,
-				9D619875198112A000FC01E8 /* NSScanner+EscapedScanning.m in Sources */,
 				C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */,
 				C2D37FC71FF970B700B44CA1 /* VPNServiceRemover.swift in Sources */,
-				9D619877198112A000FC01E8 /* NSString+Indenter.m in Sources */,
 				9D61984D1981129900FC01E8 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -863,7 +418,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -871,13 +427,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = B9J4QR64LK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosvpn/Vendor",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "macosvpn/macosvpn-Prefix.pch";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-sectcreate",
@@ -886,9 +448,8 @@
 					macosvpn/Info.plist,
 				);
 				PRODUCT_NAME = macosvpn;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/macosvpn/macosvpn-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -896,13 +457,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = B9J4QR64LK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/macosvpn/Vendor",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "macosvpn/macosvpn-Prefix.pch";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-sectcreate",
@@ -911,8 +478,7 @@
 					macosvpn/Info.plist,
 				);
 				PRODUCT_NAME = macosvpn;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/macosvpn/macosvpn-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -938,6 +504,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C24BE701236A0E2B00FFC671 /* XCRemoteSwiftPackageReference "swift-package-manager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-package-manager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+		C24BE707236A250E00FFC671 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C24BE702236A0E2B00FFC671 /* SPMUtility */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24BE701236A0E2B00FFC671 /* XCRemoteSwiftPackageReference "swift-package-manager" */;
+			productName = SPMUtility;
+		};
+		C24BE708236A250E00FFC671 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24BE707236A250E00FFC671 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32861388197FED310010BB98 /* Project object */;
 }

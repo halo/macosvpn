@@ -27,69 +27,69 @@ open class VPNServiceRemover {
   // This method creates one VPN interface according to the desired configuration
   open class func removeService(_ name: String, usingPreferencesRef: SCPreferences) -> Int32 {
 
-    DDLogDebug("Removing Service \(name)")
+    Log.debug("Removing Service \(name)")
 
-    DDLogDebug("Fetching set of all available network services...")
+    Log.debug("Fetching set of all available network services...")
     guard let networkSet = SCNetworkSetCopyCurrent(usingPreferencesRef) else {
-      DDLogError("Error: Could not fetch current network set when removing \(name). \(SCErrorString(SCError())) (Code \(SCError()))")
+      Log.error("Error: Could not fetch current network set when removing \(name). \(SCErrorString(SCError())) (Code \(SCError()))")
       return VPNExitCode.CopyingCurrentNetworkSetFailed
     }
 
     guard let services = SCNetworkSetCopyServices(networkSet) else {
-      DDLogError("Could not retrieve network services set")
+      Log.error("Could not retrieve network services set")
       return VPNExitCode.CopyingNetworkServicesFailed
     }
 
     var deletedCount: Int = 0
     for serviceInstanceWrapper in services {
       let existingService = serviceInstanceWrapper as! SCNetworkService
-      DDLogDebug("existingService = \(existingService)")
+      Log.debug("existingService = \(existingService)")
 
       guard let serviceNameCF = SCNetworkServiceGetName(existingService) else {
-        DDLogError("SCNetworkServiceGetName failed")
+        Log.error("SCNetworkServiceGetName failed")
         return VPNExitCode.GettingServiceNameFailed
       }
 
       guard let serviceIDCF = SCNetworkServiceGetServiceID(existingService) else {
-        DDLogError("SCNetworkServiceGetServiceID failed")
+        Log.error("SCNetworkServiceGetServiceID failed")
         return VPNExitCode.GettingServiceIDFailed
       }
 
       let serviceName = serviceNameCF as String
-      DDLogDebug("serviceName = \(serviceName)")
+      Log.debug("serviceName = \(serviceName)")
 
       let serviceID = serviceIDCF as String
-      DDLogDebug("serviceID = \(serviceID)")
+      Log.debug("serviceID = \(serviceID)")
 
       if name != serviceName {
-        DDLogDebug("Ignoring existing Service \(serviceName)")
+        Log.debug("Ignoring existing Service \(serviceName)")
         continue
       }
 
-      DDLogDebug("That Service has the ID \(serviceID)")
+      Log.debug("That Service has the ID \(serviceID)")
 
       if SCNetworkServiceRemove(existingService) {
-        DDLogInfo("Successfully deleted VPN Service \(name)")
+        Log.info("Successfully deleted VPN Service \(name)")
         deletedCount += 1;
       } else {
-        DDLogError("Error: Could not remove VPN service \(name) from current network set. \(SCErrorString(SCError())) (Code \(SCError()))")
+        Log.error("Error: Could not remove VPN service \(name) from current network set. \(SCErrorString(SCError())) (Code \(SCError()))")
         return VPNExitCode.RemovingServiceFailed
       }
     }
 
     if (deletedCount == 0) {
-      DDLogError("No VPN Service was deleted. Are you sure it exists?")
+      Log.error("No VPN Service was deleted. Are you sure it exists?")
       return VPNExitCode.NoServicesRemoved
     }
 
-    DDLogDebug("Commiting all changes including service \(name)...")
+    Log.debug("Commiting all changes including service \(name)...")
     if !SCPreferencesCommitChanges(usingPreferencesRef) {
-      DDLogError("Sorry, without superuser privileges I won't be able to remove any VPN interfaces.");
-      DDLogDebug("Error: Could not commit preferences after removing service \(name). \(SCErrorString(SCError())) (Code \(SCError()))")
+      Log.error("Sorry, without superuser privileges I won't be able to remove any VPN interfaces.");
+      Log.debug("Error: Could not commit preferences after removing service \(name). \(SCErrorString(SCError())) (Code \(SCError()))")
       return VPNExitCode.CommingingPreferencesFailed
     }
     if !SCPreferencesApplyChanges(usingPreferencesRef) {
-      DDLogError("Error: Could not apply changes after removing \(name). \(SCErrorString(SCError())) (Code \(SCError()))")
+      Log.error("Error: Could not apply changes after removing \(name). \(SCErrorString(SCError())) (Code \(SCError()))")
       return VPNExitCode.ApplyingPreferencesFailed
     }
 

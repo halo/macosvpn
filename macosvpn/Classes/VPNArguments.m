@@ -27,11 +27,11 @@
 
 + (void) setLogLevel {
   if ([self.package countOfSignature:self.debugSig]) {
-    [VPNLogger setup:DDLogLevelDebug];
-    DDLogDebug(@"");
-    DDLogDebug(@"You are running in debug mode");
+    //[VPNLogger setup:DDLogLevelDebug];
+    Log.debug(@"");
+    Log.debug(@"You are running in debug mode");
   } else {
-    [VPNLogger setup:DDLogLevelInfo];
+    //[VPNLogger setup:DDLogLevelInfo];
   }
 }
 
@@ -48,8 +48,8 @@
 }
 
 + (UInt8) command {
-  if ([[self.package unknownSwitches] count] > 0) DDLogDebug(@"Unknown arguments: %@", [[self.package unknownSwitches] componentsJoinedByString:@" | "]);
-  if ([[self.package uncapturedValues] count] > 0) DDLogDebug(@"Uncaptured argument values: %@", [[self.package uncapturedValues] componentsJoinedByString:@" | "]);
+  if ([[self.package unknownSwitches] count] > 0) Log.debug(@"Unknown arguments: %@", [[self.package unknownSwitches] componentsJoinedByString:@" | "]);
+  if ([[self.package uncapturedValues] count] > 0) Log.debug(@"Uncaptured argument values: %@", [[self.package uncapturedValues] componentsJoinedByString:@" | "]);
   
   if ([self.package countOfSignature:self.createCommandSig] == 1) {
     return 1;
@@ -93,22 +93,22 @@
     NSString *endpoint = [self extractArgumentForSignature:self.endpointSig withFallbackSignature:nil atIndex:i];
     if (endpoint) config.endpoint = endpoint;
     if (!config.endpoint) {
-      DDLogError(@"Error: You did not provide an endpoint for service <%@>", config.name);
-      DDLogDebug(@"%@", config);
+      Log.error(@"Error: You did not provide an endpoint for service <%@>", config.name);
+      Log.debug(@"%@", config);
       exit(21); // VPNExitCode.MissingEndpoint
     }
 
     config.username = [self extractArgumentForSignature:self.usernameSig withFallbackSignature:nil atIndex:i];
-    if (!config.username) DDLogWarn(@"Warning: You did not provide a username for service <%@>", config.name);
+    if (!config.username) Log.warn(@"Warning: You did not provide a username for service <%@>", config.name);
 
     config.password = [self extractArgumentForSignature:self.passwordSig withFallbackSignature:nil atIndex:i];
-    if (!config.password) DDLogWarn(@"Warning: You did not provide a password for service <%@>", config.name);
+    if (!config.password) Log.warn(@"Warning: You did not provide a password for service <%@>", config.name);
     
     config.sharedSecret = [self extractArgumentForSignature:self.sharedSecretSig withFallbackSignature:nil atIndex:i];
-    if (!config.sharedSecret) DDLogWarn(@"Warning: You did not provide a shared secret for service <%@>", config.name);
+    if (!config.sharedSecret) Log.warn(@"Warning: You did not provide a shared secret for service <%@>", config.name);
 
     config.localIdentifier = [self extractArgumentForSignature:self.localIdentifierSig withFallbackSignature:nil atIndex:i];
-    //if (!config.localIdentifier) DDLogWarn(@"Warning: You did not provide a group name for service <%@>", config.name);
+    //if (!config.localIdentifier) Log.warn(@"Warning: You did not provide a group name for service <%@>", config.name);
 
     config.enableSplitTunnel = [self.package countOfSignature:self.splitTunnelSig] > 0;
     config.disconnectOnSwitch = [self.package countOfSignature:self.disconnectOnSwitchSig] > 0;

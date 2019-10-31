@@ -95,7 +95,7 @@
   vals[count++] = (__bridge CFStringRef)[NSString stringWithFormat:@"%@.SS", self.serviceID];
 
   if (self.localIdentifier) {
-    DDLogDebug(@"Assigning group name <%@> to L2TP service config", self.localIdentifier);
+    Log.debug(@"Assigning group name <%@> to L2TP service config", self.localIdentifier);
 
     keys[count]   = kSCPropNetIPSecLocalIdentifier;
     vals[count++] = (__bridge CFStringRef)self.localIdentifier;
@@ -158,7 +158,7 @@
   vals[count++] = kSCValNetIPSecXAuthPasswordEncryptionKeychain;
 
   if (self.localIdentifier) {
-    DDLogDebug(@"Assigning group name <%@> to cisco service config", self.localIdentifier);
+    Log.debug(@"Assigning group name <%@> to cisco service config", self.localIdentifier);
 
     keys[count]   = kSCPropNetIPSecLocalIdentifier;
     vals[count++] = (__bridge CFStringRef)self.localIdentifier;

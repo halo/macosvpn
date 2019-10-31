@@ -14,17 +14,6 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-// This is where the action starts.
+import Cocoa
 
-// In the old days, autorelease pools were a good idea on CLI apps.
-// So I guess I keep the convention even though I'm not 100% it's needed.
-autoreleasepool {
-  
-  // The first thing we do is check whether the --debug flas has been provided.
-  // If that is the case, we want to have verbose logging right from the start.
-  VPNArguments.setLogLevel();
-
-  // To keep things tidy, we delegate everything to another file.
-  exit(VPNController.main());
-}
-
+exit(VPNController.main())
