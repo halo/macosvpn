@@ -17,19 +17,14 @@
 		C24BE706236A237300FFC671 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE705236A237300FFC671 /* Log.swift */; };
 		C24BE709236A250E00FFC671 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = C24BE708236A250E00FFC671 /* Logging */; };
 		C24BE70B236A2C7700FFC671 /* VPNServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */; };
+		C24BE70E236AE90F00FFC671 /* PrettyColors in Frameworks */ = {isa = PBXBuildFile; productRef = C24BE70D236AE90F00FFC671 /* PrettyColors */; };
 		C26157471D928F29001AD818 /* VPNServiceCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157461D928F29001AD818 /* VPNServiceCreator.swift */; };
 		C26157491D9295E6001AD818 /* VPNCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26157481D9295E6001AD818 /* VPNCommand.swift */; };
 		C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261574A1D92961C001AD818 /* VPNServiceType.swift */; };
-		C267ADF11ED1D7030058CDE6 /* Color · EightBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */; };
-		C267ADF21ED1D7030058CDE6 /* Color · Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF01ED1D7030058CDE6 /* Color · Named.swift */; };
 		C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF61ED1F6760058CDE6 /* Optional+String.swift */; };
 		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
 		C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* VPNExitCode.swift */; };
 		C2B6EA442368997F00129CDB /* VPNArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6EA432368997F00129CDB /* VPNArguments.swift */; };
-		C2CE09DB1C6E935600B97D6D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D41C6E935600B97D6D /* Color.swift */; };
-		C2CE09DC1C6E935600B97D6D /* ECMA 48.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D51C6E935600B97D6D /* ECMA 48.swift */; };
-		C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09D91C6E935600B97D6D /* StyleParameter.swift */; };
-		C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09DA1C6E935600B97D6D /* Wrap.swift */; };
 		C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
 		C2D37FC31FF964EE00B44CA1 /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D37FC21FF964EE00B44CA1 /* VPNController.swift */; };
 		C2D37FC51FF9669D00B44CA1 /* VPNCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D37FC41FF9669D00B44CA1 /* VPNCommandType.swift */; };
@@ -68,17 +63,10 @@
 		C26157461D928F29001AD818 /* VPNServiceCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceCreator.swift; sourceTree = "<group>"; };
 		C26157481D9295E6001AD818 /* VPNCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNCommand.swift; sourceTree = "<group>"; };
 		C261574A1D92961C001AD818 /* VPNServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceType.swift; sourceTree = "<group>"; };
-		C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · EightBit.swift"; sourceTree = "<group>"; };
-		C267ADF01ED1D7030058CDE6 /* Color · Named.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color · Named.swift"; sourceTree = "<group>"; };
 		C267ADF61ED1F6760058CDE6 /* Optional+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+String.swift"; sourceTree = "<group>"; };
 		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
 		C299053C1E12F9B500570022 /* VPNExitCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNExitCode.swift; sourceTree = "<group>"; };
 		C2B6EA432368997F00129CDB /* VPNArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNArguments.swift; sourceTree = "<group>"; };
-		C2CE09D41C6E935600B97D6D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		C2CE09D51C6E935600B97D6D /* ECMA 48.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ECMA 48.swift"; sourceTree = "<group>"; };
-		C2CE09D81C6E935600B97D6D /* PrettyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyColors.h; sourceTree = "<group>"; };
-		C2CE09D91C6E935600B97D6D /* StyleParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleParameter.swift; sourceTree = "<group>"; };
-		C2CE09DA1C6E935600B97D6D /* Wrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrap.swift; sourceTree = "<group>"; };
 		C2CE09E31C6E972400B97D6D /* VPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNColor.swift; sourceTree = "<group>"; };
 		C2D37FC21FF964EE00B44CA1 /* VPNController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNController.swift; sourceTree = "<group>"; };
 		C2D37FC41FF9669D00B44CA1 /* VPNCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNCommandType.swift; sourceTree = "<group>"; };
@@ -94,6 +82,7 @@
 				9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */,
 				C24BE703236A0E2B00FFC671 /* SPMUtility in Frameworks */,
 				328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */,
+				C24BE70E236AE90F00FFC671 /* PrettyColors in Frameworks */,
 				C24BE709236A250E00FFC671 /* Logging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,7 +95,6 @@
 			children = (
 				32861395197FED310010BB98 /* macosvpn */,
 				32861398197FED310010BB98 /* Config */,
-				9D61978F198111EF00FC01E8 /* Vendor */,
 				32861392197FED310010BB98 /* Frameworks */,
 				32861391197FED310010BB98 /* Products */,
 			);
@@ -178,29 +166,6 @@
 			path = macosvpn/Classes;
 			sourceTree = SOURCE_ROOT;
 		};
-		9D61978F198111EF00FC01E8 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				C2CE09D31C6E935600B97D6D /* PrettyColors */,
-			);
-			name = Vendor;
-			sourceTree = "<group>";
-		};
-		C2CE09D31C6E935600B97D6D /* PrettyColors */ = {
-			isa = PBXGroup;
-			children = (
-				C2CE09D41C6E935600B97D6D /* Color.swift */,
-				C267ADEF1ED1D7030058CDE6 /* Color · EightBit.swift */,
-				C267ADF01ED1D7030058CDE6 /* Color · Named.swift */,
-				C2CE09D51C6E935600B97D6D /* ECMA 48.swift */,
-				C2CE09D81C6E935600B97D6D /* PrettyColors.h */,
-				C2CE09D91C6E935600B97D6D /* StyleParameter.swift */,
-				C2CE09DA1C6E935600B97D6D /* Wrap.swift */,
-			);
-			name = PrettyColors;
-			path = macosvpn/Vendor/PrettyColors;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,7 +176,6 @@
 				3286138C197FED310010BB98 /* Sources */,
 				3286138D197FED310010BB98 /* Frameworks */,
 				3286138E197FED310010BB98 /* CopyFiles */,
-				C24BE704236A190E00FFC671 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -221,6 +185,7 @@
 			packageProductDependencies = (
 				C24BE702236A0E2B00FFC671 /* SPMUtility */,
 				C24BE708236A250E00FFC671 /* Logging */,
+				C24BE70D236AE90F00FFC671 /* PrettyColors */,
 			);
 			productName = linkliar;
 			productReference = 32861390197FED310010BB98 /* macosvpn */;
@@ -254,6 +219,7 @@
 			packageReferences = (
 				C24BE701236A0E2B00FFC671 /* XCRemoteSwiftPackageReference "swift-package-manager" */,
 				C24BE707236A250E00FFC671 /* XCRemoteSwiftPackageReference "swift-log" */,
+				C24BE70C236AE90F00FFC671 /* XCRemoteSwiftPackageReference "PrettyColors" */,
 			);
 			productRefGroup = 32861391197FED310010BB98 /* Products */;
 			projectDirPath = "";
@@ -264,44 +230,18 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		C24BE704236A190E00FFC671 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		3286138C197FED310010BB98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2CE09DF1C6E935600B97D6D /* StyleParameter.swift in Sources */,
 				C24BE706236A237300FFC671 /* Log.swift in Sources */,
 				C2B6EA442368997F00129CDB /* VPNArguments.swift in Sources */,
-				C2CE09E01C6E935600B97D6D /* Wrap.swift in Sources */,
 				C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */,
 				C26157491D9295E6001AD818 /* VPNCommand.swift in Sources */,
 				C233AF811C6E7DCD00F39700 /* VPNHelp.swift in Sources */,
-				C267ADF21ED1D7030058CDE6 /* Color · Named.swift in Sources */,
 				C2D37FC31FF964EE00B44CA1 /* VPNController.swift in Sources */,
-				C2CE09DB1C6E935600B97D6D /* Color.swift in Sources */,
-				C2CE09DC1C6E935600B97D6D /* ECMA 48.swift in Sources */,
 				C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */,
-				C267ADF11ED1D7030058CDE6 /* Color · EightBit.swift in Sources */,
 				C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */,
 				C2D37FC51FF9669D00B44CA1 /* VPNCommandType.swift in Sources */,
 				C20958801E12F970009D2EC3 /* VPNCFArray+Sequence.swift in Sources */,
@@ -522,6 +462,14 @@
 				minimumVersion = 1.1.1;
 			};
 		};
+		C24BE70C236AE90F00FFC671 /* XCRemoteSwiftPackageReference "PrettyColors" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdhealy/PrettyColors.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -534,6 +482,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C24BE707236A250E00FFC671 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
+		};
+		C24BE70D236AE90F00FFC671 /* PrettyColors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24BE70C236AE90F00FFC671 /* XCRemoteSwiftPackageReference "PrettyColors" */;
+			productName = PrettyColors;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
