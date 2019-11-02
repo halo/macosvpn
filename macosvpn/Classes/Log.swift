@@ -14,26 +14,22 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Logging
 //import Foundation
 
 public struct Log {
-  // See https://github.com/apple/swift-log
-  private static let logger = Logger(label: "io.github.halo.macosvpn")
-
   public static func debug(_ message: String) {
-    logger.debug("\(message)")
+    print("\(message)")
   }
 
   public static func info(_ message: String) {
-    logger.info("\(message)")
+    print("\(message)")
   }
   
   public static func warn(_ message: String) {
-    logger.warning("\(message)")
+    print("\(message)")
   }
   
   public static func error(_ message: String) {
-    logger.error("\(message)")
+    print("\(message)")
   }
 }

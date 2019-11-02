@@ -15,7 +15,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 import Foundation
-import SPMUtility
+import Moderator
 
 open class VPNArguments: NSObject {
   
@@ -39,51 +39,66 @@ open class VPNArguments: NSObject {
   public static var arguments = Array(CommandLine.arguments.dropFirst())
 
   public var helpRequested: Bool {
-    self.options.command == .help
+    //self.options.command == .help
+    false
   }
 
-  
+  public func parse() -> String {
+    let m = Moderator()
+    let options = m.add(Argument<String?>.optionWithValue("b").repeat())
+    let multiple = m.add(Argument<String?>.singleArgument(name: "multiple").repeat())
+
+    do {
+      try m.parse(["-b", "b1", "-b", "b2", "-b", "b3", "one", "two", "three"])
+    } catch {
+      print(error)
+      exit(Int32(error._code))
+    }
+    
+    Log.debug(options.description)
+    return options.description
+  }
   
   
   //private lazy var helpFlag: OptionArgument<Bool> = {
   //   newParser.add(option: "--help", kind: Bool.self, usage: "Show Help")
   // }()
 
-  private lazy var binder: ArgumentBinder<Options> = {
-    //Array(ProcessInfo.processInfo.arguments.dropFirst())
-    ArgumentBinder<Options>()
-  }()
-
-  private lazy var parser: ArgumentParser = {
-    let parser = ArgumentParser(usage: "", overview: "")
-
-    _ = parser.add(subparser: "create", overview: "")
-    _ = parser.add(subparser: "delete", overview: "")
-
-    self.binder.bind(
-      parser: parser,
-      to: { $0.command = Options.Command(rawValue: $1)! }
-    )
-    
-    return parser
-  }()
-
-  private lazy var options: Options = {
-    do {
-      let result = try self.parser.parse(type(of: self).arguments)
-      var options = Options()
-      try self.binder.fill(parseResult: result, into: &options)
-      return options
-      
-    } catch ArgumentParserError.expectedValue(let value) {
-        print("Missing value for argument \(value).")
-
-    } catch ArgumentParserError.expectedArguments(let parser, let stringArray) {
-        print("Missing arguments: \(stringArray.joined()).")
-
-    } catch {
-        print(error.localizedDescription)
-    }
-    return Options()
-  }()
+  //private lazy var binder: ArgumentBinder<Options> = {
+  //  //Array(ProcessInfo.processInfo.arguments.dropFirst())
+  //  ArgumentBinder<Options>()
+  //}()
+//
+  //private lazy var parser: ArgumentParser = {
+  //  let parser = ArgumentParser(usage: "", overview: "")
+//
+  //  _ = parser.add(subparser: "create", overview: "")
+  //  _ = parser.add(subparser: "delete", overview: "")
+//
+  //  self.binder.bind(
+  //    parser: parser,
+  //    to: { $0.command = Options.Command(rawValue: $1)! }
+  //  )
+  //
+  //  return parser
+  //}()
+//
+  //private lazy var options: Options = {
+  //  do {
+  //    let result = try self.parser.parse(type(of: self).arguments)
+  //    var options = Options()
+  //    try self.binder.fill(parseResult: result, into: &options)
+  //    return options
+  //
+  //  } catch ArgumentParserError.expectedValue(let value) {
+  //      print("Missing value for argument \(value).")
+//
+  //  } catch ArgumentParserError.expectedArguments(let parser, let stringArray) {
+  //      print("Missing arguments: \(stringArray.joined()).")
+//
+  //  } catch {
+  //      print(error.localizedDescription)
+  //  }
+  //  return Options()
+  //}()
 }
