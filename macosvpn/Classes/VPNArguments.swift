@@ -19,9 +19,29 @@ import Moderator
 
 open class VPNArguments: NSObject {
   
+  //public override init(arguments: [String] = []) {
+  //  <#code#>
+  //}
+  
+  //public init (arguments: [String] = []) {
+  //  self.arguments = arguments
+  //  super.init()
+  //  self.parse()
+  //}
+ 
+  //public static func helpRequested() -> Bool { return self.instance.helpRequested.value }
+  public static var helpRequested: Bool {
+    self.instance.parse()
+    return self.instance.helpRequested.value
+  }
+
+  public static var l2tps: [String] {
+    self.instance.parse()
+    return self.instance.l2tps.value
+  }
+  
   public static func forceRequested() -> Bool { return false }
   public static func versionRequested() -> Bool { return false }
-  public static func helpRequested() -> Bool { return self.instance.helpRequested }
   public static func command() -> UInt8 { return 0 }
   public static func serviceConfigs() -> Array<VPNServiceConfig>? { return [] }
   public static func serviceNames() -> Array<String>? { return [] }
@@ -35,28 +55,32 @@ open class VPNArguments: NSObject {
     var command: Command = .help
   }
 
+  public var arguments = Array(CommandLine.arguments.dropFirst())
   public static var instance = VPNArguments()
-  public static var arguments = Array(CommandLine.arguments.dropFirst())
+ // public static var arguments =
 
-  public var helpRequested: Bool {
-    //self.options.command == .help
-    false
-  }
-
-  public func parse() -> String {
+  public var helpRequested: FutureValue<Bool> = FutureValue<Bool>()
+  public var l2tps: FutureValue<[String]> = FutureValue<[String]>()
+  
+  public func parse() {
     let m = Moderator()
-    let options = m.add(Argument<String?>.optionWithValue("b").repeat())
-    let multiple = m.add(Argument<String?>.singleArgument(name: "multiple").repeat())
+    
+    helpRequested = m.add(.option("h", "help"))
+    l2tps = m.add(Argument<String>.optionWithValue("l2tp").repeat())
+
+    
+    //let options = m.add(Argument<String?>.optionWithValue("b").repeat())
+    //let multiple = m.add(Argument<String?>.singleArgument(name: "multiple").repeat())
 
     do {
-      try m.parse(["-b", "b1", "-b", "b2", "-b", "b3", "one", "two", "three"])
+      try m.parse(self.arguments)
     } catch {
       print(error)
       exit(Int32(error._code))
     }
     
-    Log.debug(options.description)
-    return options.description
+    //Log.debug(options.description)
+    //return options.description
   }
   
   

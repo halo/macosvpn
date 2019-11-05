@@ -38,7 +38,7 @@ class VPNController {
 
   class func run() -> Int32 {
     // Adding the --help flag should never perform anything but showing help
-    if VPNArguments.helpRequested() {
+    if VPNArguments.helpRequested {
       return VPNHelp.showHelp()
     }
     // To keep this application extensible we introduce different
