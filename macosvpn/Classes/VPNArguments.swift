@@ -39,7 +39,14 @@ open class VPNArguments: NSObject {
     self.instance.parse()
     return self.instance.l2tps.value
   }
-  
+
+  public static var usernames: [String] {
+    self.instance.parse()
+    return self.instance.usernames.value
+  }
+
+  private var parsed: Bool = false
+
   public static func forceRequested() -> Bool { return false }
   public static func versionRequested() -> Bool { return false }
   public static func command() -> UInt8 { return 0 }
@@ -55,18 +62,42 @@ open class VPNArguments: NSObject {
     var command: Command = .help
   }
 
-  public var arguments = Array(CommandLine.arguments.dropFirst())
   public static var instance = VPNArguments()
  // public static var arguments =
 
   public var helpRequested: FutureValue<Bool> = FutureValue<Bool>()
   public var l2tps: FutureValue<[String]> = FutureValue<[String]>()
+  public var usernames: FutureValue<[String]> = FutureValue<[String]>()
+  
+  public var arguments: [String] {
+    get {
+      return _arguments
+    }
+    set {
+      parsed = false
+      _arguments = newValue
+    }
+  }
+  private var _arguments = Array(CommandLine.arguments.dropFirst())
+
+  
+  //public var arguments: Int = 0 {
+  //    didSet {
+  //        // Say 1000 is not good for you and 999 is the maximum you want to be stored there
+  //        if rank >= 1000  {
+  //            rank = 999
+  //        }
+  //    }
+  //}
   
   public func parse() {
+    if (parsed) { return };
+    
     let m = Moderator()
     
     helpRequested = m.add(.option("h", "help"))
     l2tps = m.add(Argument<String>.optionWithValue("l2tp").repeat())
+    usernames = m.add(Argument<String>.optionWithValue("username").repeat())
 
     
     //let options = m.add(Argument<String?>.optionWithValue("b").repeat())
@@ -74,6 +105,7 @@ open class VPNArguments: NSObject {
 
     do {
       try m.parse(self.arguments)
+      parsed = true
     } catch {
       print(error)
       exit(Int32(error._code))

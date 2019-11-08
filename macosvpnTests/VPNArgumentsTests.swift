@@ -31,4 +31,19 @@ class VPNArgumentsTests: XCTestCase {
     XCTAssertEqual(VPNArguments.l2tps, ["Atlantic", "Pacific"])
   }
 
+  func testMultipleUsernames() {
+    let arguments = ["--username", "Alice",
+                     "--username", "Bob"]
+    VPNArguments.instance.arguments = arguments
+    XCTAssertEqual(VPNArguments.usernames, ["Alice", "Bob"])
+  }
+  
+  func testMultipleL2TPWithUsernames() {
+    let arguments = ["--l2tp", "Atlantic", "--username", "Alice",
+                    "--l2tp", "Pacific", "--username", "Bob"]
+    VPNArguments.instance.arguments = arguments
+    XCTAssertEqual(VPNArguments.l2tps, ["Atlantic", "Pacific"])
+    XCTAssertEqual(VPNArguments.usernames, ["Alice", "Bob"])
+  }
+
 }

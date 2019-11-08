@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1110"
+   LastUpgradeVersion = "1120"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -44,7 +44,7 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C24BE729236B01C200FFC671"
+               BlueprintIdentifier = "C269D1EF236B1F65003D6BE9"
                BuildableName = "macosvpnTests.xctest"
                BlueprintName = "macosvpnTests"
                ReferencedContainer = "container:macosvpn.xcodeproj">
