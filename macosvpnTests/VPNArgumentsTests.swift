@@ -17,6 +17,19 @@ class VPNArgumentsTests: XCTestCase {
     let arguments = ["--help"]
     VPNArguments.instance.arguments = arguments
     XCTAssertTrue(VPNArguments.helpRequested)
+    XCTAssertEqual(VPNArguments.cmd, Command.help)
+  }
+
+  func testCommand() {
+    let arguments = ["create"]
+    VPNArguments.instance.arguments = arguments
+    XCTAssertEqual(VPNArguments.cmd, Command.create)
+  }
+
+  func testMissingCommand() {
+    let arguments: [String] = []
+    VPNArguments.instance.arguments = arguments
+    XCTAssertEqual(VPNArguments.cmd, Command.help)
   }
 
   //func testL2TP() {
@@ -46,13 +59,23 @@ class VPNArgumentsTests: XCTestCase {
   //  XCTAssertEqual(VPNArguments.usernames, ["Alice", "Bob"])
   //}
 
-  func testL2TPAndCisco() {
-    let arguments = ["asd", "--l2tp", "Atlantic", "--username", "Alice",
+  func testServiceConfigArgumentsWithMissingCommand() {
+    let arguments = ["--l2tp", "Atlantic", "--username", "Alice",
                     "--cisco", "Pacific", "--username", "Bob"]
     VPNArguments.instance.arguments = arguments
-    XCTAssertEqual(VPNArguments.instance.serviceConfigArguments, [["Atlantic"]])
-    //XCTAssertEqual(VPNArguments.ciscos, ["Pacific"])
-    //XCTAssertEqual(VPNArguments.usernames, ["Alice", "Bob"])
+    XCTAssertEqual(VPNArguments.cmd, .help)
+    XCTAssertEqual(VPNArguments.instance.serviceConfigArguments, [])
+  }
+
+  func testServiceConfigArguments() {
+    let arguments = ["create", "--l2tp", "Atlantic", "--username", "Alice",
+                    "--cisco", "Pacific", "--username", "Bob"]
+    VPNArguments.instance.arguments = arguments
+    XCTAssertEqual(VPNArguments.cmd, .create)
+    XCTAssertEqual(VPNArguments.instance.serviceConfigArguments, [
+      ["--l2tp", "Atlantic", "--username", "Alice"],
+      ["--cisco", "Pacific", "--username", "Bob"]
+    ])
   }
 
 }

@@ -17,55 +17,64 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import Foundation
 import Moderator
 
+public enum Command: String {
+   case create
+   case delete
+   case help
+ }
+
 open class VPNArguments: NSObject {
   
-  //public override init(arguments: [String] = []) {
-  //  <#code#>
-  //}
-  
-  //public init (arguments: [String] = []) {
-  //  self.arguments = arguments
-  //  super.init()
-  //  self.parse()
-  //}
- 
-  //public static func helpRequested() -> Bool { return self.instance.helpRequested.value }
-  public static var helpRequested: Bool {
+   public static var helpRequested: Bool {
     self.instance.parse()
     return self.instance.helpRequested.value
   }
 
-  public static var l2tps: [String] {
-    self.instance.parse()
-    return self.instance.l2tps.value
-  }
+  //public static var command: UInt8 {
+  //  self.instance.parse()
+  //  switch self.instance.command.value {
+  //  case Options.Command.create:
+  //    return 1
+  //  default:
+  //    return -1
+  //  }
+  //
+  //}
 
-  public static var ciscos: [String] {
-    self.instance.parse()
-    return self.instance.ciscos.value
-  }
+  //public static var l2tps: [String] {
+  //  self.instance.parse()
+  //  return self.instance.l2tps.value
+  //}
+//
+  //public static var ciscos: [String] {
+  //  self.instance.parse()
+  //  return self.instance.ciscos.value
+  //}
+//
+  //public static var usernames: [String] {
+  //  self.instance.parse()
+  //  return self.instance.usernames.value
+  //}
 
-  public static var usernames: [String] {
+  public static var cmd: Command {
     self.instance.parse()
-    return self.instance.usernames.value
+    return self.instance.cmd
+   // return self.instance.command.value
   }
 
   private var parsed: Bool = false
 
   public static func forceRequested() -> Bool { return false }
   public static func versionRequested() -> Bool { return false }
-  public static func command() -> UInt8 { return 0 }
+  public static func command() -> UInt8 {
+    return 0
+  }
   public static func serviceConfigs() -> Array<VPNServiceConfig>? { return [] }
   public static func serviceNames() -> Array<String>? { return [] }
 
-  struct Options {
-    enum Command: String {
-      case create
-      case delete
-      case help
-    }
-    var command: Command = .help
-  }
+  //struct Options {
+  //   var command: Command = .help
+  //}
 
   public static var instance = VPNArguments()
  // public static var arguments =
@@ -74,7 +83,8 @@ open class VPNArguments: NSObject {
   public var l2tps: FutureValue<[String]> = FutureValue<[String]>()
   public var ciscos: FutureValue<[String]> = FutureValue<[String]>()
   public var usernames: FutureValue<[String]> = FutureValue<[String]>()
-  
+  public var command: FutureValue<String?> = FutureValue<String?>()
+
   public var arguments: [String] {
     get {
       return _arguments
@@ -86,9 +96,18 @@ open class VPNArguments: NSObject {
   }
   private var _arguments = Array(CommandLine.arguments.dropFirst())
 
+  public var cmd: Command {
+    if self.command.value == "create" {
+      return Command.create
+    }
+    
+    return Command.help
+  }
   
   
   public var serviceConfigArguments: [ArraySlice<String>] {
+    if type(of: self).cmd == .help { return [] }
+
     var result: [ArraySlice<String>] = []
     var startAt = 0
     
@@ -115,6 +134,8 @@ open class VPNArguments: NSObject {
     
     let m = Moderator()
     
+    command = m.add(.singleArgument(name: ""))
+
     helpRequested = m.add(.option("h", "help"))
     
    // for slice in serviceConfigArguments {
@@ -134,7 +155,7 @@ open class VPNArguments: NSObject {
         parsed = true
       } catch {
         print(error)
-        exit(Int32(error._code))
+        //exit(Int32(error._code))
       }
     }
     //Log.debug(options.description)
