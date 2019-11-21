@@ -16,7 +16,7 @@ open class VPNServiceConfig: NSObject {
   
   public var humanType: String?
   
-  public var l2TPPPPConfig: CFDictionary? {
+  public var l2TPPPPConfig: CFDictionary {
     var keys: [CFString?] = [nil, nil, nil, nil, nil, nil]
     var vals: [CFString?] = [nil, nil, nil, nil, nil, nil]
     var count = CFIndex(0)

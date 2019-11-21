@@ -27,6 +27,8 @@
 		C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF61ED1F6760058CDE6 /* Optional+String.swift */; };
 		C269D1F3236B1F65003D6BE9 /* VPNServiceConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C269D1F2236B1F65003D6BE9 /* VPNServiceConfigTests.swift */; };
 		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
+		C28AEF5F2382F8300079DC21 /* VPNServiceConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */; };
+		C28AEF602382F8300079DC21 /* VPNServiceConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */; };
 		C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* VPNExitCode.swift */; };
 		C2B6EA442368997F00129CDB /* VPNArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6EA432368997F00129CDB /* VPNArguments.swift */; };
 		C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
@@ -96,6 +98,7 @@
 		C269D1F2236B1F65003D6BE9 /* VPNServiceConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceConfigTests.swift; sourceTree = "<group>"; };
 		C269D1F4236B1F65003D6BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
+		C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceConfigs.swift; sourceTree = "<group>"; };
 		C299053C1E12F9B500570022 /* VPNExitCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNExitCode.swift; sourceTree = "<group>"; };
 		C2B6EA432368997F00129CDB /* VPNArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNArguments.swift; sourceTree = "<group>"; };
 		C2CE09E31C6E972400B97D6D /* VPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNColor.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 				9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */,
 				9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */,
 				C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */,
+				C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */,
 				C27566F91D08744A009CD68C /* VPNAuthorizations.swift */,
 				C209587F1E12F970009D2EC3 /* VPNCFArray+Sequence.swift */,
 				C2D37FC21FF964EE00B44CA1 /* VPNController.swift */,
@@ -355,6 +359,7 @@
 				C26157471D928F29001AD818 /* VPNServiceCreator.swift in Sources */,
 				C24BE70B236A2C7700FFC671 /* VPNServiceConfig.swift in Sources */,
 				C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */,
+				C28AEF5F2382F8300079DC21 /* VPNServiceConfigs.swift in Sources */,
 				C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */,
 				C2D37FC71FF970B700B44CA1 /* VPNServiceRemover.swift in Sources */,
 				9D61984D1981129900FC01E8 /* main.swift in Sources */,
@@ -368,6 +373,7 @@
 				C2EBF465236DD6D9004562E2 /* Parsers.swift in Sources */,
 				C20E6A6B236DCED200671953 /* VPNArgumentsTests.swift in Sources */,
 				C20E6A69236DC99900671953 /* VPNServiceConfig.swift in Sources */,
+				C28AEF602382F8300079DC21 /* VPNServiceConfigs.swift in Sources */,
 				C20E6A6D236DCF1B00671953 /* Log.swift in Sources */,
 				C269D1F3236B1F65003D6BE9 /* VPNServiceConfigTests.swift in Sources */,
 				C20E6A6C236DCF0600671953 /* VPNArguments.swift in Sources */,

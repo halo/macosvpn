@@ -40,6 +40,11 @@ open class VPNArguments: NSObject {
     return self.instance.l2tps.value
   }
 
+  public static var ciscos: [String] {
+    self.instance.parse()
+    return self.instance.ciscos.value
+  }
+
   public static var usernames: [String] {
     self.instance.parse()
     return self.instance.usernames.value
@@ -67,6 +72,7 @@ open class VPNArguments: NSObject {
 
   public var helpRequested: FutureValue<Bool> = FutureValue<Bool>()
   public var l2tps: FutureValue<[String]> = FutureValue<[String]>()
+  public var ciscos: FutureValue<[String]> = FutureValue<[String]>()
   public var usernames: FutureValue<[String]> = FutureValue<[String]>()
   
   public var arguments: [String] {
@@ -81,39 +87,59 @@ open class VPNArguments: NSObject {
   private var _arguments = Array(CommandLine.arguments.dropFirst())
 
   
-  //public var arguments: Int = 0 {
-  //    didSet {
-  //        // Say 1000 is not good for you and 999 is the maximum you want to be stored there
-  //        if rank >= 1000  {
-  //            rank = 999
-  //        }
-  //    }
-  //}
   
+  public var serviceConfigArguments: [ArraySlice<String>] {
+    var result: [ArraySlice<String>] = []
+    var startAt = 0
+    
+    for (index, argument) in arguments.enumerated() {
+      let atEnd = index == arguments.count - 1
+      
+      if argument == "--l2tp" || argument == "--cisco" || atEnd {
+        
+        let from = startAt == 0 ? result.compactMap({$0.count}).reduce(0, +) : startAt
+        var till = atEnd ? arguments.count - 1 : index - 1
+        if till < 0 { till = 0 }
+        let slice = arguments[from...till]
+        
+        
+        if startAt > 0 { result.append(slice) }
+        startAt = index
+      }
+    }
+    return result
+  }
+
   public func parse() {
     if (parsed) { return };
     
     let m = Moderator()
     
     helpRequested = m.add(.option("h", "help"))
-    l2tps = m.add(Argument<String>.optionWithValue("l2tp").repeat())
-    usernames = m.add(Argument<String>.optionWithValue("username").repeat())
-
     
-    //let options = m.add(Argument<String?>.optionWithValue("b").repeat())
-    //let multiple = m.add(Argument<String?>.singleArgument(name: "multiple").repeat())
-
-    do {
-      try m.parse(self.arguments)
-      parsed = true
-    } catch {
-      print(error)
-      exit(Int32(error._code))
+   // for slice in serviceConfigArguments {
+            
+      //l2tps = m.add(Argument<String>.optionWithValue("l2tp").repeat())
+      //ciscos = m.add(Argument<String>.optionWithValue("cisco").repeat())
+      //usernames = m.add(Argument<String>.optionWithValue("username").repeat())
+      
+      //let single = m.add(Argument<String?>.singleArgument(name: "argumentname"))
+      
+      
+      //let options = m.add(Argument<String?>.optionWithValue("b").repeat())
+      //let multiple = m.add(Argument<String?>.singleArgument(name: "multiple").repeat())
+      
+      do {
+        try m.parse(self.arguments)
+        parsed = true
+      } catch {
+        print(error)
+        exit(Int32(error._code))
+      }
     }
-    
     //Log.debug(options.description)
     //return options.description
-  }
+  //}
   
   
   //private lazy var helpFlag: OptionArgument<Bool> = {
