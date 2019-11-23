@@ -1,4 +1,4 @@
-struct VPNExitCode {
+enum VPNExitCode {
 
   static let Success: Int32 = 0
   static let ShowingVersion: Int32 = 10
@@ -9,6 +9,9 @@ struct VPNExitCode {
   static let MissingServices: Int32 = 22
   static let MissingNames: Int32 = 23
   static let ServiceNameExtractionFailed: Int32 = 24
+  static let UnknownService: Int32 = 25
+  static let InvalidArguments: Int32 = 26
+  static let UnknownArguments: Int32 = 27
 
   static let PrivilegesRequired: Int32 = 31
   static let LockingPreferencesFailed: Int32 = 32

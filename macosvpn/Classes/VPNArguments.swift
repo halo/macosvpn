@@ -80,9 +80,9 @@ open class VPNArguments: NSObject {
  // public static var arguments =
 
   public var helpRequested: FutureValue<Bool> = FutureValue<Bool>()
-  public var l2tps: FutureValue<[String]> = FutureValue<[String]>()
-  public var ciscos: FutureValue<[String]> = FutureValue<[String]>()
-  public var usernames: FutureValue<[String]> = FutureValue<[String]>()
+  //public var l2tps: FutureValue<[String]> = FutureValue<[String]>()
+  //public var ciscos: FutureValue<[String]> = FutureValue<[String]>()
+  //public var usernames: FutureValue<[String]> = FutureValue<[String]>()
   public var command: FutureValue<String?> = FutureValue<String?>()
 
   public var arguments: [String] {
@@ -116,7 +116,7 @@ open class VPNArguments: NSObject {
       
       if argument == "--l2tp" || argument == "--cisco" || atEnd {
         
-        let from = startAt == 0 ? result.compactMap({$0.count}).reduce(0, +) : startAt
+        let from = startAt == 0 ? result.compactMap({ $0.count }).reduce(0, +) : startAt
         var till = atEnd ? arguments.count - 1 : index - 1
         if till < 0 { till = 0 }
         let slice = arguments[from...till]
