@@ -2,8 +2,27 @@ import XCTest
 @testable import macosvpn
 
 class ServiceConfigFactoryTests: XCTestCase {
-
-  func testMakeL2TP() {
+  
+  func testMakeMinimalL2TP() {
+    let arguments = [
+      "--l2tp", "Atlantic",
+      "--endpoint", "example.com",
+    ]
+    
+    let service = VPNServiceConfig.Factory.make(from: arguments)
+    XCTAssertEqual(service.kind, .L2TP)
+    XCTAssertEqual(service.name, "Atlantic")
+    XCTAssertEqual(service.endpoint, "example.com")
+    XCTAssertNil(service.username)
+    XCTAssertNil(service.password)
+    XCTAssertNil(service.sharedSecret)
+    XCTAssertNil(service.localIdentifier)
+    XCTAssertFalse(service.disconnectOnSwitch)
+    XCTAssertFalse(service.disconnectOnLogout)
+    XCTAssertFalse(service.enableSplitTunnel)
+  }
+  
+  func testMakeFullL2TP() {
     let arguments = [
       "--l2tp", "Atlantic",
       "--endpoint", "example.com",
@@ -14,8 +33,8 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--disconnectswitch",
       "--disconnectlogout",
       "--split",
-     ]
-
+    ]
+    
     let service = VPNServiceConfig.Factory.make(from: arguments)
     XCTAssertEqual(service.kind, .L2TP)
     XCTAssertEqual(service.name, "Atlantic")
@@ -29,7 +48,23 @@ class ServiceConfigFactoryTests: XCTestCase {
     XCTAssertTrue(service.enableSplitTunnel)
   }
   
-  func testMakeCisco() {
+  func testMakeMinimalCisco() {
+    let arguments = [
+      "--cisco", "Atlantic",
+      "--endpoint", "example.com",
+    ]
+    
+    let service = VPNServiceConfig.Factory.make(from: arguments)
+    XCTAssertEqual(service.kind, .Cisco)
+    XCTAssertEqual(service.name, "Atlantic")
+    XCTAssertEqual(service.endpoint, "example.com")
+    XCTAssertNil(service.username)
+    XCTAssertNil(service.password)
+    XCTAssertNil(service.sharedSecret)
+    XCTAssertNil(service.localIdentifier)
+  }
+
+  func testMakeFullCisco() {
     let arguments = [
       "--cisco", "Atlantic",
       "--endpoint", "example.com",
@@ -37,8 +72,8 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--password", "p4ssw0rd",
       "--sharedsecret", "s3same",
       "--groupname", "Dreamteam",
-     ]
-
+    ]
+    
     let service = VPNServiceConfig.Factory.make(from: arguments)
     XCTAssertEqual(service.kind, .Cisco)
     XCTAssertEqual(service.name, "Atlantic")
@@ -48,6 +83,5 @@ class ServiceConfigFactoryTests: XCTestCase {
     XCTAssertEqual(service.sharedSecret, "s3same")
     XCTAssertEqual(service.localIdentifier, "Dreamteam")
   }
-
 
 }

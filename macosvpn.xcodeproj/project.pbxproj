@@ -14,12 +14,13 @@
 		C20958801E12F970009D2EC3 /* VPNCFArray+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209587F1E12F970009D2EC3 /* VPNCFArray+Sequence.swift */; };
 		C20E6A68236DC8DB00671953 /* Moderator in Frameworks */ = {isa = PBXBuildFile; productRef = C20E6A67236DC8DB00671953 /* Moderator */; };
 		C20E6A69236DC99900671953 /* VPNServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */; };
-		C20E6A6B236DCED200671953 /* VPNArgumentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20E6A6A236DCED200671953 /* VPNArgumentsTests.swift */; };
+		C20E6A6B236DCED200671953 /* RuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20E6A6A236DCED200671953 /* RuntimeTests.swift */; };
 		C20E6A6C236DCF0600671953 /* VPNArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6EA432368997F00129CDB /* VPNArguments.swift */; };
 		C20E6A6D236DCF1B00671953 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE705236A237300FFC671 /* Log.swift */; };
 		C233AF811C6E7DCD00F39700 /* VPNHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* VPNHelp.swift */; };
 		C240416423895DE7008D48DB /* ServiceConfigFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E922389269C00908B0B /* ServiceConfigFactory.swift */; };
 		C2404165238968FF008D48DB /* VPNExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* VPNExitCode.swift */; };
+		C240416723897186008D48DB /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240416623897186008D48DB /* Runtime.swift */; };
 		C24BE706236A237300FFC671 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE705236A237300FFC671 /* Log.swift */; };
 		C24BE70B236A2C7700FFC671 /* VPNServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */; };
 		C24BE70E236AE90F00FFC671 /* PrettyColors in Frameworks */ = {isa = PBXBuildFile; productRef = C24BE70D236AE90F00FFC671 /* PrettyColors */; };
@@ -90,8 +91,9 @@
 		9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNServiceConfig.h; sourceTree = "<group>"; };
 		9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNServiceConfig.m; sourceTree = "<group>"; };
 		C209587F1E12F970009D2EC3 /* VPNCFArray+Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNCFArray+Sequence.swift"; sourceTree = "<group>"; };
-		C20E6A6A236DCED200671953 /* VPNArgumentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNArgumentsTests.swift; sourceTree = "<group>"; };
+		C20E6A6A236DCED200671953 /* RuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeTests.swift; sourceTree = "<group>"; };
 		C233AF801C6E7DCD00F39700 /* VPNHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelp.swift; sourceTree = "<group>"; };
+		C240416623897186008D48DB /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		C24BE705236A237300FFC671 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceConfig.swift; sourceTree = "<group>"; };
 		C26157461D928F29001AD818 /* VPNServiceCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNServiceCreator.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				C2A88E922389269C00908B0B /* ServiceConfigFactory.swift */,
+				C240416623897186008D48DB /* Runtime.swift */,
 				9D3D847F1982B017005BD5F3 /* VPNKeychain.h */,
 				9D3D84801982B017005BD5F3 /* VPNKeychain.m */,
 				9D6198CB1981151D00FC01E8 /* VPNArguments.h */,
@@ -224,8 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				C2A88E9523892E1900908B0B /* ServiceConfigFactoryTests.swift */,
+				C20E6A6A236DCED200671953 /* RuntimeTests.swift */,
 				C269D1F2236B1F65003D6BE9 /* VPNServiceConfigTests.swift */,
-				C20E6A6A236DCED200671953 /* VPNArgumentsTests.swift */,
 				C269D1F4236B1F65003D6BE9 /* Info.plist */,
 				C2EBF45E236DD658004562E2 /* Vendor */,
 			);
@@ -368,6 +371,7 @@
 				C26157471D928F29001AD818 /* VPNServiceCreator.swift in Sources */,
 				C24BE70B236A2C7700FFC671 /* VPNServiceConfig.swift in Sources */,
 				C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */,
+				C240416723897186008D48DB /* Runtime.swift in Sources */,
 				C28AEF5F2382F8300079DC21 /* VPNServiceConfigs.swift in Sources */,
 				C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */,
 				C2D37FC71FF970B700B44CA1 /* VPNServiceRemover.swift in Sources */,
@@ -381,7 +385,7 @@
 			files = (
 				C2EBF465236DD6D9004562E2 /* Parsers.swift in Sources */,
 				C2404165238968FF008D48DB /* VPNExitCode.swift in Sources */,
-				C20E6A6B236DCED200671953 /* VPNArgumentsTests.swift in Sources */,
+				C20E6A6B236DCED200671953 /* RuntimeTests.swift in Sources */,
 				C20E6A69236DC99900671953 /* VPNServiceConfig.swift in Sources */,
 				C240416423895DE7008D48DB /* ServiceConfigFactory.swift in Sources */,
 				C28AEF602382F8300079DC21 /* VPNServiceConfigs.swift in Sources */,
