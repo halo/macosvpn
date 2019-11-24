@@ -20,16 +20,17 @@ class VPNController {
 
   class func main() -> Int32 {
     // Adding the --version flag should never perform anything but showing the version without any blank rows
-    if VPNArguments.versionRequested() {
+    if Runtime.command == .version{
       return VPNHelp.showVersion()
     }
+    
     // For readability we print out an empty row before and after.
     Log.info("")
     let exitCode: Int32 = self.run()
     Log.info("")
+
     // Mention that there were no errors so we can trace bugs more easily.
     if exitCode == 0 {
-      // VPNExitCode.Success
       Log.info("Finished without errors.")
       Log.info("")
     }
@@ -38,16 +39,16 @@ class VPNController {
 
   class func run() -> Int32 {
     // Adding the --help flag should never perform anything but showing help
-    if VPNArguments.helpRequested {
+    if Runtime.command == .help {
       return VPNHelp.showHelp()
     }
     // To keep this application extensible we introduce different
     // commands right from the beginning. We start off with "create"
-    if VPNArguments.command() == VPNCommandType.Create {
+    if Runtime.command == .create {
       Log.debug("So, you wish to create one or more VPN service(s).")
       return self.create()
     }
-    else if VPNArguments.command() == VPNCommandType.Delete {
+    else if Runtime.command == .delete {
       Log.debug("So, you wish to delete one or more VPN service(s).")
       return self.delete()
     }

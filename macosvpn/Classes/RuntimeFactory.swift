@@ -21,32 +21,32 @@ extension Runtime {
   enum Factory {
     static func make(_ arguments: [String]) -> Runtime {
       let parser = Moderator()
-      
+
       let commandName = parser.add(Argument<String>.singleArgument(name: ""))
       let versionFlag = parser.add(Argument<Bool>.option("version", "v"))
       let helpFlag = parser.add(Argument<Bool>.option("help", "h"))
       let forceFlag = parser.add(Argument<Bool>.option("force", "o"))
-      
+
       do {
         try parser.parse(arguments, strict: false)
       } catch {
         Log.error(String(describing: error))
         exit(VPNExitCode.InvalidArguments)
       }
-      
+
       let runtime = Runtime()
-      
+
       // Highest precedence when requesting help, bail our immediately
       if helpFlag.value {
         runtime.command = .help
         return runtime
       }
-      
+
       if versionFlag.value {
         runtime.command = .version
         return runtime
       }
-      
+
       guard let commandNameValue = commandName.value else {
         Log.error("You must specify a command.")
         return runtime
@@ -56,7 +56,7 @@ extension Runtime {
         Log.error("Unknown command: \(commandNameValue)")
         return runtime
       }
-      
+
       runtime.command = command
       runtime.forceRequested = forceFlag.value
 

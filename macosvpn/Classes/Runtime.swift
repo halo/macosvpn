@@ -14,46 +14,32 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Foundation
 import Moderator
 
-open class Runtime: NSObject {
-  
+open class Runtime {
+
   public enum Command: String {
     case create
     case delete
     case version
     case help
   }
-  
+
   // Class Shortcuts
-  
-  //public static var instance = Runtime()
-  //
-  //public static var command: Command = Command.help
-  
-  //public static var command: Command {
-  //  self.instance.command
-  //}
-  
-  //public static var forceRequested: Bool {
-  //  self.instance.forceRequested
-  //}
-  
-    
-  //private var arguments = Array(CommandLine.arguments.dropFirst())
-  
-  // Flags
-  
+
+  public static var command: Command {
+    self.instance.command
+  }
+
+  public static var forceRequested: Bool {
+    self.instance.forceRequested
+  }
+
+  public static var instance = Runtime()
+
+  // Instance Methods
+
   public var command: Command = .help
-  
-  //private var helpRequested = true
-  //private var versionRequested = false
   public var forceRequested = false
-  
-  //private var helpRequested = FutureValue<Bool>()
-  //private var versionRequested = FutureValue<Bool>()
-  //private var forceRequested = FutureValue<Bool>()
-  
-  // Parsing
+  public var unprocessedArguments: [String] = []
 }
