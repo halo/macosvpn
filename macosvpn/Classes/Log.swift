@@ -14,11 +14,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-//import Foundation
+import PrettyColors
 
 public struct Log {
   public static func debug(_ message: String) {
-    print("\(message)")
+    print(Color.Wrap(foreground: VPNColor.Blue).wrap("🔧 \(message)"))
   }
 
   public static func info(_ message: String) {
@@ -26,10 +26,10 @@ public struct Log {
   }
   
   public static func warn(_ message: String) {
-    print("\(message)")
+    print("⚠️ \(message)")
   }
   
   public static func error(_ message: String) {
-    print("\(message)")
+    print(Color.Wrap(foreground: VPNColor.Red).wrap("🔥 \(message)"))
   }
 }

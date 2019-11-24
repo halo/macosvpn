@@ -1,9 +1,9 @@
-import Foundation
+import Darwin
 import Moderator
 
 extension VPNServiceConfig {
   enum Factory {
-    static func make(from arguments: [String]) -> VPNServiceConfig {
+    static func make(_ arguments: [String]) -> VPNServiceConfig {
       let parser = Moderator()
 
       // Both L2TP and Cisco

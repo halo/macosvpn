@@ -9,7 +9,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--endpoint", "example.com",
     ]
     
-    let service = VPNServiceConfig.Factory.make(from: arguments)
+    let service = VPNServiceConfig.Factory.make(arguments)
     XCTAssertEqual(service.kind, .L2TP)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -35,7 +35,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--split",
     ]
     
-    let service = VPNServiceConfig.Factory.make(from: arguments)
+    let service = VPNServiceConfig.Factory.make(arguments)
     XCTAssertEqual(service.kind, .L2TP)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -54,7 +54,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--endpoint", "example.com",
     ]
     
-    let service = VPNServiceConfig.Factory.make(from: arguments)
+    let service = VPNServiceConfig.Factory.make(arguments)
     XCTAssertEqual(service.kind, .Cisco)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -74,7 +74,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--groupname", "Dreamteam",
     ]
     
-    let service = VPNServiceConfig.Factory.make(from: arguments)
+    let service = VPNServiceConfig.Factory.make(arguments)
     XCTAssertEqual(service.kind, .Cisco)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")

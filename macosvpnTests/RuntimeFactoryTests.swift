@@ -1,31 +1,27 @@
 import XCTest
 @testable import macosvpn
 
-class RuntimeTests: XCTestCase {
+class RuntimeFactoryTests: XCTestCase {
   
   func testDefault() {
-    Runtime.instance.arguments = []
-    XCTAssertEqual(Runtime.command, .help)
+    let runtime = Runtime.Factory.make([])
+    XCTAssertEqual(runtime.command, .help)
   }
 
-  //func testhelpRequestedShort() {
-  //  let arguments = ["-h"]
-  //  Runtime.instance.arguments = arguments
-  //  XCTAssertTrue(Runtime.helpRequested)
-  //}
-//
-  //func testhelpRequestedLong() {
-  //  let arguments = ["--help"]
-  //  Runtime.instance.arguments = arguments
-  //  XCTAssertTrue(Runtime.helpRequested)
-  //  XCTAssertEqual(Runtime.cmd, Command.help)
-  //}
-//
-  //func testCommand() {
-  //  let arguments = ["create"]
-  //  Runtime.instance.arguments = arguments
-  //  XCTAssertEqual(Runtime.cmd, Command.create)
-  //}
+  func testhelpRequestedShort() {
+    let runtime = Runtime.Factory.make(["create", "-h"])
+    XCTAssertEqual(runtime.command, .help)
+  }
+
+  func testhelpRequestedLong() {
+    let runtime = Runtime.Factory.make(["create", "--help"])
+    XCTAssertEqual(runtime.command, .help)
+  }
+
+  func testCommand() {
+    let runtime = Runtime.Factory.make(["create"])
+    XCTAssertEqual(runtime.command, .create)
+  }
 //
   //func testMissingCommand() {
   //  let arguments: [String] = []
