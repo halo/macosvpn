@@ -20,10 +20,10 @@ class VPNController {
 
   class func main() -> Int32 {
     // Adding the --version flag should never perform anything but showing the version without any blank rows
-    if Runtime.command == .version{
+    if Arguments.options.command == .version{
       return VPNHelp.showVersion()
     }
-    
+
     // For readability we print out an empty row before and after.
     Log.info("")
     let exitCode: Int32 = self.run()
@@ -39,16 +39,16 @@ class VPNController {
 
   class func run() -> Int32 {
     // Adding the --help flag should never perform anything but showing help
-    if Runtime.command == .help {
+    if Arguments.options.command == .help {
       return VPNHelp.showHelp()
     }
     // To keep this application extensible we introduce different
     // commands right from the beginning. We start off with "create"
-    if Runtime.command == .create {
+    if Arguments.options.command == .create {
       Log.debug("So, you wish to create one or more VPN service(s).")
       return self.create()
     }
-    else if Runtime.command == .delete {
+    else if Arguments.options.command == .delete {
       Log.debug("So, you wish to delete one or more VPN service(s).")
       return self.delete()
     }
@@ -96,15 +96,15 @@ class VPNController {
   // If everything works out, we will return exit code 0
   var exitCode: Int32 = 0;
 
-  let serviceConfigs = VPNArguments.serviceConfigs()
-  if (serviceConfigs?.count == 0) {
+  let serviceConfigs = Arguments.serviceConfigs
+  if (serviceConfigs.count == 0) {
     Log.error("You did not specify any interfaces for me to create. Try --help for more information.");
     return 22; // VPNExitCode.MissingServices
   }
 
   // Each desired interface configuration will be processed in turn.
   // The configuration comes from the command line arguments and is passed on to the create method.
-  for config: VPNServiceConfig in serviceConfigs! {
+  for config: VPNServiceConfig in serviceConfigs {
     exitCode = Int32(VPNServiceCreator.createService(config, usingPreferencesRef: prefs))
     // This particular interface could not be created. Let's stop processing the others.
     if (exitCode != 0) { break; } // VPNExitCode.Success
@@ -120,10 +120,11 @@ class VPNController {
     // If everything works out, we will return exit code 0
     var exitCode: Int32 = 0;
 
-    guard let names = VPNArguments.serviceNames() else {
-      Log.error("Could not extract service names.")
-      return VPNExitCode.ServiceNameExtractionFailed;
-    }
+    let names = Arguments.serviceNames
+    //guard let names = Arguments.serviceNames else {
+    //  Log.error("Could not extract service names.")
+    //  return VPNExitCode.ServiceNameExtractionFailed;
+    //}
 
     if (names.count == 0) {
       Log.error("You need to specify at least one --name MyVPNName.")

@@ -174,7 +174,7 @@ open class VPNServiceCreator: NSObject {
       Log.warn("You already have a service \(config.name ?? "nil") defined.")
       Log.debug("That Service has the ID \(serviceID)")
 
-      if !VPNArguments.forceRequested() {
+      if !Arguments.options.forceRequested {
         Log.warn("If you want me to overwrite it, you need to specify the --force flag");
         return VPNExitCode.RefusingToOverwriteExistingService;
       }

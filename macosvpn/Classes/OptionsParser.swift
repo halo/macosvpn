@@ -17,9 +17,9 @@
 import Darwin
 import Moderator
 
-extension Runtime {
-  enum Factory {
-    static func make(_ arguments: [String]) -> Runtime {
+extension Options {
+  enum Parser {
+    static func parse(_ arguments: [String]) -> Options {
       let parser = Moderator()
 
       let commandName = parser.add(Argument<String>.singleArgument(name: ""))
@@ -34,33 +34,34 @@ extension Runtime {
         exit(VPNExitCode.InvalidArguments)
       }
 
-      let runtime = Runtime()
+      let options = Options()
+      options.unprocessedArguments = parser.remaining
 
       // Highest precedence when requesting help, bail our immediately
       if helpFlag.value {
-        runtime.command = .help
-        return runtime
+        options.command = .help
+        return options
       }
 
       if versionFlag.value {
-        runtime.command = .version
-        return runtime
+        options.command = .version
+        return options
       }
 
       guard let commandNameValue = commandName.value else {
         Log.error("You must specify a command.")
-        return runtime
+        return options
       }
 
       guard let command = Command(rawValue: commandNameValue) else {
         Log.error("Unknown command: \(commandNameValue)")
-        return runtime
+        return options
       }
 
-      runtime.command = command
-      runtime.forceRequested = forceFlag.value
+      options.command = command
+      options.forceRequested = forceFlag.value
 
-      return runtime
+      return options
     }
   }
 }

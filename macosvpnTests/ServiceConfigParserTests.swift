@@ -1,7 +1,7 @@
 import XCTest
 @testable import macosvpn
 
-class ServiceConfigFactoryTests: XCTestCase {
+class ServiceConfigParserTests: XCTestCase {
   
   func testMakeMinimalL2TP() {
     let arguments = [
@@ -9,7 +9,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--endpoint", "example.com",
     ]
     
-    let service = VPNServiceConfig.Factory.make(arguments)
+    let service = VPNServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .L2TP)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -35,7 +35,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--split",
     ]
     
-    let service = VPNServiceConfig.Factory.make(arguments)
+    let service = VPNServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .L2TP)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -54,7 +54,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--endpoint", "example.com",
     ]
     
-    let service = VPNServiceConfig.Factory.make(arguments)
+    let service = VPNServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .Cisco)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -74,7 +74,7 @@ class ServiceConfigFactoryTests: XCTestCase {
       "--groupname", "Dreamteam",
     ]
     
-    let service = VPNServiceConfig.Factory.make(arguments)
+    let service = VPNServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .Cisco)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")

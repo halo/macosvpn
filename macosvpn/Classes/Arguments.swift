@@ -14,33 +14,24 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import Foundation
+//import Foundation
 import Moderator
 
-open class VPNArguments: NSObject {
+open class Arguments {
 
-  public var serviceConfigArguments: [ArraySlice<String>] {
-    if type(of: self).cmd == .help { return [] }
+  public static var options = Options()
+  public static var serviceConfigs: [VPNServiceConfig] = []
+  public static var serviceNames: [String] = []
 
-    var result: [ArraySlice<String>] = []
-    var startAt = 0
-    
-    for (index, argument) in arguments.enumerated() {
-      let atEnd = index == arguments.count - 1
-      
-      if argument == "--l2tp" || argument == "--cisco" || atEnd {
-        
-        let from = startAt == 0 ? result.compactMap({ $0.count }).reduce(0, +) : startAt
-        var till = atEnd ? arguments.count - 1 : index - 1
-        if till < 0 { till = 0 }
-        let slice = arguments[from...till]
-        
-        
-        if startAt > 0 { result.append(slice) }
-        startAt = index
-      }
-    }
-    return result
+  public static func load() {
+    // The first argument is the executable name, we ignore that one
+    let arguments = Array(CommandLine.arguments.dropFirst())
+
+    options = Options.Parser.parse(arguments)
+    let serviceConfigArguments = options.unprocessedArguments
+
+    serviceConfigs = VPNServiceConfig.Splitter.parse(serviceConfigArguments)
   }
+
 
 }
