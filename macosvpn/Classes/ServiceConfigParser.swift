@@ -44,10 +44,10 @@ extension VPNServiceConfig {
       let service = VPNServiceConfig()
       
       if !(L2TPName.value?.isEmpty ?? true) {
-        service.kind = .L2TP
+        service.kind = .L2TPOverIPSec
         service.name = L2TPName.value
       } else if !(ciscoName.value?.isEmpty ?? true) {
-        service.kind = .Cisco
+        service.kind = .CiscoIPSec
         service.name = ciscoName.value
       } else {
         exit(VPNExitCode.UnknownService)

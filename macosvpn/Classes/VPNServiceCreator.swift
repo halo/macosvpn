@@ -33,16 +33,16 @@ open class VPNServiceCreator: NSObject {
     let initialTopInterface: SCNetworkInterface!
     let initialBottomInterface: SCNetworkInterface!
 
-    switch config.type {
+    switch config.kind {
 
-    case VPNServiceType.L2TPOverIPSec:
+    case .L2TPOverIPSec:
       Log.debug("L2TP Service detected...")
       // L2TP on top of IPv4
       initialBottomInterface = SCNetworkInterfaceCreateWithInterface(kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeL2TP)
       // PPP on top of L2TP
       initialTopInterface = SCNetworkInterfaceCreateWithInterface(initialBottomInterface!, kSCNetworkInterfaceTypePPP)
 
-    case VPNServiceType.CiscoIPSec:
+    case .CiscoIPSec:
       Log.debug("Cisco IPSec Service detected...")
       // Cisco IPSec (without underlying interface)
       initialTopInterface = SCNetworkInterfaceCreateWithInterface(kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeIPSec)
@@ -67,7 +67,7 @@ open class VPNServiceCreator: NSObject {
     }
 
     Log.debug("That service is to have a name")
-    // FIXEM This unwrap can break
+    // FIXME This unwrap can break
     let success = SCNetworkServiceSetName(service, (config.name! as CFString))
     if success {
       Log.debug("That went well it got the name \(config.name ?? "nil")")
@@ -87,9 +87,9 @@ open class VPNServiceCreator: NSObject {
     // See https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html
     let topInterface = SCNetworkServiceGetInterface(service)
 
-    switch config.type {
+    switch config.kind {
 
-    case VPNServiceType.L2TPOverIPSec:
+    case .L2TPOverIPSec:
       Log.debug("Configuring \(config.humanType ?? "nil") Service")
       // Let's apply all configuration to the PPP interface
       // Specifically, the servername, account username and password
@@ -111,7 +111,7 @@ open class VPNServiceCreator: NSObject {
       }
       break
 
-    case VPNServiceType.CiscoIPSec:
+    case .CiscoIPSec:
       Log.debug("Configuring \(config.humanType ?? "nil") Service")
       // Let's apply all configuration data to the Cisco IPSec interface
       // As opposed to L2TP, here all configuration goes to the top Interface, i.e. the only Interface there is.

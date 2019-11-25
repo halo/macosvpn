@@ -19,6 +19,8 @@ import SystemConfiguration
 class VPNController {
 
   class func main() -> Int32 {
+    Arguments.load()
+
     // Adding the --version flag should never perform anything but showing the version without any blank rows
     if Arguments.options.command == .version{
       return VPNHelp.showVersion()
@@ -38,6 +40,7 @@ class VPNController {
   }
 
   class func run() -> Int32 {
+
     // Adding the --help flag should never perform anything but showing help
     if Arguments.options.command == .help {
       return VPNHelp.showHelp()
@@ -74,13 +77,13 @@ class VPNController {
   // So, for now, we will simply bail out unless you called this command line application with the good old `sudo`.
   if (getuid() != 0) {
     Log.error("Sorry, without superuser privileges I won't be able to write to the System Keychain and thus cannot create a VPN service.");
-    return 31; // VPNExitCode.PrivilegesRequired
+    return VPNExitCode.PrivilegesRequired
   }
 
   let app = "macosvpn" as CFString
   guard let prefs: SCPreferences = SCPreferencesCreateWithAuthorization(nil, app, nil, VPNAuthorizations.create()) else {
     Log.error("Could not create Authorization.");
-    return 34; // VPNExitCode.AuthorizationCreationFailed
+    return VPNExitCode.AuthorizationCreationFailed
   }
 
   // Making sure other process cannot make configuration modifications
@@ -90,7 +93,7 @@ class VPNController {
     Log.debug("Gained superhuman rights.");
   } else {
     Log.error("Sorry, without superuser privileges I won't be able to add any VPN interfaces.");
-    return 32; // VPNExitCode.LockingPreferencesFailed
+    return VPNExitCode.LockingPreferencesFailed
   }
 
   // If everything works out, we will return exit code 0
@@ -99,7 +102,7 @@ class VPNController {
   let serviceConfigs = Arguments.serviceConfigs
   if (serviceConfigs.count == 0) {
     Log.error("You did not specify any interfaces for me to create. Try --help for more information.");
-    return 22; // VPNExitCode.MissingServices
+    return VPNExitCode.MissingServices
   }
 
   // Each desired interface configuration will be processed in turn.

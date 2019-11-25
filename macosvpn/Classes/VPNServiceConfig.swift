@@ -3,8 +3,8 @@ import SystemConfiguration
 
 open class VPNServiceConfig: NSObject {
   public enum Kind: String {
-    case L2TP
-    case Cisco
+    case L2TPOverIPSec
+    case CiscoIPSec
     case Unknown
   }
 

@@ -26,6 +26,7 @@ extension Options {
       let versionFlag = parser.add(Argument<Bool>.option("version", "v"))
       let helpFlag = parser.add(Argument<Bool>.option("help", "h"))
       let forceFlag = parser.add(Argument<Bool>.option("force", "o"))
+      let debugFlag = parser.add(Argument<Bool>.option("debug", "d"))
 
       do {
         try parser.parse(arguments, strict: false)
@@ -60,6 +61,7 @@ extension Options {
 
       options.command = command
       options.forceRequested = forceFlag.value
+      options.debugRequested = debugFlag.value
 
       return options
     }

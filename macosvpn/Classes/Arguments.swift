@@ -32,6 +32,4 @@ open class Arguments {
 
     serviceConfigs = VPNServiceConfig.Splitter.parse(serviceConfigArguments)
   }
-
-
 }

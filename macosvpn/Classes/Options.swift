@@ -27,5 +27,6 @@ open class Options {
 
   public var command: Command = .help
   public var forceRequested = false
+  public var debugRequested = false
   public var unprocessedArguments: [String] = []
 }

@@ -48,8 +48,6 @@
 		C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF61ED1F6760058CDE6 /* Optional+String.swift */; };
 		C269D1F3236B1F65003D6BE9 /* VPNServiceConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C269D1F2236B1F65003D6BE9 /* VPNServiceConfigTests.swift */; };
 		C27566FA1D08744A009CD68C /* VPNAuthorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* VPNAuthorizations.swift */; };
-		C28AEF5F2382F8300079DC21 /* VPNServiceConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */; };
-		C28AEF602382F8300079DC21 /* VPNServiceConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */; };
 		C299053D1E12F9B500570022 /* VPNExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* VPNExitCode.swift */; };
 		C2A88E932389269C00908B0B /* ServiceConfigParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E922389269C00908B0B /* ServiceConfigParser.swift */; };
 		C2A88E9623892E1900908B0B /* ServiceConfigParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E9523892E1900908B0B /* ServiceConfigParserTests.swift */; };
@@ -132,7 +130,6 @@
 		C269D1F2236B1F65003D6BE9 /* VPNServiceConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceConfigTests.swift; sourceTree = "<group>"; };
 		C269D1F4236B1F65003D6BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27566F91D08744A009CD68C /* VPNAuthorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNAuthorizations.swift; sourceTree = "<group>"; };
-		C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceConfigs.swift; sourceTree = "<group>"; };
 		C299053C1E12F9B500570022 /* VPNExitCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNExitCode.swift; sourceTree = "<group>"; };
 		C2A88E922389269C00908B0B /* ServiceConfigParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfigParser.swift; sourceTree = "<group>"; };
 		C2A88E9523892E1900908B0B /* ServiceConfigParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfigParserTests.swift; sourceTree = "<group>"; };
@@ -222,6 +219,7 @@
 				C2B6EA432368997F00129CDB /* Arguments.swift */,
 				C23C49FC238B0C41003CF07D /* ServiceConfigSplitter.swift */,
 				C2A88E922389269C00908B0B /* ServiceConfigParser.swift */,
+				C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */,
 				C2404168238AD2E8008D48DB /* OptionsParser.swift */,
 				C240416623897186008D48DB /* Options.swift */,
 				9D3D847F1982B017005BD5F3 /* VPNKeychain.h */,
@@ -230,8 +228,6 @@
 				9D6198CC1981151D00FC01E8 /* VPNArguments.m */,
 				9D7B4673198159BB001AB2D5 /* VPNServiceConfig.h */,
 				9D7B4674198159BB001AB2D5 /* VPNServiceConfig.m */,
-				C24BE70A236A2C7700FFC671 /* VPNServiceConfig.swift */,
-				C28AEF5E2382F8300079DC21 /* VPNServiceConfigs.swift */,
 				C27566F91D08744A009CD68C /* VPNAuthorizations.swift */,
 				C209587F1E12F970009D2EC3 /* VPNCFArray+Sequence.swift */,
 				C2D37FC21FF964EE00B44CA1 /* VPNController.swift */,
@@ -417,7 +413,6 @@
 				C24BE70B236A2C7700FFC671 /* VPNServiceConfig.swift in Sources */,
 				C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */,
 				C240416723897186008D48DB /* Options.swift in Sources */,
-				C28AEF5F2382F8300079DC21 /* VPNServiceConfigs.swift in Sources */,
 				C261574B1D92961C001AD818 /* VPNServiceType.swift in Sources */,
 				C2D37FC71FF970B700B44CA1 /* VPNServiceRemover.swift in Sources */,
 				9D61984D1981129900FC01E8 /* main.swift in Sources */,
@@ -437,7 +432,6 @@
 				C20E6A69236DC99900671953 /* VPNServiceConfig.swift in Sources */,
 				C23C4A04238C5BFE003CF07D /* ServiceConfigSplitterTests.swift in Sources */,
 				C240416423895DE7008D48DB /* ServiceConfigParser.swift in Sources */,
-				C28AEF602382F8300079DC21 /* VPNServiceConfigs.swift in Sources */,
 				C20E6A6D236DCF1B00671953 /* Log.swift in Sources */,
 				C25FF374238AE3000028E38A /* StyleParameter.swift in Sources */,
 				C269D1F3236B1F65003D6BE9 /* VPNServiceConfigTests.swift in Sources */,
