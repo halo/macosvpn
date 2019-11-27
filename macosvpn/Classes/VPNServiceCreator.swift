@@ -68,7 +68,7 @@ open class VPNServiceCreator: NSObject {
 
     Log.debug("That service is to have a name")
     // FIXME This unwrap can break
-    let success = SCNetworkServiceSetName(service, (config.name! as CFString))
+    let success = SCNetworkServiceSetName(service, (config.name as CFString))
     if success {
       Log.debug("That went well it got the name \(config.name ?? "nil")")
     } else {
@@ -218,17 +218,17 @@ open class VPNServiceCreator: NSObject {
     }
 
     Log.debug("Preparing to add Keychain items for service \(config.name ?? "nil")...")
+
+
     if config.password != nil {
-      //TODO: let code = VPNKeychain.createPasswordKeyChainItem(config.name, forService: config.serviceID, withAccount: config.username, andPassword: config.password!)
-      let code = 0
+      let code = Keychain.createPasswordKeyChainItem(config.name, forService: config.serviceID!, withAccount: config.username!, andPassword: config.password!)
       if code > 0 {
         Log.error("Error: Could not createPasswordKeyChainItem. \(config.name ?? "nil"). \(code)")
         return VPNExitCode.CreatingPasswordKeychainItemFailed
       }
     }
     if config.sharedSecret != nil {
-      //TODO: let code = VPNKeychain.createSharedSecretKeyChainItem(config.name, forService: config.serviceID, withPassword: config.sharedSecret)
-      let code = 0
+      let code = Keychain.createSharedSecretKeyChainItem(config.name, forService: config.serviceID!, withPassword: config.sharedSecret!)
       if code > 0 {
         Log.error("Error: Could not createSharedSecretKeyChainItem. \(config.name ?? "nil"). \(code)")
         return VPNExitCode.CreatingSharedSecretKeychainItemFailed
