@@ -20,54 +20,45 @@ import Security.SecKeychain
 // See https://stackoverflow.com/a/55986029
 
 extension String {
-    func toUnsafePointer() -> UnsafePointer<UInt8>? {
-        guard let data = self.data(using: .utf8) else {
-            return nil
-        }
-
-        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: data.count)
-        let stream = OutputStream(toBuffer: buffer, capacity: data.count)
-        stream.open()
-        let value = data.withUnsafeBytes {
-            $0.baseAddress?.assumingMemoryBound(to: UInt8.self)
-        }
-        guard let val = value else {
-            return nil
-        }
-        stream.write(val, maxLength: data.count)
-        stream.close()
-
-        return UnsafePointer<UInt8>(buffer)
+  func toUnsafePointer() -> UnsafePointer<UInt8>? {
+    guard let data = self.data(using: .utf8) else {
+      return nil
     }
 
-    func toUnsafeMutablePointer() -> UnsafeMutablePointer<Int8>? {
-        return strdup(self)
+    let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: data.count)
+    let stream = OutputStream(toBuffer: buffer, capacity: data.count)
+    stream.open()
+    let value = data.withUnsafeBytes {
+      $0.baseAddress?.assumingMemoryBound(to: UInt8.self)
     }
+    guard let val = value else {
+      return nil
+    }
+    stream.write(val, maxLength: data.count)
+    stream.close()
+
+    return UnsafePointer<UInt8>(buffer)
+  }
+
+  func toUnsafeMutablePointer() -> UnsafeMutablePointer<Int8>? {
+    return strdup(self)
+  }
 }
 
 struct Keychain {
-  private let trustedAppPaths = [
-    "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/Helpers/SCHelper",
-    "/System/Library/PreferencePanes/Network.prefPane/Contents/XPCServices/com.apple.preference.network.remoteservice.xpc",
-    "/System/Library/CoreServices/SystemUIServer.app",
-    "/usr/sbin/pppd",
-    "/usr/sbin/racoon",
-    "/usr/libexec/configd"
-  ] 
-
-  public static func createPasswordKeyChainItem(_ label: String, forService service: String, withAccount account: String, andPassword password: String) -> Int {
+  public static func createPasswordKeyChainItem(_ label: String, forService service: String, withAccount account: String, andPassword password: String) -> Int32 {
     Log.debug("Creating Password Keychain Item with ID \(String(describing: service))")
     return self.createItem(label, withService: service, account: account, description: "PPP Password", andPassword: password)
   }
 
-  public static func createSharedSecretKeyChainItem(_ label: String, forService service: String, withPassword password: String) -> Int {
+  public static func createSharedSecretKeyChainItem(_ label: String, forService service: String, withPassword password: String) -> Int32 {
     var service = service
     service = "\(service ).SS"
     Log.debug("Creating IPSec Shared Secret Keychain Item with ID \(String(describing: service))")
     return self.createItem(label, withService: service, account: "", description: "IPSec Shared Secret", andPassword: password)
   }
 
-  public static func createXAuthKeyChainItem(_ label: String, forService service: String, withPassword password: String) -> Int {
+  public static func createXAuthKeyChainItem(_ label: String, forService service: String, withPassword password: String) -> Int32 {
     var service = service
     service = "\(service ).XAUTH"
     Log.debug("Creating Cisco IPSec XAuth Keychain Item with ID \(String(describing: service))")
@@ -78,81 +69,137 @@ struct Keychain {
                                 withService service: String,
                                 account: String,
                                 description: String,
-                                andPassword password: String) -> Int {
+                                andPassword password: String) -> Int32 {
     Log.debug("Creating System Keychain for \(label)")
-
-    // This variable will hold all sorts of operation status responses
-    var status: OSStatus
-
-    // Converting the NSStrings to char* variables which we will need later
-    let labelUTF8 = label.toUnsafeMutablePointer()
-    let serviceUTF8 = service.toUnsafeMutablePointer()
-    let accountUTF8 = account.toUnsafeMutablePointer()
-    let descriptionUTF8 = description.toUnsafeMutablePointer()
-    let passwordUTF8 = password.toUnsafeMutablePointer()
 
     // This variable is soon to hold the System Keychain
     var keychain: SecKeychain? = nil
 
-    status = SecKeychainCopyDomainDefault(SecPreferencesDomain.system, &keychain)
-    if status == errSecSuccess {
-      Log.debug("Succeeded opening System Keychain")
-    } else {
-      Log.error("Could not obtain System Keychain: \(String(describing: SecCopyErrorMessageString(status, nil)))")
+    let copyStatus = SecKeychainCopyDomainDefault(SecPreferencesDomain.system, &keychain)
+    guard copyStatus == errSecSuccess else {
+      Log.error("Could not obtain System Keychain: \(String(describing: SecCopyErrorMessageString(copyStatus, nil)))")
       return 60
     }
+    Log.debug("Succeeded opening System Keychain")
 
     Log.debug("Unlocking System Keychain")
-    status = SecKeychainUnlock(keychain, 0, nil, false)
-    if status == errSecSuccess {
-      Log.debug("Succeeded unlocking System Keychain")
-    } else {
-      Log.error("Could not unlock System Keychain: \(String(describing: SecCopyErrorMessageString(status, nil)))")
+    let unlockStatus = SecKeychainUnlock(keychain, 0, nil, false)
+    
+    guard unlockStatus == errSecSuccess else {
+      Log.error("Could not unlock System Keychain: \(String(describing: SecCopyErrorMessageString(unlockStatus, nil)))")
       return 61
     }
+    Log.debug("Succeeded unlocking System Keychain")
 
     // This variable is going to hold our new Keychain Item
-    var item: SecKeychainItem? = nil
+
+    let trustedAppPaths = [
+      "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/Helpers/SCHelper",
+      "/System/Library/PreferencePanes/Network.prefPane/Contents/XPCServices/com.apple.preference.network.remoteservice.xpc",
+      "/System/Library/CoreServices/SystemUIServer.app",
+      "/usr/sbin/pppd",
+      "/usr/sbin/racoon",
+      "/usr/libexec/configd"
+    ]
+
+    var trustedApplications: [SecTrustedApplication] = []
+
+    for path in trustedAppPaths {
+      var appPointer: SecTrustedApplication?
+
+      let appCreateStatus = SecTrustedApplicationCreateFromPath(path.toUnsafeMutablePointer(), &appPointer)
+      guard unlockStatus == errSecSuccess else {
+        Log.error("Could not create trusted application: \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
+        return 999
+      }
+
+      guard let app = appPointer else {
+        Log.error("Created trusted application is nil: \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
+        return 999
+      }
+
+      trustedApplications.append(app)
+    }
+
 
     var access: SecAccess? = nil
     //status = SecAccessCreate("Some VPN Test" as CFString, (self.trustedApps) as? CFArray?, &access)
-    status = SecAccessCreate("Some VPN Test" as CFString, [] as CFArray, &access)
 
-    if status == 0 {
-      Log.debug("Created empty Keychain access object")
-    } else {
-      Log.error("Could not unlock System Keychain: \(String(describing: SecCopyErrorMessageString(status, nil)))")
+    let accessStatus = SecAccessCreate("macosvpn VPN Service Password" as CFString,
+                                       trustedApplications as CFArray,
+                                       &access)
+
+    guard accessStatus == errSecSuccess else {
+      Log.error("Could not unlock System Keychain: \(String(describing: SecCopyErrorMessageString(accessStatus, nil)))")
       return 62
     }
+    Log.debug("Created empty Keychain access object")
 
-    //var attrs: [SecKeychainAttribute] = [
-    //  (.labelItemAttr, Int(strlen(labelUTF8)), Int8(labelUTF8)),
-    //  (.accountItemAttr, Int(strlen(accountUTF8)), Int8(accountUTF8)),
-    //  (.serviceItemAttr, Int(strlen(serviceUTF8)), Int8(serviceUTF8)),
-    //  (.descriptionItemAttr, Int(strlen(descriptionUTF8)), Int8(descriptionUTF8))
-    //]
-//
-    var attrs: [SecKeychainAttribute] = []
+    // Converting the NSStrings to char* variables which we will need later
+    guard let labelPointer = label.toUnsafeMutablePointer() else {
+      Log.error("Could not convert label \(label) to pointer")
+      return 999
+    }
 
-    //SecKeychainAttribute(tag: SecKeychainAttrType, length: len, data: utfString)
+    guard let accountPointer = account.toUnsafeMutablePointer() else {
+      Log.error("Could not convert account \(account) to pointer")
+      return 999
+    }
 
-    var attrList = SecKeychainAttributeList(count: UInt32(attrs.count), attr: &attrs)
-    //let pass = (password as NSString).utf8String
-    //let len = UInt32(truncatingBitPattern: strlen(pass))
+    guard let servicePointer = service.toUnsafeMutablePointer() else {
+      Log.error("Could not convert service \(service) to pointer")
+      return 999
+    }
 
-    status = SecKeychainItemCreateFromContent(SecItemClass.genericPasswordItemClass, &attrList, UInt32(strlen(passwordUTF8!)), passwordUTF8, keychain, access,  &item)
+    guard let descriptionPointer = description.toUnsafeMutablePointer() else {
+      Log.error("Could not convert description \(description) to pointer")
+      return 999
+    }
 
-//
+    guard let passwordPointer = password.toUnsafeMutablePointer() else {
+      Log.error("Could not convert password \(password) to pointer")
+      return 999
+    }
+
+    var attributes: [SecKeychainAttribute] = [
+      SecKeychainAttribute(tag: SecItemAttr.labelItemAttr.rawValue,
+                           length: UInt32(strlen(labelPointer)),
+                           data: labelPointer),
+
+      SecKeychainAttribute(tag: SecItemAttr.accountItemAttr.rawValue,
+                           length: UInt32(strlen(accountPointer)),
+                           data: accountPointer),
+
+      SecKeychainAttribute(tag: SecItemAttr.serviceItemAttr.rawValue,
+                           length: UInt32(strlen(servicePointer)),
+                           data: servicePointer),
+
+      SecKeychainAttribute(tag: SecItemAttr.descriptionItemAttr.rawValue,
+                           length: UInt32(strlen(descriptionPointer)),
+                           data: descriptionPointer),
+    ]
+
+
+    var attributesList = SecKeychainAttributeList(count: UInt32(attributes.count), attr: &attributes)
+
+    var item: SecKeychainItem? = nil
+    let createStatus = SecKeychainItemCreateFromContent(SecItemClass.genericPasswordItemClass,
+                                                        &attributesList,
+                                                        UInt32(strlen(passwordPointer)),
+                                                        passwordPointer,
+                                                        keychain,
+                                                        access,
+                                                        &item)
+
+
     //status = SecKeychainItemCreateFromContent(SecItemClass.genericPasswordItemClass, &attributes, Int(strlen(passwordUTF8)), passwordUTF8, keychain, access, &item)
-
-    if status == 0 {
-      Log.debug("Successfully created Keychain Item")
-    } else {
-      Log.error("Creating Keychain item failed: \(String(describing: SecCopyErrorMessageString(status, nil)))")
+    guard createStatus == errSecSuccess else {
+      Log.error("Creating Keychain item failed: \(String(describing: SecCopyErrorMessageString(createStatus, nil)))")
       return 63
     }
 
-    return 0
+    Log.debug("Successfully created Keychain Item")
+    return VPNExitCode.Success
   }
 
   // See https://gist.github.com/rinatkhanov/a837f1e53c3f921db131

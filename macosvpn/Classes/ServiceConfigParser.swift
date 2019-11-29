@@ -44,19 +44,20 @@ extension VPNServiceConfig {
       let service: VPNServiceConfig
 
       if !(L2TPName.value?.isEmpty ?? true) {
-        service = VPNServiceConfig(kind: .L2TPOverIPSec, name: L2TPName.value!, endpoint: endpoint.value!)
-        //service.kind = .L2TPOverIPSec
-        //service.name = L2TPName.value
+        service = VPNServiceConfig(kind: .L2TPOverIPSec,
+                                   name: L2TPName.value!,
+                                   endpoint: endpoint.value!)
+
       } else if !(ciscoName.value?.isEmpty ?? true) {
-        service = VPNServiceConfig(kind: .CiscoIPSec, name: ciscoName.value!, endpoint: endpoint.value!)
-        //service.kind = .CiscoIPSec
-        //service.name = ciscoName.value
+        service = VPNServiceConfig(kind: .CiscoIPSec,
+                                   name: ciscoName.value!,
+                                   endpoint: endpoint.value!)
+
       } else {
         exit(VPNExitCode.UnknownService)
       }
       
       // Both L2TP and Cisco
-      //service.endpoint = endpoint.value
       service.username = username.value
       service.password = password.value
       service.sharedSecret = sharedSecret.value

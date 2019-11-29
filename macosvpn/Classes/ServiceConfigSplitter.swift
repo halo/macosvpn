@@ -18,6 +18,7 @@ import Foundation
 
 extension VPNServiceConfig {
   enum Splitter {
+    /// Splits an Array of arguments into one array per VPN service
     static func parse(_ arguments: [String]) -> [VPNServiceConfig] {
       let delimiters = Set(arrayLiteral: "--l2tp", "--cisco")
 
@@ -32,27 +33,3 @@ extension VPNServiceConfig {
     }
   }
 }
-
-
-  //public var serviceConfigArguments: [ArraySlice<String>] {
-//
-  //  var result: [ArraySlice<String>] = []
-  //  var startAt = 0
-  //
-  //  for (index, argument) in arguments.enumerated() {
-  //    let atEnd = index == arguments.count - 1
-  //
-  //    if argument == "--l2tp" || argument == "--cisco" || atEnd {
-  //
-  //      let from = startAt == 0 ? result.compactMap({ $0.count }).reduce(0, +) : startAt
-  //      var till = atEnd ? arguments.count - 1 : index - 1
-  //      if till < 0 { till = 0 }
-  //      let slice = arguments[from...till]
-  //
-  //
-  //      if startAt > 0 { result.append(slice) }
-  //      startAt = index
-  //    }
-  //  }
-  //  return result
-  //}

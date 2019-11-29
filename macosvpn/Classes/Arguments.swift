@@ -27,9 +27,11 @@ open class Arguments {
     // The first argument is the executable name, we ignore that one
     let arguments = Array(CommandLine.arguments.dropFirst())
 
+    // Now let's parse all generic flags such as --version and --debug
     options = Options.Parser.parse(arguments)
     let serviceConfigArguments = options.unprocessedArguments
 
+    // The remaining arguments should be service-config related, such as --l2tp --endpoint etc.
     serviceConfigs = VPNServiceConfig.Splitter.parse(serviceConfigArguments)
   }
 }

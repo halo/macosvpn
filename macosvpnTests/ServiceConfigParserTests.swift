@@ -10,7 +10,7 @@ class ServiceConfigParserTests: XCTestCase {
     ]
     
     let service = VPNServiceConfig.Parser.parse(arguments)
-    XCTAssertEqual(service.kind, .L2TP)
+    XCTAssertEqual(service.kind, .L2TPOverIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
     XCTAssertNil(service.username)
@@ -36,7 +36,7 @@ class ServiceConfigParserTests: XCTestCase {
     ]
     
     let service = VPNServiceConfig.Parser.parse(arguments)
-    XCTAssertEqual(service.kind, .L2TP)
+    XCTAssertEqual(service.kind, .L2TPOverIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
     XCTAssertEqual(service.username, "Alice")
@@ -55,7 +55,7 @@ class ServiceConfigParserTests: XCTestCase {
     ]
     
     let service = VPNServiceConfig.Parser.parse(arguments)
-    XCTAssertEqual(service.kind, .Cisco)
+    XCTAssertEqual(service.kind, .CiscoIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
     XCTAssertNil(service.username)
@@ -75,7 +75,7 @@ class ServiceConfigParserTests: XCTestCase {
     ]
     
     let service = VPNServiceConfig.Parser.parse(arguments)
-    XCTAssertEqual(service.kind, .Cisco)
+    XCTAssertEqual(service.kind, .CiscoIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
     XCTAssertEqual(service.username, "Alice")
