@@ -6,7 +6,7 @@ require 'open3'
 require 'tty-command'
 require 'active_support/core_ext/object/blank'
 
-specs_path = Pathname.new File.expand_path('../', __FILE__)
+specs_path = Pathname.new File.expand_path(__dir__)
 Dir[specs_path.join('support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|

@@ -13,11 +13,13 @@ module Keychain
 
     def id
       return unless dump
+
       dump.match(/"svce"<blob>="?([^"]*)/)[1]
     end
 
     def name
       return unless dump
+
       dump.match(/0x00000007 <blob>="([^"]*)/)[1]
     end
 
@@ -49,6 +51,7 @@ module Keychain
 
     def description
       return unless dump
+
       dump.match(/"desc"<blob>="([^"]*)/)[1]
     end
 
@@ -59,6 +62,7 @@ module Keychain
     def dump!
       _, stdout, _, thread = Open3.popen3(dump_command)
       return unless thread.value.exitstatus.zero?
+
       stdout.read
     end
 

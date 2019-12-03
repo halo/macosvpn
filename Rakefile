@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'tty-command'
 
 task default: [:build]

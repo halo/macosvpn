@@ -20,7 +20,9 @@ module Macosvpn
 
   def self.executable
     return @executable if defined?(@executable)
-    result = TTY::Command.new.run('/usr/bin/xcodebuild -project macosvpn.xcodeproj -showBuildSettings', only_output_on_error: true)
+
+    command = '/usr/bin/xcodebuild -project macosvpn.xcodeproj -showBuildSettings'
+    result = TTY::Command.new.run(command, only_output_on_error: true)
     settings = result.out.split
     target_build_dir = settings[settings.find_index('TARGET_BUILD_DIR') + 2]
 
