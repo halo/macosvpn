@@ -44,7 +44,7 @@ open class VPNHelp: NSObject {
     let usernameFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-u")
     let passwordFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--password")
     let passwordFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-p")
-    let sharedSecretFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--shared-secret")
+    let sharedSecretFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--sharedsecret")
     let sharedSecretFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-s")
     let groupnameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--groupname")
     let groupnameFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-g")
@@ -56,7 +56,6 @@ open class VPNHelp: NSObject {
     let logoutFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-t")
     let forceFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--force")
     let forceFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-o")
-    let allShortCiscoFlags: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-ceupsg")
     let nameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-name")
 
     Log.info("You can always add the \(debugFlag) option for troubleshooting.")
@@ -88,13 +87,9 @@ open class VPNHelp: NSObject {
     Log.info("\(createCommand) \(ciscoFlagShort) Atlantic \(endpointFlagShort) atlantic.example.com \(usernameFlagShort) Alice \(passwordFlagShort) p4ssw0rd \(sharedSecretFlagShort) s3same \(groupnameFlagShort) Dreamteam")
     Log.info("")
 
-    Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("The same command as short as possible"))
-    Log.info("\(createCommand) \(allShortCiscoFlags) Atlantic atlantic.example.com Alice p4ssw0rd s3same Dreamteam")
-    Log.info("")
-
     Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("Repeat arguments to create multiple VPNs"))
-    Log.info("\(createCommand) \(allShortCiscoFlags) Atlantic atlantic.example.com Alice p4ssw0rd s3same Dreamteam \\")
-    Log.info("                     \(allShortCiscoFlags) Northpole northpole.example.com Bob s3cret pr1v4te Spaceteam")
+    Log.info("\(createCommand) \(l2tpFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same \\")
+    Log.info("                     \(ciscoFlag) Northpole \(endpointFlag) northpole.example.com \(usernameFlag) Bob \(passwordFlag) s3cret \(sharedSecretFlag) pr1v4te \(groupnameFlagShort) Spaceteam")
     Log.info("")
 
     Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("Delete any VPN Service by name"))

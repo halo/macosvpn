@@ -47,198 +47,135 @@ open class VPNServiceConfig {
   }
   
   public var l2TPPPPConfig: CFDictionary {
-    var keys: [CFString?] = [nil, nil, nil, nil, nil, nil]
-    var vals: [CFString?] = [nil, nil, nil, nil, nil, nil]
-    var count = CFIndex(0)
-    
-    keys[count] = kSCPropNetPPPCommRemoteAddress
-    vals[count] = endpoint as CFString?
-    count += 1
-    
-    keys[count] = kSCPropNetPPPAuthName
-    vals[count] = username as CFString?
-    count += 1
-    
-    keys[count] = kSCPropNetPPPAuthPassword
-    vals[count] = serviceID as CFString?
-    count += 1
-    
-    keys[count] = kSCPropNetPPPAuthPasswordEncryption
-    vals[count] = kSCValNetPPPAuthPasswordEncryptionKeychain
-    count += 1
-    
-    let switchOne = disconnectOnSwitch ? "1" : "0"
-    keys[count] = kSCPropNetPPPDisconnectOnFastUserSwitch
+    Log.debug("Assembling l2TPPPPConfig configuration dictionary...")
+    var result: [CFString: CFString?] = [:]
+
+    result.updateValue(endpoint as CFString?,
+                       forKey: kSCPropNetPPPCommRemoteAddress)
+
+    result.updateValue(username as CFString?,
+                       forKey: kSCPropNetPPPAuthName)
+
+    result.updateValue(serviceID as CFString?,
+                       forKey: kSCPropNetPPPAuthPassword)
+
+    result.updateValue(kSCValNetPPPAuthPasswordEncryptionKeychain,
+                       forKey: kSCPropNetPPPAuthPasswordEncryption)
+
     // CFNumber is the correct type I think, as you can verify in the resulting /Library/Preferences/SystemConfiguration/preferences.plist file.
     // However, the documentation says CFString, so I'm not sure whom to believe.
     // See https://developer.apple.com/documentation/systemconfiguration/kscpropnetpppdisconnectonfastuserswitch
     // See also https://developer.apple.com/library/prerelease/ios/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html
-    // vals[count] = (CFNumberCreate(nil, CFNumberType.intType, &switchOne) as! CFString)
-    vals[count] = switchOne as CFString?
-    count += 1
-    
-    let logoutOne = disconnectOnLogout ? "1" : "0"
-    keys[count] = kSCPropNetPPPDisconnectOnLogout
+    let switchOne = disconnectOnSwitch ? "1" : "0"
+
+    result.updateValue(switchOne as CFString?,
+                       forKey: kSCPropNetPPPDisconnectOnFastUserSwitch)
+
     // Again, not sure if CFString or CFNumber is more valid
-    // vals[count] = (CFNumberCreate(nil, CFNumberType.intType, &logoutOne) as! CFString)
-    vals[count] = logoutOne as CFString?
-    count += 1
-    
-    return [
-      keys,
-      vals,
-      count,
-      kCFTypeDictionaryKeyCallBacks,
-      kCFTypeDictionaryValueCallBacks
-      ] as! CFDictionary
+    let logoutOne = disconnectOnLogout ? "1" : "0"
+
+    result.updateValue(logoutOne as CFString?,
+                       forKey: kSCPropNetPPPDisconnectOnLogout)
+    Log.debug("l2TPIPSecConfig ready: \(result)")
+
+    return result as CFDictionary
+
   }
   
   public var l2TPIPSecConfig: CFDictionary {
-    var size: Int
-    if localIdentifier == nil {
-      size = 3
-    } else {
-      size = 5
-    }
+    Log.debug("Assembling l2TPIPSecConfig configuration dictionary...")
+    var result: [CFString: CFString?] = [:]
 
-    var keys: [CFString?] = Array(repeating: nil, count: size)
-    var vals: [CFString?] = Array(repeating: nil, count: size)
-    var count = CFIndex(0)
+    result.updateValue(kSCValNetIPSecAuthenticationMethodSharedSecret,
+                       forKey: kSCPropNetIPSecAuthenticationMethod)
 
-    keys[count] = kSCPropNetIPSecAuthenticationMethod
-    vals[count] = kSCValNetIPSecAuthenticationMethodSharedSecret
-    count += 1
-
-    keys[count] = kSCPropNetIPSecSharedSecretEncryption
-    vals[count] = kSCValNetIPSecSharedSecretEncryptionKeychain
-    count += 1
+    result.updateValue(kSCValNetIPSecSharedSecretEncryptionKeychain,
+                       forKey: kSCPropNetIPSecSharedSecretEncryption)
 
     guard let unwrappedServiceID = serviceID else {
       Log.error("Could not unwrap the ServiceID")
       exit(999)
     }
 
-    keys[count] = kSCPropNetIPSecSharedSecret
-    vals[count] = "\(unwrappedServiceID).SS" as CFString?
-    count += 1
+    result.updateValue("\(unwrappedServiceID).SS" as CFString,
+                       forKey: kSCPropNetIPSecSharedSecret)
 
     if (localIdentifier) != nil {
       Log.debug("Assigning group name \(String(describing: localIdentifier)) to L2TP service config")
 
-      keys[count] = kSCPropNetIPSecLocalIdentifier
-      vals[count] = localIdentifier as CFString?
-      count += 1
+      result.updateValue(localIdentifier as CFString?,
+                         forKey: kSCPropNetIPSecLocalIdentifier)
 
-      keys[count] = kSCPropNetIPSecLocalIdentifierType
-      vals[count] = kSCValNetIPSecLocalIdentifierTypeKeyID
-      count += 1
+      result.updateValue(kSCValNetIPSecLocalIdentifierTypeKeyID,
+                         forKey: kSCPropNetIPSecLocalIdentifierType)
+
     }
 
-    return [
-      keys,
-      vals,
-      count,
-      kCFTypeDictionaryKeyCallBacks,
-      kCFTypeDictionaryValueCallBacks
-      ] as! CFDictionary
+    Log.debug("l2TPIPSecConfig ready: \(result)")
+
+    return result as CFDictionary
   }
 
   public var l2TPIPv4Config: CFDictionary {
-    var size: Int
-    if !enableSplitTunnel {
-      size = 2
-    } else {
-      size = 1
-    }
+    Log.debug("Assembling l2TPIPv4Config configuration dictionary...")
+    var result: [CFString: CFString?] = [:]
 
-    var keys: [CFString?] = Array(repeating: nil, count: size)
-    var vals: [CFString?] = Array(repeating: nil, count: size)
-    var count = CFIndex(0)
-
-    keys[count] = kSCPropNetIPv4ConfigMethod
-    vals[count] = kSCValNetIPv4ConfigMethodPPP
-    count += 1
+    result.updateValue(kSCValNetIPv4ConfigMethodPPP,
+                       forKey: kSCPropNetIPv4ConfigMethod)
 
     if !enableSplitTunnel {
-      let splitOne = "1"
-      keys[count] = kSCPropNetOverridePrimary
-      vals[count] = splitOne as CFString?
-      count += 1
+      result.updateValue("1" as CFString?,
+                         forKey: kSCPropNetOverridePrimary)
     }
 
-    return [
-      keys,
-      vals,
-      count,
-      kCFTypeDictionaryKeyCallBacks,
-      kCFTypeDictionaryValueCallBacks
-      ] as! CFDictionary
+    Log.debug("l2TPIPv4Config ready: \(result)")
+
+    return result as CFDictionary
   }
 
   public var ciscoConfig: CFDictionary {
-    var size: Int
-    if localIdentifier == nil {
-      size = 3
-    } else {
-      size = 5
-    }
+    Log.debug("Assembling ciscoConfig configuration dictionary...")
+    var result: [CFString: CFString?] = [:]
 
-    var keys: [CFString?] = Array(repeating: nil, count: size)
-    var vals: [CFString?] = Array(repeating: nil, count: size)
-    var count = CFIndex(0)
-
-    keys[count] = kSCPropNetIPSecAuthenticationMethod
-    vals[count] = kSCValNetIPSecAuthenticationMethodSharedSecret
-    count += 1
+    result.updateValue(kSCValNetIPSecAuthenticationMethodSharedSecret,
+                       forKey: kSCPropNetIPSecAuthenticationMethod)
 
     guard let unwrappedServiceID = serviceID else {
       Log.error("Could not unwrap the ServiceID")
       exit(999)
     }
+    
+    result.updateValue("\(unwrappedServiceID).SS" as CFString,
+                       forKey: kSCPropNetIPSecSharedSecret)
 
-    keys[count] = kSCPropNetIPSecSharedSecret
-    vals[count] = "\(unwrappedServiceID).SS" as CFString?
-    count += 1
+    result.updateValue(kSCValNetIPSecSharedSecretEncryptionKeychain,
+                       forKey: kSCPropNetIPSecSharedSecretEncryption)
 
-    keys[count] = kSCPropNetIPSecSharedSecretEncryption
-    vals[count] = kSCValNetIPSecSharedSecretEncryptionKeychain
-    count += 1
+    result.updateValue(endpoint as CFString?,
+                       forKey: kSCPropNetPPPCommRemoteAddress)
 
-    keys[count] = kSCPropNetPPPCommRemoteAddress
-    vals[count] = endpoint as CFString?
-    count += 1
+    result.updateValue(username as CFString?,
+                       forKey: kSCPropNetPPPAuthName)
 
-    keys[count] = kSCPropNetPPPAuthName
-    vals[count] = username as CFString?
-    count += 1
+    result.updateValue(serviceID as CFString?,
+                       forKey: kSCPropNetPPPAuthPassword)
 
-    keys[count] = kSCPropNetPPPAuthPassword
-    vals[count] = serviceID as CFString?
-    count += 1
-
-    keys[count] = kSCPropNetIPSecXAuthPasswordEncryption
-    vals[count] = kSCValNetIPSecXAuthPasswordEncryptionKeychain
-    count += 1
+    result.updateValue(kSCValNetIPSecXAuthPasswordEncryptionKeychain,
+                       forKey: kSCPropNetIPSecXAuthPasswordEncryption)
 
     if (localIdentifier) != nil {
       Log.debug("Assigning group name \(String(describing: localIdentifier)) to Cisco service config")
 
-      keys[count] = kSCPropNetIPSecLocalIdentifier
-      vals[count] = localIdentifier as CFString?
-      count += 1
+      result.updateValue(localIdentifier as CFString?,
+                         forKey: kSCPropNetIPSecLocalIdentifier)
 
-      keys[count] = kSCPropNetIPSecLocalIdentifierType
-      vals[count] = kSCValNetIPSecLocalIdentifierTypeKeyID
-      count += 1
+      result.updateValue(kSCValNetIPSecLocalIdentifierTypeKeyID,
+                         forKey: kSCPropNetIPSecLocalIdentifierType)
     }
 
-    return [
-      keys,
-      vals,
-      count,
-      kCFTypeDictionaryKeyCallBacks,
-      kCFTypeDictionaryValueCallBacks
-      ] as! CFDictionary
+    Log.debug("ciscoConfig ready: \(result)")
+
+    return result as CFDictionary
   }
 }
 

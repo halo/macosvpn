@@ -3,11 +3,11 @@ import XCTest
 
 class ServiceConfigSplitterTests: XCTestCase {
 
-  func testEnableSplitTunnel() {
-    let arguments: [String] = []
-    let services = VPNServiceConfig.Splitter.parse(arguments)
-    XCTAssertEqual(services, [])
-  }
+  //func testEnableSplitTunnel() {
+  //  let arguments: [String] = []
+  //  let services = VPNServiceConfig.Splitter.parse(arguments)
+  //  XCTAssertEqual(services, [])
+  //}
 
   func testSingleServices() {
     let arguments = [
@@ -17,7 +17,7 @@ class ServiceConfigSplitterTests: XCTestCase {
     let services = VPNServiceConfig.Splitter.parse(arguments)
     let service = services.first!
 
-    XCTAssertEqual(service.kind, .L2TP)
+    XCTAssertEqual(service.kind, .L2TPOverIPSec)
   }
 
   func testMultipleServices() {
@@ -31,11 +31,11 @@ class ServiceConfigSplitterTests: XCTestCase {
     let service1 = services.first!
     let service2 = services.last!
 
-    XCTAssertEqual(service1.kind, .L2TP)
+    XCTAssertEqual(service1.kind, .L2TPOverIPSec)
     XCTAssertEqual(service1.name, "Atlantic")
     XCTAssertEqual(service1.endpoint, "atlantic.example.com")
 
-    XCTAssertEqual(service2.kind, .Cisco)
+    XCTAssertEqual(service2.kind, .CiscoIPSec)
     XCTAssertEqual(service2.name, "London")
     XCTAssertEqual(service2.endpoint, "london.example.com")
   }
