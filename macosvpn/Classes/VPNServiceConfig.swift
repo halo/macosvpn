@@ -152,13 +152,13 @@ open class VPNServiceConfig {
                        forKey: kSCPropNetIPSecSharedSecretEncryption)
 
     result.updateValue(endpoint as CFString?,
-                       forKey: kSCPropNetPPPCommRemoteAddress)
+                       forKey: kSCPropNetIPSecRemoteAddress)
 
     result.updateValue(username as CFString?,
-                       forKey: kSCPropNetPPPAuthName)
+                       forKey: kSCPropNetIPSecXAuthName)
 
     result.updateValue(serviceID as CFString?,
-                       forKey: kSCPropNetPPPAuthPassword)
+                       forKey: kSCPropNetIPSecXAuthPassword)
 
     result.updateValue(kSCValNetIPSecXAuthPasswordEncryptionKeychain,
                        forKey: kSCPropNetIPSecXAuthPasswordEncryption)
