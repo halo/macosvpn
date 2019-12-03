@@ -1,9 +1,9 @@
 import Darwin
 import Moderator
 
-extension VPNServiceConfig {
+extension ServiceConfig {
   enum Parser {
-    static func parse(_ arguments: [String]) -> VPNServiceConfig {
+    static func parse(_ arguments: [String]) -> ServiceConfig {
       let parser = Moderator()
 
       // Both L2TP and Cisco
@@ -42,15 +42,15 @@ extension VPNServiceConfig {
         exit(VPNExitCode.UnknownArguments)
       }
       
-      let service: VPNServiceConfig
+      let service: ServiceConfig
 
       if !(L2TPName.value?.isEmpty ?? true) {
-        service = VPNServiceConfig(kind: .L2TPOverIPSec,
+        service = ServiceConfig(kind: .L2TPOverIPSec,
                                    name: L2TPName.value!,
                                    endpoint: endpoint.value!)
 
       } else if !(ciscoName.value?.isEmpty ?? true) {
-        service = VPNServiceConfig(kind: .CiscoIPSec,
+        service = ServiceConfig(kind: .CiscoIPSec,
                                    name: ciscoName.value!,
                                    endpoint: endpoint.value!)
 

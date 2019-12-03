@@ -16,18 +16,18 @@
 
 import Foundation
 
-extension VPNServiceConfig {
+extension ServiceConfig {
   enum Splitter {
     /// Splits an Array of arguments into one array per VPN service
-    static func parse(_ arguments: [String]) -> [VPNServiceConfig] {
+    static func parse(_ arguments: [String]) -> [ServiceConfig] {
       let delimiters = Set(arrayLiteral: "--l2tp", "--cisco")
 
       let slices =  arguments.split(before: delimiters.contains)
         .drop(while: { $0.isEmpty })
 
-      var result: [VPNServiceConfig] = []
+      var result: [ServiceConfig] = []
       for slice in slices {
-        result.append(VPNServiceConfig.Parser.parse(Array(slice)))
+        result.append(ServiceConfig.Parser.parse(Array(slice)))
       }
       return result
     }

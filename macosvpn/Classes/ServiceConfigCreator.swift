@@ -17,9 +17,9 @@
 // Vendor dependencies
 import SystemConfiguration
 
-extension VPNServiceConfig {
+extension ServiceConfig {
   enum Creator {
-    static func create(_ config: VPNServiceConfig, usingPreferencesRef: SCPreferences) -> Int32 {
+    static func create(_ config: ServiceConfig, usingPreferencesRef: SCPreferences) -> Int32 {
 
       Log.debug("Creating new \(config.humanKind) Service using \(config.description)")
 
@@ -31,19 +31,16 @@ extension VPNServiceConfig {
 
       case .L2TPOverIPSec:
         Log.debug("L2TP Service detected...")
-        // L2TP on top of IPv4
+        Log.debug("Initializing Interface L2TP on top of IPv4")
         initialBottomInterface = SCNetworkInterfaceCreateWithInterface(kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeL2TP)
-        // PPP on top of L2TP
-        initialTopInterface = SCNetworkInterfaceCreateWithInterface(initialBottomInterface!, kSCNetworkInterfaceTypePPP)
+        Log.debug("Initializing Interface PPP on top of L2TP")
+        initialTopInterface = SCNetworkInterfaceCreateWithInterface(initialBottomInterface, kSCNetworkInterfaceTypePPP)
 
       case .CiscoIPSec:
         Log.debug("Cisco IPSec Service detected...")
         // Cisco IPSec (without underlying interface)
         initialTopInterface = SCNetworkInterfaceCreateWithInterface(kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeIPSec)
 
-      default:
-        Log.error("Sorry, this service type is not yet supported")
-        return VPNExitCode.UnsupportedInterfaceType
       }
 
       guard (initialTopInterface != nil) else {
@@ -185,10 +182,12 @@ extension VPNServiceConfig {
         return VPNExitCode.CopyingServiceProtocolFailed
       }
 
-      Log.debug("Configuring IPv4 protocol of service \(config.name)...")
-      guard SCNetworkProtocolSetConfiguration(serviceProtocol, config.l2TPIPv4Config) else {
-        Log.error("Error: Could not configure IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-        return VPNExitCode.SettingNetworkProtocolConfigFailed
+      if config.kind == .L2TPOverIPSec {
+        Log.debug("Configuring IPv4 protocol of service \(config.name)...")
+        guard SCNetworkProtocolSetConfiguration(serviceProtocol, config.l2TPIPv4Config) else {
+          Log.error("Error: Could not configure IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
+          return VPNExitCode.SettingNetworkProtocolConfigFailed
+        }
       }
 
       Log.debug("Adding Service \(service) to networkSet \(networkSet)...")

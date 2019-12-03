@@ -107,8 +107,8 @@ class VPNController {
 
   // Each desired interface configuration will be processed in turn.
   // The configuration comes from the command line arguments and is passed on to the create method.
-  for config: VPNServiceConfig in serviceConfigs {
-    exitCode = Int32(VPNServiceConfig.Creator.create(config, usingPreferencesRef: prefs))
+  for config: ServiceConfig in serviceConfigs {
+    exitCode = Int32(ServiceConfig.Creator.create(config, usingPreferencesRef: prefs))
     // This particular interface could not be created. Let's stop processing the others.
     if (exitCode != 0) { break; } // VPNExitCode.Success
   }

@@ -20,7 +20,7 @@ import Moderator
 open class Arguments {
 
   public static var options = Options()
-  public static var serviceConfigs: [VPNServiceConfig] = []
+  public static var serviceConfigs: [ServiceConfig] = []
   public static var serviceNames: [String] = []
 
   public static func load() {
@@ -36,6 +36,6 @@ open class Arguments {
     }
 
     // The remaining arguments should be service-config related, such as --l2tp --endpoint etc.
-    serviceConfigs = VPNServiceConfig.Splitter.parse(serviceConfigArguments)
+    serviceConfigs = ServiceConfig.Splitter.parse(serviceConfigArguments)
   }
 }

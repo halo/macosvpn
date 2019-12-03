@@ -43,4 +43,7 @@ enum VPNExitCode {
   static let RemovingServiceFailed: Int32 = 62
   static let NoServicesRemoved: Int32 = 63
 
+  // ServiceConfig
+  static let InvalidServiceConfigCall: Int32 = 80
+
 }
