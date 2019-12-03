@@ -12,7 +12,5 @@ before_script:
   - sudo bundle install
 
 script:
-  - bundle exec rake
-  - bundle exec rspec --tag ~sudo
-  - sudo bundle exec rspec --tag sudo
-  - bundle exec rubocop
+  - bin/build
+  - bin/test
