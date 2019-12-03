@@ -15,3 +15,4 @@ build
 *.gem
 /.bundle
 .rubocop-https*
+/*.profraw
