@@ -19,7 +19,12 @@ module Macosvpn
   private_class_method :run
 
   def self.executable
-    Pathname.new 'build/Release/macosvpn'
+    return @executable if defined?(@executable)
+    result = TTY::Command.new.run('/usr/bin/xcodebuild -project macosvpn.xcodeproj -showBuildSettings', only_output_on_error: true)
+    settings = result.out.split
+    target_build_dir = settings[settings.find_index('TARGET_BUILD_DIR') + 2]
+
+    @executable = Pathname.new(target_build_dir).join('macosvpn')
   end
   private_class_method :executable
 end

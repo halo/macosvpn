@@ -3,7 +3,7 @@
 require 'pathname'
 require 'plist'
 require 'open3'
-require 'hashie'
+require 'tty-command'
 require 'active_support/core_ext/object/blank'
 
 specs_path = Pathname.new File.expand_path('../', __FILE__)

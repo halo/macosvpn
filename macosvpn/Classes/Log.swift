@@ -18,6 +18,10 @@ import PrettyColors
 
 public struct Log {
   public static func debug(_ message: String) {
+    guard Arguments.options.debugRequested else {
+      return
+    }
+
     print(Color.Wrap(foreground: VPNColor.Blue).wrap("🔧 \(message)"))
   }
 

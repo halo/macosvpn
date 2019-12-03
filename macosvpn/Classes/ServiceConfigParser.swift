@@ -32,6 +32,7 @@ extension VPNServiceConfig {
       
       // Bail out on missing mandatory arguments
       guard !(endpoint.value?.isEmpty ?? true) else {
+        Log.error("You did not provide an endpoint")
         exit(VPNExitCode.MissingEndpoint)
       }
       

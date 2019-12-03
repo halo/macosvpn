@@ -31,6 +31,10 @@ open class Arguments {
     options = Options.Parser.parse(arguments)
     let serviceConfigArguments = options.unprocessedArguments
 
+    guard options.command == .create else {
+      return
+    }
+
     // The remaining arguments should be service-config related, such as --l2tp --endpoint etc.
     serviceConfigs = VPNServiceConfig.Splitter.parse(serviceConfigArguments)
   }

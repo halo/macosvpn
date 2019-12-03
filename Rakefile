@@ -1,10 +1,15 @@
 # frozen_string_literal: true
+require 'tty-command'
 
-require 'xcodebuild'
+task default: [:build]
 
-task default: ['xcode:build']
-
-XcodeBuild::Tasks::BuildTask.new do |t|
-  t.target = 'macosvpn'
-  t.formatter = XcodeBuild::Formatters::ProgressFormatter.new
+task :build do
+  TTY::Command.new.run('/usr/bin/xcodebuild',
+                       '-project',
+                       'macosvpn.xcodeproj',
+                       '-scheme',
+                       'macosvpn',
+                       '-configuration',
+                       'Release',
+                       only_output_on_error: true)
 end
