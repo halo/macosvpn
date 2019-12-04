@@ -111,10 +111,6 @@ extension ServiceConfig {
         }
         Log.debug("Successfully configured Cisco IPSec interface of service \(config.name)")
         break
-
-      default:
-        Log.error("Error: I cannot handle this interface type yet.")
-        return VPNExitCode.CreatorDoesNotSupportInterfaceType
       }
 
       Log.debug("Adding default protocols (DNS, etc.) to service \(config.name)...")
