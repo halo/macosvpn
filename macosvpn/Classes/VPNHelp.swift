@@ -23,14 +23,14 @@ open class VPNHelp: NSObject {
     Log.debug("Showing help...")
     
     let usage: String = Color.Wrap(styles: .bold).wrap("Usage:")
-    let createCommand: String = Color.Wrap(foreground: VPNColor.Green).wrap("sudo macosvpn create")
+    let createCommand: String = Color.Wrap(foreground: VPNColor.Green).wrap("sudo macosvpn \(Options.Command.create)")
     let createOptions: String = Color.Wrap(foreground: VPNColor.Pink).wrap("OPTIONS")
 
-    let deleteCommand: String = Color.Wrap(foreground: VPNColor.Red).wrap("macosvpn delete")
-    let deleteOptions: String = Color.Wrap(foreground: VPNColor.Pink).wrap("--name MyVPN")
+    let deleteCommand: String = Color.Wrap(foreground: VPNColor.Red).wrap("macosvpn \(Options.Command.delete)")
+    let deleteOptions: String = Color.Wrap(foreground: VPNColor.Pink).wrap("\(Flag.Name.dashed) MyVPN")
 
     Log.info("\(usage) \(createCommand) \(createOptions) [OPTIONS AGAIN...]")
-    Log.info("            \(deleteCommand) \(deleteOptions) [--name AnotherVPN]")
+    Log.info("            \(deleteCommand) \(deleteOptions) [\(Flag.Name.dashed) AnotherVPN]")
     Log.info("")
 
     let debugFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Debug.dashed)
@@ -56,7 +56,7 @@ open class VPNHelp: NSObject {
     let logoutFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.DisconnectLogoutShort.dashed)
     let forceFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Force.dashed)
     let forceFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.ForceShort.dashed)
-    let nameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap("-name")
+    let nameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Name.dashed)
 
     Log.info("You can always add the \(debugFlag) option for troubleshooting.")
     Log.info("The \(versionFlag) option displays the current version.")

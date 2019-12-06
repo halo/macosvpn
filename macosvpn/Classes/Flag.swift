@@ -33,8 +33,16 @@ public enum Flag: String {
   case VersionShort = "v"
   case Debug = "debug"
   case DebugShort = "d"
+
+  // Create
   case Force = "force"
   case ForceShort = "o"
+
+  // Delete
+  case Name = "name"
+  case NameShort = "n"
+  case All = "all"
+  case AllShort = "a"
 
   // Service Types
   case L2TP = "l2tp"

@@ -26,6 +26,8 @@ extension Options {
       let commandName = parser.add(
         Argument<String>.singleArgument(name: ""))
 
+      // Global
+
       let versionFlag = parser.add(
         Argument<Bool>.option(
           Flag.Version.rawValue,
@@ -36,15 +38,29 @@ extension Options {
           Flag.Help.rawValue,
           Flag.HelpShort.rawValue))
 
+      let debugFlag = parser.add(
+        Argument<Bool>.option(
+          Flag.Debug.rawValue,
+          Flag.DebugShort.rawValue))
+
+      // Create
+
       let forceFlag = parser.add(
         Argument<Bool>.option(
           Flag.Force.rawValue,
           Flag.ForceShort.rawValue))
 
-      let debugFlag = parser.add(
+      // Delete
+
+      let allFlag = parser.add(
         Argument<Bool>.option(
-          Flag.Debug.rawValue,
-          Flag.DebugShort.rawValue))
+          Flag.All.rawValue,
+          Flag.AllShort.rawValue))
+
+      let nameFlag = parser.add(
+        Argument<String>.optionWithValue(
+          Flag.Name.rawValue,
+          Flag.NameShort.rawValue).repeat())
 
       do {
         try parser.parse(arguments, strict: false)
@@ -77,9 +93,16 @@ extension Options {
         return options
       }
 
+      // Global
       options.command = command
-      options.forceRequested = forceFlag.value
       options.debugRequested = debugFlag.value
+
+      // Create
+      options.forceRequested = forceFlag.value
+
+      // Delete
+      options.allRequested = allFlag.value
+      options.names = nameFlag.value
 
       return options
     }

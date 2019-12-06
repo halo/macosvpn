@@ -17,34 +17,6 @@
 import Foundation
 import Security.SecKeychain
 
-// See https://stackoverflow.com/a/55986029
-
-extension String {
-  func toUnsafePointer() -> UnsafePointer<UInt8>? {
-    guard let data = self.data(using: .utf8) else {
-      return nil
-    }
-
-    let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: data.count)
-    let stream = OutputStream(toBuffer: buffer, capacity: data.count)
-    stream.open()
-    let value = data.withUnsafeBytes {
-      $0.baseAddress?.assumingMemoryBound(to: UInt8.self)
-    }
-    guard let val = value else {
-      return nil
-    }
-    stream.write(val, maxLength: data.count)
-    stream.close()
-
-    return UnsafePointer<UInt8>(buffer)
-  }
-
-  func toUnsafeMutablePointer() -> UnsafeMutablePointer<Int8>? {
-    return strdup(self)
-  }
-}
-
 struct Keychain {
   public static func createPasswordKeyChainItem(_ label: String, forService service: String, withAccount account: String, andPassword password: String) -> Int32 {
     Log.debug("Creating Password Keychain Item with ID \(String(describing: service))")
@@ -123,8 +95,6 @@ struct Keychain {
 
 
     var access: SecAccess? = nil
-    //status = SecAccessCreate("Some VPN Test" as CFString, (self.trustedApps) as? CFArray?, &access)
-
     let accessStatus = SecAccessCreate("macosvpn VPN Service Password" as CFString,
                                        trustedApplications as CFArray,
                                        &access)
@@ -202,14 +172,4 @@ struct Keychain {
     return VPNExitCode.Success
   }
 
-  // See https://gist.github.com/rinatkhanov/a837f1e53c3f921db131
-  //private static func createAttribute(tag: Int, _ data: String?) -> SecKeychainAttribute? {
-  //       if var data = data {
-  //           let utfString = UnsafeMutablePointer<Int8>((data as NSString).UTF8String)
-  //           let len = UInt32(truncatingBitPattern: strlen(utfString))
-  //           return SecKeychainAttribute(tag: SecKeychainAttrType(tag), length: len, data: utfString)
-  //       } else {
-  //           return nil
-  //       }
-  //   }
 }
