@@ -18,11 +18,14 @@
 extension Collection {
   func split(before: (Iterator.Element) throws -> Bool) rethrows ->  [SubSequence] {
     var p = startIndex
-    return try indices
+    
+    let result = try indices
       .filter { i in try before(self[i]) }
       .map { i in
         defer { p = i }
         return self[p..<i]
       } + [suffix(from: p)]
+
+    return Array(result.drop(while: { $0.isEmpty }))
   }
 }

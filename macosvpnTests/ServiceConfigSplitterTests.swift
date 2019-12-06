@@ -39,4 +39,24 @@ class ServiceConfigSplitterTests: XCTestCase {
     XCTAssertEqual(service2.name, "London")
     XCTAssertEqual(service2.endpoint, "london.example.com")
   }
+
+  func testMultipleServicesShort() {
+    let arguments = [
+      "-c", "Atlantic",
+      "-e", "atlantic.example.com",
+      "-c", "London",
+      "-e", "london.example.com",
+    ]
+    let services = ServiceConfig.Splitter.parse(arguments)
+    let service1 = services.first!
+    let service2 = services.last!
+
+    XCTAssertEqual(service1.kind, .CiscoIPSec)
+    XCTAssertEqual(service1.name, "Atlantic")
+    XCTAssertEqual(service1.endpoint, "atlantic.example.com")
+
+    XCTAssertEqual(service2.kind, .CiscoIPSec)
+    XCTAssertEqual(service2.name, "London")
+    XCTAssertEqual(service2.endpoint, "london.example.com")
+  }
 }

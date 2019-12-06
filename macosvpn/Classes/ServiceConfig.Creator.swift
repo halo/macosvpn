@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2015 halo. https://github.com/halo/macosvpn
+ Copyright (c) 2014-2019 halo. https://github.com/halo/macosvpn
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the
  "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish,
@@ -14,11 +14,11 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-// Vendor dependencies
 import SystemConfiguration
 
 extension ServiceConfig {
   enum Creator {
+    /// Creates a macOS VPN network service based on the configuration of the ServiceConfig that was passed in.
     static func create(_ config: ServiceConfig, usingPreferencesRef: SCPreferences) -> Int32 {
 
       Log.debug("Creating new \(config.humanKind) Service using \(config.description)")

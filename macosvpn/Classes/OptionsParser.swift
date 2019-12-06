@@ -18,15 +18,33 @@ import Darwin
 import Moderator
 
 extension Options {
+  /// Reads global command line arguments and converts them into an Options instance.
   enum Parser {
     static func parse(_ arguments: [String]) -> Options {
       let parser = Moderator()
 
-      let commandName = parser.add(Argument<String>.singleArgument(name: ""))
-      let versionFlag = parser.add(Argument<Bool>.option("version", "v"))
-      let helpFlag = parser.add(Argument<Bool>.option("help", "h"))
-      let forceFlag = parser.add(Argument<Bool>.option("force", "o"))
-      let debugFlag = parser.add(Argument<Bool>.option("debug", "d"))
+      let commandName = parser.add(
+        Argument<String>.singleArgument(name: ""))
+
+      let versionFlag = parser.add(
+        Argument<Bool>.option(
+          Flag.Version.rawValue,
+          Flag.VersionShort.rawValue))
+
+      let helpFlag = parser.add(
+        Argument<Bool>.option(
+          Flag.Help.rawValue,
+          Flag.HelpShort.rawValue))
+
+      let forceFlag = parser.add(
+        Argument<Bool>.option(
+          Flag.Force.rawValue,
+          Flag.ForceShort.rawValue))
+
+      let debugFlag = parser.add(
+        Argument<Bool>.option(
+          Flag.Debug.rawValue,
+          Flag.DebugShort.rawValue))
 
       do {
         try parser.parse(arguments, strict: false)

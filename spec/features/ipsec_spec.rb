@@ -46,8 +46,8 @@ RSpec.describe 'Creating and deleting a VPN Service' do
       expect(service.ipsec_xauth_password_encryption).to eq 'Keychain'
       expect(service.ipsec_xauth_password_id).to be_present
       expect(service.ipsec_xauth_password_id).to_not include('XAUTH') # Shouldn't it?
-      expect(service.ipv4_config_method).to eq 'PPP'
-      expect(service.ipv4_override_primary).to eq 1
+      expect(service.ipv4_config_method).to eq 'Automatic'
+      expect(service.ipv4_override_primary).to be nil
       expect(service.interface_type).to eq 'IPSec'
       expect(service.interface_subtype).to be nil
       expect(service.ppp_auth_name).to be nil
@@ -91,8 +91,8 @@ RSpec.describe 'Creating and deleting a VPN Service' do
       expect(service.ipsec_shared_secret_encryption).to eq 'Keychain'
       expect(service.ipsec_xauth_name).to eq 'Alice'
       expect(service.ipsec_xauth_password_encryption).to eq 'Keychain'
-      expect(service.ipv4_config_method).to eq 'PPP'
-      expect(service.ipv4_override_primary).to eq 1
+      expect(service.ipv4_config_method).to eq 'Automatic'
+      expect(service.ipv4_override_primary).to be nil
       expect(service.interface_type).to eq 'IPSec'
       expect(service.interface_subtype).to be nil
 
@@ -115,7 +115,7 @@ RSpec.describe 'Creating and deleting a VPN Service' do
       # Creating two VPNs at the same time
 
       arguments = 'create -c VPNTestIPSec -e southpole.example.com -u Carol -p letm3in -g VPNTestNewGroup -s s3cret --force'
-      arguments += ' -c VPNTestIPSec2 -e northpole.example.com -u Eve -p s3cret -s b0bby --force'
+      arguments += ' -c VPNTestIPSec2 -e northpole.example.com -u Eve -p s3cret -s b0bby'
       output, status = Macosvpn.sudo arguments: arguments
       expect(output).to include 'You already have a service VPNTestIPSec'
       expect(output).to include 'Successfully created Cisco IPSec VPN VPNTestIPSec'
@@ -131,8 +131,8 @@ RSpec.describe 'Creating and deleting a VPN Service' do
       expect(service.ipsec_shared_secret_encryption).to eq 'Keychain'
       expect(service.ipsec_xauth_name).to eq 'Carol'
       expect(service.ipsec_xauth_password_encryption).to eq 'Keychain'
-      expect(service.ipv4_config_method).to eq 'PPP'
-      expect(service.ipv4_override_primary).to eq 1
+      expect(service.ipv4_config_method).to eq 'Automatic'
+      expect(service.ipv4_override_primary).to be nil
       expect(service.interface_type).to eq 'IPSec'
       expect(service.interface_subtype).to be nil
 
@@ -162,8 +162,8 @@ RSpec.describe 'Creating and deleting a VPN Service' do
       expect(service.ipsec_shared_secret_encryption).to eq 'Keychain'
       expect(service.ipsec_xauth_name).to eq 'Eve'
       expect(service.ipsec_xauth_password_encryption).to eq 'Keychain'
-      expect(service.ipv4_config_method).to eq 'PPP'
-      expect(service.ipv4_override_primary).to eq 1
+      expect(service.ipv4_config_method).to eq 'Automatic'
+      expect(service.ipv4_override_primary).to be nil
       expect(service.interface_type).to eq 'IPSec'
       expect(service.interface_subtype).to be nil
 

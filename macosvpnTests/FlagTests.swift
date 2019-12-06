@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019 halo. https://github.com/halo/macosvpn
+ Copyright (c) 2019 halo. https://github.com/halo/macosvpnTests
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the
  "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish,
@@ -14,22 +14,18 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Foundation
+import XCTest
+@testable import macosvpn
 
-extension ServiceConfig {
-  enum Splitter {
-    /// Splits an Array of arguments into one array per VPN service
-    static func parse(_ arguments: [String]) -> [ServiceConfig] {
-      let delimiters = Set(arrayLiteral: "--l2tp", "--cisco")
+class FlagTests: XCTestCase {
 
-      let slices =  arguments.split(before: delimiters.contains)
-        .drop(while: { $0.isEmpty })
+  func testDashedLong() {
+    let argument = Flag.Help.dashed
+    XCTAssertEqual(argument, "--help")
+  }
 
-      var result: [ServiceConfig] = []
-      for slice in slices {
-        result.append(ServiceConfig.Parser.parse(Array(slice)))
-      }
-      return result
-    }
+  func testDashedShort() {
+    let argument = Flag.HelpShort.dashed
+    XCTAssertEqual(argument, "-h")
   }
 }
