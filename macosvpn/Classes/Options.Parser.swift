@@ -66,7 +66,7 @@ extension Options {
         try parser.parse(arguments, strict: false)
       } catch {
         Log.error(String(describing: error))
-        exit(VPNExitCode.InvalidArguments)
+        exit(ExitCode.InvalidArguments)
       }
 
       let options = Options()

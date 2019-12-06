@@ -19,7 +19,6 @@ import Moderator
 open class Arguments {
   public static var options = Options()
   public static var serviceConfigs: [ServiceConfig] = []
-  public static var serviceNames: [String] = []
 
   public static func load() {
     // The first argument is the executable name, we ignore that one

@@ -169,7 +169,7 @@ struct Keychain {
     }
 
     Log.debug("Successfully created Keychain Item")
-    return VPNExitCode.Success
+    return ExitCode.Success
   }
 
 }

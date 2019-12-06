@@ -16,7 +16,7 @@
 
 import SystemConfiguration
 
-open class VPNAuthorizations: NSObject {
+open class Authorizations: NSObject {
   
   class func create() -> AuthorizationRef {
     var auth: AuthorizationRef? = nil
@@ -25,7 +25,7 @@ open class VPNAuthorizations: NSObject {
     if status == errAuthorizationSuccess {
       // NSLog(@"Successfully obtained Authorization reference");
     } else {
-      exit(VPNExitCode.NoAuthorization)
+      exit(ExitCode.NoAuthorization)
     }
     return auth!
   }

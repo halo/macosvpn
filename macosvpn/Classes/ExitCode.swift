@@ -1,4 +1,4 @@
-enum VPNExitCode {
+enum ExitCode {
 
   static let Success: Int32 = 0
   static let ShowingVersion: Int32 = 10

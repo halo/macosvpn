@@ -66,19 +66,19 @@ extension ServiceConfig {
         try parser.parse(arguments, strict: false)
       } catch {
         Log.error(String(describing: error))
-        exit(VPNExitCode.InvalidArguments)
+        exit(ExitCode.InvalidArguments)
       }
       
       // Bail out on missing mandatory arguments
       guard !(endpoint.value?.isEmpty ?? true) else {
         Log.error("You did not provide an endpoint")
-        exit(VPNExitCode.MissingEndpoint)
+        exit(ExitCode.MissingEndpoint)
       }
       
       // Do not allow unknown arguments
       if !parser.remaining.isEmpty {
         Log.error("Unknown arguments: \(parser.remaining.joined(separator: " "))")
-        exit(VPNExitCode.UnknownArguments)
+        exit(ExitCode.UnknownArguments)
       }
       
       let service: ServiceConfig
@@ -94,7 +94,7 @@ extension ServiceConfig {
                                 endpoint: endpoint.value!)
 
       } else {
-        exit(VPNExitCode.UnknownService)
+        exit(ExitCode.UnknownService)
       }
       
       // Both L2TP and Cisco
@@ -109,7 +109,7 @@ extension ServiceConfig {
       service.disconnectOnLogout = disconnectOnLogout.value
       
       if endpoint.value?.isEmpty ?? true {
-        exit(VPNExitCode.MissingEndpoint)
+        exit(ExitCode.MissingEndpoint)
       }
       service.enableSplitTunnel = splitTunnel.value
 

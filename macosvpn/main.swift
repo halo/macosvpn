@@ -16,4 +16,4 @@
 
 import Cocoa
 
-exit(VPNController.main())
+exit(Controller.main())

@@ -16,14 +16,14 @@
 
 import SystemConfiguration
 
-class VPNController {
+class Controller {
 
   class func main() -> Int32 {
     Arguments.load()
 
     // Adding the --version flag should never perform anything but showing the version without any blank rows
     if Arguments.options.command == .version{
-      return VPNHelp.showVersion()
+      return Help.showVersion()
     }
 
     // For readability we print out an empty row before and after.
@@ -43,7 +43,7 @@ class VPNController {
 
     // Adding the --help flag should never perform anything but showing help
     if Arguments.options.command == .help {
-      return VPNHelp.showHelp()
+      return Help.showHelp()
     }
     // To keep this application extensible we introduce different
     // commands right from the beginning. We start off with "create"
@@ -77,13 +77,13 @@ class VPNController {
   // So, for now, we will simply bail out unless you called this command line application with the good old `sudo`.
   if (getuid() != 0) {
     Log.error("Sorry, without superuser privileges I won't be able to write to the System Keychain and thus cannot create a VPN service.");
-    return VPNExitCode.PrivilegesRequired
+    return ExitCode.PrivilegesRequired
   }
 
   let app = "macosvpn" as CFString
-  guard let prefs: SCPreferences = SCPreferencesCreateWithAuthorization(nil, app, nil, VPNAuthorizations.create()) else {
+  guard let prefs: SCPreferences = SCPreferencesCreateWithAuthorization(nil, app, nil, Authorizations.create()) else {
     Log.error("Could not create Authorization.");
-    return VPNExitCode.AuthorizationCreationFailed
+    return ExitCode.AuthorizationCreationFailed
   }
 
   // Making sure other process cannot make configuration modifications
@@ -93,7 +93,7 @@ class VPNController {
     Log.debug("Gained superhuman rights.");
   } else {
     Log.error("Sorry, without superuser privileges I won't be able to add any VPN interfaces.");
-    return VPNExitCode.LockingPreferencesFailed
+    return ExitCode.LockingPreferencesFailed
   }
 
   // If everything works out, we will return exit code 0
@@ -102,7 +102,7 @@ class VPNController {
   let serviceConfigs = Arguments.serviceConfigs
   if (serviceConfigs.count == 0) {
     Log.error("You did not specify any interfaces for me to create. Try --help for more information.");
-    return VPNExitCode.MissingServices
+    return ExitCode.MissingServices
   }
 
   // Each desired interface configuration will be processed in turn.
@@ -123,21 +123,17 @@ class VPNController {
     // If everything works out, we will return exit code 0
     var exitCode: Int32 = 0;
 
-    let names = Arguments.serviceNames
-    //guard let names = Arguments.serviceNames else {
-    //  Log.error("Could not extract service names.")
-    //  return VPNExitCode.ServiceNameExtractionFailed;
-    //}
+    let names = Arguments.options.names
 
     if (names.count == 0) {
       Log.error("You need to specify at least one --name MyVPNName.")
-      return 23; // VPNExitCode.MissingNames
+      return ExitCode.MissingNames
     }
 
     let app = "macosvpn" as CFString
-    guard let prefs: SCPreferences = SCPreferencesCreateWithAuthorization(nil, app, nil, VPNAuthorizations.create()) else {
+    guard let prefs: SCPreferences = SCPreferencesCreateWithAuthorization(nil, app, nil, Authorizations.create()) else {
       Log.error("Could not create Authorization.");
-      return 34; // VPNExitCode.AuthorizationCreationFailed
+      return ExitCode.AuthorizationCreationFailed
     }
     // Making sure other process cannot make configuration modifications
     // by obtaining a system-wide lock over the system preferences.
@@ -149,13 +145,8 @@ class VPNController {
       return 32; // VPNExitCode.LockingPreferencesFailed
     }
 */
-    for name: String in names {
-      exitCode = Int32(VPNServiceRemover.removeService(name, usingPreferencesRef: prefs))
-      // This particular interface could not be deleted. Let's stop processing the others.
-      if (exitCode != 0) { break; } // VPNExitCode.Success
-    }
-
-    Log.debug((names.joined()))
+    exitCode = ServiceConfig.Remover.delete(names: names, all: Arguments.options.allRequested, usingPreferencesRef: prefs)
+    // This particular interface could not be deleted. Let's stop processing the others.
 
     // We're done, other processes may modify the system configuration again
    // SCPreferencesUnlock(prefs);

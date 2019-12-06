@@ -17,7 +17,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import Foundation
 import PrettyColors
 
-open class VPNHelp: NSObject {
+open class Help: NSObject {
   
   open class func showHelp() -> Int32 {
     Log.debug("Showing help...")
@@ -102,13 +102,13 @@ open class VPNHelp: NSObject {
     
     // Displaying the help should not be interpreted as a success.
     // That's why we exit with a non-zero status code.
-    return VPNExitCode.ShowingHelp
+    return ExitCode.ShowingHelp
   }
   
   open class func showVersion() -> Int32 {
     Log.debug("Showing version...")
     print(self.currentVersion());
-    return VPNExitCode.ShowingVersion
+    return ExitCode.ShowingVersion
   }
   
   fileprivate class func currentYear() -> String {
