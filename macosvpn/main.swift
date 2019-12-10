@@ -14,6 +14,6 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import Cocoa
+import Darwin
 
-exit(Controller.main())
+exit(Controller.Main.call())

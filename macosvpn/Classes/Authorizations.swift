@@ -16,22 +16,39 @@
 
 import SystemConfiguration
 
-open class Authorizations: NSObject {
-  
-  class func create() -> AuthorizationRef {
-    var auth: AuthorizationRef? = nil
-    let status = AuthorizationCreate(nil, nil, self.flags(), &auth)
-    
-    if status == errAuthorizationSuccess {
-      // NSLog(@"Successfully obtained Authorization reference");
-    } else {
-      exit(ExitCode.NoAuthorization)
+enum Authorization {
+  static func preferences() throws -> SCPreferences {
+    var auth: AuthorizationRef?
+    var status: OSStatus
+
+    Log.debug("Obtaining Authorization...")
+    status = AuthorizationCreate(nil, nil, self.flags, &auth)
+
+    if status != errAuthorizationSuccess {
+      throw ExitError(message: "Creating Authorization Failed",
+                      code: .couldNotCreateAuthorization,
+                      securityStatus: status)
     }
-    return auth!
+
+    guard let authorization = auth else {
+      throw ExitError(message: "Created Authorization could not be unwrapped",
+                      code: .couldNotUnwrapAuthorization)
+    }
+
+    Log.debug("Authorization successfully obtained")
+
+    let app = "macosvpn" as CFString
+    
+    guard let preferences = SCPreferencesCreateWithAuthorization(nil, app, nil, authorization) else {
+      throw ExitError(message: "Could not Authorizes Preferences",
+                      code: .couldNotCreatePreferences,
+                      securityStatus: status)
+    }
+
+    return preferences
   }
-  
-  class func flags() -> AuthorizationFlags {
-    return AuthorizationFlags([AuthorizationFlags.extendRights, AuthorizationFlags.interactionAllowed, AuthorizationFlags.preAuthorize])
+
+  private static var flags: AuthorizationFlags {
+    return [.extendRights, .interactionAllowed, .preAuthorize]
   }
-  
 }

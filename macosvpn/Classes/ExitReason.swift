@@ -1,3 +1,37 @@
+// TODO: Rename to `ExitCode`
+enum ExitReason: Int32 {
+
+  case todo = 1
+
+  // Controller.Main
+  case success = 0
+  case showingVersion = 100
+  case showingHelp = 110
+  case unexpectedError = 120
+
+  // Controller.Run
+  case unknownCommand = 130
+
+  // Controller.Create
+  case privilegesRequired = 199
+
+  // Controller.Delete
+  case unclearWhichServicesToDelete = 188
+
+  // Keychain
+  case couldNotRetrieveSystemKeychain = 300
+  case couldNotUnwrapSystemKeychain = 310
+  case couldNotUnlockSystemKeychain = 320
+
+  // Authroization
+  case couldNotCreateAuthorization = 400
+  case couldNotUnwrapAuthorization = 410
+  case couldNotCreatePreferences = 420
+}
+
+
+
+// Delete this!
 enum ExitCode {
 
   static let Success: Int32 = 0
@@ -12,6 +46,8 @@ enum ExitCode {
   static let UnknownService: Int32 = 25
   static let InvalidArguments: Int32 = 26
   static let UnknownArguments: Int32 = 27
+
+
 
   static let PrivilegesRequired: Int32 = 31
   static let LockingPreferencesFailed: Int32 = 32

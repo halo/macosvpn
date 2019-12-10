@@ -24,9 +24,11 @@ module Macosvpn
     command = '/usr/bin/xcodebuild -project macosvpn.xcodeproj -showBuildSettings'
     result = TTY::Command.new.run(command, only_output_on_error: true)
     settings = result.out.split
-    target_build_dir = settings[settings.find_index('TARGET_BUILD_DIR') + 2]
+    target_build_dir = settings[settings.find_index('TARGET_BUILD_DIR') + 2].gsub('/var/root', '~')
 
-    @executable = Pathname.new(target_build_dir).join('macosvpn')
+    @executable = Pathname.new(target_build_dir).join('macosvpn').expand_path
+    raise "Where is my executable?" unless @executable.executable?
+    @executable
   end
   private_class_method :executable
 end

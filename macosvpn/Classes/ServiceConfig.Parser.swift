@@ -70,7 +70,7 @@ extension ServiceConfig {
       }
       
       // Bail out on missing mandatory arguments
-      guard !(endpoint.value?.isEmpty ?? true) else {
+      if endpoint.value?.isEmpty ?? true {
         Log.error("You did not provide an endpoint")
         exit(ExitCode.MissingEndpoint)
       }

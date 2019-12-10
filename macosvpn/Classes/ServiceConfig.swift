@@ -199,7 +199,7 @@ open class ServiceConfig {
     result.updateValue(username as CFString?,
                        forKey: kSCPropNetIPSecXAuthName)
 
-    result.updateValue(serviceID as CFString?,
+    result.updateValue(unwrappedServiceID as CFString,
                        forKey: kSCPropNetIPSecXAuthPassword)
 
     result.updateValue(kSCValNetIPSecXAuthPasswordEncryptionKeychain,
