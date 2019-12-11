@@ -1,6 +1,6 @@
 #!/bin/sh
-bundle check || bundle install
+(bundle check || bundle install) &&
 
-bundle exec rspec --tag "~sudo"
-sudo bundle exec rspec --tag "sudo"
+bundle exec rspec --tag "~sudo" &&
+sudo bundle exec rspec --tag "sudo" &&
 bundle exec rubocop

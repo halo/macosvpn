@@ -26,7 +26,7 @@
 		C23C4A09238EF261003CF07D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C4A08238EF261003CF07D /* Keychain.swift */; };
 		C23C4A0A238EF261003CF07D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C4A08238EF261003CF07D /* Keychain.swift */; };
 		C240416423895DE7008D48DB /* ServiceConfig.Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E922389269C00908B0B /* ServiceConfig.Parser.swift */; };
-		C2404165238968FF008D48DB /* ExitReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* ExitReason.swift */; };
+		C2404165238968FF008D48DB /* ExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* ExitCode.swift */; };
 		C240416723897186008D48DB /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240416623897186008D48DB /* Options.swift */; };
 		C2404169238AD2E8008D48DB /* Options.Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2404168238AD2E8008D48DB /* Options.Parser.swift */; };
 		C240416A238AD2E9008D48DB /* Options.Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2404168238AD2E8008D48DB /* Options.Parser.swift */; };
@@ -56,7 +56,7 @@
 		C26F6251239C2CD700BC9000 /* ExitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F6250239C2CD700BC9000 /* ExitError.swift */; };
 		C26F6252239C2CD700BC9000 /* ExitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F6250239C2CD700BC9000 /* ExitError.swift */; };
 		C27566FA1D08744A009CD68C /* Authorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* Authorizations.swift */; };
-		C299053D1E12F9B500570022 /* ExitReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* ExitReason.swift */; };
+		C299053D1E12F9B500570022 /* ExitCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299053C1E12F9B500570022 /* ExitCode.swift */; };
 		C2A88E932389269C00908B0B /* ServiceConfig.Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E922389269C00908B0B /* ServiceConfig.Parser.swift */; };
 		C2A88E9623892E1900908B0B /* ServiceConfigParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E9523892E1900908B0B /* ServiceConfigParserTests.swift */; };
 		C2B6EA442368997F00129CDB /* Arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6EA432368997F00129CDB /* Arguments.swift */; };
@@ -65,8 +65,13 @@
 		C2D13F18239FDD3A00D0D689 /* Keychain.CreateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F17239FDD3A00D0D689 /* Keychain.CreateItem.swift */; };
 		C2D13F1A239FE8F400D0D689 /* Controller.Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F19239FE8F400D0D689 /* Controller.Main.swift */; };
 		C2D13F1C239FE92900D0D689 /* Controller.Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F1B239FE92900D0D689 /* Controller.Run.swift */; };
-		C2D13F1E239FE9B100D0D689 /* Controller.CreateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F1D239FE9B100D0D689 /* Controller.CreateAction.swift */; };
-		C2D13F20239FE9BB00D0D689 /* Controller.DeleteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F1F239FE9BB00D0D689 /* Controller.DeleteAction.swift */; };
+		C2D13F1E239FE9B100D0D689 /* Controller.Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F1D239FE9B100D0D689 /* Controller.Create.swift */; };
+		C2D13F20239FE9BB00D0D689 /* Controller.Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F1F239FE9BB00D0D689 /* Controller.Delete.swift */; };
+		C2D13F2223A12F3600D0D689 /* NetworkInterface.Initialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F2123A12F3600D0D689 /* NetworkInterface.Initialize.swift */; };
+		C2D13F2423A133F700D0D689 /* NetworkSet.Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F2323A133F700D0D689 /* NetworkSet.Service.swift */; };
+		C2D13F2623A1416E00D0D689 /* NetworkSet.Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F2523A1416E00D0D689 /* NetworkSet.Current.swift */; };
+		C2D13F2823A16DE300D0D689 /* NetworkSet.Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F2723A16DE300D0D689 /* NetworkSet.Services.swift */; };
+		C2D13F2A23A1774D00D0D689 /* NetworkSet.RemoveServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F2923A1774D00D0D689 /* NetworkSet.RemoveServices.swift */; };
 		C2D37FC71FF970B700B44CA1 /* ServiceConfig.Remover.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D37FC61FF970B700B44CA1 /* ServiceConfig.Remover.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,7 +145,7 @@
 		C26F624D239AE40000BC9000 /* String+toUnsafePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toUnsafePointer.swift"; sourceTree = "<group>"; };
 		C26F6250239C2CD700BC9000 /* ExitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitError.swift; sourceTree = "<group>"; };
 		C27566F91D08744A009CD68C /* Authorizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorizations.swift; sourceTree = "<group>"; };
-		C299053C1E12F9B500570022 /* ExitReason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitReason.swift; sourceTree = "<group>"; };
+		C299053C1E12F9B500570022 /* ExitCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitCode.swift; sourceTree = "<group>"; };
 		C2A88E922389269C00908B0B /* ServiceConfig.Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfig.Parser.swift; sourceTree = "<group>"; };
 		C2A88E9523892E1900908B0B /* ServiceConfigParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfigParserTests.swift; sourceTree = "<group>"; };
 		C2B6EA432368997F00129CDB /* Arguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arguments.swift; sourceTree = "<group>"; };
@@ -149,8 +154,13 @@
 		C2D13F17239FDD3A00D0D689 /* Keychain.CreateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.CreateItem.swift; sourceTree = "<group>"; };
 		C2D13F19239FE8F400D0D689 /* Controller.Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.Main.swift; sourceTree = "<group>"; };
 		C2D13F1B239FE92900D0D689 /* Controller.Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.Run.swift; sourceTree = "<group>"; };
-		C2D13F1D239FE9B100D0D689 /* Controller.CreateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.CreateAction.swift; sourceTree = "<group>"; };
-		C2D13F1F239FE9BB00D0D689 /* Controller.DeleteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.DeleteAction.swift; sourceTree = "<group>"; };
+		C2D13F1D239FE9B100D0D689 /* Controller.Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.Create.swift; sourceTree = "<group>"; };
+		C2D13F1F239FE9BB00D0D689 /* Controller.Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.Delete.swift; sourceTree = "<group>"; };
+		C2D13F2123A12F3600D0D689 /* NetworkInterface.Initialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterface.Initialize.swift; sourceTree = "<group>"; };
+		C2D13F2323A133F700D0D689 /* NetworkSet.Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSet.Service.swift; sourceTree = "<group>"; };
+		C2D13F2523A1416E00D0D689 /* NetworkSet.Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSet.Current.swift; sourceTree = "<group>"; };
+		C2D13F2723A16DE300D0D689 /* NetworkSet.Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSet.Services.swift; sourceTree = "<group>"; };
+		C2D13F2923A1774D00D0D689 /* NetworkSet.RemoveServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSet.RemoveServices.swift; sourceTree = "<group>"; };
 		C2D37FC61FF970B700B44CA1 /* ServiceConfig.Remover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfig.Remover.swift; sourceTree = "<group>"; };
 		C2EBF466236DD708004562E2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,8 +242,8 @@
 			children = (
 				C2D13F19239FE8F400D0D689 /* Controller.Main.swift */,
 				C2D13F1B239FE92900D0D689 /* Controller.Run.swift */,
-				C2D13F1D239FE9B100D0D689 /* Controller.CreateAction.swift */,
-				C2D13F1F239FE9BB00D0D689 /* Controller.DeleteAction.swift */,
+				C2D13F1D239FE9B100D0D689 /* Controller.Create.swift */,
+				C2D13F1F239FE9BB00D0D689 /* Controller.Delete.swift */,
 				C2B6EA432368997F00129CDB /* Arguments.swift */,
 				C26F6245239AD33E00BC9000 /* Flag.swift */,
 				C2404168238AD2E8008D48DB /* Options.Parser.swift */,
@@ -243,12 +253,17 @@
 				C26157461D928F29001AD818 /* ServiceConfig.Creator.swift */,
 				C2D37FC61FF970B700B44CA1 /* ServiceConfig.Remover.swift */,
 				C24BE70A236A2C7700FFC671 /* ServiceConfig.swift */,
+				C2D13F2123A12F3600D0D689 /* NetworkInterface.Initialize.swift */,
+				C2D13F2523A1416E00D0D689 /* NetworkSet.Current.swift */,
+				C2D13F2323A133F700D0D689 /* NetworkSet.Service.swift */,
+				C2D13F2723A16DE300D0D689 /* NetworkSet.Services.swift */,
+				C2D13F2923A1774D00D0D689 /* NetworkSet.RemoveServices.swift */,
 				C23C4A08238EF261003CF07D /* Keychain.swift */,
 				C2D13F13239ED6D500D0D689 /* Keychain.Retrieve.swift */,
 				C2D13F17239FDD3A00D0D689 /* Keychain.CreateItem.swift */,
 				C27566F91D08744A009CD68C /* Authorizations.swift */,
 				C26F6250239C2CD700BC9000 /* ExitError.swift */,
-				C299053C1E12F9B500570022 /* ExitReason.swift */,
+				C299053C1E12F9B500570022 /* ExitCode.swift */,
 				C233AF801C6E7DCD00F39700 /* Help.swift */,
 				C2CE09E31C6E972400B97D6D /* VPNColor.swift */,
 				C24BE705236A237300FFC671 /* Log.swift */,
@@ -414,6 +429,7 @@
 			files = (
 				C24BE706236A237300FFC671 /* Log.swift in Sources */,
 				C2B6EA442368997F00129CDB /* Arguments.swift in Sources */,
+				C2D13F2223A12F3600D0D689 /* NetworkInterface.Initialize.swift in Sources */,
 				C23C4A01238C5BB9003CF07D /* ServiceConfig.Splitter.swift in Sources */,
 				C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */,
 				C2D13F14239ED6D500D0D689 /* Keychain.Retrieve.swift in Sources */,
@@ -422,19 +438,23 @@
 				C2D13F1A239FE8F400D0D689 /* Controller.Main.swift in Sources */,
 				C2D13F1C239FE92900D0D689 /* Controller.Run.swift in Sources */,
 				C2A88E932389269C00908B0B /* ServiceConfig.Parser.swift in Sources */,
-				C2D13F20239FE9BB00D0D689 /* Controller.DeleteAction.swift in Sources */,
-				C2D13F1E239FE9B100D0D689 /* Controller.CreateAction.swift in Sources */,
+				C2D13F20239FE9BB00D0D689 /* Controller.Delete.swift in Sources */,
+				C2D13F1E239FE9B100D0D689 /* Controller.Create.swift in Sources */,
 				C27566FA1D08744A009CD68C /* Authorizations.swift in Sources */,
-				C299053D1E12F9B500570022 /* ExitReason.swift in Sources */,
+				C299053D1E12F9B500570022 /* ExitCode.swift in Sources */,
 				C23C4A06238C68EA003CF07D /* Collection+split.swift in Sources */,
 				C26F6247239AD3B900BC9000 /* Flag.swift in Sources */,
+				C2D13F2823A16DE300D0D689 /* NetworkSet.Services.swift in Sources */,
 				C20958801E12F970009D2EC3 /* CFArray+Sequence.swift in Sources */,
 				C26F624E239AE40000BC9000 /* String+toUnsafePointer.swift in Sources */,
 				C26157471D928F29001AD818 /* ServiceConfig.Creator.swift in Sources */,
 				C24BE70B236A2C7700FFC671 /* ServiceConfig.swift in Sources */,
 				C267ADF71ED1F6760058CDE6 /* Optional+String.swift in Sources */,
 				C240416723897186008D48DB /* Options.swift in Sources */,
+				C2D13F2A23A1774D00D0D689 /* NetworkSet.RemoveServices.swift in Sources */,
 				C2D13F18239FDD3A00D0D689 /* Keychain.CreateItem.swift in Sources */,
+				C2D13F2423A133F700D0D689 /* NetworkSet.Service.swift in Sources */,
+				C2D13F2623A1416E00D0D689 /* NetworkSet.Current.swift in Sources */,
 				C26F6251239C2CD700BC9000 /* ExitError.swift in Sources */,
 				C2D37FC71FF970B700B44CA1 /* ServiceConfig.Remover.swift in Sources */,
 				9D61984D1981129900FC01E8 /* main.swift in Sources */,
@@ -446,7 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2404165238968FF008D48DB /* ExitReason.swift in Sources */,
+				C2404165238968FF008D48DB /* ExitCode.swift in Sources */,
 				C240416B238AD4A1008D48DB /* Options.swift in Sources */,
 				C25FF367238AE2980028E38A /* Parsers.swift in Sources */,
 				C26F6252239C2CD700BC9000 /* ExitError.swift in Sources */,

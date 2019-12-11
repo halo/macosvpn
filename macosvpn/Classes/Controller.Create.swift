@@ -2,7 +2,7 @@ import Darwin
 import SystemConfiguration
 
 extension Controller {
-  public enum CreateAction {
+  public enum Create {
      // This method is responsible for obtaining authorization in order to perform
     // privileged system modifications. It is mandatory for creating network interfaces.
     public static func call() throws {
@@ -22,8 +22,9 @@ extension Controller {
       // Making sure other processes cannot make configuration modifications
       // by obtaining a system-wide lock over the system preferences.
       guard SCPreferencesLock(prefs, true) else {
-        throw ExitError(message: "Sorry, without superuser privileges I won't be able to write to lock System Preferences and thus cannot create a VPN service",
-                        code: .todo)
+        throw ExitError(message: "Could not obtain global System Preferences Lock.",
+                        code: .couldNotLockSystemPreferences,
+                        systemStatus: true)
       }
       Log.debug("Gained superhuman rights.");
       // Later, when we're done, other processes may modify the system configuration again
@@ -31,20 +32,20 @@ extension Controller {
 
 
       // If everything works out, we will return exit code 0
-      var exitCode: Int32 = 0;
+      //var exitCode: Int32 = 0;
 
       let serviceConfigs = Arguments.serviceConfigs
       if (serviceConfigs.count == 0) {
         throw ExitError(message: "You did not specify any interfaces for me to create. Try --help for more information.",
-                        code: .todo)
+                        code: .mustSpecifySomeServiceToCreate)
       }
 
       // Each desired interface configuration will be processed in turn.
       // The configuration comes from the command line arguments and is passed on to the create method.
       for config: ServiceConfig in serviceConfigs {
-        exitCode = Int32(try ServiceConfig.Creator.create(config, usingPreferencesRef: prefs))
+        try ServiceConfig.Creator.create(config, usingPreferencesRef: prefs)
         // This particular interface could not be created. Let's stop processing the others.
-        if (exitCode != 0) { break; } // VPNExitCode.Success
+        //if (exitCode != 0) { break; } // VPNExitCode.Success
       }
 
     }

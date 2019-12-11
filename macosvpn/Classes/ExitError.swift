@@ -3,25 +3,25 @@ import SystemConfiguration
 
 struct ExitError: LocalizedError {
   let message: String
-  let code: ExitReason
+  let code: ExitCode
   let securityStatus: OSStatus?
-  let systemStatus: OSStatus?
+  let systemStatus: Bool
 
-  public init(message: String, code: ExitReason) {
+  public init(message: String, code: ExitCode) {
     self.message = message
     self.code = code
     self.securityStatus = nil
-    self.systemStatus = nil
+    self.systemStatus = false
   }
 
-  public init(message: String, code: ExitReason, securityStatus: OSStatus) {
+  public init(message: String, code: ExitCode, securityStatus: OSStatus) {
     self.message = message
     self.code = code
     self.securityStatus = securityStatus
-    self.systemStatus = nil
+    self.systemStatus = false
   }
 
-  public init(message: String, code: ExitReason, systemStatus: OSStatus) {
+  public init(message: String, code: ExitCode, systemStatus: Bool) {
     self.message = message
     self.code = code
     self.securityStatus = nil
@@ -47,10 +47,11 @@ struct ExitError: LocalizedError {
   }
 
   private var systemConfigurationErrorMessage: String? {
-    guard let status = systemStatus else { return nil }
+    guard systemStatus else { return nil }
+    guard SCError() > 0 else { return nil }
 
     let message = String(cString: SCErrorString(SCError()))
 
-    return "\(message) (System Configuration Error Code \(status))"
+    return "\(message) (System Configuration Error Code \(SCError()))"
   }
 }

@@ -9,7 +9,7 @@ RSpec.describe 'Creating a VPN Service' do
       output, status = Macosvpn.call arguments: arguments
       expect(output).to include 'without superuser privileges'
       expect(output).to include 'thus cannot create'
-      expect(status).to eq 31
+      expect(status).to eq 140
     end
   end
 end

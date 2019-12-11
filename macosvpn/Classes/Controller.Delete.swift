@@ -1,14 +1,14 @@
 import SystemConfiguration
 
 extension Controller {
-  public enum DeleteAction {
+  public enum Delete {
     public static func call() throws {
       Log.debug("Shall we delete today?");
 
       let names = Arguments.options.names
 
       if (names.count == 0 && !Arguments.options.allRequested) {
-        throw ExitError(message: "You need to specify at least one --name MyVPNName or use --all to delete all L2TP and Cisco VPNs",
+        throw ExitError(message: "You need to specify at least one `--name MyVPNName` or use `--all` to delete all L2TP and Cisco VPNs",
                         code: .unclearWhichServicesToDelete)
       }
 
@@ -24,7 +24,7 @@ extension Controller {
        return 32; // VPNExitCode.LockingPreferencesFailed
        }
        */
-      ServiceConfig.Remover.delete(names: names,
+      try ServiceConfig.Remover.delete(names: names,
                                    all: Arguments.options.allRequested,
                                    usingPreferencesRef: prefs)
       // This particular interface could not be deleted. Let's stop processing the others.

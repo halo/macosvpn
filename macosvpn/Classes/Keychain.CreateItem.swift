@@ -22,7 +22,7 @@ extension Keychain {
                        withService service: String,
                        account: String,
                        description: String,
-                       andPassword password: String) throws -> Int32 {
+                       andPassword password: String) throws {
       Log.debug("Creating System Keychain for \(label) with service \(service) and account \(account) and description \(description) and password? \(!password.isEmpty)")
 
       let keychain = try Keychain.Retrieve.systemKeychain()
@@ -39,12 +39,12 @@ extension Keychain {
         let appCreateStatus = SecTrustedApplicationCreateFromPath(path.toUnsafeMutablePointer(), &appPointer)
         guard appCreateStatus == errSecSuccess else {
           Log.error("Could not create trusted application: \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
-          return 999
+          throw ExitError(message: "", code: .todo)
         }
 
         guard let app = appPointer else {
           Log.error("Created trusted application is nil: \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
-          return 999
+         throw ExitError(message: "", code: .todo)
         }
 
         trustedApplications.append(app)
@@ -58,33 +58,33 @@ extension Keychain {
 
       guard accessStatus == errSecSuccess else {
         Log.error("Could not unlock System Keychain: \(String(describing: SecCopyErrorMessageString(accessStatus, nil)))")
-        return 62
+        throw ExitError(message: "", code: .todo)
       }
       Log.debug("Created empty Keychain access object")
 
       guard let labelPointer = label.toUnsafeMutablePointer() else {
         Log.error("Could not convert label \(label) to pointer")
-        return 999
+        throw ExitError(message: "", code: .todo)
       }
 
       guard let accountPointer = account.toUnsafeMutablePointer() else {
         Log.error("Could not convert account \(account) to pointer")
-        return 999
+        throw ExitError(message: "", code: .todo)
       }
 
       guard let servicePointer = service.toUnsafeMutablePointer() else {
         Log.error("Could not convert service \(service) to pointer")
-        return 999
+        throw ExitError(message: "", code: .todo)
       }
 
       guard let descriptionPointer = description.toUnsafeMutablePointer() else {
         Log.error("Could not convert description \(description) to pointer")
-        return 999
+        throw ExitError(message: "", code: .todo)
       }
 
       guard let passwordPointer = password.toUnsafeMutablePointer() else {
         Log.error("Could not convert password \(password) to pointer")
-        return 999
+        throw ExitError(message: "", code: .todo)
       }
 
       var attributes: [SecKeychainAttribute] = [
@@ -121,11 +121,10 @@ extension Keychain {
       //status = SecKeychainItemCreateFromContent(SecItemClass.genericPasswordItemClass, &attributes, Int(strlen(passwordUTF8)), passwordUTF8, keychain, access, &item)
       guard createStatus == errSecSuccess else {
         Log.error("Creating Keychain item failed: \(String(describing: SecCopyErrorMessageString(createStatus, nil)))")
-        return 63
+        throw ExitError(message: "", code: .todo)
       }
 
       Log.debug("Successfully created Keychain Item")
-      return ExitCode.Success
     }
 
     private static var trustedAppPaths: [String] {

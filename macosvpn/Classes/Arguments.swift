@@ -20,12 +20,12 @@ open class Arguments {
   public static var options = Options()
   public static var serviceConfigs: [ServiceConfig] = []
 
-  public static func load() {
+  public static func load() throws {
     // The first argument is the executable name, we ignore that one
     let arguments = Array(CommandLine.arguments.dropFirst())
 
     // Now let's parse all generic flags such as --version and --debug
-    options = Options.Parser.parse(arguments)
+    options = try Options.Parser.parse(arguments)
     let serviceConfigArguments = options.unprocessedArguments
 
     guard options.command == .create else {
@@ -33,6 +33,6 @@ open class Arguments {
     }
 
     // The remaining arguments should be service-config related, such as --l2tp --endpoint etc.
-    serviceConfigs = ServiceConfig.Splitter.parse(serviceConfigArguments)
+    serviceConfigs = try ServiceConfig.Splitter.parse(serviceConfigArguments)
   }
 }

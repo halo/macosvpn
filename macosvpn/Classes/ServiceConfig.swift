@@ -71,7 +71,7 @@ open class ServiceConfig {
   public var l2TPPPPConfig: CFDictionary {
     guard kind == .L2TPOverIPSec else {
       Log.error("l2TPPPPConfig is only available for L2TP over IPSec")
-      exit(ExitCode.InvalidServiceConfigCall)
+      exit(ExitCode.invalidServiceKindCalled.rawValue)
     }
 
     Log.debug("Assembling l2TPPPPConfig configuration dictionary...")
@@ -112,7 +112,7 @@ open class ServiceConfig {
   public var l2TPIPSecConfig: CFDictionary {
     guard kind == .L2TPOverIPSec else {
       Log.error("l2TPIPSecConfig is only available for L2TP over IPSec")
-      exit(ExitCode.InvalidServiceConfigCall)
+      exit(ExitCode.invalidServiceKindCalled.rawValue)
     }
 
     Log.debug("Assembling l2TPIPSecConfig configuration dictionary...")
@@ -151,7 +151,7 @@ open class ServiceConfig {
   public var l2TPIPv4Config: CFDictionary {
     guard kind == .L2TPOverIPSec else {
       Log.error("l2TPIPv4Config is only available for L2TP over IPSec")
-      exit(ExitCode.InvalidServiceConfigCall)
+      exit(ExitCode.invalidServiceKindCalled.rawValue)
     }
 
     Log.debug("Assembling l2TPIPv4Config configuration dictionary...")
@@ -173,7 +173,7 @@ open class ServiceConfig {
   public var ciscoConfig: CFDictionary {
     guard kind == .CiscoIPSec else {
       Log.error("ciscoConfig is only available for Cisco IPSec")
-      exit(ExitCode.InvalidServiceConfigCall)
+      exit(ExitCode.invalidServiceKindCalled.rawValue)
     }
 
     Log.debug("Assembling ciscoConfig configuration dictionary...")

@@ -19,52 +19,28 @@ import SystemConfiguration
 extension ServiceConfig {
   enum Creator {
     /// Creates a macOS VPN network service based on the configuration of the ServiceConfig that was passed in.
-    static func create(_ config: ServiceConfig, usingPreferencesRef: SCPreferences) throws -> Int32 {
+    static func create(_ config: ServiceConfig, usingPreferencesRef preferences: SCPreferences) throws {
 
-      Log.debug("")
-      Log.debug("****************************************************")
-      Log.debug("Creating new \(config.humanKind) Service")
-      Log.debug("\(config.description)")
-      Log.debug("****************************************************")
-      Log.debug("")
+      let initialTopInterface = try NetworkInterface.Initialize.call(kind: config.kind)
 
-      // These variables will hold references to our new interfaces
-      let initialTopInterface: SCNetworkInterface!
-      let initialBottomInterface: SCNetworkInterface!
 
-      switch config.kind {
+      ///////////////////////////////////////////////////////////////
+      // CREATING A SCNetworkService
+      ///////////////////////////////////////////////////////////////
 
-      case .L2TPOverIPSec:
-        Log.debug("Initializing Interface L2TP on top of IPv4")
-        initialBottomInterface = SCNetworkInterfaceCreateWithInterface(kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeL2TP)
-        Log.debug("Initializing Interface PPP on top of L2TP")
-        initialTopInterface = SCNetworkInterfaceCreateWithInterface(initialBottomInterface, kSCNetworkInterfaceTypePPP)
-
-      case .CiscoIPSec:
-        Log.debug("Initializing Interface IPSec on top of IPv4")
-        // Cisco IPSec (without underlying interface)
-        initialTopInterface = SCNetworkInterfaceCreateWithInterface(kSCNetworkInterfaceIPv4, kSCNetworkInterfaceTypeIPSec)
-
-      }
-
-      guard (initialTopInterface != nil) else {
-        Log.error("kSCNetworkInterfaceIPv4 = \(kSCNetworkInterfaceIPv4)")
-        Log.error("kSCNetworkInterfaceTypePPP = \(kSCNetworkInterfaceTypePPP)")
-        return ExitCode.InterfaceInitializationFailed
-      }
 
       Log.debug("Instantiating interface references...")
       //Log.debug("Creating a new, fresh VPN service in memory using the interface we already created")
-      guard let service = SCNetworkServiceCreate(usingPreferencesRef, initialTopInterface!) else {
-        Log.error("usingPreferencesRef = \(usingPreferencesRef)")
-        Log.error("topInterface = \(String(describing: initialTopInterface))")
-        return ExitCode.NetworkServiceCreationFailed
+      guard let service = SCNetworkServiceCreate(preferences, initialTopInterface) else {
+        Log.error("preferences = \(preferences)")
+        //Log.error("topInterface = \(String(describing: initialTopInterface))")
+        throw ExitError(message: "", code: .todo)   //NetworkServiceCreationFailed
       }
 
       Log.debug("That service is to have a name")
       guard SCNetworkServiceSetName(service, (config.name as CFString)) else {
         Log.debug("That was problematic")
-        return ExitCode.NetworkServiceNamingFailed
+        throw ExitError(message: "", code: .todo)   //NetworkServiceNamingFailed
       }
 
       //Log.debug("That went well it got the name \(config.name)")
@@ -74,6 +50,9 @@ extension ServiceConfig {
       Log.debug("Look at my service ID: \(serviceIDCF!)")
       config.serviceID = serviceIDCF as String?
 
+
+
+
       Log.debug("Reloading top Interface...")
       // Because, if we would like to modify the interface, we first need to freshly fetch it from the service
       // See https://lists.apple.com/archives/macnetworkprog/2013/Apr/msg00016.html
@@ -81,8 +60,10 @@ extension ServiceConfig {
 
       guard let topInterface = topInterfaceOptional else {
         Log.error("Error: Get the top interface for service \(config.name)")
-        return 999
+        throw ExitError(message: "", code: .todo)
       }
+
+
 
       switch config.kind {
 
@@ -92,7 +73,7 @@ extension ServiceConfig {
         // Specifically, the servername, account username and password
         guard SCNetworkInterfaceSetConfiguration(topInterface, config.l2TPPPPConfig) else {
           Log.error("Error: Could not configure PPP interface for service \(config.name)")
-          return ExitCode.PPPInterfaceConfigurationFailed
+          throw ExitError(message: "", code: .todo)   //PPPInterfaceConfigurationFailed
         }
 
         Log.debug("Successfully configured PPP interface of service \(config.name)")
@@ -100,10 +81,24 @@ extension ServiceConfig {
         let extendedType: CFString = "IPSec" as CFString
         guard SCNetworkInterfaceSetExtendedConfiguration(topInterface, extendedType, config.l2TPIPSecConfig) else {
           Log.error("Error: Could not configure IPSec on PPP interface for service \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-          return ExitCode.IPSecInterfaceConfigurationFailed
+          throw ExitError(message: "", code: .todo)   //IPSecInterfaceConfigurationFailed
         }
         Log.debug("Successfully configured IPSec on PPP interface for service %\(config.name)")
+
+        Log.debug("Fetching IPv4 protocol of service \(config.name)...")
+        guard let serviceProtocol = SCNetworkServiceCopyProtocol(service, kSCNetworkProtocolTypeIPv4) else {
+          Log.error("Error: Could not fetch IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
+          throw ExitError(message: "", code: .todo)   //CopyingServiceProtocolFailed
+        }
+
+        Log.debug("Configuring IPv4 protocol of service \(config.name)...")
+        guard SCNetworkProtocolSetConfiguration(serviceProtocol, config.l2TPIPv4Config) else {
+          Log.error("Error: Could not configure IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
+          throw ExitError(message: "", code: .todo)   //SettingNetworkProtocolConfigFailed
+        }
         break
+
+
 
       case .CiscoIPSec:
         Log.debug("Configuring \(config.humanKind) Service")
@@ -111,7 +106,7 @@ extension ServiceConfig {
         // As opposed to L2TP, here all configuration goes to the top Interface, i.e. the only Interface there is.
         guard SCNetworkInterfaceSetConfiguration(topInterface, config.ciscoConfig) else {
           Log.error("Error: Could not configure Cisco IPSec interface for service \(config.name)")
-          return ExitCode.CiscoInterfaceConfigurationFailed
+          throw ExitError(message: "", code: .todo)   //CiscoInterfaceConfigurationFailed
         }
         Log.debug("Successfully configured Cisco IPSec interface of service \(config.name)")
         break
@@ -120,7 +115,7 @@ extension ServiceConfig {
       Log.debug("Adding default protocols (DNS, etc.) to service \(config.name)...")
       guard SCNetworkServiceEstablishDefaultConfiguration(service) else {
         Log.error("Error: Could not establish a default service configuration for \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-        return ExitCode.DefaultConfigurationFailed
+        throw ExitError(message: "", code: .todo)   //DefaultConfigurationFailed
       }
 
 
@@ -129,72 +124,9 @@ extension ServiceConfig {
 
 
 
+      let networkSet = try NetworkSet.Current.call(usingPreferencesRef: preferences)
 
-
-
-
-
-
-      Log.debug("Fetching set of all available network services...")
-      guard let networkSet = SCNetworkSetCopyCurrent(usingPreferencesRef) else {
-        Log.error("Error: Could not fetch current network set when creating \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-        return ExitCode.CopyingCurrentNetworkSetFailed
-      }
-
-      guard let services = SCNetworkSetCopyServices(networkSet) else {
-        Log.error("Could not retrieve network services set")
-        return ExitCode.CopyingNetworkServicesFailed
-      }
-
-      for serviceInstanceWrapper in services {
-        let existingService = serviceInstanceWrapper as! SCNetworkService
-        //Log.debug("existingService = \(existingService)")
-
-        guard let serviceNameCF = SCNetworkServiceGetName(existingService) else {
-          Log.error("SCNetworkServiceGetName failed")
-          return ExitCode.GettingServiceNameFailed
-        }
-
-        guard let serviceIDCF = SCNetworkServiceGetServiceID(existingService) else {
-          Log.error("SCNetworkServiceGetServiceID failed")
-          return ExitCode.GettingServiceIDFailed
-        }
-
-        guard let serviceInterface = SCNetworkServiceGetInterface(existingService) else {
-          Log.error("SCNetworkServiceGetInterface failed")
-          return 999
-        }
-
-        guard let interfaceType = SCNetworkInterfaceGetInterfaceType(serviceInterface) else {
-          Log.error("SCNetworkServiceGetInterface failed")
-          return 999
-        }
-
-        if interfaceType != kSCNetworkInterfaceTypePPP && interfaceType != kSCNetworkInterfaceTypeIPSec {
-          Log.debug("Ignoring Service \(serviceNameCF) (\(interfaceType))")
-          continue
-        }
-
-        let serviceName = serviceNameCF as String
-        Log.debug("serviceName = \(serviceName)")
-
-        let serviceID = serviceIDCF as String
-        Log.debug("serviceID = \(serviceID)")
-
-        if config.name != serviceName {
-          Log.debug("Ignoring existing Service \(serviceName)")
-          continue
-        }
-
-
-
-        Log.warn("You already have a service \(config.name) defined.")
-        Log.debug("That Service has the ID \(serviceID)")
-
-        if !Arguments.options.forceRequested {
-          Log.warn("If you want me to overwrite it, you need to specify the --force flag");
-          return ExitCode.RefusingToOverwriteExistingService;
-        }
+      try NetworkSet.RemoveServices.call(withName: config.name, fromNetworkSet: networkSet)
 
 
 
@@ -203,92 +135,62 @@ extension ServiceConfig {
 
 
 
-        Log.info("Removing duplicate VPN Service \(config.name) because you specified the --force flag.")
-
-        guard SCNetworkServiceRemove(existingService) else {
-          Log.error("Error: Could not remove duplicate VPN service \(config.name) from current network set. \(SCErrorString(SCError())) (Code \(SCError()))")
-          return ExitCode.RemovingDuplicateServiceFailed
-        }
-        Log.debug("Successfully removed duplicate VPN Service \(config.name).")
-      }
-
-
-      if config.kind == .L2TPOverIPSec {
-        Log.debug("Fetching IPv4 protocol of service \(config.name)...")
-        guard let serviceProtocol = SCNetworkServiceCopyProtocol(service, kSCNetworkProtocolTypeIPv4) else {
-          Log.error("Error: Could not fetch IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-          return ExitCode.CopyingServiceProtocolFailed
-        }
-
-        Log.debug("Configuring IPv4 protocol of service \(config.name)...")
-        guard SCNetworkProtocolSetConfiguration(serviceProtocol, config.l2TPIPv4Config) else {
-          Log.error("Error: Could not configure IPv4 protocol of \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-          return ExitCode.SettingNetworkProtocolConfigFailed
-        }
-      }
 
       Log.debug("Adding Service \(service) to networkSet \(networkSet)...")
 
       guard SCNetworkSetAddService(networkSet, service) else {
         if SCError() == 1005 {
           Log.warn("Skipping VPN Service \(config.humanKind) because it already exists.")
-          return ExitCode.Success
+          throw ExitError(message: "", code: .todo)   //Success
         }
         else {
           Log.error("Error: Could not add new VPN service %@ to current network set. \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-          return ExitCode.AddingNetworkServiceFailed
+          throw ExitError(message: "", code: .todo)   //AddingNetworkServiceFailed
         }
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       Log.debug("Added successfully to networkSet...")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       Log.debug("Preparing to add Keychain items for service \(config.name)...")
 
       if config.password != nil {
         Log.debug("Creating PPP Keychain Item...")
 
-        let code = try Keychain.createPasswordKeyChainItem(config.name, forService: config.serviceID!, withAccount: config.username!, andPassword: config.password!)
-        if code > 0 {
-          Log.error("Error: Could not createPasswordKeyChainItem. \(config.name). \(code)")
-          return ExitCode.CreatingPasswordKeychainItemFailed
-        }
+        try Keychain.createPasswordKeyChainItem(config.name, forService: config.serviceID!, withAccount: config.username!, andPassword: config.password!)
       }
 
       if config.sharedSecret != nil {
         Log.debug("Creating Shared Secret Keychain Item...")
 
-        let code = try Keychain.createSharedSecretKeyChainItem(config.name, forService: config.serviceID!, withPassword: config.sharedSecret!)
-        if code > 0 {
-          Log.error("Error: Could not createSharedSecretKeyChainItem. \(config.name). \(code)")
-          return ExitCode.CreatingSharedSecretKeychainItemFailed
-        }
+        try Keychain.createSharedSecretKeyChainItem(config.name, forService: config.serviceID!, withPassword: config.sharedSecret!)
+
       }
 
       Log.debug("Commiting all changes including service \(config.name)...")
-      if !SCPreferencesCommitChanges(usingPreferencesRef) {
+      if !SCPreferencesCommitChanges(preferences) {
         Log.error("Error: Could not commit preferences with service \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-        return ExitCode.CommingingPreferencesFailed
+        throw ExitError(message: "", code: .todo)   //CommingingPreferencesFailed
       }
-      if !SCPreferencesApplyChanges(usingPreferencesRef) {
+      if !SCPreferencesApplyChanges(preferences) {
         Log.error("Error: Could not apply changes with service \(config.name). \(SCErrorString(SCError())) (Code \(SCError()))")
-        return ExitCode.ApplyingPreferencesFailed
+        throw ExitError(message: "", code: .todo)   //ApplyingPreferencesFailed
       }
 
       Log.info("Successfully created \(config.humanKind) VPN \(config.name) with ID \(config.serviceID ?? "nil")")
 
-      return ExitCode.Success
+      throw ExitError(message: "", code: .todo)   //Success
     }
   }
 }

@@ -7,7 +7,7 @@ RSpec.describe 'Creating and deleting a VPN Service' do
     it 'fails and is informational' do
       output, status = Macosvpn.sudo arguments: 'create'
       expect(output).to include 'You did not specify any interfaces for me to create'
-      expect(status).to eq 22
+      expect(status).to eq 170
     end
   end
 

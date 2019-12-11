@@ -1,6 +1,6 @@
 #!/bin/sh
+sudo echo "I need sudo to run. Thank you." &&
+bin/build &&
 
-bin/build
-
-bundle exec rspec --tag "~sudo"
+bundle exec rspec --tag "~sudo" &&
 sudo QUICK=1 bundle exec rspec --tag "sudo"

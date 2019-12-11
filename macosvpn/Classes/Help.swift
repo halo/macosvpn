@@ -19,7 +19,7 @@ import PrettyColors
 
 open class Help: NSObject {
   
-  open class func showHelp() -> Int32 {
+  open class func showHelp() {
     Log.debug("Showing help...")
     
     let usage: String = Color.Wrap(styles: .bold).wrap("Usage:")
@@ -99,16 +99,11 @@ open class Help: NSObject {
     Log.info("This application is released under the MIT license.")
     Log.info("Copyright (c) 2014-\(self.currentYear()) halo.")
     Log.info(Color.Wrap(foreground: VPNColor.Brown).wrap("https://github.com/halo/macosvpn"))
-    
-    // Displaying the help should not be interpreted as a success.
-    // That's why we exit with a non-zero status code.
-    return ExitCode.ShowingHelp
   }
   
-  open class func showVersion() -> Int32 {
+  open class func showVersion() {
     Log.debug("Showing version...")
     print(self.currentVersion());
-    return ExitCode.ShowingVersion
   }
   
   fileprivate class func currentYear() -> String {

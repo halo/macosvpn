@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019 halo. https://github.com/halo/macosvpn
+ Copyright (c) 2019 halo. https://github.com/halo/macosvpn
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the
  "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish,
@@ -14,26 +14,18 @@
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Foundation
+import SystemConfiguration
 
-extension ServiceConfig {
-  enum Splitter {
-    /// Splits an Array of command line arguments into one array per VPN service
-    static func parse(_ arguments: [String]) throws -> [ServiceConfig] {
-      let delimiters = Set([Flag.L2TP.dashed,
-                            Flag.L2TPShort.dashed,
-                            Flag.Cisco.dashed,
-                            Flag.CiscoShort.dashed])
-
-      let slices =  arguments.split(before: delimiters.contains)
-
-      var result: [ServiceConfig] = []
-      for slice in slices {
-        Log.debug("Processing argument slice: \(slice)")
-        let serviceConfig = try ServiceConfig.Parser.parse((Array(slice)))
-        result.append(serviceConfig)
+public enum NetworkSet {
+  public enum Current {
+    public static func call(usingPreferencesRef preferences: SCPreferences) throws -> SCNetworkSet {
+      Log.debug("Fetching current network service set...")
+      guard let networkSet = SCNetworkSetCopyCurrent(preferences) else {
+        throw ExitError(message: "Could not fetch current network set",
+                        code: .couldNotFetchCurrentNetworkSet)
       }
-      return result
+
+      return networkSet
     }
   }
 }

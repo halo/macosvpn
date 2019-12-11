@@ -20,7 +20,7 @@ import Moderator
 extension Options {
   /// Reads global command line arguments and converts them into an Options instance.
   enum Parser {
-    static func parse(_ arguments: [String]) -> Options {
+    static func parse(_ arguments: [String]) throws -> Options {
       let parser = Moderator()
 
       let commandName = parser.add(
@@ -62,12 +62,11 @@ extension Options {
           Flag.Name.rawValue,
           Flag.NameShort.rawValue).repeat())
 
-      do {
-        try parser.parse(arguments, strict: false)
-      } catch {
-        Log.error(String(describing: error))
-        exit(ExitCode.InvalidArguments)
-      }
+      // Parse arguments
+
+      // This 3rd party library should not throw, when passed in `strict: false`.
+      // If it still does, it's OK to let it bubble up. It will be caught higher up.
+      try parser.parse(arguments, strict: false)
 
       let options = Options()
       options.unprocessedArguments = parser.remaining
