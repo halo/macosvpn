@@ -27,9 +27,8 @@ extension NetworkSet {
                         code: .couldNotRetrieveServicesFromNetworkSet)
       }
 
-      for serviceWrapper in services {
-        let networkService = serviceWrapper as! SCNetworkService
-        let service = try Service.init(service: networkService)
+      for serviceWrapper in services as! [SCNetworkService] {
+        let service = try Service.init(service: serviceWrapper)
 
         if !service.isCiscoOrL2TP {
           // Wisely excluding all non-relevant services right from the start.

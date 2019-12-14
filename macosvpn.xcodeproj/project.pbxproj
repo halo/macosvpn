@@ -11,7 +11,6 @@
 		328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328613A1197FEE7A0010BB98 /* SystemConfiguration.framework */; };
 		9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3D847D1982AE1B005BD5F3 /* Security.framework */; };
 		9D61984D1981129900FC01E8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C419803F2B005B5E3E /* main.swift */; };
-		C20958801E12F970009D2EC3 /* CFArray+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209587F1E12F970009D2EC3 /* CFArray+Sequence.swift */; };
 		C20E6A68236DC8DB00671953 /* Moderator in Frameworks */ = {isa = PBXBuildFile; productRef = C20E6A67236DC8DB00671953 /* Moderator */; };
 		C20E6A69236DC99900671953 /* ServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* ServiceConfig.swift */; };
 		C20E6A6B236DCED200671953 /* Options.ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20E6A6A236DCED200671953 /* Options.ParserTests.swift */; };
@@ -33,7 +32,6 @@
 		C2238BC023A570BF00742F3F /* Authorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* Authorizations.swift */; };
 		C2238BC123A570BF00742F3F /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* Help.swift */; };
 		C2238BC323A570BF00742F3F /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF61ED1F6760058CDE6 /* Optional+String.swift */; };
-		C2238BC423A5710D00742F3F /* CFArray+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209587F1E12F970009D2EC3 /* CFArray+Sequence.swift */; };
 		C233AF811C6E7DCD00F39700 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* Help.swift */; };
 		C23C4A00238C5BB9003CF07D /* ServiceConfig.Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C49FC238B0C41003CF07D /* ServiceConfig.Splitter.swift */; };
 		C23C4A01238C5BB9003CF07D /* ServiceConfig.Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C49FC238B0C41003CF07D /* ServiceConfig.Splitter.swift */; };
@@ -131,7 +129,6 @@
 		9D3D847D1982AE1B005BD5F3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9D3D848919842C36005BD5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = macosvpn/Info.plist; sourceTree = SOURCE_ROOT; };
 		9D5CE1C419803F2B005B5E3E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = macosvpn/main.swift; sourceTree = SOURCE_ROOT; };
-		C209587F1E12F970009D2EC3 /* CFArray+Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFArray+Sequence.swift"; sourceTree = "<group>"; };
 		C20E6A6A236DCED200671953 /* Options.ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.ParserTests.swift; sourceTree = "<group>"; };
 		C233AF801C6E7DCD00F39700 /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		C23C49FC238B0C41003CF07D /* ServiceConfig.Splitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfig.Splitter.swift; sourceTree = "<group>"; };
@@ -284,7 +281,6 @@
 				C233AF801C6E7DCD00F39700 /* Help.swift */,
 				C2CE09E31C6E972400B97D6D /* VPNColor.swift */,
 				C24BE705236A237300FFC671 /* Log.swift */,
-				C209587F1E12F970009D2EC3 /* CFArray+Sequence.swift */,
 				C23C4A05238C68EA003CF07D /* Collection+split.swift */,
 				C267ADF61ED1F6760058CDE6 /* Optional+String.swift */,
 				C26F624D239AE40000BC9000 /* String+toUnsafePointer.swift */,
@@ -462,7 +458,6 @@
 				C23C4A06238C68EA003CF07D /* Collection+split.swift in Sources */,
 				C26F6247239AD3B900BC9000 /* Flag.swift in Sources */,
 				C2D13F2823A16DE300D0D689 /* NetworkSet.Services.swift in Sources */,
-				C20958801E12F970009D2EC3 /* CFArray+Sequence.swift in Sources */,
 				C26F624E239AE40000BC9000 /* String+toUnsafePointer.swift in Sources */,
 				C26157471D928F29001AD818 /* ServiceConfig.Creator.swift in Sources */,
 				C24BE70B236A2C7700FFC671 /* ServiceConfig.swift in Sources */,
@@ -526,7 +521,6 @@
 				C23C4A07238C68EA003CF07D /* Collection+split.swift in Sources */,
 				C25FF375238AE3000028E38A /* ColorWrap.swift in Sources */,
 				C25FF368238AE2980028E38A /* SwiftCompat.swift in Sources */,
-				C2238BC423A5710D00742F3F /* CFArray+Sequence.swift in Sources */,
 				C25FF371238AE3000028E38A /* Color · EightBit.swift in Sources */,
 				C26F624B239ADBAF00BC9000 /* FlagTests.swift in Sources */,
 			);
