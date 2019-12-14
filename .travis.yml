@@ -6,11 +6,6 @@ matrix:
   include:
     - osx_image: xcode11.2
 
-before_script:
-  - bundle install
-  - sudo gem install bundler --no-document
-  - sudo bundle install
-
 script:
   - bin/build
   - bin/test

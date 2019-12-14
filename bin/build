@@ -1,0 +1,9 @@
+#!/bin/sh
+
+(bundle check || bundle install) &&
+
+xcodebuild -project macosvpn.xcodeproj \
+           -scheme macosvpn \
+           -configuration Release | bundle exec xcpretty &&
+
+xcodebuild -project macosvpn.xcodeproj -showBuildSettings | grep TARGET_BUILD_DIR
