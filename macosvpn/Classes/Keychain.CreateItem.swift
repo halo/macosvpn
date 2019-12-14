@@ -118,7 +118,6 @@ extension Keychain {
                                                           &item)
 
 
-      //status = SecKeychainItemCreateFromContent(SecItemClass.genericPasswordItemClass, &attributes, Int(strlen(passwordUTF8)), passwordUTF8, keychain, access, &item)
       guard createStatus == errSecSuccess else {
         Log.error("Creating Keychain item failed: \(String(describing: SecCopyErrorMessageString(createStatus, nil)))")
         throw ExitError(message: "", code: .todo)

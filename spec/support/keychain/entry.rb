@@ -67,7 +67,9 @@ module Keychain
     end
 
     def dump_command
-      "security find-generic-password -l '#{search_name}' #{kind_argument} /Library/Keychains/System.keychain"
+      command = "security find-generic-password -l '#{search_name}' #{kind_argument} /Library/Keychains/System.keychain"
+      puts command if ENV['VERBOSE']
+      command
     end
   end
 end

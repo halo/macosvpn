@@ -14,7 +14,7 @@ class ServiceConfigSplitterTests: XCTestCase {
       "--l2tp", "Atlantic",
       "--endpoint", "example.com",
     ]
-    let services = ServiceConfig.Splitter.parse(arguments)
+    let services = try! ServiceConfig.Splitter.parse(arguments)
     let service = services.first!
 
     XCTAssertEqual(service.kind, .L2TPOverIPSec)
@@ -27,7 +27,7 @@ class ServiceConfigSplitterTests: XCTestCase {
       "--cisco", "London",
       "--endpoint", "london.example.com",
     ]
-    let services = ServiceConfig.Splitter.parse(arguments)
+    let services = try! ServiceConfig.Splitter.parse(arguments)
     let service1 = services.first!
     let service2 = services.last!
 
@@ -47,7 +47,7 @@ class ServiceConfigSplitterTests: XCTestCase {
       "-c", "London",
       "-e", "london.example.com",
     ]
-    let services = ServiceConfig.Splitter.parse(arguments)
+    let services = try! ServiceConfig.Splitter.parse(arguments)
     let service1 = services.first!
     let service2 = services.last!
 

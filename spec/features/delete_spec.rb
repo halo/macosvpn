@@ -7,7 +7,7 @@ RSpec.describe 'Deleting a VPN Service' do
     it 'fails and is informational' do
       output, status = Macosvpn.sudo arguments: 'delete'
       expect(output).to include 'at least one `--name'
-      expect(status).to eq 170
+      expect(status).to eq 30
     end
   end
 end

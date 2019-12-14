@@ -170,6 +170,24 @@ open class ServiceConfig {
     return result as CFDictionary
   }
 
+  public var ciscoIPv4Config: CFDictionary {
+    guard kind == .CiscoIPSec else {
+      Log.error("ciscoConfig is only available for Cisco IPSec")
+      exit(ExitCode.invalidServiceKindCalled.rawValue)
+    }
+
+    Log.debug("Assembling ciscoIPv4Config configuration dictionary...")
+    var result: [CFString: CFString?] = [:]
+
+    result.updateValue(kSCValNetIPv4ConfigMethodAutomatic,
+                       forKey: kSCPropNetIPv4ConfigMethod)
+
+
+    Log.debug("ciscoIPv4Config ready: \(result)")
+
+    return result as CFDictionary
+  }
+
   public var ciscoConfig: CFDictionary {
     guard kind == .CiscoIPSec else {
       Log.error("ciscoConfig is only available for Cisco IPSec")
@@ -199,7 +217,7 @@ open class ServiceConfig {
     result.updateValue(username as CFString?,
                        forKey: kSCPropNetIPSecXAuthName)
 
-    result.updateValue(unwrappedServiceID as CFString,
+    result.updateValue("\(unwrappedServiceID).XAUTH" as CFString,
                        forKey: kSCPropNetIPSecXAuthPassword)
 
     result.updateValue(kSCValNetIPSecXAuthPasswordEncryptionKeychain,

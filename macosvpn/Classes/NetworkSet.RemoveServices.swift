@@ -24,19 +24,25 @@ extension NetworkSet {
       let services = try NetworkSet.Services.call(fromNetworkSet: networkSet)
 
       for service in services {
+        if name != service.name {
+          Log.debug("I'm not deleting \(service.name) because you didn't ask me to using `\(Flag.All.dashed) \"\(service.name)\"`")
+          continue
+        }
+
         Log.warn("You already have a service with the name `\(name)`.")
         Log.debug("That Service has the ID `\(service.id)`.")
 
         if !Arguments.options.forceRequested {
-          throw ExitError(message: "If you want me to overwrite it, you need to specify the `--force` flag", code: .todo)   //RefusingToOverwriteExistingService;
+          throw ExitError(message: "If you want me to overwrite it, you need to specify the `--force` flag",
+                          code: .refusingToOverwriteExistingService)
         }
 
         Log.info("Removing conflicting VPN Service with the name `\(name)` because you specified the `--force` flag.")
 
         guard SCNetworkServiceRemove(service.service) else {
-          throw ExitError(message: "Could not remove duplicate VPN service \(name) from current network set",
-            code: .todo,
-            systemStatus: true)   //RemovingDuplicateServiceFailed
+          throw ExitError(message: "Could not remove duplicate VPN service `\(name)` from current network set",
+                          code: .removingDuplicateServiceFailed,
+                          systemStatus: true)
         }
         Log.debug("Successfully removed duplicate VPN Service \(name).")
       }
@@ -44,12 +50,12 @@ extension NetworkSet {
 
     public static func call(withNames names: [String],
                             orAll all: Bool,
-                            usingPreferencesRef preferences: SCPreferences) throws {
+                            usingPreferencesRef preferences: SCPreferences) throws -> Int {
 
       var deletedCount: Int = 0
       let networkSet = try NetworkSet.Current.call(usingPreferencesRef: preferences)
-
       let services = try NetworkSet.Services.call(fromNetworkSet: networkSet)
+
       for service in services {
 
         if !all && !names.contains(service.name as String) {
@@ -57,7 +63,7 @@ extension NetworkSet {
           continue
         }
 
-        Log.debug("Deleting Service \(service.name)")
+        Log.debug("Deleting Service `\(service.name)`...")
         //continue
 
         if SCNetworkServiceRemove(service.service) {
@@ -65,14 +71,16 @@ extension NetworkSet {
           deletedCount += 1;
         } else {
           Log.error("Error: Could not remove VPN service \(service.name) from current network set. \(SCErrorString(SCError())) (Code \(SCError()))")
-          throw ExitError(message: "", code: .todo)   // RemovingServiceFailed
+          throw ExitError(message: "", code: .removingServiceFailed)
         }
       }
 
-      if (deletedCount == 0) {
-        Log.error("No VPN Service was deleted. Are you sure it exists?")
-        throw ExitError(message: "", code: .todo)   // NoServicesRemoved
+      if (names.count > 0 && deletedCount == 0) {
+        Log.error("No VPN Service was deleted. Are you sure the specified name(s) exists?")
+        throw ExitError(message: "", code: .noServicesRemoved)
       }
+
+      return deletedCount
     }
   }
 }

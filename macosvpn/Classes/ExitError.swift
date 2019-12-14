@@ -40,10 +40,10 @@ struct ExitError: LocalizedError {
     guard let status = securityStatus else { return nil }
 
     guard let message = SecCopyErrorMessageString(status, nil) else {
-      return "(Security Framwork Error Code \(status))"
+      return "(Security Framwork Error \(status))."
     }
 
-    return "\(message) (Security Framwork Error Code \(status))"
+    return "\(message) (Security Framwork Error Code \(status))."
   }
 
   private var systemConfigurationErrorMessage: String? {
@@ -52,6 +52,6 @@ struct ExitError: LocalizedError {
 
     let message = String(cString: SCErrorString(SCError()))
 
-    return "\(message) (System Configuration Error Code \(SCError()))"
+    return "\(message) (System Configuration Error \(SCError()))."
   }
 }

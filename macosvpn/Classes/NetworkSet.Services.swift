@@ -31,10 +31,10 @@ extension NetworkSet {
         let networkService = serviceWrapper as! SCNetworkService
         let service = try Service.init(service: networkService)
 
-        if service.isCiscoOrL2TP {
+        if !service.isCiscoOrL2TP {
           // Wisely excluding all non-relevant services right from the start.
           // So we do not accidentally delete a Bluetooth or Wi-Fi service :)
-          Log.debug("Ignoring existing Service \(service.name)")
+          Log.debug("Ignoring irrelevant Service \(service.name)")
           continue
         }
 

@@ -1,6 +1,21 @@
 #!/bin/sh
-sudo echo "I need sudo to run. Thank you." &&
+sudo echo "I need sudo. Thank you." &&
+
 bin/build &&
 
-bundle exec rspec --tag "~sudo" &&
-sudo QUICK=1 bundle exec rspec --tag "sudo"
+echo "Running QUICK integration tests that require sudo..." &&
+sudo VERBOSE=1 QUICK=1 bundle exec rspec --tag "sudo" --fail-fast &&
+
+echo "Running QUICK integration tests..." &&
+VERBOSE=1 QUICK=1 bundle exec rspec --tag "~sudo" --fail-fast &&
+
+echo "Running unit tests..." &&
+xcodebuild -project macosvpn.xcodeproj \
+           -scheme macosvpn \
+           test | bundle exec xcpretty &&
+
+echo "Running rubocop..." &&
+bundle exec rubocop &&
+
+echo "All tests passed. Ship it!"
+

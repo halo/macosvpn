@@ -112,10 +112,6 @@ extension ServiceConfig {
       service.enableSplitTunnel = splitTunnel.value
       service.disconnectOnSwitch = disconnectOnSwitch.value
       service.disconnectOnLogout = disconnectOnLogout.value
-      
-      if endpoint.value?.isEmpty ?? true {
-        throw ExitError(message: "", code: .todo)
-      }
       service.enableSplitTunnel = splitTunnel.value
 
       return service

@@ -23,7 +23,7 @@ enum Keychain {
                                                 withAccount account: String,
                                                 andPassword password: String) throws {
     Log.debug("Creating Password Keychain Item with ID \(String(describing: service))")
-    return try CreateItem.create(label, withService: service, account: account, description: "PPP Password", andPassword: password)
+    try CreateItem.create(label, withService: service, account: account, description: "PPP Password", andPassword: password)
   }
 
   public static func createSharedSecretKeyChainItem(_ label: String,
@@ -31,8 +31,8 @@ enum Keychain {
                                                     withPassword password: String) throws {
     var service = service
     service = "\(service).SS"
-    Log.debug("Creating IPSec Shared Secret Keychain Item with ID \(String(describing: service))")
-    return try CreateItem.create(label, withService: service, account: "", description: "IPSec Shared Secret", andPassword: password)
+    Log.debug("Creating Cisco IPSec Shared Secret Keychain Item with ID \(String(describing: service))")
+    try CreateItem.create(label, withService: service, account: "", description: "IPSec Shared Secret", andPassword: password)
   }
 
   public static func createXAuthKeyChainItem(_ label: String,
@@ -41,7 +41,7 @@ enum Keychain {
     var service = service
     service = "\(service ).XAUTH"
     Log.debug("Creating Cisco IPSec XAuth Keychain Item with ID \(String(describing: service))")
-    return try CreateItem.create(label, withService: service, account: "", description: "IPSec XAuth Password", andPassword: password)
+    try CreateItem.create(label, withService: service, account: "", description: "IPSec XAuth Password", andPassword: password)
   }
 
 

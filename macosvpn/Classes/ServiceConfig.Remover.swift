@@ -27,17 +27,25 @@ extension ServiceConfig {
         Log.debug("Removing Services \(names)")
       }
 
-      try NetworkSet.RemoveServices.call(withNames: names, orAll: all, usingPreferencesRef: preferences)
+      let deletedCount = try NetworkSet.RemoveServices.call(withNames: names,
+                                                            orAll: all,
+                                                            usingPreferencesRef: preferences)
+
+      if (deletedCount == 0) {
+        Log.debug("No services had to be deleted. No need to commit any changes.")
+        return
+      }
 
       Log.debug("Commiting all changes...")
       if !SCPreferencesCommitChanges(preferences) {
-        Log.error("Sorry, without superuser privileges I won't be able to remove any VPN interfaces.");
-        Log.debug("Error: Could not commit preferences after removing service(s). \(SCErrorString(SCError())) (Code \(SCError()))")
-        throw ExitError(message: "", code: .todo)   // CommingingPreferencesFailed
+        throw ExitError(message: "Could not commit preferences after removing service(s)",
+                        code: .committingPreferencesFailed,
+                        systemStatus: true)
       }
       if !SCPreferencesApplyChanges(preferences) {
-        Log.error("Error: Could not apply changes after removing service(s). \(SCErrorString(SCError())) (Code \(SCError()))")
-        throw ExitError(message: "", code: .todo)   // ApplyingPreferencesFailed
+        throw ExitError(message: "Could not apply changes after removing service(s)",
+                        code: .applyingPreferencesFailed,
+                        systemStatus: true)
       }
 
     }

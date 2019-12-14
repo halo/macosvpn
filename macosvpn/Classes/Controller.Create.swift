@@ -3,8 +3,6 @@ import SystemConfiguration
 
 extension Controller {
   public enum Create {
-     // This method is responsible for obtaining authorization in order to perform
-    // privileged system modifications. It is mandatory for creating network interfaces.
     public static func call() throws {
 
       // If this process has root privileges, it will be able to write to the System Keychain.
@@ -27,12 +25,9 @@ extension Controller {
                         systemStatus: true)
       }
       Log.debug("Gained superhuman rights.");
+
       // Later, when we're done, other processes may modify the system configuration again
       defer { SCPreferencesUnlock(prefs) }
-
-
-      // If everything works out, we will return exit code 0
-      //var exitCode: Int32 = 0;
 
       let serviceConfigs = Arguments.serviceConfigs
       if (serviceConfigs.count == 0) {

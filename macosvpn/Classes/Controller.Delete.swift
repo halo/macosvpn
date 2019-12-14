@@ -14,23 +14,20 @@ extension Controller {
 
       let prefs = try Authorization.preferences()
 
-      // Making sure other process cannot make configuration modifications
-      // by obtaining a system-wide lock over the system preferences.
-      /*
-       if (SCPreferencesLock(prefs, true)) {
-       Log.debug("Gained superhuman rights.");
-       } else {
-       Log.error("Sorry, without superuser privileges I won't be able to remove any VPN interfaces.");
-       return 32; // VPNExitCode.LockingPreferencesFailed
-       }
-       */
+      guard SCPreferencesLock(prefs, true) else {
+        throw ExitError(message: "Could not obtain global System Preferences Lock.",
+                        code: .couldNotLockSystemPreferences,
+                        systemStatus: true)
+      }
+      defer { SCPreferencesUnlock(prefs) }
+
       try ServiceConfig.Remover.delete(names: names,
                                    all: Arguments.options.allRequested,
                                    usingPreferencesRef: prefs)
       // This particular interface could not be deleted. Let's stop processing the others.
 
       // We're done, other processes may modify the system configuration again
-      // SCPreferencesUnlock(prefs);
+       SCPreferencesUnlock(prefs);
     }
   }
 }

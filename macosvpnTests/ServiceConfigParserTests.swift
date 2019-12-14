@@ -9,7 +9,7 @@ class ServiceConfigParserTests: XCTestCase {
       "--endpoint", "example.com",
     ]
     
-    let service = ServiceConfig.Parser.parse(arguments)
+    let service = try! ServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .L2TPOverIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -35,7 +35,7 @@ class ServiceConfigParserTests: XCTestCase {
       "--split",
     ]
     
-    let service = ServiceConfig.Parser.parse(arguments)
+    let service = try! ServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .L2TPOverIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -54,7 +54,7 @@ class ServiceConfigParserTests: XCTestCase {
       "--endpoint", "example.com",
     ]
     
-    let service = ServiceConfig.Parser.parse(arguments)
+    let service = try! ServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .CiscoIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
@@ -74,7 +74,7 @@ class ServiceConfigParserTests: XCTestCase {
       "--groupname", "Dreamteam",
     ]
     
-    let service = ServiceConfig.Parser.parse(arguments)
+    let service = try! ServiceConfig.Parser.parse(arguments)
     XCTAssertEqual(service.kind, .CiscoIPSec)
     XCTAssertEqual(service.name, "Atlantic")
     XCTAssertEqual(service.endpoint, "example.com")
