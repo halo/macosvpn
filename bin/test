@@ -1,4 +1,6 @@
 #!/bin/sh
+set -o pipefail
+
 sudo echo "I need sudo. Thank you." &&
 
 echo "Running integration tests..." &&
