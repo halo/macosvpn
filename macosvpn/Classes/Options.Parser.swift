@@ -83,14 +83,14 @@ extension Options {
       }
 
       guard let commandNameValue = commandName.value else {
-        Log.error("You must specify a command.")
-        return options
+        throw ExitError(message: "You must specify a command. For example `macosvpn create` or `macosvpn delete`. Try `--help`.",
+                        code: .invalidCommand)
       }
 
       guard let command = Command(rawValue: commandNameValue) else {
-        Log.error("Unknown command: \(commandNameValue)")
-        return options
-      }
+        throw ExitError(message: "You specified an unknown command. Try `macosvpn create` or `macosvpn delete` instead.",
+                        code: .invalidCommand)
+     }
 
       // Global
       options.command = command

@@ -6,7 +6,9 @@ public enum Controller {
         try Arguments.load()
 
       } catch let error as ExitError {
+        Log.error("")
         Log.error(error.localizedDescription)
+        Log.error("")
         return error.code.rawValue
 
       } catch {

@@ -3,10 +3,10 @@ import XCTest
 
 class OptionsParserTests: XCTestCase {
   
-  func testDefault() {
-    let options = try! Options.Parser.parse([])
-    XCTAssertEqual(options.command, .help)
-  }
+  //func testDefault() {
+  //  let options = try! Options.Parser.parse([])
+  //  XCTAssertEqual(options.command, .help)
+  //}
 
   func testHelpRequestedShort() {
     let options = try! Options.Parser.parse(["create", "-h"])

@@ -43,7 +43,7 @@ enum ExitCode: Int32 {
   case couldNotRetrieveServicesFromNetworkSet = 81
 
   // Options
-  case argumentParserFailedUnexpectedly = 82
+  case invalidCommand = 82
 
   // ServiceConfig
   case invalidServiceKindCalled = 90

@@ -46,7 +46,7 @@
 		C2404169238AD2E8008D48DB /* Options.Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2404168238AD2E8008D48DB /* Options.Parser.swift */; };
 		C240416A238AD2E9008D48DB /* Options.Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2404168238AD2E8008D48DB /* Options.Parser.swift */; };
 		C240416B238AD4A1008D48DB /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240416623897186008D48DB /* Options.swift */; };
-		C240416C238ADDD7008D48DB /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
+		C240416C238ADDD7008D48DB /* Colorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* Colorize.swift */; };
 		C24BE706236A237300FFC671 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE705236A237300FFC671 /* Log.swift */; };
 		C24BE70B236A2C7700FFC671 /* ServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* ServiceConfig.swift */; };
 		C24BE70E236AE90F00FFC671 /* PrettyColors in Frameworks */ = {isa = PBXBuildFile; productRef = C24BE70D236AE90F00FFC671 /* PrettyColors */; };
@@ -75,7 +75,7 @@
 		C2A88E932389269C00908B0B /* ServiceConfig.Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E922389269C00908B0B /* ServiceConfig.Parser.swift */; };
 		C2A88E9623892E1900908B0B /* ServiceConfigParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A88E9523892E1900908B0B /* ServiceConfigParserTests.swift */; };
 		C2B6EA442368997F00129CDB /* Arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6EA432368997F00129CDB /* Arguments.swift */; };
-		C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* VPNColor.swift */; };
+		C2CE09E41C6E972400B97D6D /* Colorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* Colorize.swift */; };
 		C2D13F14239ED6D500D0D689 /* Keychain.Retrieve.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F13239ED6D500D0D689 /* Keychain.Retrieve.swift */; };
 		C2D13F18239FDD3A00D0D689 /* Keychain.CreateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F17239FDD3A00D0D689 /* Keychain.CreateItem.swift */; };
 		C2D13F1A239FE8F400D0D689 /* Controller.Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F19239FE8F400D0D689 /* Controller.Main.swift */; };
@@ -163,7 +163,7 @@
 		C2A88E922389269C00908B0B /* ServiceConfig.Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfig.Parser.swift; sourceTree = "<group>"; };
 		C2A88E9523892E1900908B0B /* ServiceConfigParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfigParserTests.swift; sourceTree = "<group>"; };
 		C2B6EA432368997F00129CDB /* Arguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arguments.swift; sourceTree = "<group>"; };
-		C2CE09E31C6E972400B97D6D /* VPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNColor.swift; sourceTree = "<group>"; };
+		C2CE09E31C6E972400B97D6D /* Colorize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colorize.swift; sourceTree = "<group>"; };
 		C2D13F13239ED6D500D0D689 /* Keychain.Retrieve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.Retrieve.swift; sourceTree = "<group>"; };
 		C2D13F17239FDD3A00D0D689 /* Keychain.CreateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.CreateItem.swift; sourceTree = "<group>"; };
 		C2D13F19239FE8F400D0D689 /* Controller.Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.Main.swift; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 				C26F6250239C2CD700BC9000 /* ExitError.swift */,
 				C299053C1E12F9B500570022 /* ExitCode.swift */,
 				C233AF801C6E7DCD00F39700 /* Help.swift */,
-				C2CE09E31C6E972400B97D6D /* VPNColor.swift */,
+				C2CE09E31C6E972400B97D6D /* Colorize.swift */,
 				C24BE705236A237300FFC671 /* Log.swift */,
 				C23C4A05238C68EA003CF07D /* Collection+split.swift */,
 				C267ADF61ED1F6760058CDE6 /* Optional+String.swift */,
@@ -444,7 +444,7 @@
 				C2B6EA442368997F00129CDB /* Arguments.swift in Sources */,
 				C2D13F2223A12F3600D0D689 /* NetworkInterface.Initialize.swift in Sources */,
 				C23C4A01238C5BB9003CF07D /* ServiceConfig.Splitter.swift in Sources */,
-				C2CE09E41C6E972400B97D6D /* VPNColor.swift in Sources */,
+				C2CE09E41C6E972400B97D6D /* Colorize.swift in Sources */,
 				C2D13F14239ED6D500D0D689 /* Keychain.Retrieve.swift in Sources */,
 				C23C4A09238EF261003CF07D /* Keychain.swift in Sources */,
 				C233AF811C6E7DCD00F39700 /* Help.swift in Sources */,
@@ -517,7 +517,7 @@
 				C240416A238AD2E9008D48DB /* Options.Parser.swift in Sources */,
 				C25FF366238AE2980028E38A /* Moderator.swift in Sources */,
 				C2A88E9623892E1900908B0B /* ServiceConfigParserTests.swift in Sources */,
-				C240416C238ADDD7008D48DB /* VPNColor.swift in Sources */,
+				C240416C238ADDD7008D48DB /* Colorize.swift in Sources */,
 				C23C4A07238C68EA003CF07D /* Collection+split.swift in Sources */,
 				C25FF375238AE3000028E38A /* ColorWrap.swift in Sources */,
 				C25FF368238AE2980028E38A /* SwiftCompat.swift in Sources */,

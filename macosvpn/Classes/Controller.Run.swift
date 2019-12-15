@@ -5,15 +5,18 @@ extension Controller {
     public static func call() throws {
       // To keep this application extensible we introduce different
       // commands right from the beginning. We start off with "create"
-      if Arguments.options.command == .create {
+      switch Arguments.options.command {
+      case .create:
         Log.debug("You wish to create one or more VPN service(s)")
         try Create.call()
+        break
 
-      } else if Arguments.options.command == .delete {
+      case .delete:
         Log.debug("You wish to delete one or more VPN service(s)")
         try Delete.call()
+        break
 
-      } else {
+      default:
         throw ExitError(message: "Unknown command. Try --help for instructions.",
                         code: .unknownCommand)
       }

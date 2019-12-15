@@ -15,64 +15,86 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 import Foundation
-import PrettyColors
 
-open class Help: NSObject {
-  
-  open class func showHelp() {
+public enum Help {
+  public static func showHelp() {
     Log.debug("Showing help...")
+
+    // USAGE
     
-    let usage: String = Color.Wrap(styles: .bold).wrap("Usage:")
-    let createCommand: String = Color.Wrap(foreground: VPNColor.Green).wrap("sudo macosvpn \(Options.Command.create)")
-    let createOptions: String = Color.Wrap(foreground: VPNColor.Pink).wrap("OPTIONS")
+    let usage = Colorize.boldUnderlined("Usage:")
+    let createCommand = Colorize.green("sudo macosvpn \(Options.Command.create)")
+    let deleteCommand = Colorize.red("sudo macosvpn \(Options.Command.delete)")
+    let options = Colorize.pink("OPTIONS")
 
-    let deleteCommand: String = Color.Wrap(foreground: VPNColor.Red).wrap("macosvpn \(Options.Command.delete)")
-    let deleteOptions: String = Color.Wrap(foreground: VPNColor.Pink).wrap("\(Flag.Name.dashed) MyVPN")
-
-    Log.info("\(usage) \(createCommand) \(createOptions) [OPTIONS AGAIN...]")
-    Log.info("            \(deleteCommand) \(deleteOptions) [\(Flag.Name.dashed) AnotherVPN]")
+    Log.info("\(usage) \(createCommand) \(options)")
+    Log.info("       \(deleteCommand) \(options)")
     Log.info("")
 
-    let debugFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Debug.dashed)
-    let versionFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Version.dashed)
-    let ciscoFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Cisco.dashed)
-    let ciscoFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.CiscoShort.dashed)
-    let l2tpFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.L2TP.dashed)
-    let endpointFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Endpoint.dashed)
-    let endpointFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.EndpointShort.dashed)
-    let usernameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Username.dashed)
-    let usernameFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.UsernameShort.dashed)
-    let passwordFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Password.dashed)
-    let passwordFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.PasswordShort.dashed)
-    let sharedSecretFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.SharedSecret.dashed)
-    let sharedSecretFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.SharedSecretShort.dashed)
-    let groupnameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.GroupName.dashed)
-    let groupnameFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.GroupNameShort.dashed)
-    let splitFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Split.dashed)
-    let splitFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.SplitShort.dashed)
-    let switchFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.DisconnectSwitch.dashed)
-    let switchFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.DisconnectSwitchShort.dashed)
-    let logoutFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.DisconnectLogout.dashed)
-    let logoutFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.DisconnectLogoutShort.dashed)
-    let forceFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Force.dashed)
-    let forceFlagShort: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.ForceShort.dashed)
-    let nameFlag: String = Color.Wrap(foreground: VPNColor.Pink).wrap(Flag.Name.dashed)
+    // GENERAL OPTIONS
 
-    Log.info("You can always add the \(debugFlag) option for troubleshooting.")
-    Log.info("The \(versionFlag) option displays the current version.")
-    Log.info("Add \(forceFlag) or \(forceFlagShort) to overwrite a VPN that has the same name.")
-    Log.info("Encapsulate arguments in \"double-quotes\" when using special characters.")
+    let generalOptions = Colorize.boldUnderlined("General Options:")
+    let debugFlag = Colorize.pink(Flag.Debug.dashed)
+    let debugFlagShort = Colorize.pink(Flag.DebugShort.dashed)
+    let helpFlag = Colorize.pink(Flag.Help.dashed)
+    let helpFlagShort = Colorize.pink(Flag.HelpShort.dashed)
+    let versionFlag = Colorize.pink(Flag.Version.dashed)
+    let versionFlagShort = Colorize.pink(Flag.VersionShort.dashed)
+    let usernameFlag = Colorize.pink(Flag.Username.dashed)
+    let forceFlag = Colorize.pink(Flag.Force.dashed)
+    let forceFlagShort = Colorize.pink(Flag.ForceShort.dashed)
+
+    Log.info(generalOptions)
+    Log.info("")
+    Log.info("The \(versionFlag) or \(versionFlagShort) option displays the current version.")
+    Log.info("Adding \(helpFlag) or \(helpFlagShort) shows this help.")
+    Log.info("You can always add the \(debugFlag) or \(debugFlagShort) option for troubleshooting.")
+    Log.info("Add \(forceFlag) or \(forceFlagShort) to overwrite an existing VPN with the same name.")
+    Log.info("Encapsulate arguments in \"double-quotes\" when using special characters, e.g. \(usernameFlag) \"Noël\".")
+    Log.info("")
+
+    // CREATE EXAMPLES
+
+    let ciscoFlag = Colorize.pink(Flag.Cisco.dashed)
+    let ciscoFlagShort = Colorize.pink(Flag.CiscoShort.dashed)
+    let l2tpFlag = Colorize.pink(Flag.L2TP.dashed)
+    let l2tpFlagShort = Colorize.pink(Flag.L2TPShort.dashed)
+    let endpointFlag = Colorize.pink(Flag.Endpoint.dashed)
+    let endpointFlagShort = Colorize.pink(Flag.EndpointShort.dashed)
+    let usernameFlagShort = Colorize.pink(Flag.UsernameShort.dashed)
+    let passwordFlag = Colorize.pink(Flag.Password.dashed)
+    let passwordFlagShort = Colorize.pink(Flag.PasswordShort.dashed)
+    let sharedSecretFlag = Colorize.pink(Flag.SharedSecret.dashed)
+    let sharedSecretFlagShort = Colorize.pink(Flag.SharedSecretShort.dashed)
+    let groupnameFlag = Colorize.pink(Flag.GroupName.dashed)
+    let groupnameFlagShort = Colorize.pink(Flag.GroupNameShort.dashed)
+    let splitFlag = Colorize.pink(Flag.Split.dashed)
+    let splitFlagShort = Colorize.pink(Flag.SplitShort.dashed)
+    let switchFlag = Colorize.pink(Flag.DisconnectSwitch.dashed)
+    let switchFlagShort = Colorize.pink(Flag.DisconnectSwitchShort.dashed)
+    let logoutFlag = Colorize.pink(Flag.DisconnectLogout.dashed)
+    let logoutFlagShort = Colorize.pink(Flag.DisconnectLogoutShort.dashed)
+    let nameFlag = Colorize.pink(Flag.Name.dashed)
+    let nameFlagShort = Colorize.pink(Flag.NameShort.dashed)
+    let allFlag = Colorize.pink(Flag.All.dashed)
+    let allFlagShort = Colorize.pink(Flag.AllShort.dashed)
+
+    Log.info(Colorize.boldUnderlined("Examples:"))
+    Log.info("")
+
+    Log.info(Colorize.blue("Create a Cisco IPSec VPN service"))
+    Log.info("\(createCommand) \(ciscoFlag) Atlantic \(endpointFlag) example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same \(groupnameFlag) Dreamteam")
+    Log.info("\(createCommand) \(ciscoFlagShort) Atlantic \(endpointFlagShort) example.com \(usernameFlagShort) Alice \(passwordFlagShort) p4ssw0rd \(sharedSecretFlagShort) s3same \(groupnameFlagShort) Dreamteam")
     Log.info("")
     
-    Log.info(Color.Wrap(styles: .bold).wrap("Examples:"))
+    Log.info(Colorize.blue("Create an L2TP over IPSec VPN service"))
+    Log.info("\(createCommand) \(l2tpFlag) Atlantic \(endpointFlag) example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same \(groupnameFlag) Dreamteam")
+    Log.info("\(createCommand) \(l2tpFlagShort) Atlantic \(endpointFlagShort) example.com \(usernameFlagShort) Alice \(passwordFlagShort) p4ssw0rd \(sharedSecretFlagShort) s3same \(groupnameFlagShort) Dreamteam")
     Log.info("")
 
-    Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("Creating a Cisco IPSec VPN Service"))
-    Log.info("\(createCommand) \(ciscoFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same \(groupnameFlag) Dreamteam")
-    Log.info("")
-    
-    Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("Creating an L2TP over IPSec VPN Service"))
-    Log.info("\(createCommand) \(l2tpFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same")
+    Log.info(Colorize.blue("Create multiple services"))
+    Log.info("\(createCommand) \(ciscoFlagShort) Atlantic \(endpointFlagShort) atlantic.example.com \(usernameFlagShort) Alice \(passwordFlagShort) p4ssw0rd \\")
+    Log.info("                     \(l2tpFlagShort) Pacific \(endpointFlagShort) pacific.example.com \(usernameFlagShort) Bob \(passwordFlagShort) s3same ")
     Log.info("")
 
     Log.info("With L2TP you can")
@@ -80,40 +102,32 @@ open class Help: NSObject {
     Log.info("  add \(switchFlag) or \(switchFlagShort) to disconnect when switching user accounts.")
     Log.info("  add \(logoutFlag) or \(logoutFlagShort) to disconnect when user logs out.")
     Log.info("")
-    Log.info("Note: The examples below assume Cisco, but they are analogous to the L2TP command.")
 
-    Log.info("")
-    Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("The same command as above but shorter"))
-    Log.info("\(createCommand) \(ciscoFlagShort) Atlantic \(endpointFlagShort) atlantic.example.com \(usernameFlagShort) Alice \(passwordFlagShort) p4ssw0rd \(sharedSecretFlagShort) s3same \(groupnameFlagShort) Dreamteam")
-    Log.info("")
-
-    Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("Repeat arguments to create multiple VPNs"))
-    Log.info("\(createCommand) \(l2tpFlag) Atlantic \(endpointFlag) atlantic.example.com \(usernameFlag) Alice \(passwordFlag) p4ssw0rd \(sharedSecretFlag) s3same \\")
-    Log.info("                     \(ciscoFlag) Northpole \(endpointFlag) northpole.example.com \(usernameFlag) Bob \(passwordFlag) s3cret \(sharedSecretFlag) pr1v4te \(groupnameFlagShort) Spaceteam")
-    Log.info("")
-
-    Log.info(Color.Wrap(foreground: VPNColor.Blue).wrap("Delete any VPN Service by name"))
+    Log.info(Colorize.blue("Delete L2TP and/or Cisco VPN services"))
     Log.info("\(deleteCommand) \(nameFlag) Atlantic")
+    Log.info("\(deleteCommand) \(nameFlagShort) Atlantic \(nameFlagShort) Pacific")
+    Log.info("\(deleteCommand) \(allFlag)")
+    Log.info("\(deleteCommand) \(allFlagShort)")
     Log.info("")
 
     Log.info("This application is released under the MIT license.")
     Log.info("Copyright (c) 2014-\(self.currentYear()) halo.")
-    Log.info(Color.Wrap(foreground: VPNColor.Brown).wrap("https://github.com/halo/macosvpn"))
+    Log.info(Colorize.brown("https://github.com/halo/macosvpn"))
   }
   
-  open class func showVersion() {
+  public static func showVersion() {
     Log.debug("Showing version...")
     print(self.currentVersion());
   }
-  
-  fileprivate class func currentYear() -> String {
+
+  fileprivate static func currentYear() -> String {
     let formatter: DateFormatter = DateFormatter()
     formatter.dateFormat = "yyyy"
     return formatter.string(from: Date())
   }
   
-  fileprivate class func currentVersion() -> String {
+  fileprivate static func currentVersion() -> String {
     return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
   }
-  
+
 }

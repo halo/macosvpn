@@ -18,11 +18,9 @@ import PrettyColors
 
 public struct Log {
   public static func debug(_ message: String) {
-    guard Arguments.options.debugRequested else {
-      return
-    }
+    guard Arguments.options.debugRequested else { return }
 
-    print(Color.Wrap(foreground: VPNColor.Blue).wrap("🔧 \(message)"))
+    print(Color.Wrap(foreground: .blue).wrap("\(message)"))
   }
 
   public static func info(_ message: String) {
@@ -30,10 +28,11 @@ public struct Log {
   }
   
   public static func warn(_ message: String) {
-    print("⚠️ \(message)")
-  }
+    print("\(message)")
+    print(Color.Wrap(foreground: .yellow).wrap("\(message)"))
+}
   
   public static func error(_ message: String) {
-    print(Color.Wrap(foreground: VPNColor.Red).wrap("🔥 \(message)"))
+    print(Color.Wrap(foreground: .red).wrap("\(message)"))
   }
 }
