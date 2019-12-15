@@ -61,7 +61,10 @@ and compare it to [the latest available version](https://github.com/halo/macosvp
 
 Creating a single L2TP over IPSec VPN Service:
 
-    sudo macosvpn create --l2tp Atlantic --endpoint atlantic.example.com --username Alice --password p4ssw0rd --shared-secret s3same
+```sh
+sudo macosvpn create --l2tp Atlantic --endpoint example.com --username Alice \                         
+                     --password p4ssw0rd --sharedsecret s3same
+```
 
 * Replace `--l2tp` with `--cisco` to create a Cisco IPSec instead.
 * Groupnames can be specified with `--groupname`.
@@ -70,30 +73,34 @@ Creating a single L2TP over IPSec VPN Service:
 By default, L2TP is created with the "Send all traffic over VPN connection" option, also known as wildcard routing.
 You can add the `--split` flag to **not** force all traffic over VPN.
 
-#### Shortcuts
+The same command shorter (try out `--help` to see all available arguments):
 
-The same command shorter:
+```sh
+sudo macosvpn create -l Atlantic -e example.com -u Alice -p p4ssw0rd -s s3same
+```
 
-    sudo macosvpn create -l Atlantic -e atlantic.example.com -u Alice -p p4ssw0rd -s s3same
+With L2TP you can
 
-
+* add `--split` to *not* force all traffic over VPN.
+* add `--disconnectswitch` to disconnect when switching user accounts.
+* add `--disconnectlogout` to disconnect when user logs out.
+  
 #### Creating multiple VPNs at once
 
-Repeat the arguments for creating multiple Services at once (no matter which short version you use :)
+Repeat the arguments to create multiple Services at once.
 
-    sudo macosvpn create -leups Atlantic atlantic.example.com Alice p4ssw0rd s3same \\
-                         -leups Northpole northpole.example.com Bob s3cret pr1v4te
+```sh
+sudo macosvpn create -c Atlantic -e atlantic.example.com -u Alice -p p4ssw0rd \
+                     -l Pacific -e pacific.example.com -u Bob -p s3same
+```
 
-#### Deleting VPN services by name
+#### Deleting VPN services
 
-These commands will prompt you for your password to allow changes to your Network configuration:
-
-    macosvpn delete --name MyVPN --name AnotherOne
-    macosvpn delete -n ThisOneToo
-
-Run it with sudo to avoid the prompt:
-
-    sudo macosvpn delete --name MyVPN
+```sh
+sudo macosvpn delete --name MyVPN
+sudo macosvpn delete -n AnotherOne -n ThisOneToo
+sudo macosvpn delete --all # Careful!
+```
 
 ## Troubleshooting
 
