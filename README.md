@@ -13,7 +13,7 @@ This is a command-line tool written in Swift that can create VPN network configu
 It supports **L2TP over IPSec** and **Cisco IPSec**.
 Integration tests are run on Travis to ensure it's working properly.
 
-![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_0.2.0-rc1.jpg)
+![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_1.0.0-rc1.jpg)
 
 ## Requirements
 
@@ -62,7 +62,7 @@ and compare it to [the latest available version](https://github.com/halo/macosvp
 Creating a single L2TP over IPSec VPN Service:
 
 ```sh
-sudo macosvpn create --l2tp Atlantic --endpoint example.com --username Alice \                         
+sudo macosvpn create --l2tp Atlantic --endpoint example.com --username Alice \
                      --password p4ssw0rd --sharedsecret s3same
 ```
 
@@ -84,7 +84,7 @@ With L2TP you can
 * add `--split` to *not* force all traffic over VPN.
 * add `--disconnectswitch` to disconnect when switching user accounts.
 * add `--disconnectlogout` to disconnect when user logs out.
-  
+
 #### Creating multiple VPNs at once
 
 Repeat the arguments to create multiple Services at once.
