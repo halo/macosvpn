@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+bundle exec copyright-header \
+  --add-path macosvpn \
+  --output-dir . \
+  --license MIT \
+  --copyright-software macosvpn \
+  --copyright-software-description "Create macOS VPN services from command line" \
+  --copyright-holder "halo https://github.com/halo/macosvpn" \
+  --copyright-year 2014-2019 \
+  --word-wrap 130 \
+  --syntax doc/copyright_syntax.yml
