@@ -4,33 +4,36 @@
 [![Build Status](https://travis-ci.org/halo/macosvpn.svg?branch=master)](https://travis-ci.org/halo/macosvpn)
 [![Codebeat](https://codebeat.co/badges/b60656d2-1cc8-4644-a1a9-4a35177476fb)](https://codebeat.co/projects/github-com-halo-macosvpn)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/halo/macosvpn)
+![Swift](https://img.shields.io/badge/Swift-5-F16D39.svg?style=flat)
 
 ## Create Mac OS VPNs programmatically
 
-This is a command-line tool written in Objective-C (transitioning to Swift) that can create VPN network configurations on your Mac.
+This is a command-line tool written in Swift that can create VPN network configurations on your Mac.
 
-It supports both *L2TP over IPSec* and *Cisco IPSec*.
+It supports **L2TP over IPSec** and **Cisco IPSec**.
 Integration tests are run on Travis to ensure it's working properly.
 
 ![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_0.2.0-rc1.jpg)
 
 ## Requirements
 
-* macOS High Sierra 10.13, Sierra 10.12, El Capitan 10.11, Yosemite 10.10, or Mavericks 10.9
-* Administrator privileges (i.e. you've got to run it with sudo)
+* macoS 10.10 or higher
+* Administrator privileges (i.e. you *have* to run it with sudo)
 
 **Why sudo?**
 
-The passwords of VPN services are stored in the System Keychain.
-Only `sudo` or a [HelperTool](https://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html#//apple_ref/doc/uid/TP40002589-SW2) can write to the System Keychain.
-I don't want you to have to deal with the complexity a HelperTool can entail (GUI authorization and upgrading), so we simply use `sudo`.
+The passwords of VPN services are exclusively stored in the *System Keychain*.
+Only `sudo` or a [HelperTool](https://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html#//apple_ref/doc/uid/TP40002589-SW2) can write to the *System Keychain*.
+I don't want you to have to deal with the complexity a HelperTool can entail, so we simply use `sudo`.
 
 ## Installation
 
 If you have [Homebrew](http://brew.sh) installed, you can simply start a Terminal and run:
 
 ```bash
-# See https://github.com/Homebrew/homebrew-core/search?q=macosvpn&type=Issues
+# To see which version is installed via homebrew, have a look at:
+# https://github.com/Homebrew/homebrew-core/search?q=macosvpn&type=Issues
+
 brew install macosvpn
 ```
 
@@ -38,17 +41,17 @@ If not, you can run this curl command to get the compiled executable from Github
 
 ```bash
 # Make sure first that the directory /usr/local/bin exists
-sudo bash -c "curl -L https://github.com/halo/macosvpn/releases/download/0.3.1/macosvpn > /usr/local/bin/macosvpn"
+
+sudo sh -c "curl -L https://github.com/halo/macosvpn/releases/download/1.0.0/macosvpn > /usr/local/bin/macosvpn"
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
-If that freaks you out (it should), you can compile it yourself if you have Xcode installed:
+If that freaks you out (it should), you can compile it yourself if you have Xcode 11 installed:
 
 ```bash
 git clone https://github.com/halo/macosvpn.git
 cd macosvpn
-xcodebuild -configuration Debug
-build/Debug/macosvpn
+bin/build
 ```
 
 You can always run `macosvpn --version` to see the version currently installed on your system
@@ -69,17 +72,9 @@ You can add the `--split` flag to **not** force all traffic over VPN.
 
 #### Shortcuts
 
-The same command but shorter:
-
-    sudo macosvpn create l2tp Atlantic endpoint atlantic.example.com username Alice password p4ssw0rd shared-secret s3same
-
-The same command even shorter:
+The same command shorter:
 
     sudo macosvpn create -l Atlantic -e atlantic.example.com -u Alice -p p4ssw0rd -s s3same
-
-The same command as short as possible:
-
-    sudo macosvpn create -leups Atlantic atlantic.example.com Alice p4ssw0rd s3same
 
 
 #### Creating multiple VPNs at once
@@ -112,9 +107,7 @@ Run it with sudo to avoid the prompt:
 
 The `master` branch is always edge and may not be ready for production.
 
-Integration tests are run using ruby. Simply look at the `before_script` and `script` sections in the [.travis.yml](https://github.com/halo/macosvpn/blob/master/.travis.yml#L6) file to see how to run the tests on your Mac.
-
-When using Xcode it's important to remember that you need to compile this app in the `Debug` configuration and not the `Release` configuration. Otherwise you will end up with unexplainable [random crashes](https://github.com/halo/macosvpn/issues/13#issuecomment-217252496).
+There are XCTest units test and integration tests that are run using ruby. Simply look at [bin/test](https://github.com/halo/macosvpn/blob/master/bin/test) to see how to run the tests on your Mac.
 
 Useful commands for debugging:
 
@@ -143,12 +136,11 @@ Finally, I [learned from over here](http://stackoverflow.com/questions/24363935)
 
 Thank you for reporting bugs. And thanks to all keen [contributors](https://github.com/halo/macosvpn/graphs/contributors).
 
-These are the 3rd party libraries I was allowed to use:
+These are 3rd-party libraries, which were kindly released under the MIT license:
 
-* [NSError/ArgumentParser](https://github.com/NSError/ArgumentParser)
-* [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)
-* [beelsebob/CoreParse](https://github.com/beelsebob/CoreParse)
+* [Moderator](https://github.com/kareman/Moderator) by Kare Morstol
+* [PrettyColors](https://github.com/jdhealy/PrettyColors) by J.D. Healy
 
 ## License
 
-MIT 2016 halo. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
+MIT 2014-2019 halo. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).

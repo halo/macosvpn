@@ -1,5 +1,24 @@
 # master
 
+# 1.0.0
+
+Breaking Changes:
+
+* The `-ceups` and `-leups` shortcut syntax was removed without replacement. Just use `--cisco` or `-c` etc.
+* Most of the exit codes have changed.
+* Dropped support for macOS 10.9 and earlier
+* The `delete` command now requires `sudo` rather than asking for privileges in a GUI prompt.
+* Build with Xcode version 11
+
+Features:
+
+* Added `macosvpn delete --all` to remove all L2TP and Cisco VPN services.
+
+Improvements:
+
+* Refactored away all Objective-C code. Now everything is on Swift 5.
+* Many long functions are now broken up into smaller files.
+
 # 0.3.5
 
 Bugfix:
