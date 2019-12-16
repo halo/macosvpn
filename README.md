@@ -46,6 +46,12 @@ sudo sh -c "curl -L https://github.com/halo/macosvpn/releases/download/1.0.0/mac
 sudo chmod +x /usr/local/bin/macosvpn
 ```
 
+As of macOS Catalina you may once have to "accept" that this executable is considered "safe":
+
+```bash
+xattr -d com.apple.quarantine /usr/local/bin/macosvpn
+```
+
 If that freaks you out (it should), you can compile it yourself if you have Xcode 11 installed:
 
 ```bash
