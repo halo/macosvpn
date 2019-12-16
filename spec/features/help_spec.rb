@@ -6,10 +6,8 @@ RSpec.describe 'Showing Help' do
   context 'no arguments' do
     it 'shows the Help' do
       output, status = Macosvpn.call arguments: nil
-      expect(status).to eq 3
-      expect(output).to include 'Usage:'
-      expect(output).to include 'sudo macosvpn'
-      expect(output).to include 'https://github.com/halo/macosvpn'
+      expect(status).to eq 82
+      expect(output).to include 'You must specify a command'
     end
   end
 
