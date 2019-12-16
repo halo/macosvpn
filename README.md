@@ -13,6 +13,8 @@ This is a command-line tool written in Swift that can create VPN network configu
 It supports **L2TP over IPSec** and **Cisco IPSec**.
 Integration tests are run on Travis to ensure it's working properly.
 
+This open-source code is actively maintained. Should you like to motivate me, you may click on the ✭ in the top-right corner.
+
 ![Screenshot](https://cdn.rawgit.com/halo/macosvpn/master/doc/screenshot_1.0.0-rc1.jpg)
 
 ## Requirements
