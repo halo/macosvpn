@@ -28,7 +28,6 @@ public struct Log {
   }
   
   public static func warn(_ message: String) {
-    print("\(message)")
     print(Color.Wrap(foreground: .yellow).wrap("\(message)"))
 }
   
