@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328613A1197FEE7A0010BB98 /* SystemConfiguration.framework */; };
 		9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3D847D1982AE1B005BD5F3 /* Security.framework */; };
 		9D61984D1981129900FC01E8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5CE1C419803F2B005B5E3E /* main.swift */; };
-		C20E6A68236DC8DB00671953 /* Moderator in Frameworks */ = {isa = PBXBuildFile; productRef = C20E6A67236DC8DB00671953 /* Moderator */; };
 		C20E6A69236DC99900671953 /* ServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* ServiceConfig.swift */; };
 		C20E6A6B236DCED200671953 /* Options.ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20E6A6A236DCED200671953 /* Options.ParserTests.swift */; };
 		C20E6A6C236DCF0600671953 /* Arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6EA432368997F00129CDB /* Arguments.swift */; };
@@ -32,6 +31,15 @@
 		C2238BC023A570BF00742F3F /* Authorizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27566F91D08744A009CD68C /* Authorizations.swift */; };
 		C2238BC123A570BF00742F3F /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* Help.swift */; };
 		C2238BC323A570BF00742F3F /* Optional+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ADF61ED1F6760058CDE6 /* Optional+String.swift */; };
+		C227BC9F23B3F72D00970BF9 /* ECMA 48.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF36A238AE3000028E38A /* ECMA 48.swift */; };
+		C227BCA023B3F72D00970BF9 /* Color · EightBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF36B238AE3000028E38A /* Color · EightBit.swift */; };
+		C227BCA123B3F72D00970BF9 /* Color · Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF36C238AE3000028E38A /* Color · Named.swift */; };
+		C227BCA223B3F72D00970BF9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF36D238AE3000028E38A /* Color.swift */; };
+		C227BCA323B3F72D00970BF9 /* StyleParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF36E238AE3000028E38A /* StyleParameter.swift */; };
+		C227BCA423B3F72D00970BF9 /* ColorWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF36F238AE3000028E38A /* ColorWrap.swift */; };
+		C227BCA523B3F72D00970BF9 /* Moderator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF363238AE2980028E38A /* Moderator.swift */; };
+		C227BCA623B3F72D00970BF9 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF364238AE2980028E38A /* Parsers.swift */; };
+		C227BCA723B3F72D00970BF9 /* SwiftCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF365238AE2980028E38A /* SwiftCompat.swift */; };
 		C233AF811C6E7DCD00F39700 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233AF801C6E7DCD00F39700 /* Help.swift */; };
 		C23C4A00238C5BB9003CF07D /* ServiceConfig.Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C49FC238B0C41003CF07D /* ServiceConfig.Splitter.swift */; };
 		C23C4A01238C5BB9003CF07D /* ServiceConfig.Splitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C49FC238B0C41003CF07D /* ServiceConfig.Splitter.swift */; };
@@ -49,7 +57,6 @@
 		C240416C238ADDD7008D48DB /* Colorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE09E31C6E972400B97D6D /* Colorize.swift */; };
 		C24BE706236A237300FFC671 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE705236A237300FFC671 /* Log.swift */; };
 		C24BE70B236A2C7700FFC671 /* ServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BE70A236A2C7700FFC671 /* ServiceConfig.swift */; };
-		C24BE70E236AE90F00FFC671 /* PrettyColors in Frameworks */ = {isa = PBXBuildFile; productRef = C24BE70D236AE90F00FFC671 /* PrettyColors */; };
 		C25FF366238AE2980028E38A /* Moderator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF363238AE2980028E38A /* Moderator.swift */; };
 		C25FF367238AE2980028E38A /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF364238AE2980028E38A /* Parsers.swift */; };
 		C25FF368238AE2980028E38A /* SwiftCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FF365238AE2980028E38A /* SwiftCompat.swift */; };
@@ -184,11 +191,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C20E6A68236DC8DB00671953 /* Moderator in Frameworks */,
 				32861394197FED310010BB98 /* Foundation.framework in Frameworks */,
 				9D3D847E1982AE1B005BD5F3 /* Security.framework in Frameworks */,
 				328613A2197FEE7A0010BB98 /* SystemConfiguration.framework in Frameworks */,
-				C24BE70E236AE90F00FFC671 /* PrettyColors in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +212,7 @@
 			children = (
 				32861395197FED310010BB98 /* macosvpn */,
 				32861398197FED310010BB98 /* Config */,
+				C2EBF45E236DD658004562E2 /* Vendor */,
 				C269D1F1236B1F65003D6BE9 /* macosvpnTests */,
 				32861392197FED310010BB98 /* Frameworks */,
 				32861391197FED310010BB98 /* Products */,
@@ -322,7 +328,6 @@
 				C269D1F2236B1F65003D6BE9 /* ServiceConfigTests.swift */,
 				C26F6243239985BB00BC9000 /* Collection+splitTests.swift */,
 				C269D1F4236B1F65003D6BE9 /* Info.plist */,
-				C2EBF45E236DD658004562E2 /* Vendor */,
 			);
 			path = macosvpnTests;
 			sourceTree = "<group>";
@@ -356,8 +361,6 @@
 			);
 			name = macosvpn;
 			packageProductDependencies = (
-				C24BE70D236AE90F00FFC671 /* PrettyColors */,
-				C20E6A67236DC8DB00671953 /* Moderator */,
 			);
 			productName = linkliar;
 			productReference = 32861390197FED310010BB98 /* macosvpn */;
@@ -396,9 +399,12 @@
 					3286138F197FED310010BB98 = {
 						DevelopmentTeam = B9J4QR64LK;
 						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
 					};
 					C269D1EF236B1F65003D6BE9 = {
 						CreatedOnToolsVersion = 11.1;
+						DevelopmentTeam = B9J4QR64LK;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -412,8 +418,6 @@
 			);
 			mainGroup = 32861387197FED310010BB98;
 			packageReferences = (
-				C24BE70C236AE90F00FFC671 /* XCRemoteSwiftPackageReference "PrettyColors" */,
-				C20E6A66236DC8DB00671953 /* XCRemoteSwiftPackageReference "Moderator" */,
 			);
 			productRefGroup = 32861391197FED310010BB98 /* Products */;
 			projectDirPath = "";
@@ -440,6 +444,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C227BC9F23B3F72D00970BF9 /* ECMA 48.swift in Sources */,
+				C227BCA023B3F72D00970BF9 /* Color · EightBit.swift in Sources */,
+				C227BCA123B3F72D00970BF9 /* Color · Named.swift in Sources */,
+				C227BCA223B3F72D00970BF9 /* Color.swift in Sources */,
+				C227BCA323B3F72D00970BF9 /* StyleParameter.swift in Sources */,
+				C227BCA423B3F72D00970BF9 /* ColorWrap.swift in Sources */,
+				C227BCA523B3F72D00970BF9 /* Moderator.swift in Sources */,
+				C227BCA623B3F72D00970BF9 /* Parsers.swift in Sources */,
+				C227BCA723B3F72D00970BF9 /* SwiftCompat.swift in Sources */,
 				C24BE706236A237300FFC671 /* Log.swift in Sources */,
 				C2B6EA442368997F00129CDB /* Arguments.swift in Sources */,
 				C2D13F2223A12F3600D0D689 /* NetworkInterface.Initialize.swift in Sources */,
@@ -536,7 +549,6 @@
 		};
 		C20E6A73236DD28700671953 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = C20E6A72236DD28700671953 /* Moderator */;
 		};
 /* End PBXTargetDependency section */
 
@@ -642,8 +654,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -659,11 +670,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/macosvpn/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -692,11 +699,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/macosvpn/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -729,11 +732,7 @@
 				DEVELOPMENT_TEAM = B9J4QR64LK;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = macosvpnTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -761,11 +760,7 @@
 				DEVELOPMENT_TEAM = B9J4QR64LK;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = macosvpnTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -806,43 +801,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C20E6A66236DC8DB00671953 /* XCRemoteSwiftPackageReference "Moderator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kareman/Moderator.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.1;
-			};
-		};
-		C24BE70C236AE90F00FFC671 /* XCRemoteSwiftPackageReference "PrettyColors" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jdhealy/PrettyColors.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C20E6A67236DC8DB00671953 /* Moderator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C20E6A66236DC8DB00671953 /* XCRemoteSwiftPackageReference "Moderator" */;
-			productName = Moderator;
-		};
-		C20E6A72236DD28700671953 /* Moderator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C20E6A66236DC8DB00671953 /* XCRemoteSwiftPackageReference "Moderator" */;
-			productName = Moderator;
-		};
-		C24BE70D236AE90F00FFC671 /* PrettyColors */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C24BE70C236AE90F00FFC671 /* XCRemoteSwiftPackageReference "PrettyColors" */;
-			productName = PrettyColors;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32861388197FED310010BB98 /* Project object */;
 }
