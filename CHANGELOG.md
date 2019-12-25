@@ -1,5 +1,12 @@
 # master
 
+# 1.0.1
+
+* This is a cosmetic release, no changes to the code.
+* Dependencies are now included in this git repo instead of relying on swift package manager
+  The reason is that homebrew cannot download them properly in the sandboxed installer.
+  Plus, it's really safer anyway.
+
 # 1.0.0
 
 Breaking Changes:
