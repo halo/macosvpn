@@ -14,8 +14,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import PrettyColors
-
 public struct Log {
   public static func debug(_ message: String) {
     guard Arguments.options.debugRequested else { return }

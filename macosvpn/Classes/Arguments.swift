@@ -14,8 +14,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Moderator
-
 open class Arguments {
   public static var options = Options()
   public static var serviceConfigs: [ServiceConfig] = []

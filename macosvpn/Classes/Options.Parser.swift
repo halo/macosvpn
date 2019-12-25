@@ -15,7 +15,6 @@
  */
 
 import Darwin
-import Moderator
 
 extension Options {
   /// Reads global command line arguments and converts them into an Options instance.

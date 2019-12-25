@@ -14,8 +14,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Moderator
-
 open class Options {
   public enum Command: String {
     case create

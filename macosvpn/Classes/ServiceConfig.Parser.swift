@@ -15,7 +15,6 @@
  */
 
 import Darwin
-import Moderator
 
 extension ServiceConfig {
   enum Parser {
