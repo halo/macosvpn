@@ -34,8 +34,9 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ppp_auth_password_id).to be_present
       expect(service.ppp_auth_password_encryption).to eq 'Keychain'
       expect(service.ppp_common_remote_address).to eq 'vpntestl2tp.example.com'
-      expect(service.ppp_disconnect_on_fast_user_switch).to eq '1'
-      expect(service.ppp_disconnect_on_logout).to eq '0'
+      expect(service.ppp_disconnect_on_fast_user_switch).to eq 1
+      expect(service.ppp_disconnect_on_logout).to eq 0
+      expect(service.ipv4_override_primary).to eq 1
 
       sleep 0.5
       key = Keychain.find(name: "VPNTestL2TP#{id}", kind: :l2tp_password)
@@ -83,8 +84,8 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ppp_auth_password_id).to_not include 'XAUTH'
       expect(service.ppp_auth_password_encryption).to eq 'Keychain'
       expect(service.ppp_common_remote_address).to eq 'vpntestl2tp.example.com'
-      expect(service.ppp_disconnect_on_fast_user_switch).to eq '1'
-      expect(service.ppp_disconnect_on_logout).to eq '0'
+      expect(service.ppp_disconnect_on_fast_user_switch).to eq 1
+      expect(service.ppp_disconnect_on_logout).to eq 0
 
       sleep 0.5
       key = Keychain.find(name: "VPNTestL2TP#{id}", kind: :l2tp_password)
@@ -129,8 +130,9 @@ RSpec.describe 'Creating a VPN Service' do
       expect(service.ppp_auth_password_id).to be_present
       expect(service.ppp_auth_password_encryption).to eq 'Keychain'
       expect(service.ppp_common_remote_address).to eq 'hawaii.example.com'
-      expect(service.ppp_disconnect_on_fast_user_switch).to eq '0'
-      expect(service.ppp_disconnect_on_logout).to eq '1'
+      expect(service.ppp_disconnect_on_fast_user_switch).to eq 0
+      expect(service.ppp_disconnect_on_logout).to eq 1
+      expect(service.ipv4_override_primary).to be nil
 
       sleep 0.5
       key = Keychain.find(name: "VPNTestL2TP#{id}", kind: :l2tp_password)
