@@ -9,7 +9,8 @@ RSpec.describe 'Creating a VPN Service' do
 
       # Creating VPN for first time
 
-      arguments = "create -l VPNTestL2TP#{id} -e vpntestl2tp.example.com -u Alice -p p4ssw0rd -g VPNL2TPGroup -s s3same -i"
+      arguments = "create -l VPNTestL2TP#{id} -e vpntestl2tp.example.com " \
+                  '-u Alice -p p4ssw0rd -g VPNL2TPGroup -s s3same -i'
       arguments += ' --force' if quick?
       arguments += ' --debug' if verbose?
       output, status = Macosvpn.sudo arguments: arguments

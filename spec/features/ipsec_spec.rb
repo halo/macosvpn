@@ -23,13 +23,10 @@ RSpec.describe 'Creating and deleting a VPN Service' do
     it 'creates the VPN' do
       id = rand(9999)
 
-      # raise 'Please remove the `VPNTestIPSec` VPN manually.' if slow? && SCUtil::Services.find_by_name('VPNTestIPSec')
-      # raise 'Please remove the `VPNTestIPSec2` VPN manually.' if slow? && SCUtil::Services.find_by_name('VPNTestIPSec2')
-      # raise 'Please remove the Keychain Item `VPNTestIPSec` manually.' if Keychain.find(name: 'VPNTestIPSec', kind: :any)
-
       # Creating VPN for first time
 
-      arguments = "create -c VPNTestIPSec#{id} -e vpntestipsec.example.com -u Alice -p p4ssw0rd -g VPNTestGroup -s s3same"
+      arguments = "create -c VPNTestIPSec#{id} -e vpntestipsec.example.com " \
+                  '-u Alice -p p4ssw0rd -g VPNTestGroup -s s3same'
       arguments += ' --force' if quick?
       arguments += ' --debug' if verbose?
       output, status = Macosvpn.sudo arguments: arguments
@@ -118,7 +115,8 @@ RSpec.describe 'Creating and deleting a VPN Service' do
       # Overwriting existing VPN
       # Creating two VPNs at the same time
 
-      arguments = "create -c VPNTestIPSec#{id} -e southpole.example.com -u Carol -p letm3in -g VPNTestNewGroup -s s3cret --force"
+      arguments = "create -c VPNTestIPSec#{id} -e southpole.example.com " \
+                  '-u Carol -p letm3in -g VPNTestNewGroup -s s3cret --force'
       arguments += " -c VPNTestIPSec2#{id} -e northpole.example.com -u Eve -p s3cret -s b0bby"
       arguments += ' --debug' if verbose?
       output, status = Macosvpn.sudo arguments: arguments
