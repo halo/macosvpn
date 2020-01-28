@@ -85,8 +85,8 @@ class ServiceConfigTests: XCTestCase {
                     "AuthPassword": nil,
                     "AuthPasswordEncryption": "Keychain",
                     "CommRemoteAddress": "example.com",
-                    "DisconnectOnFastUserSwitch": "0",
-                    "DisconnectOnLogout": "0",
+                    "DisconnectOnFastUserSwitch": 0,
+                    "DisconnectOnLogout": 0,
                     ] as CFDictionary)
   }
 
@@ -102,8 +102,8 @@ class ServiceConfigTests: XCTestCase {
                     "AuthPassword": nil,
                     "AuthPasswordEncryption": "Keychain",
                     "CommRemoteAddress": "example.com",
-                    "DisconnectOnFastUserSwitch": "1",
-                    "DisconnectOnLogout": "1",
+                    "DisconnectOnFastUserSwitch": 1,
+                    "DisconnectOnLogout": 1,
                     ] as CFDictionary)
   }
 
@@ -144,7 +144,7 @@ class ServiceConfigTests: XCTestCase {
 
     XCTAssertEqual(config.l2TPIPv4Config,
                    ["ConfigMethod": "PPP",
-                    "OverridePrimary": "1",
+                    "OverridePrimary": 1,
                     ] as CFDictionary)
   }
 

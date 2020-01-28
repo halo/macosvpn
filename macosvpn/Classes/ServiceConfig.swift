@@ -91,7 +91,7 @@ open class ServiceConfig {
     }
 
     Log.debug("Assembling l2TPPPPConfig configuration dictionary...")
-    var result: [CFString: CFString?] = [:]
+    var result: [CFString: Any?] = [:]
 
     result.updateValue(endpoint as CFString?,
                        forKey: kSCPropNetPPPCommRemoteAddress)
@@ -105,20 +105,17 @@ open class ServiceConfig {
     result.updateValue(kSCValNetPPPAuthPasswordEncryptionKeychain,
                        forKey: kSCPropNetPPPAuthPasswordEncryption)
 
-    // CFNumber is the correct type I think, as you can verify in the system-generated
-    // `/Library/Preferences/SystemConfiguration/preferences.plist` file.
-    // However, the documentation says CFString, so I'm not sure whom to believe.
-    // See https://developer.apple.com/documentation/systemconfiguration/kscpropnetpppdisconnectonfastuserswitch
-    // See also https://developer.apple.com/library/prerelease/ios/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html
-    let switchOne = disconnectOnSwitch ? "1" : "0"
+    var switchOne = disconnectOnSwitch ? 1 : 0
+    let switchOneRef = CFNumberCreate(nil, .sInt8Type, &switchOne)
 
-    result.updateValue(switchOne as CFString?,
+    result.updateValue(switchOneRef,
                        forKey: kSCPropNetPPPDisconnectOnFastUserSwitch)
 
     // Again, not sure if CFString or CFNumber is recommended.
-    let logoutOne = disconnectOnLogout ? "1" : "0"
+    var logoutOne = disconnectOnLogout ? 1 : 0
+    let logoutOneRef = CFNumberCreate(nil, .sInt8Type, &logoutOne)
 
-    result.updateValue(logoutOne as CFString?,
+    result.updateValue(logoutOneRef,
                        forKey: kSCPropNetPPPDisconnectOnLogout)
 
     Log.debug("l2TPIPSecConfig ready: \(result)")
@@ -171,13 +168,16 @@ open class ServiceConfig {
     }
 
     Log.debug("Assembling l2TPIPv4Config configuration dictionary...")
-    var result: [CFString: CFString?] = [:]
+    var result: [CFString: Any?] = [:]
 
     result.updateValue(kSCValNetIPv4ConfigMethodPPP,
                        forKey: kSCPropNetIPv4ConfigMethod)
 
     if !enableSplitTunnel {
-      result.updateValue("1" as CFString?,
+      var one = 1
+      let oneRef = CFNumberCreate(nil, .sInt8Type, &one)
+
+      result.updateValue(oneRef,
                          forKey: kSCPropNetOverridePrimary)
     }
 
