@@ -113,6 +113,3 @@ DEPENDENCIES
   rubocop
   tty-command
   xcpretty
-
-BUNDLED WITH
-   1.17.2
