@@ -6,7 +6,7 @@ RSpec.describe 'Showing Version' do
   context 'with the --version flag' do
     it 'shows the Help' do
       output, status = Macosvpn.call arguments: '--version'
-      expect(output).to eq "1.0.1\n"
+      expect(output).to eq "1.0.2\n"
       expect(status).to eq 2
     end
   end

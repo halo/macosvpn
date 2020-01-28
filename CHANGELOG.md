@@ -1,5 +1,9 @@
 # master
 
+# 1.0.2
+
+* The options `--split`, `--disconnectswitch`, and `--disconnectlogout` now actually work. See #43
+
 # 1.0.1
 
 * This is a cosmetic release, no changes to the code.
