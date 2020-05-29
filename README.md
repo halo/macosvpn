@@ -19,12 +19,13 @@ This open-source code is actively maintained. Should you like to motivate me, yo
 
 ## Requirements
 
-* macoS 10.10 or higher
-* Administrator privileges (i.e. you *have* to run it with sudo)
+#### macOS 10.10 or higher
 
-**Why sudo?**
+Note that the installation via homebrew could fail on previous operating systems, such as High Sierra. In that case, please browse the [releases](https://github.com/halo/macosvpn/releases) section to find an earlier build for your operating system.
 
-The passwords of VPN services are exclusively stored in the *System Keychain*.
+#### Administrator privileges 
+
+I.e. you *have* to run it with sudo. The passwords of VPN services are exclusively stored in the *System Keychain*.
 Only `sudo` or a [HelperTool](https://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html#//apple_ref/doc/uid/TP40002589-SW2) can write to the *System Keychain*.
 I don't want you to have to deal with the complexity a HelperTool can entail, so we simply use `sudo`.
 
@@ -32,7 +33,7 @@ I don't want you to have to deal with the complexity a HelperTool can entail, so
 
 If you have [Homebrew](http://brew.sh) installed, you can simply start a Terminal and run:
 
-```bash
+```sh
 # To see which version is installed via homebrew, have a look at:
 # https://github.com/Homebrew/homebrew-core/search?q=macosvpn&type=Issues
 
@@ -41,7 +42,7 @@ brew install macosvpn
 
 If not, you can run this curl command to get the compiled executable from Github:
 
-```bash
+```sh
 # Make sure first that the directory /usr/local/bin exists
 
 sudo sh -c "curl -L https://github.com/halo/macosvpn/releases/download/1.0.0/macosvpn > /usr/local/bin/macosvpn"
@@ -50,13 +51,13 @@ sudo chmod +x /usr/local/bin/macosvpn
 
 As of macOS Catalina you may once have to "accept" that this executable is considered "safe":
 
-```bash
+```sh
 xattr -d com.apple.quarantine /usr/local/bin/macosvpn
 ```
 
-If that freaks you out (it should), you can compile it yourself if you have Xcode 11 installed:
+If that freaks you out (it should), you can compile it yourself if you have a recent Xcode version installed:
 
-```bash
+```sh
 git clone https://github.com/halo/macosvpn.git
 cd macosvpn
 bin/build
@@ -158,4 +159,4 @@ These are 3rd-party libraries, which were kindly released under the MIT license:
 
 ## License
 
-MIT 2014-2019 halo. See [MIT-LICENSE](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
+MIT 2014-2020 halo. See [LICENSE.md](https://github.com/halo/macosvpn/blob/master/LICENSE.md).
