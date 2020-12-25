@@ -84,7 +84,7 @@ extension Keychain {
         throw ExitError(message: "", code: .todo)
       }
 
-      var attributes: [SecKeychainAttribute] = [
+      let attributes: [SecKeychainAttribute] = [
         SecKeychainAttribute(tag: SecItemAttr.labelItemAttr.rawValue,
                              length: UInt32(strlen(labelPointer)),
                              data: labelPointer),
@@ -102,22 +102,23 @@ extension Keychain {
                              data: descriptionPointer),
       ]
 
+      var localAttributes = attributes
+      try localAttributes.withUnsafeMutableBufferPointer { attributesPointer in
+        var attributesList = SecKeychainAttributeList(count: UInt32(attributes.count), attr: attributesPointer.baseAddress!)
 
-      var attributesList = SecKeychainAttributeList(count: UInt32(attributes.count), attr: &attributes)
+        var item: SecKeychainItem? = nil
+        let createStatus = SecKeychainItemCreateFromContent(SecItemClass.genericPasswordItemClass,
+                                                            &attributesList,
+                                                            UInt32(strlen(passwordPointer)),
+                                                            passwordPointer,
+                                                            keychain,
+                                                            access,
+                                                            &item)
 
-      var item: SecKeychainItem? = nil
-      let createStatus = SecKeychainItemCreateFromContent(SecItemClass.genericPasswordItemClass,
-                                                          &attributesList,
-                                                          UInt32(strlen(passwordPointer)),
-                                                          passwordPointer,
-                                                          keychain,
-                                                          access,
-                                                          &item)
-
-
-      guard createStatus == errSecSuccess else {
-        Log.error("Creating Keychain item failed: \(String(describing: SecCopyErrorMessageString(createStatus, nil)))")
-        throw ExitError(message: "", code: .todo)
+        guard createStatus == errSecSuccess else {
+          Log.error("Creating Keychain item failed: \(String(describing: SecCopyErrorMessageString(createStatus, nil)))")
+          throw ExitError(message: "", code: .todo)
+        }
       }
 
       Log.debug("Successfully created Keychain Item")
