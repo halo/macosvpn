@@ -6,5 +6,7 @@ inherit_mode:
     - Exclude
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'Vendor/bundle/**/*'
+  SuggestExtensions: false

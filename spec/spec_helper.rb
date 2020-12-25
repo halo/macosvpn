@@ -7,7 +7,7 @@ require 'tty-command'
 require 'active_support/core_ext/object/blank'
 
 specs_path = Pathname.new File.expand_path(__dir__)
-Dir[specs_path.join('support/**/*.rb')].each { |f| require f }
+Dir[specs_path.join('support/**/*.rb')].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.include Quick
