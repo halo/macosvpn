@@ -70,7 +70,7 @@ extension Argument {
 		let usage = description.map { (names.joined(separator: ","), $0) }
 		return Argument<Bool>(usage: usage) { args in
 			var args = args
-			guard let index = args.index(where: names.contains), isOption(index: index, args: args) else {
+      guard let index = args.firstIndex(where: names.contains), isOption(index: index, args: args) else {
 				return (false, args)
 			}
 			args.remove(at: index)

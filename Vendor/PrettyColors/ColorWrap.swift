@@ -37,7 +37,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 		let colors: [Parameter] = [
 			foreground.map { Color.Named(foreground: $0) },
 			background.map { Color.Named(background: $0) }
-		].flatMap { $0 } // concatenate non-nil ColorType parameters
+    ].compactMap { $0 } // concatenate non-nil ColorType parameters
 		
 		self.init(parameters: colors + style.map { $0 as Parameter })
 	}
@@ -50,7 +50,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 		let colors: [Parameter] = [
 			foreground.map { Color.EightBit(foreground: $0) },
 			background.map { Color.EightBit(background: $0) }
-		].flatMap { $0 } // concatenate non-nil ColorType parameters
+    ].compactMap { $0 } // concatenate non-nil ColorType parameters
 		
 		self.init(parameters: colors + style.map { $0 as Parameter })
 	}
@@ -122,7 +122,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 		}
 		mutating set(newForeground) {
 			self.parameters =
-				[newForeground].flatMap { $0 } + // Empty array or array containing new foreground
+        [newForeground].compactMap { $0 } + // Empty array or array containing new foreground
 				self.filter(level: .foreground, inverse: true) // All non-foreground parameters
 		}
 	}
@@ -133,7 +133,7 @@ public struct Wrap: SelectGraphicRenditionWrapType {
 		}
 		mutating set(newBackground) {
 			self.parameters =
-				[newBackground].flatMap { $0 } + // Empty array or array containing new background
+        [newBackground].compactMap { $0 } + // Empty array or array containing new background
 				self.filter(level: .background, inverse: true) // All non-background parameters
 		}
 	}
@@ -222,7 +222,7 @@ extension Color.Wrap: RangeReplaceableCollection {
 		parameters.replaceSubrange(bounds, with: newElements)
 	}
 	
-	public mutating func reserveCapacity(_ minimumCapacity: UnderlyingCollection.IndexDistance) {
+	public mutating func reserveCapacity(_ minimumCapacity: Int) {
 		parameters.reserveCapacity(minimumCapacity)
 	}
 
