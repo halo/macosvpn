@@ -1,5 +1,12 @@
 # master
 
+# 1.0.3
+
+Bugfixes:
+
+* `macosvpn` compiled on Big Sur does not crash when accessing the keychain (Thank you @kikeenrique for reporting)
+* Removed compiler warnings for vendored code.
+
 # 1.0.2
 
 * The options `--split`, `--disconnectswitch`, and `--disconnectlogout` now actually work. See #43
