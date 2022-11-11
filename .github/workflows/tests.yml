@@ -1,0 +1,10 @@
+name: Test Suite
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: bin/build
+      - run: bin/test
