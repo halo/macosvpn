@@ -1,7 +1,7 @@
 [![Version](https://img.shields.io/github/tag/halo/macosvpn.svg?style=flat&label=version)](https://github.com/halo/macosvpn/releases)
 [![Homebrew](https://img.shields.io/homebrew/v/macosvpn.svg?style=flat)](https://github.com/Homebrew/homebrew-core/blob/master/Formula/macosvpn.rb)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/halo/macosvpn/blob/master/LICENSE.md)
-![Build Status](https://github.com/github/docs/actions/workflows/tests.yml/badge.svg?branch=master)
+[![Build Status](https://github.com/halo/macosvpn/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/halo/macosvpn/actions)
 [![Codebeat](https://codebeat.co/badges/b60656d2-1cc8-4644-a1a9-4a35177476fb)](https://codebeat.co/projects/github-com-halo-macosvpn)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/halo/macosvpn)
 ![Swift](https://img.shields.io/badge/Swift-5-F16D39.svg?style=flat)
