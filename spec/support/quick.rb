@@ -2,11 +2,11 @@
 
 module Quick
   def verbose?
-    ENV['VERBOSE']
+    ENV.fetch('VERBOSE', nil)
   end
 
   def quick?
-    ENV['QUICK']
+    ENV.fetch('QUICK', nil)
   end
 
   def slow?

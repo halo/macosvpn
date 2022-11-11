@@ -28,7 +28,7 @@ module Macosvpn
   private_class_method :run
 
   def self.verbose?
-    ENV['VERBOSE']
+    ENV.fetch('VERBOSE', false)
   end
 
   def self.executable
