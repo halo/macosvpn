@@ -152,6 +152,10 @@ Finally, I [learned from over here](http://stackoverflow.com/questions/24363935)
 
 Thank you for reporting bugs. And thanks to all keen [contributors](https://github.com/halo/macosvpn/graphs/contributors).
 
+Also thanks to "[The Eskimo!](https://developer.apple.com/forums/profile/eskimo)",
+whenever I'm deep down in the undocumented macOS VPN stack,
+I end up finding random forum posts by this remarkably helpful Apple engineer.
+
 These are 3rd-party libraries, which were kindly released under the MIT license:
 
 * [Moderator](https://github.com/kareman/Moderator) by Kare Morstol
