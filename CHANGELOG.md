@@ -1,6 +1,11 @@
 # master
 
-# 1.0.3
+# 2.0.0
+
+* Drop support for macOS 10.10, minimum is now 10.13
+* Compatibility with Ventura, see https://github.com/halo/macosvpn/issues/58
+
+# 2.0.0
 
 Bugfixes:
 
