@@ -15,6 +15,7 @@
  */
 
 import Security
+import Foundation
 
 extension Keychain {
   enum CreateItem {
@@ -27,26 +28,44 @@ extension Keychain {
 
       let keychain = try Keychain.Retrieve.systemKeychain()
 
-
       var trustedApplications: [SecTrustedApplication] = []
+      var trustedAppPaths: [String] =
+          [
+            "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/Helpers/SCHelper",
+            "/System/Library/CoreServices/SystemUIServer.app",
+            "/usr/sbin/pppd",
+            "/usr/sbin/racoon",
+            "/usr/libexec/configd"
+          ]
+
+      let montereyRemoteservicePath: (String) = "/System/Library/PreferencePanes/Network.prefPane/Contents/XPCServices/com.apple.preference.network.remoteservice.xpc"
+      let venturaRemoteservicePath: (String) = "/System/Library/PreferencePanes/UniversalAccessPref.prefPane/Contents/XPCServices/com.apple.preference.universalaccess.remoteservice.xpc/"
+
+      if (FileManager.default.fileExists(atPath: montereyRemoteservicePath)) {
+        trustedAppPaths.append(montereyRemoteservicePath)
+      } else if (FileManager.default.fileExists(atPath: venturaRemoteservicePath)) {
+        trustedAppPaths.append(venturaRemoteservicePath)
+      } else {
+        Log.error("Could not find path for com.apple.preference.network.remoteservice.xpc")
+        throw ExitError(message: "", code: .todo)
+      }
 
       for path in trustedAppPaths {
         var appPointer: SecTrustedApplication?
 
         let appCreateStatus = SecTrustedApplicationCreateFromPath(path.toUnsafeMutablePointer(), &appPointer)
         guard appCreateStatus == errSecSuccess else {
-          Log.error("Could not create trusted application: \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
+          Log.error("Could not create trusted application "+path+": \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
           throw ExitError(message: "", code: .todo)
         }
 
         guard let app = appPointer else {
-          Log.error("Created trusted application is nil: \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
-         throw ExitError(message: "", code: .todo)
+          Log.error("Created trusted application "+path+" is nil: \(String(describing: SecCopyErrorMessageString(appCreateStatus, nil)))")
+          throw ExitError(message: "", code: .todo)
         }
 
         trustedApplications.append(app)
       }
-
 
       var access: SecAccess? = nil
       let accessStatus = SecAccessCreate("macosvpn VPN Service Password" as CFString,
@@ -88,7 +107,7 @@ extension Keychain {
         SecKeychainAttribute(tag: SecItemAttr.labelItemAttr.rawValue,
                              length: UInt32(strlen(labelPointer)),
                              data: labelPointer),
-        
+
         SecKeychainAttribute(tag: SecItemAttr.accountItemAttr.rawValue,
                              length: UInt32(strlen(accountPointer)),
                              data: accountPointer),
@@ -122,17 +141,6 @@ extension Keychain {
       }
 
       Log.debug("Successfully created Keychain Item")
-    }
-
-    private static var trustedAppPaths: [String] {
-      [
-        "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/Helpers/SCHelper",
-        "/System/Library/PreferencePanes/Network.prefPane/Contents/XPCServices/com.apple.preference.network.remoteservice.xpc",
-        "/System/Library/CoreServices/SystemUIServer.app",
-        "/usr/sbin/pppd",
-        "/usr/sbin/racoon",
-        "/usr/libexec/configd"
-      ]
     }
   }
 }
