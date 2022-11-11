@@ -1,7 +1,7 @@
 [![Version](https://img.shields.io/github/tag/halo/macosvpn.svg?style=flat&label=version)](https://github.com/halo/macosvpn/releases)
 [![Homebrew](https://img.shields.io/homebrew/v/macosvpn.svg?style=flat)](https://github.com/Homebrew/homebrew-core/blob/master/Formula/macosvpn.rb)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/halo/macosvpn/blob/master/LICENSE.md)
-[![Build Status](https://travis-ci.org/halo/macosvpn.svg?branch=master)](https://travis-ci.org/halo/macosvpn)
+![Build Status](https://github.com/github/docs/actions/workflows/tests.yml/badge.svg?branch=master)
 [![Codebeat](https://codebeat.co/badges/b60656d2-1cc8-4644-a1a9-4a35177476fb)](https://codebeat.co/projects/github-com-halo-macosvpn)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/halo/macosvpn)
 ![Swift](https://img.shields.io/badge/Swift-5-F16D39.svg?style=flat)
@@ -11,7 +11,7 @@
 This is a command-line tool written in Swift that can create VPN network configurations on your Mac.
 
 It supports **L2TP over IPSec** and **Cisco IPSec**.
-Integration tests are run on Travis to ensure it's working properly.
+Integration tests are run as Github Action, to ensure it's working properly.
 
 This open-source code is actively maintained. Should you like to motivate me, you may click on the ✭ in the top-right corner.
 
@@ -23,7 +23,7 @@ This open-source code is actively maintained. Should you like to motivate me, yo
 
 Note that the installation via homebrew could fail on previous operating systems, such as High Sierra. In that case, please browse the [releases](https://github.com/halo/macosvpn/releases) section to find an earlier build for your operating system.
 
-#### Administrator privileges 
+#### Administrator privileges
 
 I.e. you *have* to run it with sudo. The passwords of VPN services are exclusively stored in the *System Keychain*.
 Only `sudo` or a [HelperTool](https://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html#//apple_ref/doc/uid/TP40002589-SW2) can write to the *System Keychain*.

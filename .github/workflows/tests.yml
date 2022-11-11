@@ -2,12 +2,15 @@ name: Test Suite
 on: [push, pull_request]
 
 jobs:
-  check-bats-version:
-    runs-on: macos-12
+  tests:
+
+    strategy:
+      matrix:
+        os: [macos-11, macos-12]
+
+    runs-on: ${{ matrix.os }}
+
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '3.1'
       - run: bin/build
       - run: bin/test
